@@ -1,0 +1,262 @@
+/* News Page Specific Styles */
+.news-page {
+    background-color: #f9f9f9;
+    padding-top: 80px; /* Accommodate fixed header */
+}
+
+.news-header-section {
+    text-align: center;
+    padding: 60px 0 40px;
+    max-width: 1200px;
+    margin: 0 auto;
+}
+
+.news-header-section h1 {
+    font-size: 38px;
+    font-weight: bold;
+    margin-bottom: 5px;
+    position: relative;
+    display: inline-block;
+}
+
+.news-header-section h1::first-letter {
+    color: #f04e5c;
+}
+
+.subtitle {
+    font-size: 16px;
+    color: #666;
+    margin-top: 0;
+}
+
+.news-container {
+    max-width: 800px;
+    margin: 0 auto;
+    padding: 0 20px 60px;
+    background-color: white;
+    box-shadow: 0 0 20px rgba(0, 0, 0, 0.05);
+}
+
+/* News Article */
+.news-article {
+    padding: 40px;
+}
+
+.news-meta {
+    margin-bottom: 20px;
+    display: flex;
+    align-items: center;
+}
+
+.news-category {
+    font-size: 14px;
+    color: #666;
+    margin-right: 15px;
+}
+
+.news-date {
+    font-size: 14px;
+    color: #999;
+}
+
+.news-title {
+    font-size: 26px;
+    font-weight: bold;
+    line-height: 1.4;
+    margin-bottom: 30px;
+    border-bottom: 1px solid #eee;
+    padding-bottom: 15px;
+}
+
+.news-content {
+    font-size: 16px;
+    line-height: 1.8;
+    color: #333;
+}
+
+.news-content p {
+    margin-bottom: 20px;
+}
+
+/* Table of Contents */
+.news-table-of-contents {
+    background-color: #f9f9f9;
+    border: 1px solid #eee;
+    border-radius: 4px;
+    padding: 20px 30px;
+    margin: 30px 0;
+}
+
+.news-table-of-contents h3 {
+    font-size: 18px;
+    margin-bottom: 15px;
+    display: flex;
+    justify-content: space-between;
+}
+
+.hide-link {
+    font-size: 14px;
+    color: #f04e5c;
+    cursor: pointer;
+}
+
+.news-table-of-contents ol {
+    margin-left: 20px;
+}
+
+.news-table-of-contents li {
+    margin-bottom: 10px;
+    color: #f04e5c;
+}
+
+.news-table-of-contents a {
+    color: #f04e5c;
+    text-decoration: none;
+}
+
+.news-table-of-contents a:hover {
+    text-decoration: underline;
+}
+
+/* Content Sections */
+.news-content section {
+    margin: 40px 0;
+}
+
+.news-content h3 {
+    font-size: 20px;
+    font-weight: bold;
+    margin-bottom: 15px;
+    color: #333;
+}
+
+/* More News Section */
+.more-news {
+    padding: 30px 40px 40px;
+    border-top: 1px solid #eee;
+}
+
+.more-news h3 {
+    font-size: 22px;
+    margin-bottom: 20px;
+    text-align: center;
+}
+
+.news-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 20px;
+}
+
+.news-card {
+    background-color: #fff;
+    border-radius: 4px;
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.05);
+    padding: 20px;
+    transition: transform 0.2s;
+}
+
+.news-card:hover {
+    transform: translateY(-5px);
+}
+
+.news-card-meta {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 10px;
+}
+
+.news-card-category {
+    font-size: 12px;
+    color: white;
+    padding: 3px 8px;
+    border-radius: 3px;
+}
+
+.news-card-date {
+    font-size: 12px;
+    color: #999;
+}
+
+.news-card-title {
+    font-size: 16px;
+    font-weight: bold;
+    margin-bottom: 15px;
+    line-height: 1.4;
+}
+
+.news-card-link {
+    font-size: 14px;
+    color: #f04e5c;
+    text-decoration: none;
+    position: relative;
+    padding-right: 15px;
+}
+
+.news-card-link::after {
+    content: '→';
+    position: absolute;
+    right: 0;
+    top: 50%;
+    transform: translateY(-50%);
+}
+
+.news-card-link:hover {
+    text-decoration: underline;
+}
+
+/* Restaurant Category Colors */
+.cat-red {
+    background-color: #ee614f;
+}
+
+.cat-green {
+    background-color: #7ebe4e;
+}
+
+.cat-orange {
+    background-color: #ffc400;
+}
+
+/* Responsive Styles */
+@media (max-width: 768px) {
+    .news-container {
+        max-width: 100%;
+    }
+    
+    .news-article {
+        padding: 30px 20px;
+    }
+    
+    .news-grid {
+        grid-template-columns: 1fr;
+        gap: 15px;
+    }
+    
+    .news-title {
+        font-size: 22px;
+    }
+    
+    .more-news {
+        padding: 30px 20px;
+    }
+}
+
+@media (max-width: 480px) {
+    .news-header-section {
+        padding: 40px 0 30px;
+    }
+    
+    .news-header-section h1 {
+        font-size: 32px;
+    }
+    
+    .news-article {
+        padding: 20px 15px;
+    }
+    
+    .news-table-of-contents {
+        padding: 15px;
+    }
+}

@@ -1,0 +1,1014 @@
+/* 
+ * Hagiya Restaurant - Main Stylesheet
+ * Version: 1.0
+ * 
+ * Table of Contents:
+ * 1. Base Styles & Reset
+ * 2. Typography
+ * 3. Layout & Grid
+ * 4. Header & Navigation
+ * 5. Hero Section
+ * 6. Storefront Section
+ * 7. News Section
+ * 8. Course Menu Section
+ * 9. Space Section
+ * 10. Food Menu Section
+ * 11. Instagram Section
+ * 12. Gallery Section
+ * 13. Information Section
+ * 14. Map Section
+ * 15. Footer
+ * 16. Utility Classes
+ * 17. Animations
+ * 18. Media Queries
+ */
+
+/* ======================================================
+   1. Base Styles & Reset
+   ====================================================== */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  font-family: "Noto Sans JP", sans-serif;
+  color: #333;
+  line-height: 1.6;
+  overflow-x: hidden;
+  background-color: #fff;
+}
+
+a {
+  text-decoration: none;
+  color: inherit;
+  transition: color 0.3s ease;
+}
+
+img {
+  max-width: 100%;
+  height: auto;
+  display: block;
+}
+
+ul {
+  list-style: none;
+}
+
+/* ======================================================
+   2. Typography
+   ====================================================== */
+h2,
+h3 {
+  font-family: "Noto Serif JP", serif;
+  font-weight: 500;
+}
+
+/* ======================================================
+   3. Layout & Grid
+   ====================================================== */
+.container {
+  width: 100%;
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 0 20px;
+}
+
+/* ======================================================
+   4. Header & Navigation
+   ====================================================== */
+.site-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 15px 5%;
+  border-bottom: 1px solid rgba(0, 0, 0, 0.05);
+  position: relative;
+  background-image: url("../images/hagiya-images/nav-background.jpeg");
+  background-size: cover;
+  background-position: center;
+  z-index: 1000;
+}
+
+.logo {
+  display: flex;
+  align-items: center;
+}
+
+.logo-container {
+  display: flex;
+  align-items: center;
+}
+
+.logo-text-img {
+  height: 24px;
+  margin-right: 5px;
+}
+
+.logo-name-img {
+  height: 36px;
+}
+
+.main-nav ul {
+  display: flex;
+}
+
+.main-nav li {
+  margin-left: 30px;
+}
+
+.main-nav a {
+  font-size: 14px;
+  color: #333;
+  position: relative;
+  text-shadow: 0 0 3px rgba(255, 255, 255, 0.7);
+  font-weight: 500;
+}
+
+.main-nav a:hover,
+.main-nav a.active {
+  color: #91654d;
+}
+
+.joy-link {
+  font-size: 14px;
+  color: #333;
+  text-shadow: 0 0 3px rgba(255, 255, 255, 0.7);
+  font-weight: 500;
+}
+
+.joy-link:hover {
+  color: #91654d;
+}
+
+/* ======================================================
+   5. Hero Section
+   ====================================================== */
+.hero-image {
+  width: 100%;
+  height: 100vh;
+  overflow: hidden;
+  position: relative;
+}
+
+.hero-image img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+/* ======================================================
+   6. Storefront Section
+   ====================================================== */
+.storefront-section {
+  display: flex;
+  padding: 50px 5%;
+  position: relative;
+  margin-left: 5%;
+  background-image: url("../images/hagiya-images/second-background.jpeg");
+  background-size: cover;
+  /* background-position: center; */
+}
+
+.storefront-image {
+  width: 1136px;
+  height: 596px;
+  box-shadow: 0 0 15px rgba(0, 0, 0, 0.1);
+  overflow: hidden;
+}
+
+.storefront-image img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.vertical-image {
+  margin-top: 7%;
+  position: absolute;
+  right: 8%;
+  writing-mode: vertical-rl;
+  text-orientation: upright;
+  font-family: "Noto Serif JP", serif;
+  background-image: url("../images/hagiya-images/sidetext-background.jpeg");
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+
+  color: black;
+  padding: 20px 10px;
+  height: 400px;
+  width: 433px;
+  line-height: 2;
+}
+
+.vertical-text {
+  margin-top: 5%;
+  position: absolute;
+  right: 12%;
+  top: 10px;
+  writing-mode: vertical-rl;
+  text-orientation: upright;
+  font-family: "Noto Serif JP", serif;
+
+  color: black;
+  padding: 20px 10px;
+  height: 400px;
+  width: 433px;
+  line-height: 2;
+}
+
+.vertical-text h2 {
+  margin-top: -3%;
+  font-size: 20px;
+  font-weight: bold;
+}
+
+.vertical-text p {
+  font-size: 14px;
+  margin-left: 15px;
+  font-weight: bold;
+}
+
+/* ======================================================
+   7. News Section
+   ====================================================== */
+.news-section {
+  padding: 30px 5%;
+  background-color: #fff;
+  background-image: url("../images/hagiya-images/second-background.jpeg");
+  background-size: cover;
+  background-position: center;
+}
+
+.news-section h2 {
+  text-align: center;
+  color: black;
+  margin-bottom: 20px;
+}
+
+.news-container {
+  max-width: 800px;
+  margin: 0 auto;
+  border-radius: 5px;
+  padding: 20px;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.05);
+}
+
+.news-item {
+  display: flex;
+  padding: 10px 0;
+  cursor: pointer;
+  transition: background-color 0.2s ease;
+}
+
+.news-item:hover {
+  background-color: #f9f9f9;
+}
+
+.news-date {
+  min-width: 100px;
+  color: black;
+  font-size: 14px;
+}
+
+.news-content {
+  flex: 1;
+  font-size: 14px;
+}
+/* ======================================================
+   8. Course Menu Section
+   ====================================================== */
+   .course-section {
+    padding: 50px 0;
+    background-image: url("../images/course-bg.svg");
+    background-repeat: no-repeat;
+    background-size: cover;
+    position: relative;
+  }
+  
+  .course-container {
+    max-width: 1281px;
+    height: 419px;
+    margin: 40px auto;
+    padding: 0;
+    display: grid;
+    grid-template-columns: 33% 25% 42%;
+    position: relative;
+    background-image: url("../images/course-backward-bg.svg");
+    background-repeat: no-repeat;
+    background-size: 98%;
+    background-position: center;
+  }
+  
+  .dish-image-left {
+    width: 100%;
+    height: auto;
+    overflow: visible;
+    padding-right: 20px;
+  }
+  
+  .dish-image-left img {
+    width: 600px;
+    height: 370px;
+    object-fit: cover;
+    margin-right: 20px;
+    margin-top: 0 !important;
+   
+  }
+  
+  .dish-content-right {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    height: 450px;
+    gap: 15px;
+  }
+  
+  .dish-content-right img {
+    width: 100%;
+    height: 48%;
+    object-fit: cover;
+    transform: scale(1.05); /* Make image slightly larger */
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+  }
+  
+  .menu-text-container {
+    display: flex;
+    justify-content: space-between;
+    padding-left: 20px;
+  }
+  
+  .vertical-text-menu {
+    writing-mode: vertical-rl;
+    text-orientation: upright;
+    font-family: "Noto Serif JP", serif;
+    height: 450px;
+    color: #91654d;
+    line-height: 2;
+    z-index: 10;
+    margin-right: 20px;
+    position: relative;
+    right: -25px;
+  }
+  
+  .vertical-text-menu h2 {
+    font-size: 18px;
+    margin-left: 10px;
+    padding-bottom: 15px;
+    letter-spacing: 0.1em;
+  }
+  
+  .vertical-text-menu p {
+    font-size: 12px;
+    letter-spacing: 0.05em;
+  }
+  
+  .course-menu-content {
+    position: relative;
+    padding-top: 30px;
+    border-left: 1px solid #eee;
+    padding-left: 25px;
+    height: 450px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+  }
+  
+  .course-title {
+    color: #91654d;
+    font-size: 16px;
+    margin-bottom: 15px;
+    padding-bottom: 5px;
+    border-bottom: 1px solid #eee;
+  }
+  
+  .course-list {
+    list-style: none;
+    margin-bottom: 20px;
+  }
+  
+  .course-list li {
+    padding: 5px 0;
+    color: #91654d;
+    border-bottom: 1px dotted #eee;
+    font-size: 14px;
+  }
+  
+  .course-list li span {
+    margin-left: 30px;
+  }
+  
+  .price {
+    margin-left: 30px;
+    font-weight: 500;
+  }
+
+/* ======================================================
+   9. Space Section
+   ====================================================== */
+.space-section {
+  padding: 50px 5%;
+  background-image: url("../images/higayi-bg.svg");
+  background-repeat: no-repeat;
+  background-size: cover;
+  width: 60%;
+  margin: 0 auto;
+}
+
+.space-container {
+  display: flex;
+  width: 1300px;
+  margin: 0 auto;
+  margin-top: 50px;
+  position: relative;
+}
+
+.space-images {
+  width: 35%;
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+  margin: 140px 0;
+}
+
+.space-image {
+  width: 100%;
+  height: 260px;
+  overflow: hidden;
+  position: relative;
+}
+
+.space-image img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.space-image-1-texts {
+  position: absolute;
+  left: 10%;
+  z-index: 10;
+  display: flex;
+  flex-direction: row;
+  justify-content: flex-start;
+  align-items: flex-start;
+  height: 1000px;
+}
+
+.space-image-1-texts p {
+  color: black;
+  background: #f9d9cd;
+  writing-mode: vertical-rl;
+  text-orientation: mixed;
+  margin-left: 10px;
+  display: inline-block;
+  font-size: 13px;
+}
+
+.space-image-1-texts p:nth-child(4) {
+  position: absolute;
+  font-size: 22px !important;
+  left: 100%;
+  top: -40px;
+}
+
+.space-image-2 {
+  position: absolute;
+  top: 80px;
+  left: 10%;
+  width: 35%;
+}
+
+.space-image-3 {
+  position: absolute;
+  top: -10px;
+  left: 30%;
+  width: 35%;
+}
+
+.space-image-4-space {
+  position: absolute;
+  bottom: 10px;
+  left: 25%;
+  width: 30%;
+}
+
+.space-image-4-space-item-1 {
+  position: absolute;
+  z-index: 1;
+  top: 0;
+  left: 0px;
+  width: 80%;
+  height: 80%;
+}
+
+.space-image-4-space-item-2 {
+  position: absolute;
+  z-index: 0;
+  bottom: -60px;
+  left: 25px;
+  width: 100%;
+  height: 100%;
+}
+
+/* ======================================================
+   10. Food Menu Section
+   ====================================================== */
+.food-menu-section {
+  background-image: url("../images/course-bg.svg");
+  background-repeat: no-repeat;
+  background-size: cover;
+  padding: 50px 5%;
+}
+
+.food-menu-container {
+  max-width: 90%;
+  margin: 0 auto;
+}
+
+.menu-item {
+  background-image: url("../images/food-menu-bg-1.svg");
+  background-repeat: no-repeat;
+  background-size: cover;
+  border-radius: 5px;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.05);
+}
+
+.menu-item-2 {
+  background-image: url("../images/food-menu-bg-2.svg");
+  background-repeat: no-repeat;
+  background-size: cover;
+  border-radius: 5px;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.05);
+  margin-top: 40px;
+}
+
+.menu-item-content {
+  display: flex;
+  height: 400px;
+  align-items: center;
+  margin-bottom: 40px;
+  width: 70%;
+  margin: 0 auto;
+  gap: 20px;
+}
+
+.menu-item-content-image {
+  padding-top: 40px;
+  width: 30%;
+  height: 300px;
+  overflow: hidden;
+}
+
+.menu-item-content-image img {
+  width: 100%;
+  height: 100%;
+  object-fit: contain;
+}
+
+.menu-item-content-text {
+  width: 70%;
+  padding: 0 50px;
+}
+
+.menu-item-content h3 {
+  color: #91654d;
+  margin-bottom: 15px;
+  font-size: 18px;
+  text-align: center;
+  position: relative;
+}
+
+.menu-item-content h3:after {
+  content: "";
+  position: absolute;
+  bottom: -5px;
+  left: 0;
+  width: 40px;
+  height: 2px;
+  background-color: #91654d;
+}
+
+.menu-item-content p {
+  margin-bottom: 20px;
+  font-size: 14px;
+  line-height: 1.8;
+  text-align: center;
+}
+
+.menu-btn {
+  color: #91654d;
+  padding: 8px 15px;
+  border-radius: 3px;
+  font-size: 14px;
+  transition: background-color 0.3s;
+  display: flex;
+  justify-content: center;
+  width: fit-content;
+  margin: 0 auto;
+  border: 1px solid #91654d;
+}
+
+.menu-btn:hover {
+  background-color: #d9c7b4;
+}
+
+/* ======================================================
+   11. Instagram Section
+   ====================================================== */
+.instagram-section {
+  padding: 40px 0;
+  text-align: center;
+}
+
+.instagram-container {
+  max-width: 1200px;
+  margin: 0 auto;
+}
+
+.instagram-btn {
+  display: inline-block;
+  background-color: #91654d;
+  color: white;
+  padding: 12px 30px;
+  border-radius: 5px;
+  font-size: 16px;
+  transition: background-color 0.3s ease;
+}
+
+.instagram-btn:hover {
+  background-color: #7a5441;
+}
+/* ======================================================
+   12. Gallery Section with Auto-Scroll
+   ====================================================== */
+   .gallery-section {
+    width: 100%;
+    padding: 30px 0;
+    background-color: #f7f5f0;
+    overflow: hidden;
+  }
+  
+  .gallery-container {
+    width: 100%;
+    display: flex;
+    flex-wrap: nowrap;
+    overflow-x: auto;
+    scroll-snap-type: x mandatory;
+    -webkit-overflow-scrolling: touch; /* For smoother scrolling on iOS */
+    scrollbar-width: none; /* Hide scrollbar in Firefox */
+    -ms-overflow-style: none; /* Hide scrollbar in IE/Edge */
+  }
+  
+  /* Hide scrollbar in Chrome/Safari */
+  .gallery-container::-webkit-scrollbar {
+    display: none;
+  }
+  
+  .gallery-image {
+    flex: 0 0 300px; /* Fixed width for each image */
+    height: 250px;
+    scroll-snap-align: start;
+    margin-right: 15px;
+    overflow: hidden;
+    border-radius: 5px;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+  }
+  
+  .gallery-image:last-child {
+    margin-right: 0;
+  }
+  
+  .gallery-image img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    transition: transform 0.3s ease;
+  }
+  
+  .gallery-image img:hover {
+    transform: scale(1.05);
+  }
+
+/* ======================================================
+   13. Information Section
+   ====================================================== */
+.info-section {
+  padding: 60px 5% 30px;
+  background-color: #fff;
+}
+
+.info-container {
+  max-width: 800px;
+  margin: 0 auto;
+  text-align: center;
+}
+
+.info-section h2 {
+  color: #91654d;
+  margin-bottom: 15px;
+}
+
+.tel {
+  font-size: 24px;
+  font-weight: 500;
+  margin-bottom: 30px;
+  color: #91654d;
+}
+
+.info-details {
+  display: flex;
+  justify-content: space-between;
+  max-width: 600px;
+  margin: 0 auto;
+}
+
+.info-item {
+  flex: 1;
+  padding: 0 15px;
+}
+
+.info-item h3 {
+  color: #91654d;
+  font-size: 16px;
+  margin-bottom: 10px;
+}
+
+.info-item p {
+  font-size: 14px;
+}
+
+/* ======================================================
+   14. Map Section
+   ====================================================== */
+.full-width-map {
+  width: 100%;
+  position: relative;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+  overflow: hidden;
+}
+
+.google-map {
+  display: block;
+  width: 100%;
+  height: 500px;
+  border: 0;
+}
+
+.map-label {
+  text-align: center;
+  padding: 12px 0;
+  background-color: #f6f3ed;
+  font-size: 14px;
+}
+
+.map-label a {
+  color: #91654d;
+  text-decoration: none;
+  font-weight: 500;
+}
+
+.map-label a:hover {
+  color: #7a5441;
+}
+
+/* ======================================================
+   15. Footer
+   ====================================================== */
+.site-footer {
+  background-color: #f6f3ed;
+  color: #333;
+  text-align: center;
+  padding: 20px 0;
+  font-size: 12px;
+  border-top: 1px solid rgba(0, 0, 0, 0.05);
+}
+
+.footer-content {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 10px;
+}
+
+.footer-content p {
+  margin: 0;
+}
+
+/* ======================================================
+   16. Utility Classes
+   ====================================================== */
+.fade-element {
+  opacity: 0;
+  transform: translateY(20px);
+  transition: opacity 0.8s ease, transform 0.8s ease;
+}
+
+.fade-in {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+/* ======================================================
+   17. Animations
+   ====================================================== */
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+    transform: translateY(20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+/* ======================================================
+   18. Media Queries
+   ====================================================== */
+@media (max-width: 1300px) {
+  .space-container {
+    width: 100%;
+  }
+}
+
+@media (max-width: 1024px) {
+  .course-container,
+  .space-container {
+    flex-direction: column;
+  }
+
+  .dish-image-left,
+  .dish-content-right,
+  .course-menu-content,
+  .space-images {
+    width: 100%;
+    margin: 20px 0;
+  }
+
+  .vertical-text-menu,
+  .vertical-text-space {
+    position: static;
+    writing-mode: horizontal-tb;
+    text-orientation: mixed;
+    height: auto;
+    text-align: center;
+    padding: 20px 0;
+  }
+
+  .vertical-text-menu h2,
+  .vertical-text-menu p,
+  .vertical-text-space h2,
+  .vertical-text-space p {
+    margin-left: 0;
+    margin-bottom: 10px;
+  }
+
+  .space-section {
+    width: 100%;
+  }
+
+  .space-image-2,
+  .space-image-3,
+  .space-image-4-space {
+    position: static;
+    width: 100%;
+    margin: 20px 0;
+  }
+
+  .space-image-1-texts {
+    position: static;
+    height: auto;
+    flex-direction: column;
+    writing-mode: horizontal-tb;
+    text-align: center;
+  }
+
+  .space-image-1-texts p {
+    writing-mode: horizontal-tb;
+    margin: 10px 0;
+    background: none;
+  }
+
+  .space-image-1-texts p:nth-child(4) {
+    position: static;
+    font-size: 18px !important;
+  }
+
+  .menu-item-content {
+    width: 90%;
+  }
+}
+
+@media (max-width: 768px) {
+  .site-header {
+    flex-direction: column;
+    padding: 15px;
+    background-position: top center;
+  }
+
+  .main-nav ul {
+    margin-top: 15px;
+  }
+
+  .main-nav li {
+    margin: 0 10px;
+  }
+
+  .hero-image {
+    height: 60vh;
+  }
+
+  .vertical-text {
+    position: static;
+    writing-mode: horizontal-tb;
+    text-orientation: mixed;
+    height: auto;
+    margin-top: 20px;
+    padding: 15px;
+    width: 100%;
+    text-align: center;
+  }
+
+  .vertical-text h2,
+  .vertical-text p {
+    margin-left: 0;
+    margin-bottom: 10px;
+  }
+
+  .storefront-image {
+    width: 90%;
+    margin: 0 auto;
+  }
+
+  .menu-item-content {
+    flex-direction: column;
+    height: auto;
+    padding: 20px 0;
+  }
+
+  .menu-item-content-image,
+  .menu-item-content-text {
+    width: 100%;
+    padding: 20px;
+  }
+
+  .info-details {
+    flex-direction: column;
+  }
+
+  .info-item {
+    padding: 10px 0;
+  }
+
+  .google-map {
+    height: 400px;
+  }
+
+  .gallery-container {
+    flex-wrap: wrap;
+  }
+
+  .gallery-image {
+    flex: 1 0 50%;
+  }
+}
+
+@media (max-width: 480px) {
+  .hero-image {
+    height: 40vh;
+  }
+
+  .dish-content-right {
+    height: auto;
+  }
+
+  .dish-content-right img {
+    height: 200px;
+  }
+
+  .dish-image-left {
+    height: 300px;
+  }
+
+  .tel {
+    font-size: 20px;
+  }
+
+  .instagram-btn,
+  .map-label {
+    padding: 8px 30px;
+    font-size: 14px;
+  }
+
+  .google-map {
+    height: 300px;
+  }
+
+  .gallery-image {
+    flex: 1 0 100%;
+    margin-bottom: 10px;
+  }
+}
