@@ -531,11 +531,11 @@ header {
   background-color: #9bc966;
 }
 
-/* Recruit Section */
+/* Recruit Section with Swiper */
 .recruit-section {
-  padding: 100px 0;
+  padding: 80px 0;
   position: relative;
-  background-color: #f2f2f2; /* Updated to match body background */
+  background-color: #f2f2f2;
 }
 
 .recruit-container {
@@ -547,66 +547,126 @@ header {
 .recruit-header {
   text-align: center;
   margin-bottom: 40px;
-  color: #333;
 }
 
-/* Updated Recruit slider container */
-.recruit-slider-container {
+.recruit-header h2 {
+  font-size: 28px;
+  color: #f04e5c;
+  font-weight: bold;
+}
+
+/* Swiper container styles */
+.recruit-swiper {
+  width: 100%;
   position: relative;
   overflow: hidden;
   margin-bottom: 30px;
-  background-color: #fff;
-  border-radius: 8px;
-  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
 }
 
-.recruit-pages {
-  display: flex;
-  transition: transform 0.5s ease;
-  width: 200%; /* Accommodates two pages */
-}
-
-.recruit-page {
-  width: 50%;
-  flex-shrink: 0;
-  padding: 30px;
-  opacity: 1; /* Changed from 0 to 1 */
-  transition: opacity 0.3s ease;
-}
-
-.recruit-page.active {
-  opacity: 1;
-}
-
+/* Recruit item styles */
 .recruit-list {
   display: flex;
   flex-direction: column;
-  gap: 15px;
+  width: 100%;
 }
 
 .recruit-item {
   display: flex;
-  align-items: center;
+  align-items: stretch;
+}
+
+.recruit-item:nth-child(odd) {
+  background-color: #f1f1f1;
+}
+
+.recruit-item:nth-child(even) {
+  background-color: #e8e8e8;
+}
+
+.recruit-label,
+.recruit-value {
   padding: 15px;
-  background-color: #f9f9f9;
-  border-radius: 4px;
 }
 
 .recruit-label {
-  width: 150px;
-  color: #666;
+  width: 50%;
+  color: #333;
   font-size: 14px;
+  text-align: center;
+  border-right: 1px solid #ddd;
+  display: flex;
+  align-items: center;
+  justify-content: center;
 }
 
 .recruit-value {
-  flex-grow: 1;
-  font-size: 16px;
+  width: 50%;
+  font-size: 14px;
+  color: #333;
+  display: flex;
+  align-items: center;
 }
 
+/* Custom swiper navigation buttons */
+.swiper-button-prev,
+.swiper-button-next {
+  color: #f04e5c;
+  width: 20px;
+  height: 20px;
+}
+
+.swiper-button-prev:after,
+.swiper-button-next:after {
+  font-size: 20px;
+  font-weight: bold;
+}
+
+/* Override Swiper defaults to match design */
+.swiper-button-prev {
+  left: 0;
+}
+
+.swiper-button-next {
+  right: 0;
+}
+
+/* Custom pagination */
+.swiper-pagination {
+  position: relative;
+  bottom: 0;
+  margin-top: 20px;
+}
+
+.swiper-pagination-bullet {
+  width: 8px;
+  height: 8px;
+  background: #ccc;
+  opacity: 1;
+}
+
+.swiper-pagination-bullet-active {
+  background-color: #f04e5c;
+}
+
+/* Apply button */
 .recruit-buttons {
-  display: flex;
-  justify-content: center;
-  margin-top: 40px;
+  text-align: center;
+  margin-top: 30px;
+}
+
+.apply-btn {
+  background-color: #f04e5c;
+  color: white;
+  border: none;
+  padding: 10px 30px;
+  border-radius: 4px;
+  font-size: 14px;
+  cursor: pointer;
+  transition: background-color 0.3s;
+}
+
+.apply-btn:hover {
+  background-color: #e03c4a;
 }
 
 .apply-btn {
