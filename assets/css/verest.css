@@ -130,10 +130,7 @@ section {
 }
 
 /* Main Content Styles */
-.main-content {
-  margin-left: 70px;
-  /* Match side nav width */
-}
+
 
 /* Hero Section */
 .hero {
@@ -434,7 +431,7 @@ section {
 }
 
 .highlight-th {
-  background-color: #fad3d3;
+  color: #ff9999;
   padding: 5px 8px;
   display: inline-block;
   line-height: 1.6;
@@ -446,7 +443,6 @@ section {
 }
 
 .highlight-td {
-  background-color: #fad3d3;
   padding: 5px 8px;
   display: inline-block;
   line-height: 1.6;
