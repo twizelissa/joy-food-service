@@ -1,3 +1,11 @@
+/* 
+  Joy Food Service Styles
+  - Main stylesheet for JFS website
+  - Includes responsive breakpoints and all section stylings
+  - Last updated: April 30, 2025
+*/
+
+/* ================ Base Styles ================ */
 * {
   margin: 0;
   padding: 0;
@@ -9,12 +17,12 @@ body {
   background-color: #f2f2f2;
   background-image: url("../images/body-background.svg");
   background-repeat: no-repeat;
-  background-size: cover; /* Or your preferred sizing */
+  background-size: cover;
   width: 100%;
   height: 100%;
 }
 
-/* Header Styles */
+/* ================ Header Styles ================ */
 header {
   position: fixed;
   top: 0;
@@ -22,10 +30,9 @@ header {
   width: 100%;
   padding: 10px 20px;
   display: flex;
-  justify-content: center; /* Center the logo */
+  justify-content: center;
   align-items: center;
   z-index: 1000;
-  /* background-color: rgba(255, 255, 255, 0.95); */
 }
 
 .logo-container {
@@ -40,9 +47,10 @@ header {
 }
 
 .first-letter {
-  color: #f04e5c; /* Red color for first letter */
+  color: #f04e5c; /* Red accent color */
 }
 
+/* ================ Navigation Styles ================ */
 /* Mobile Menu Button */
 .mobile-menu-btn {
   display: none;
@@ -80,7 +88,6 @@ header {
   top: 60px;
   left: 0;
   width: 100%;
-  /* background-color: rgba(255, 255, 255, 0.95); */
   padding: 15px;
   display: none;
   flex-direction: column;
@@ -131,12 +138,12 @@ header {
   color: #333;
 }
 
-/* Main Content Styles */
+/* ================ Main Content Styles ================ */
 .main-content {
   padding-top: 60px;
 }
 
-/* Hero Section */
+/* ================ Hero Section ================ */
 .hero-section {
   position: relative;
   width: 100%;
@@ -149,8 +156,6 @@ header {
   width: 90%;
   height: 90%;
   margin: 0 auto;
-  border-left: 10px solid #fff;
-  border-right: 10px solid #fff;
 }
 
 .hero-image {
@@ -210,11 +215,10 @@ header {
   margin: 0 5px;
 }
 
-/* Mission Section  */
+/* ================ Mission Section ================ */
 .mission-section {
   padding: 100px 0;
   position: relative;
-  /* background-color: #f2f2f2; */
 }
 
 .mission-container {
@@ -222,7 +226,7 @@ header {
   margin: 0 auto;
   padding: 0 20px;
   position: relative;
-  height: 500px; /* Adjust based on your content needs */
+  height: 500px;
 }
 
 .mission-box {
@@ -233,7 +237,7 @@ header {
   height: 90%;
   max-width: 900px;
   top: 0;
-  left: 5%; /* Center the box */
+  left: 5%;
   z-index: 1;
 }
 
@@ -249,7 +253,7 @@ header {
   width: 70%;
   height: 90%;
   top: 30px;
-  left: 8%; /* Adjust to position relative to the red card */
+  left: 8%;
   z-index: 2;
 }
 
@@ -293,15 +297,14 @@ header {
   right: 10%;
 }
 
-/* News Section */
+/* ================ News Section ================ */
 .news-section {
   padding: 80px 0;
-  /* background-color: #f2f2f2;  */
   position: relative;
 }
 
 .news-container {
-  max-width: 1200px; /* Increased width */
+  max-width: 1200px;
   margin: 0 auto;
   padding: 0 20px;
 }
@@ -406,18 +409,6 @@ header {
   text-decoration: none;
 }
 
-.restaurant-logo {
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  margin-bottom: 10px;
-}
-
-.restaurant-logo-img {
-  max-width: 150px; /* Adjust this value to control the width */
-  height: 100px; /* Maintains aspect ratio */
-}
-
 .read-more-btn:hover {
   background-color: #555;
 }
@@ -432,9 +423,9 @@ header {
   background-color: #666;
 }
 
-/* Restaurant Section */
+/* ================ Restaurant Sections ================ */
 .restaurant-section {
-  padding: 30px 0; /* Reduced padding to decrease space between cards */
+  padding: 30px 0;
 }
 
 .restaurant-container {
@@ -445,7 +436,7 @@ header {
 
 .restaurant-card {
   display: flex;
-  margin-bottom: 20px; /* Reduced spacing between cards */
+  margin-bottom: 20px;
   border-radius: 8px;
   overflow: hidden;
   box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
@@ -459,6 +450,18 @@ header {
   justify-content: center;
   align-items: center;
   text-align: center;
+}
+
+.restaurant-logo {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin-bottom: 10px;
+}
+
+.restaurant-logo-img {
+  max-width: 150px;
+  height: 100px;
 }
 
 .restaurant-name {
@@ -535,17 +538,17 @@ header {
   background-color: #9bc966;
 }
 
-/* Recruit Section with Swiper */
+/* ================ Recruit Section with Swiper ================ */
 .recruit-section {
   padding: 80px 0;
   position: relative;
-  /* background-color: #f2f2f2; */
 }
 
 .recruit-container {
   max-width: 1000px;
   margin: 0 auto;
   padding: 0 20px;
+  position: relative;
 }
 
 .recruit-header {
@@ -563,8 +566,65 @@ header {
 .recruit-swiper {
   width: 100%;
   position: relative;
-  overflow: hidden;
+  overflow: hidden; /* Changed back to hidden to fix scrolling issues */
   margin-bottom: 30px;
+  padding: 0 50px; /* Added padding for nav buttons */
+  height: auto; /* Allow height to adjust to content */
+}
+
+.swiper-wrapper {
+  height: auto; /* Ensure wrapper height adjusts to content */
+}
+
+.swiper-slide {
+  height: auto; /* Let slides adjust to content height */
+  opacity: 0;
+  transition: opacity 0.3s ease;
+}
+
+.swiper-slide-active {
+  opacity: 1;
+}
+
+/* Improved navigation buttons */
+.recruit-nav-button {
+  width: 40px !important;
+  height: 40px !important;
+  background-color: #f04e5c !important;
+  color: white !important;
+  border-radius: 50% !important;
+  display: flex !important;
+  align-items: center !important;
+  justify-content: center !important;
+  box-shadow: 0 3px 8px rgba(0, 0, 0, 0.2) !important;
+  opacity: 1 !important;
+}
+
+.recruit-nav-button:after {
+  content: none !important; /* Remove default arrow */
+}
+
+.recruit-nav-button i {
+  font-size: 16px !important;
+}
+
+.swiper-button-prev.recruit-nav-button {
+  left: 0 !important;
+}
+
+.swiper-button-next.recruit-nav-button {
+  right: 0 !important;
+}
+
+.recruit-nav-button:hover {
+  background-color: #e03c4a !important;
+  transform: scale(1.1) !important;
+  transition: all 0.3s ease !important;
+}
+
+.recruit-nav-button.swiper-button-disabled {
+  opacity: 0.5 !important;
+  cursor: not-allowed !important;
 }
 
 /* Recruit item styles */
@@ -572,6 +632,9 @@ header {
   display: flex;
   flex-direction: column;
   width: 100%;
+  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.05);
+  border-radius: 8px;
+  overflow: hidden;
 }
 
 .recruit-item {
@@ -580,61 +643,39 @@ header {
 }
 
 .recruit-item:nth-child(odd) {
-  background-color: #f1f1f1;
+  background-color: #f8f8f8;
 }
 
 .recruit-item:nth-child(even) {
-  background-color: #e8e8e8;
+  background-color: #ffffff;
 }
 
 .recruit-label,
 .recruit-value {
-  padding: 15px;
+  padding: 20px;
 }
 
 .recruit-label {
-  width: 50%;
+  width: 40%;
   color: #333;
-  font-size: 14px;
+  font-size: 15px;
+  font-weight: 500;
   text-align: center;
-  border-right: 1px solid #ddd;
+  border-right: 1px solid #eee;
   display: flex;
   align-items: center;
   justify-content: center;
 }
 
 .recruit-value {
-  width: 50%;
-  font-size: 14px;
-  color: #333;
+  width: 60%;
+  font-size: 15px;
+  color: #555;
   display: flex;
   align-items: center;
 }
 
-/* Custom swiper navigation buttons */
-.swiper-button-prev,
-.swiper-button-next {
-  color: #f04e5c;
-  width: 20px;
-  height: 20px;
-}
-
-.swiper-button-prev:after,
-.swiper-button-next:after {
-  font-size: 20px;
-  font-weight: bold;
-}
-
-/* Override Swiper defaults to match design */
-.swiper-button-prev {
-  left: 0;
-}
-
-.swiper-button-next {
-  right: 0;
-}
-
-/* Custom pagination */
+/* Swiper pagination */
 .swiper-pagination {
   position: relative;
   bottom: 0;
@@ -642,14 +683,15 @@ header {
 }
 
 .swiper-pagination-bullet {
-  width: 8px;
-  height: 8px;
+  width: 10px;
+  height: 10px;
   background: #ccc;
   opacity: 1;
 }
 
 .swiper-pagination-bullet-active {
   background-color: #f04e5c;
+  transform: scale(1.2);
 }
 
 /* Apply button */
@@ -662,126 +704,21 @@ header {
   background-color: #f04e5c;
   color: white;
   border: none;
-  padding: 10px 30px;
-  border-radius: 4px;
-  font-size: 14px;
-  cursor: pointer;
-  transition: background-color 0.3s;
-}
-
-.apply-btn:hover {
-  background-color: #e03c4a;
-}
-
-.apply-btn {
-  background-color: #f04e5c;
-  color: white;
-  border: none;
   padding: 12px 40px;
   border-radius: 4px;
   font-size: 16px;
   cursor: pointer;
-  margin: 0 10px;
   transition: background-color 0.3s;
+  box-shadow: 0 3px 5px rgba(0, 0, 0, 0.1);
 }
 
 .apply-btn:hover {
   background-color: #d83a48;
+  transform: translateY(-2px);
+  box-shadow: 0 5px 10px rgba(0, 0, 0, 0.15);
 }
 
-/* Pagination and Indicators */
-.pagination {
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  margin-top: 30px;
-}
-
-.page-btn {
-  background: none;
-  border: none;
-  padding: 10px 15px;
-  cursor: pointer;
-  color: #f04e5c;
-  font-size: 16px;
-  border-radius: 50%;
-  width: 40px;
-  height: 40px;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  transition: background-color 0.3s, color 0.3s;
-}
-
-.page-btn:hover {
-  background-color: rgba(240, 78, 92, 0.1);
-}
-
-.page-btn:disabled {
-  color: #ccc;
-  cursor: not-allowed;
-}
-
-.page-indicators {
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  margin: 0 20px;
-}
-
-.indicator {
-  width: 10px;
-  height: 10px;
-  border-radius: 50%;
-  background-color: #ccc;
-  margin: 0 5px;
-  transition: background-color 0.3s, transform 0.3s;
-  cursor: pointer;
-}
-
-.indicator.active {
-  background-color: #f04e5c;
-  transform: scale(1.2);
-}
-
-/* Footer */
-footer {
-  background-color: #f04e5c;
-  color: white;
-  padding: 50px 0 20px;
-  text-align: center;
-}
-
-.footer-logo {
-  font-size: 20px;
-  font-weight: bold;
-  margin-bottom: 20px;
-}
-
-.footer-info {
-  margin-bottom: 30px;
-  font-size: 14px;
-  line-height: 1.6;
-}
-
-.tel-with-icon {
-  display: inline-flex;
-  align-items: center;
-  margin-top: 5px;
-}
-
-.tel-with-icon i {
-  margin-right: 8px;
-  font-size: 16px;
-}
-
-.copyright {
-  font-size: 12px;
-  color: rgba(255, 255, 255, 0.7);
-  margin-top: 30px;
-}
-
-/* Image Carousel Styles */
+/* ================ Image Carousel Styles ================ */
 .image-carousel {
   width: 100%;
   height: 100%;
@@ -819,21 +756,27 @@ footer {
   background-position: center;
 }
 
-/* Make sure hero overlay is on top of carousel */
-.hero-overlay {
-  position: absolute;
-  top: 0;
-  left: 0;
-  width: 100%;
-  height: 100%;
-  background: rgba(0, 0, 0, 0.2);
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  z-index: 10;
+/* ================ Footer ================ */
+footer {
+  background-color: #f04e5c;
+  color: white;
+  padding: 50px 0 20px;
+  text-align: center;
 }
 
-/* Responsive Styles */
+.footer-title {
+  font-size: 24px;
+  font-weight: bold;
+  margin-bottom: 20px;
+}
+
+.footer-info {
+  margin-bottom: 30px;
+  font-size: 14px;
+  line-height: 1.6;
+}
+
+/* ================ Responsive Styles ================ */
 @media (max-width: 1024px) {
   .hero-text h1 {
     font-size: 42px;
@@ -894,13 +837,8 @@ footer {
     height: 250px;
   }
 
-  .recruit-pages {
-    width: 100%;
-  }
-
-  .recruit-page {
-    width: 100%;
-    padding: 20px;
+  .recruit-swiper {
+    padding: 0 40px;
   }
 }
 
@@ -913,18 +851,28 @@ footer {
 
   .mission-container {
     justify-content: center;
+    height: auto;
+    padding-bottom: 50px;
   }
 
   .mission-box {
     max-width: 90%;
     padding: 25px;
+    position: relative;
+    height: auto;
+    min-height: 300px;
   }
 
   .white-card {
     padding: 25px;
     padding-left: 25px;
+    position: relative;
+    width: 90%;
+    height: auto;
+    min-height: 300px;
     top: -15px;
-    right: -15px;
+    left: 5%;
+    margin-bottom: 20px;
   }
 
   .hero-text h1 {
@@ -960,13 +908,21 @@ footer {
 
   .recruit-item {
     flex-direction: column;
-    align-items: flex-start;
-    padding: 10px;
   }
 
-  .recruit-label {
+  .recruit-label, 
+  .recruit-value {
     width: 100%;
-    margin-bottom: 5px;
+    border-right: none;
+  }
+  
+  .recruit-label {
+    border-bottom: 1px solid #eee;
+    padding-bottom: 10px;
+  }
+  
+  .recruit-swiper {
+    padding: 0 30px;
   }
 }
 
@@ -995,11 +951,17 @@ footer {
     padding: 10px 30px;
     font-size: 14px;
   }
-
-  .page-btn {
-    padding: 8px;
-    width: 35px;
-    height: 35px;
-    font-size: 14px;
+  
+  .recruit-nav-button {
+    width: 35px !important;
+    height: 35px !important;
+  }
+  
+  .recruit-nav-button i {
+    font-size: 14px !important;
+  }
+  
+  .recruit-swiper {
+    padding: 0 25px;
   }
 }
