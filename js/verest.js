@@ -1,15 +1,19 @@
 /**
  * VEREST Website JavaScript
- * Handles automatic slideshow, mobile menu, smooth scrolling, and other interactive elements
+ * Handles gallery slideshow with multiple images per slide, navigation and other interactive elements
  */
 document.addEventListener("DOMContentLoaded", function () {
-  // Gallery slideshow functionality
+  // Multi-image Gallery Slideshow
   function initGallerySlideshow() {
     const galleryContainer = document.querySelector(".gallery-container");
     if (!galleryContainer) return;
 
-    const slides = galleryContainer.querySelectorAll(".gallery-item");
-    const dotsContainer = galleryContainer.querySelector(".gallery-dots");
+    const wrapper = galleryContainer.querySelector(".gallery-wrapper");
+    const slides = galleryContainer.querySelectorAll(".gallery-slide");
+    const controlsContainer =
+      galleryContainer.querySelector(".gallery-controls");
+    const prevButton = galleryContainer.querySelector(".gallery-prev");
+    const nextButton = galleryContainer.querySelector(".gallery-next");
 
     if (slides.length === 0) return;
 
@@ -17,11 +21,8 @@ document.addEventListener("DOMContentLoaded", function () {
     const slideInterval = 5000; // 5 seconds between slides
     let slideTimer;
 
-    // Initialize first slide
-    slides[0].classList.add("active");
-
-    // Create dots if container exists
-    if (dotsContainer) {
+    // Create navigation dots
+    if (controlsContainer) {
       slides.forEach((_, index) => {
         const dot = document.createElement("div");
         dot.classList.add("gallery-dot");
@@ -32,35 +33,44 @@ document.addEventListener("DOMContentLoaded", function () {
           resetTimer();
         });
 
-        dotsContainer.appendChild(dot);
+        controlsContainer.appendChild(dot);
+      });
+    }
+
+    // Add event listeners to navigation buttons
+    if (prevButton) {
+      prevButton.addEventListener("click", () => {
+        goToSlide(currentSlide - 1 < 0 ? slides.length - 1 : currentSlide - 1);
+        resetTimer();
+      });
+    }
+
+    if (nextButton) {
+      nextButton.addEventListener("click", () => {
+        goToSlide((currentSlide + 1) % slides.length);
+        resetTimer();
       });
     }
 
     // Function to go to a specific slide
     function goToSlide(index) {
-      // Remove active class from all slides and dots
-      slides.forEach((slide) => slide.classList.remove("active"));
-      if (dotsContainer) {
-        dotsContainer
-          .querySelectorAll(".gallery-dot")
-          .forEach((dot) => dot.classList.remove("active"));
+      if (index < 0 || index >= slides.length || index === currentSlide) return;
+
+      // Update dots
+      if (controlsContainer) {
+        const dots = controlsContainer.querySelectorAll(".gallery-dot");
+        dots.forEach((dot) => dot.classList.remove("active"));
+        dots[index].classList.add("active");
       }
 
-      // Add active class to current slide and dot
-      slides[index].classList.add("active");
-      if (dotsContainer) {
-        dotsContainer
-          .querySelectorAll(".gallery-dot")
-          [index].classList.add("active");
-      }
-
+      // Move to the new slide with a smooth transition
+      wrapper.style.transform = `translateX(-${index * 100}%)`;
       currentSlide = index;
     }
 
     // Function for next slide
     function nextSlide() {
-      currentSlide = (currentSlide + 1) % slides.length;
-      goToSlide(currentSlide);
+      goToSlide((currentSlide + 1) % slides.length);
     }
 
     // Reset the timer
@@ -72,7 +82,7 @@ document.addEventListener("DOMContentLoaded", function () {
     // Start the slideshow
     resetTimer();
 
-    // Pause slideshow when user hovers over it (optional)
+    // Pause slideshow when user hovers over it
     galleryContainer.addEventListener("mouseenter", () => {
       clearInterval(slideTimer);
     });
@@ -80,6 +90,41 @@ document.addEventListener("DOMContentLoaded", function () {
     galleryContainer.addEventListener("mouseleave", () => {
       resetTimer();
     });
+
+    // Add touch support for mobile
+    let touchStartX = 0;
+    let touchEndX = 0;
+
+    galleryContainer.addEventListener(
+      "touchstart",
+      (e) => {
+        touchStartX = e.changedTouches[0].screenX;
+      },
+      { passive: true }
+    );
+
+    galleryContainer.addEventListener(
+      "touchend",
+      (e) => {
+        touchEndX = e.changedTouches[0].screenX;
+        handleSwipe();
+      },
+      { passive: true }
+    );
+
+    function handleSwipe() {
+      const swipeThreshold = 50; // Minimum distance to register as a swipe
+
+      if (touchStartX - touchEndX > swipeThreshold) {
+        // Swipe left - go to next slide
+        goToSlide((currentSlide + 1) % slides.length);
+        resetTimer();
+      } else if (touchEndX - touchStartX > swipeThreshold) {
+        // Swipe right - go to previous slide
+        goToSlide(currentSlide - 1 < 0 ? slides.length - 1 : currentSlide - 1);
+        resetTimer();
+      }
+    }
   }
 
   // Mobile Menu functionality
