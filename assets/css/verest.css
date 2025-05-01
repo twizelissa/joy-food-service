@@ -131,7 +131,6 @@ section {
 
 /* Main Content Styles */
 
-
 /* Hero Section */
 .hero {
   padding: 0;
@@ -437,9 +436,6 @@ section {
   line-height: 1.6;
   font-size: 16px;
   font-weight: bold;
-
-
-
 }
 
 .highlight-td {
@@ -459,6 +455,61 @@ section {
 .system h2:after,
 #recruit h2:after {
   display: none;
+}
+
+.gallery-container {
+  position: relative;
+  width: 100%;
+  height: 500px;
+  overflow: hidden;
+  border-radius: 5px;
+  box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+}
+
+.gallery-item {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  opacity: 0;
+  transition: opacity 1s ease-in-out;
+  z-index: 1;
+}
+
+.gallery-item.active {
+  opacity: 1;
+  z-index: 2;
+}
+
+.gallery-item img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+/* Navigation dots */
+.gallery-dots {
+  display: flex;
+  justify-content: center;
+  position: absolute;
+  bottom: 15px;
+  width: 100%;
+  z-index: 3;
+}
+
+.gallery-dot {
+  width: 12px;
+  height: 12px;
+  background-color: rgba(255, 255, 255, 0.5);
+  border-radius: 50%;
+  margin: 0 5px;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+}
+
+.gallery-dot.active {
+  background-color: #fff;
 }
 
 @media (max-width: 768px) {
@@ -578,7 +629,6 @@ footer {
 .highlight-blue {
   color: #0099ff;
 }
-
 
 /* Information Section Styling */
 .info-section {
