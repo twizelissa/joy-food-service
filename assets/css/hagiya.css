@@ -802,7 +802,7 @@ h3 {
 }
 
 .info-container {
-  background-image: url("../images/higayi-bg.svg");
+  background-image: url("../images/course-bg.svg");
   background-repeat: no-repeat;
   background-size: cover;
   max-width: 900px;
@@ -813,6 +813,7 @@ h3 {
 .info-section h2 {
   color: #3a2f2f; /* darker for better visibility */
   margin-bottom: 10px;
+  padding-top: 20px;
   font-size: 24px;
   font-weight: 600;
 }
@@ -845,6 +846,7 @@ h3 {
   font-size: 16px;
   color: #3a2f2f;
   margin-bottom: 10px;
+  padding-bottom: 20px;
 }
 
 .info-nbr {
@@ -857,6 +859,7 @@ h3 {
   line-height: 1.2;
   text-align: center;
   font-weight: 500;
+  
   min-width: 120px;
 }
 
