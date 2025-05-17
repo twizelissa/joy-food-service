@@ -1,70 +1,90 @@
 <!DOCTYPE html>
 <html lang="ja">
   <head>
+    <!-- Meta Information -->
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta
+      name="description"
+      content="Joy Food Service - 食の力で、地域に笑顔と活気を届ける"
+    />
+
+    <!-- Page Title -->
     <title>Joy Food Service</title>
+
+    <!-- Stylesheets -->
     <link rel="stylesheet" href="assets/css/styles.css" />
+
+    <!-- Google Fonts - Noto Sans JP (Japanese optimized font) -->
     <link
       href="https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@400;500;700&display=swap"
       rel="stylesheet"
     />
+
+    <!-- Font Awesome Icons (Used for buttons and decorative elements) -->
     <link
       rel="stylesheet"
       href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css"
     />
-    <!-- Swiper CSS -->
+
+    <!-- Swiper JS Carousel/Slider Library CSS -->
     <link
       rel="stylesheet"
       href="https://cdnjs.cloudflare.com/ajax/libs/Swiper/8.4.5/swiper-bundle.min.css"
     />
   </head>
   <body>
-    <!-- Header -->
+    <!-- Header Section -->
     <header>
+      <!-- Company Logo -->
       <div class="logo-container">
-        <a href="#" class="logo"
-          ><span class="first-letter">J</span>oy Food Service</a
-        >
+        <a href="#" class="logo">
+          <span class="first-letter">J</span>oy Food Service
+        </a>
       </div>
-      <!-- Mobile Menu Button -->
-      <div class="mobile-menu-btn">
+
+      <!-- Mobile Menu Button (Hamburger icon) -->
+      <div class="mobile-menu-btn" aria-label="Open navigation menu">
         <span></span>
         <span></span>
         <span></span>
       </div>
     </header>
 
-    <!-- Mobile Navigation -->
-    <div class="mobile-nav">
+    <!-- Mobile Navigation Menu -->
+    <!-- Hidden by default, toggled by mobile-menu-btn -->
+    <nav class="mobile-nav" aria-label="Mobile navigation menu">
       <a href="#about">ABOUT</a>
       <a href="#news">NEWS</a>
       <a href="#hagiya">HAGIYA</a>
       <a href="#ginmitei">GINMITEI</a>
       <a href="#verest">VEREST</a>
       <a href="#recruit">RECRUIT</a>
-    </div>
+    </nav>
 
-    <!-- Side Navigation -->
-    <div class="side-nav">
+    <!-- Desktop Side Navigation -->
+    <nav class="side-nav" aria-label="Main navigation menu">
       <a href="#about">ABOUT</a>
       <a href="#news">NEWS</a>
       <a href="hagiya.html">HAGIYA</a>
       <a href="index.html">GINMITEI</a>
       <a href="Verest.html">VEREST</a>
       <a href="#recruit">RECRUIT</a>
-    </div>
+    </nav>
 
-    <!-- Main Content -->
-    <div class="main-content">
+    <!-- Main Content Area -->
+    <main class="main-content">
       <!-- Hero Section -->
       <section class="hero-section" id="about">
         <div class="hero-image-container">
+          <!-- Main Hero Image -->
           <img
             src="assets/images/Gimitei-top.jpeg"
-            alt="Joy Food Service"
+            alt="Joy Food Service restaurant interior"
             class="hero-image"
           />
+
+          <!-- Dark Overlay with Text -->
           <div class="hero-overlay">
             <div class="hero-text">
               <h1>Joy Food Service</h1>
@@ -72,26 +92,31 @@
             </div>
           </div>
         </div>
-        <div class="scroll-indicator">
-          <p>SCROLL</p>
-          <span class="dot"></span>
+
+        <!-- Scroll Indicator -->
+        <div class="scroll-indicator-container" id="scrollIndicator">
+          <div class="scroll-text">SCROLL</div>
+          <div class="scroll-image-container">
+            <!-- Replace 'path/to/your-scroll-image.png' with the actual path to your scroll image -->
+            <img src="assets/images/scrol-icon.svg" alt="Scroll down" />
+          </div>
         </div>
       </section>
 
-      <!-- Mission Section -->
+      <!-- Mission Statement Section -->
       <section class="mission-section">
         <div class="mission-container">
-          <!-- Red background card -->
+          <!-- Decorative Red Background Box -->
           <div class="mission-box">
+            <!-- Decorative Patterns -->
             <div class="pattern pattern-1"></div>
             <div class="pattern pattern-2"></div>
             <div class="pattern pattern-3"></div>
           </div>
 
-          <!-- White content card -->
+          <!-- Mission Statement Content Card -->
           <div class="white-card">
             <h2>食の力で、地域に笑顔と活気を届ける。</h2>
-
             <p>私たちは、飲を通じて地域の皆様とつながり、</p>
             <p>街全体を元気にすることを使命としています。</p>
             <p>提供する料理には、地元の食材や文化を大切にし、</p>
@@ -107,50 +132,60 @@
       <section class="news-section" id="news">
         <div class="news-container">
           <div class="news-card">
+            <!-- Section Header -->
             <div class="news-header">
               <h2>NEWS</h2>
             </div>
+
+            <!-- News Item List -->
             <ul class="news-list">
-              <!-- Initial visible items -->
+              <!-- News Item 1 -->
               <li class="news-item">
                 <a href="News.html" class="news-item-link">
                   <span class="news-date">2024.09.10</span>
                   <span class="news-category cat-red">GINMITEI</span>
-                  <div class="news-title">○○○○○○○○○○○○○○○○○○○○○○○○○○</div>
+                  <div class="news-title">○○○○○○○○○○○○○○○○</div>
                 </a>
               </li>
+
+              <!-- News Item 2 -->
               <li class="news-item">
                 <a href="News.html" class="news-item-link">
                   <span class="news-date">2024.09.10</span>
                   <span class="news-category cat-orange">HAGIYA</span>
-                  <div class="news-title">○○○○○○○○○○○○○○○○○○○○○○○○○○</div>
+                  <div class="news-title">○○○○○○○○○○○○○○○</div>
                 </a>
               </li>
+
+              <!-- News Item 3 -->
               <li class="news-item">
                 <a href="News.html" class="news-item-link">
                   <span class="news-date">2024.09.10</span>
                   <span class="news-category cat-green">GINMITEI</span>
-                  <div class="news-title">○○○○○○○○○○○○○○○○○○○○○○○○○○</div>
+                  <div class="news-title">○○○○○○○○○○○○○</div>
                 </a>
               </li>
             </ul>
+
+            <!-- Read More Button -->
             <div class="read-more">
               <button class="read-more-btn" id="expandNewsBtn">
-                <a href="News.html">Read more</a>
+                <a href="newlist.html">Read more</a>
               </button>
             </div>
           </div>
         </div>
       </section>
 
-      <!-- Restaurant Sections -->
+      <!-- Restaurant Section: GINMITEI -->
       <section class="restaurant-section" id="ginmitei">
         <div class="restaurant-container">
           <div class="restaurant-card ginmitei">
+            <!-- Restaurant Information -->
             <div class="restaurant-info">
               <div class="restaurant-logo">
                 <img
-                  src="assets/images/logo.png"
+                  src="assets/images/ginmitei.png"
                   alt="吟味亭 Logo"
                   class="restaurant-logo-img"
                 />
@@ -158,33 +193,38 @@
               <div class="restaurant-divider"></div>
               <a href="#" class="view-more">READ MORE</a>
             </div>
+
+            <!-- Restaurant Image Gallery -->
             <div class="restaurant-images">
+              <!-- Main Feature Image -->
               <div class="large-image">
                 <img
                   src="assets/images/Res1.jpeg"
-                  alt="銀味亭"
+                  alt="銀味亭 restaurant exterior"
                   class="restaurant-img-large"
                 />
               </div>
+
+              <!-- Smaller Gallery Images (2x2 Grid) -->
               <div class="small-images">
                 <img
                   src="assets/images/Res2.jpeg"
-                  alt="銀味亭料理"
+                  alt="銀味亭 signature dish"
                   class="restaurant-img-small"
                 />
                 <img
                   src="assets/images/Res3.jpeg"
-                  alt="銀味亭寿司"
+                  alt="銀味亭 sushi platter"
                   class="restaurant-img-small"
                 />
                 <img
                   src="assets/images/Res4.jpeg"
-                  alt="銀味亭肉料理"
+                  alt="銀味亭 meat dish"
                   class="restaurant-img-small"
                 />
                 <img
                   src="assets/images/Res6.jpeg"
-                  alt="銀味亭料理"
+                  alt="銀味亭 seasonal specialty"
                   class="restaurant-img-small"
                 />
               </div>
@@ -193,41 +233,54 @@
         </div>
       </section>
 
+      <!-- Restaurant Section: HAGIYA -->
       <section class="restaurant-section" id="hagiya">
         <div class="restaurant-container">
           <div class="restaurant-card hagiya">
+            <!-- Restaurant Information -->
             <div class="restaurant-info">
-              <h3 class="restaurant-name">萩や</h3>
+              <div class="restaurant-logo">
+                <img
+                  src="assets/images/hagiya.png"
+                  alt="Logo"
+                  class="restaurant-logo-img"
+                />
+              </div>
               <div class="restaurant-divider"></div>
               <a href="hagiya.html" class="view-more">READ MORE</a>
             </div>
+
+            <!-- Restaurant Image Gallery -->
             <div class="restaurant-images">
+              <!-- Main Feature Image -->
               <div class="large-image">
                 <img
                   src="assets/images/image1.jpeg"
-                  alt="萩や"
+                  alt="萩や restaurant exterior"
                   class="restaurant-img-large"
                 />
               </div>
+
+              <!-- Smaller Gallery Images (2x2 Grid) -->
               <div class="small-images">
                 <img
                   src="assets/images/image2.jpeg"
-                  alt="萩や寿司"
+                  alt="萩や signature sushi"
                   class="restaurant-img-small"
                 />
                 <img
                   src="assets/images/image3.jpeg"
-                  alt="萩や料理"
+                  alt="萩や featured dish"
                   class="restaurant-img-small"
                 />
                 <img
                   src="assets/images/image4.jpeg"
-                  alt="萩や肉料理"
+                  alt="萩や meat specialty"
                   class="restaurant-img-small"
                 />
                 <img
                   src="assets/images/image2.jpeg"
-                  alt="萩や料理"
+                  alt="萩や seasonal dish"
                   class="restaurant-img-small"
                 />
               </div>
@@ -236,41 +289,54 @@
         </div>
       </section>
 
+      <!-- Restaurant Section: VEREST -->
       <section class="restaurant-section" id="verest">
         <div class="restaurant-container">
           <div class="restaurant-card verest">
+            <!-- Restaurant Information -->
             <div class="restaurant-info">
-              <h3 class="restaurant-name">VEREST</h3>
+              <div class="restaurant-logo">
+                <img
+                  src="assets/images/verest.png"
+                  alt="吟味亭 Logo"
+                  class="restaurant-logo-img"
+                />
+              </div>
               <div class="restaurant-divider"></div>
               <a href="Verest.html" class="view-more">READ MORE</a>
             </div>
+
+            <!-- Restaurant Image Gallery -->
             <div class="restaurant-images">
+              <!-- Main Feature Image -->
               <div class="large-image">
                 <img
                   src="assets/images/image1.jpeg"
-                  alt="VEREST"
+                  alt="VEREST restaurant exterior"
                   class="restaurant-img-large"
                 />
               </div>
+
+              <!-- Smaller Gallery Images (2x2 Grid) -->
               <div class="small-images">
                 <img
                   src="assets/images/image2.jpeg"
-                  alt="VEREST料理"
+                  alt="VEREST signature dish"
                   class="restaurant-img-small"
                 />
                 <img
                   src="assets/images/image3.jpeg"
-                  alt="VEREST寿司"
+                  alt="VEREST sushi selection"
                   class="restaurant-img-small"
                 />
                 <img
                   src="assets/images/image4.jpeg"
-                  alt="VEREST肉料理"
+                  alt="VEREST meat entree"
                   class="restaurant-img-small"
                 />
                 <img
                   src="assets/images/image2.jpeg"
-                  alt="VEREST料理"
+                  alt="VEREST chef's special"
                   class="restaurant-img-small"
                 />
               </div>
@@ -279,19 +345,21 @@
         </div>
       </section>
 
-      <!-- Improved Recruit Section -->
+      <!-- Recruitment Section -->
       <section class="recruit-section" id="recruit">
         <div class="recruit-container">
+          <!-- Section Header -->
           <div class="recruit-header">
             <h2>RECRUIT</h2>
           </div>
 
-          <!-- Recruit Swiper Container -->
+          <!-- Recruitment Information Carousel (Swiper JS) -->
           <div class="swiper-container recruit-swiper">
             <div class="swiper-wrapper">
-              <!-- Slide 1 -->
+              <!-- Slide 1: Job Types and Locations -->
               <div class="swiper-slide">
                 <div class="recruit-list">
+                  <!-- Job Type 1 -->
                   <div class="recruit-item">
                     <div class="recruit-label">職種</div>
                     <div class="recruit-value">○○○○</div>
@@ -300,6 +368,7 @@
                     <div class="recruit-label">勤務地</div>
                     <div class="recruit-value">○○○○</div>
                   </div>
+                  <!-- Job Type 2 -->
                   <div class="recruit-item">
                     <div class="recruit-label">職種</div>
                     <div class="recruit-value">○○○○</div>
@@ -308,6 +377,7 @@
                     <div class="recruit-label">勤務地</div>
                     <div class="recruit-value">○○○○</div>
                   </div>
+                  <!-- Job Type 3 -->
                   <div class="recruit-item">
                     <div class="recruit-label">職種</div>
                     <div class="recruit-value">○○○○</div>
@@ -319,7 +389,7 @@
                 </div>
               </div>
 
-              <!-- Slide 2 -->
+              <!-- Slide 2: Salary and Work Hours -->
               <div class="swiper-slide">
                 <div class="recruit-list">
                   <div class="recruit-item">
@@ -342,11 +412,10 @@
                     <div class="recruit-label">職種</div>
                     <div class="recruit-value">○○○○</div>
                   </div>
-                 
                 </div>
               </div>
 
-              <!-- Slide 3 -->
+              <!-- Slide 3: Holidays and Benefits -->
               <div class="swiper-slide">
                 <div class="recruit-list">
                   <div class="recruit-item">
@@ -376,7 +445,7 @@
                 </div>
               </div>
 
-              <!-- Slide 4 -->
+              <!-- Slide 4: Qualifications and Hiring Process -->
               <div class="swiper-slide">
                 <div class="recruit-list">
                   <div class="recruit-item">
@@ -406,7 +475,7 @@
                 </div>
               </div>
 
-              <!-- Slide 5 -->
+              <!-- Slide 5: Application Methods -->
               <div class="swiper-slide">
                 <div class="recruit-list">
                   <div class="recruit-item">
@@ -436,7 +505,7 @@
                 </div>
               </div>
 
-              <!-- Slide 6 -->
+              <!-- Slide 6: Contact Information -->
               <div class="swiper-slide">
                 <div class="recruit-list">
                   <div class="recruit-item">
@@ -467,38 +536,50 @@
               </div>
             </div>
 
-            <!-- Improved Navigation buttons -->
-            <div class="swiper-button-prev recruit-nav-button">
+            <!-- Swiper Navigation Controls -->
+            <div
+              class="swiper-button-prev recruit-nav-button"
+              aria-label="Previous slide"
+            >
               <i class="fas fa-chevron-left"></i>
             </div>
-            <div class="swiper-button-next recruit-nav-button">
+            <div
+              class="swiper-button-next recruit-nav-button"
+              aria-label="Next slide"
+            >
               <i class="fas fa-chevron-right"></i>
             </div>
           </div>
 
+          <!-- Apply Button -->
           <div class="recruit-buttons">
             <button class="apply-btn">応募してみる</button>
           </div>
 
+          <!-- Swiper Pagination Dots -->
           <div class="swiper-pagination"></div>
         </div>
       </section>
 
-      <!-- Footer -->
+      <!-- Footer Section -->
       <footer>
+        <!-- Company Name -->
         <div class="footer-title">Joy Food Service</div>
 
+        <!-- Company Information -->
         <div class="footer-info">
           <p>株式会社ジョイフードサービス</p>
-          <p>福島県喜多方市○○町123-4　2F</p>
-          <p>☎ 029-297-3555</p>
+          <p>茨城県水戸市笠原町975－3　2F</p>
+          <p>☎029-297-1955</p>
         </div>
       </footer>
-    </div>
+    </main>
 
-    <!-- Script tags -->
-    <!-- Swiper JS -->
+    <!-- JavaScript Libraries -->
+    <!-- Swiper JS (For interactive carousels/sliders) -->
     <script src="https://cdnjs.cloudflare.com/ajax/libs/Swiper/8.4.5/swiper-bundle.min.js"></script>
+
+    <!-- Custom JavaScript -->
     <script src="js/main.js"></script>
   </body>
 </html>

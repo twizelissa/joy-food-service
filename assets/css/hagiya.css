@@ -1,35 +1,11 @@
-/* 
- * Hagiya Restaurant - Main Stylesheet
- * Version: 1.0
- * 
- * Table of Contents:
- * 1. Base Styles & Reset
- * 2. Typography
- * 3. Layout & Grid
- * 4. Header & Navigation
- * 5. Hero Section
- * 6. Storefront Section
- * 7. News Section
- * 8. Course Menu Section
- * 9. Space Section
- * 10. Food Menu Section
- * 11. Instagram Section
- * 12. Gallery Section
- * 13. Information Section
- * 14. Map Section
- * 15. Footer
- * 16. Utility Classes
- * 17. Animations
- * 18. Media Queries
- */
-
-/* ======================================================
-   1. Base Styles & Reset
-   ====================================================== */
 * {
   margin: 0;
   padding: 0;
   box-sizing: border-box;
+}
+
+html {
+  scroll-behavior: smooth;
 }
 
 body {
@@ -38,6 +14,7 @@ body {
   line-height: 1.6;
   overflow-x: hidden;
   background-color: #fff;
+  position: relative;
 }
 
 a {
@@ -57,8 +34,8 @@ ul {
 }
 
 /* ======================================================
-   2. Typography
-   ====================================================== */
+     2. Typography
+     ====================================================== */
 h2,
 h3 {
   font-family: "Noto Serif JP", serif;
@@ -66,8 +43,8 @@ h3 {
 }
 
 /* ======================================================
-   3. Layout & Grid
-   ====================================================== */
+     3. Layout & Grid
+     ====================================================== */
 .container {
   width: 100%;
   max-width: 1200px;
@@ -76,8 +53,8 @@ h3 {
 }
 
 /* ======================================================
-   4. Header & Navigation
-   ====================================================== */
+     4. Header & Navigation
+     ====================================================== */
 .site-header {
   display: flex;
   justify-content: space-between;
@@ -108,6 +85,36 @@ h3 {
 
 .logo-name-img {
   height: 36px;
+}
+
+.mobile-menu-toggle {
+  display: none;
+  background: none;
+  border: none;
+  cursor: pointer;
+  padding: 10px;
+  z-index: 1001;
+}
+
+.mobile-menu-toggle span {
+  display: block;
+  width: 25px;
+  height: 3px;
+  background-color: #333;
+  margin: 5px 0;
+  transition: transform 0.3s, opacity 0.3s;
+}
+
+.mobile-menu-toggle.active span:nth-child(1) {
+  transform: translateY(8px) rotate(45deg);
+}
+
+.mobile-menu-toggle.active span:nth-child(2) {
+  opacity: 0;
+}
+
+.mobile-menu-toggle.active span:nth-child(3) {
+  transform: translateY(-8px) rotate(-45deg);
 }
 
 .main-nav ul {
@@ -143,8 +150,8 @@ h3 {
 }
 
 /* ======================================================
-   5. Hero Section
-   ====================================================== */
+     5. Hero Section
+     ====================================================== */
 .hero-image {
   width: 100%;
   height: 100vh;
@@ -159,19 +166,19 @@ h3 {
 }
 
 /* ======================================================
-   6. Storefront Section
-   ====================================================== */
+     6. Storefront Section
+     ====================================================== */
 .storefront-section {
   display: flex;
   padding: 50px 5%;
   position: relative;
-  margin-left: 5%;
   background-image: url("../images/hagiya-images/second-background.jpeg");
   background-size: cover;
   /* background-position: center; */
 }
 
 .storefront-image {
+  margin-left: 5%;
   width: 1136px;
   height: 596px;
   box-shadow: 0 0 15px rgba(0, 0, 0, 0.1);
@@ -195,11 +202,10 @@ h3 {
   background-size: cover;
   background-position: center;
   background-repeat: no-repeat;
-
   color: black;
   padding: 20px 10px;
   height: 400px;
-  width: 433px;
+  width: 385px;
   line-height: 2;
 }
 
@@ -211,7 +217,6 @@ h3 {
   writing-mode: vertical-rl;
   text-orientation: upright;
   font-family: "Noto Serif JP", serif;
-
   color: black;
   padding: 20px 10px;
   height: 400px;
@@ -228,24 +233,43 @@ h3 {
 .vertical-text p {
   font-size: 14px;
   margin-left: 15px;
-  font-weight: bold;
+  font-weight: lighter;
 }
 
 /* ======================================================
-   7. News Section
-   ====================================================== */
+     7. News Section
+     ====================================================== */
 .news-section {
   padding: 30px 5%;
   background-color: #fff;
   background-image: url("../images/hagiya-images/second-background.jpeg");
   background-size: cover;
-  background-position: center;
 }
 
 .news-section h2 {
   text-align: center;
   color: black;
-  margin-bottom: 20px;
+  margin-bottom: 10px;
+  position: relative; /* Add this */
+  padding: 20px 0; /* Add padding to create space for the background image */
+  z-index: 1; /* Ensure text is above the background */
+}
+
+/* Add this new rule */
+.news-section h2::before {
+  content: "";
+  background-image: url("../images/hagiya-images/vertical-inside-logo.png");
+  background-size: contain; /* or cover, depending on your preference */
+  background-position: center;
+  background-repeat: no-repeat;
+  position: absolute;
+  width: 100px; /* Set your desired width */
+  height: 100px; /* Set your desired height */
+  top: 50%; /* Center vertically */
+  left: 50%; /* Center horizontally */
+  transform: translate(-50%, -50%); /* Perfect centering */
+  z-index: -1; /* Place behind the text */
+  opacity: 0.8; /* Optional: adjust if you want the image more transparent */
 }
 
 .news-container {
@@ -259,8 +283,10 @@ h3 {
 .news-item {
   display: flex;
   padding: 10px 0;
+  margin-left: 20%;
   cursor: pointer;
   transition: background-color 0.2s ease;
+  flex-wrap: wrap;
 }
 
 .news-item:hover {
@@ -276,144 +302,176 @@ h3 {
 .news-content {
   flex: 1;
   font-size: 14px;
+  overflow-wrap: break-word;
 }
-/* ======================================================
-   8. Course Menu Section
-   ====================================================== */
-   .course-section {
-    padding: 50px 0;
-    background-image: url("../images/course-bg.svg");
-    background-repeat: no-repeat;
-    background-size: cover;
-    position: relative;
-  }
-  
-  .course-container {
-    max-width: 1281px;
-    height: 419px;
-    margin: 40px auto;
-    padding: 0;
-    display: grid;
-    grid-template-columns: 33% 25% 42%;
-    position: relative;
-    background-image: url("../images/course-backward-bg.svg");
-    background-repeat: no-repeat;
-    background-size: 98%;
-    background-position: center;
-  }
-  
-  .dish-image-left {
-    width: 100%;
-    height: auto;
-    overflow: visible;
-    padding-right: 20px;
-  }
-  
-  .dish-image-left img {
-    width: 600px;
-    height: 370px;
-    object-fit: cover;
-    margin-right: 20px;
-    margin-top: 0 !important;
-   
-  }
-  
-  .dish-content-right {
-    display: flex;
-    flex-direction: column;
-    justify-content: space-between;
-    height: 450px;
-    gap: 15px;
-  }
-  
-  .dish-content-right img {
-    width: 100%;
-    height: 48%;
-    object-fit: cover;
-    transform: scale(1.05); /* Make image slightly larger */
-    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
-  }
-  
-  .menu-text-container {
-    display: flex;
-    justify-content: space-between;
-    padding-left: 20px;
-  }
-  
-  .vertical-text-menu {
-    writing-mode: vertical-rl;
-    text-orientation: upright;
-    font-family: "Noto Serif JP", serif;
-    height: 450px;
-    color: #91654d;
-    line-height: 2;
-    z-index: 10;
-    margin-right: 20px;
-    position: relative;
-    right: -25px;
-  }
-  
-  .vertical-text-menu h2 {
-    font-size: 18px;
-    margin-left: 10px;
-    padding-bottom: 15px;
-    letter-spacing: 0.1em;
-  }
-  
-  .vertical-text-menu p {
-    font-size: 12px;
-    letter-spacing: 0.05em;
-  }
-  
-  .course-menu-content {
-    position: relative;
-    padding-top: 30px;
-    border-left: 1px solid #eee;
-    padding-left: 25px;
-    height: 450px;
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-  }
-  
-  .course-title {
-    color: #91654d;
-    font-size: 16px;
-    margin-bottom: 15px;
-    padding-bottom: 5px;
-    border-bottom: 1px solid #eee;
-  }
-  
-  .course-list {
-    list-style: none;
-    margin-bottom: 20px;
-  }
-  
-  .course-list li {
-    padding: 5px 0;
-    color: #91654d;
-    border-bottom: 1px dotted #eee;
-    font-size: 14px;
-  }
-  
-  .course-list li span {
-    margin-left: 30px;
-  }
-  
-  .price {
-    margin-left: 30px;
-    font-weight: 500;
-  }
+/* Reset any conflicting styles for this section */
+.course-section {
+  padding: 60px 0;
+  background-color: #f8f3e9;
+  position: relative;
+  overflow: visible !important;
+}
+
+.course-container {
+  display: flex !important;
+  flex-direction: row !important;
+  grid-template-columns: none !important; /* Override any grid settings */
+  width: 80% !important;
+  max-width: 1200px !important;
+  margin: 0 auto !important;
+  position: relative !important;
+  height: auto !important;
+  background-image: none !important;
+}
+
+/* Left column with large image */
+.left-column {
+  width: 33% !important;
+  position: relative !important;
+  z-index: 2 !important;
+  margin-right: 0 !important;
+}
+
+.large-image {
+  width: 100% !important;
+  height: 400px !important;
+  object-fit: cover !important;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1) !important;
+  transform: translateX(-50px) !important; /* Move it left to overlap */
+}
+
+/* Center column with two smaller images */
+.center-column {
+  width: 25% !important;
+  position: relative !important;
+  z-index: 1 !important;
+}
+
+.small-images {
+  display: flex !important;
+  flex-direction: column !important;
+  gap: 10px !important;
+}
+
+.small-image-top,
+.small-image-bottom {
+  width: 100% !important;
+  height: 195px !important;
+  object-fit: cover !important;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1) !important;
+}
+
+/* Vertical text - positioned independently */
+.vertical-text-menu {
+  writing-mode: vertical-rl !important;
+  text-orientation: mixed !important;
+  position: absolute !important;
+  right: 42% !important;
+  top: 30px !important;
+  height: 430px !important;
+  color: #91654d !important;
+  font-family: "Noto Serif JP", serif !important;
+  z-index: 3 !important;
+  margin: 0 !important;
+  padding: 0 !important;
+  transform: none !important;
+  width: auto !important;
+}
+
+.vertical-text-menu h2 {
+  font-size: 18px !important;
+  margin-left: 10px !important;
+  padding-bottom: 15px !important;
+  letter-spacing: 0.1em !important;
+  margin-top: 0 !important;
+  font-weight: normal !important;
+  text-align: left !important;
+}
+
+.vertical-text-menu p {
+  font-size: 12px !important;
+  letter-spacing: 0.05em !important;
+  line-height: 1.8 !important;
+  margin-left: 15px !important;
+  font-weight: normal !important;
+  text-align: left !important;
+}
+
+/* Right column with menu card */
+.right-column {
+  width: 42% !important;
+  position: relative !important;
+  z-index: 0 !important;
+  margin-left: -30px !important; /* Pull it left to overlap with vertical text */
+}
+
+.menu-content-card {
+  background-color: white !important;
+  padding: 30px 30px 30px 70px !important; /* Extra padding on left for vertical text */
+  box-shadow: 0 0 15px rgba(0, 0, 0, 0.05) !important;
+  height: 400px !important;
+  position: relative !important;
+}
+
+.course-title {
+  color: #91654d !important;
+  font-size: 16px !important;
+  margin-bottom: 15px !important;
+  padding-bottom: 5px !important;
+  border-bottom: 1px solid #eee !important;
+  text-align: left !important;
+}
+
+.course-list {
+  list-style: none !important;
+  margin: 0 0 25px 0 !important;
+  padding: 0 !important;
+  text-align: left !important;
+}
+
+.course-list li {
+  padding: 7px 0 !important;
+  color: #91654d !important;
+  font-size: 14px !important;
+  text-align: left !important;
+}
+
+.price-info {
+  color: #91654d !important;
+  font-size: 14px !important;
+  margin: 15px 0 5px 0 !important;
+  text-align: left !important;
+}
+
+.menu-note {
+  color: #91654d !important;
+  font-size: 12px !important;
+  margin: 5px 0 0 0 !important;
+  text-align: left !important;
+}
+
+/* Wave decoration */
+.wave-decoration {
+  position: absolute !important;
+  bottom: 20px !important;
+  right: 20px !important;
+  width: 100px !important;
+  height: 30px !important;
+  background-image: url("../images/hagiya-images/wave-decoration.svg") !important;
+  background-size: contain !important;
+  background-repeat: no-repeat !important;
+  opacity: 0.7 !important;
+}
 
 /* ======================================================
-   9. Space Section
-   ====================================================== */
+     9. Space Section
+     ====================================================== */
 .space-section {
   padding: 50px 5%;
   background-image: url("../images/higayi-bg.svg");
   background-repeat: no-repeat;
   background-size: cover;
-  width: 60%;
+  width: 100%;
   margin: 0 auto;
 }
 
@@ -459,7 +517,6 @@ h3 {
 
 .space-image-1-texts p {
   color: black;
-  background: #f9d9cd;
   writing-mode: vertical-rl;
   text-orientation: mixed;
   margin-left: 10px;
@@ -514,8 +571,8 @@ h3 {
 }
 
 /* ======================================================
-   10. Food Menu Section
-   ====================================================== */
+     10. Food Menu Section
+     ====================================================== */
 .food-menu-section {
   background-image: url("../images/course-bg.svg");
   background-repeat: no-repeat;
@@ -547,14 +604,16 @@ h3 {
 
 .menu-item-content {
   display: flex;
-  height: 400px;
+  height: auto;
+  min-height: 400px;
   align-items: center;
   margin-bottom: 40px;
-  width: 70%;
+  width: 100%;
+  max-width: 1200px;
   margin: 0 auto;
   gap: 20px;
+  padding: 40px 20px;
 }
-
 .menu-item-content-image {
   padding-top: 40px;
   width: 30%;
@@ -585,7 +644,8 @@ h3 {
   content: "";
   position: absolute;
   bottom: -5px;
-  left: 0;
+  left: 50%;
+  transform: translateX(-50%);
   width: 40px;
   height: 2px;
   background-color: #91654d;
@@ -596,9 +656,41 @@ h3 {
   font-size: 14px;
   line-height: 1.8;
   text-align: center;
+  font-family: "Noto Serif JP", serif;
 }
 
 .menu-btn {
+  color: #91654d;
+  padding: 8px 15px;
+  border-radius: 3px;
+  font-size: 14px;
+  background-image: url("../images/course-bg.svg");
+  background-repeat: no-repeat;
+  background-size: cover;
+  display: flex;
+  justify-content: center;
+  width: fit-content;
+  margin: 0 auto;
+}
+
+.menu-btn:hover {
+  background-color: #d9c7b4;
+}
+
+/* ======================================================
+     11. Instagram Section
+     ====================================================== */
+.instagram-section {
+  padding: 40px 0;
+  text-align: center;
+}
+
+.instagram-container {
+  max-width: 1000px;
+  margin: 0 auto;
+}
+
+.instagram-btn {
   color: #91654d;
   padding: 8px 15px;
   border-radius: 3px;
@@ -611,117 +703,130 @@ h3 {
   border: 1px solid #91654d;
 }
 
-.menu-btn:hover {
-  background-color: #d9c7b4;
-}
-
-/* ======================================================
-   11. Instagram Section
-   ====================================================== */
-.instagram-section {
-  padding: 40px 0;
-  text-align: center;
-}
-
-.instagram-container {
-  max-width: 1200px;
-  margin: 0 auto;
-}
-
-.instagram-btn {
-  display: inline-block;
-  background-color: #91654d;
-  color: white;
-  padding: 12px 30px;
-  border-radius: 5px;
-  font-size: 16px;
-  transition: background-color 0.3s ease;
-}
-
 .instagram-btn:hover {
   background-color: #7a5441;
 }
 /* ======================================================
-   12. Gallery Section with Auto-Scroll
-   ====================================================== */
-   .gallery-section {
-    width: 100%;
-    padding: 30px 0;
-    background-color: #f7f5f0;
-    overflow: hidden;
-  }
-  
-  .gallery-container {
-    width: 100%;
-    display: flex;
-    flex-wrap: nowrap;
-    overflow-x: auto;
-    scroll-snap-type: x mandatory;
-    -webkit-overflow-scrolling: touch; /* For smoother scrolling on iOS */
-    scrollbar-width: none; /* Hide scrollbar in Firefox */
-    -ms-overflow-style: none; /* Hide scrollbar in IE/Edge */
-  }
-  
-  /* Hide scrollbar in Chrome/Safari */
-  .gallery-container::-webkit-scrollbar {
-    display: none;
-  }
-  
-  .gallery-image {
-    flex: 0 0 300px; /* Fixed width for each image */
-    height: 250px;
-    scroll-snap-align: start;
-    margin-right: 15px;
-    overflow: hidden;
-    border-radius: 5px;
-    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
-  }
-  
-  .gallery-image:last-child {
-    margin-right: 0;
-  }
-  
-  .gallery-image img {
-    width: 100%;
-    height: 100%;
-    object-fit: cover;
-    transition: transform 0.3s ease;
-  }
-  
-  .gallery-image img:hover {
-    transform: scale(1.05);
-  }
+     12. Gallery Section with Auto-Scroll
+     ====================================================== */
+.gallery-section {
+  width: 100%;
+  padding: 30px 0;
+  /* background-color: #f7f5f0; */
+  overflow: hidden;
+  position: relative;
+}
+
+.gallery-container {
+  width: 100%;
+  display: flex;
+  flex-wrap: nowrap;
+  overflow-x: auto;
+  scroll-snap-type: x mandatory;
+  -webkit-overflow-scrolling: touch; /* For smoother scrolling on iOS */
+  scrollbar-width: none; /* Hide scrollbar in Firefox */
+  -ms-overflow-style: none; /* Hide scrollbar in IE/Edge */
+  padding: 0 20px;
+}
+
+/* Hide scrollbar in Chrome/Safari */
+.gallery-container::-webkit-scrollbar {
+  display: none;
+}
+
+.gallery-image {
+  flex: 0 0 300px; /* Fixed width for each image */
+  height: 250px;
+  scroll-snap-align: start;
+  margin-right: 15px;
+  overflow: hidden;
+  border-radius: 5px;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+}
+
+.gallery-image:last-child {
+  margin-right: 0;
+}
+
+.gallery-image img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  transition: transform 0.3s ease;
+}
+
+.gallery-image img:hover {
+  transform: scale(1.05);
+}
+
+.gallery-arrow {
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+  width: 40px;
+  height: 40px;
+  background-color: rgba(145, 101, 77, 0.8);
+  color: white;
+  border: none;
+  border-radius: 50%;
+  font-size: 20px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  cursor: pointer;
+  z-index: 10;
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
+  transition: background-color 0.3s ease;
+}
+
+.gallery-arrow:hover {
+  background-color: rgba(145, 101, 77, 1);
+}
+
+.gallery-arrow-left {
+  left: 20px;
+}
+
+.gallery-arrow-right {
+  right: 20px;
+}
 
 /* ======================================================
-   13. Information Section
-   ====================================================== */
+     13. Information Section
+     ====================================================== */
 .info-section {
   padding: 60px 5% 30px;
-  background-color: #fff;
+  background-image: url("../images/higayi-bg.svg");
+  background-repeat: no-repeat;
+  background-size: cover;
 }
 
 .info-container {
-  max-width: 800px;
+  background-image: url("../images/higayi-bg.svg");
+  background-repeat: no-repeat;
+  background-size: cover;
+  max-width: 900px;
   margin: 0 auto;
   text-align: center;
 }
 
 .info-section h2 {
-  color: #91654d;
-  margin-bottom: 15px;
+  color: #3a2f2f; /* darker for better visibility */
+  margin-bottom: 10px;
+  font-size: 24px;
+  font-weight: 600;
 }
 
 .tel {
-  font-size: 24px;
+  font-size: 20px;
   font-weight: 500;
-  margin-bottom: 30px;
-  color: #91654d;
+  margin-bottom: 25px;
+  color: #3a2f2f;
+  letter-spacing: 1px;
 }
 
 .info-details {
-  display: flex;
-  justify-content: space-between;
-  max-width: 600px;
+  max-width: 500px;
   margin: 0 auto;
 }
 
@@ -731,18 +836,33 @@ h3 {
 }
 
 .info-item h3 {
-  color: #91654d;
+  color: #472512;
   font-size: 16px;
-  margin-bottom: 10px;
+  margin-bottom: 8px;
 }
 
 .info-item p {
-  font-size: 14px;
+  font-size: 16px;
+  color: #3a2f2f;
+  margin-bottom: 10px;
+}
+
+.info-nbr {
+  display: inline-block;
+  border: 1px solid #91654d;
+  padding: 6px 20px;
+  margin: 15px 0 8px;
+  font-size: 16px;
+  color: #3a2f2f;
+  line-height: 1.2;
+  text-align: center;
+  font-weight: 500;
+  min-width: 120px;
 }
 
 /* ======================================================
-   14. Map Section
-   ====================================================== */
+     14. Map Section
+     ====================================================== */
 .full-width-map {
   width: 100%;
   position: relative;
@@ -775,8 +895,8 @@ h3 {
 }
 
 /* ======================================================
-   15. Footer
-   ====================================================== */
+     15. Footer
+     ====================================================== */
 .site-footer {
   background-color: #f6f3ed;
   color: #333;
@@ -794,12 +914,14 @@ h3 {
 }
 
 .footer-content p {
+  font-family: "Noto Serif JP", serif;
+  font-size: 14px;
   margin: 0;
 }
 
 /* ======================================================
-   16. Utility Classes
-   ====================================================== */
+     16. Utility Classes
+     ====================================================== */
 .fade-element {
   opacity: 0;
   transform: translateY(20px);
@@ -812,8 +934,8 @@ h3 {
 }
 
 /* ======================================================
-   17. Animations
-   ====================================================== */
+     17. Animations
+     ====================================================== */
 @keyframes fadeIn {
   from {
     opacity: 0;
@@ -826,99 +948,113 @@ h3 {
 }
 
 /* ======================================================
-   18. Media Queries
-   ====================================================== */
-@media (max-width: 1300px) {
+     18. Media Queries - Responsive Design
+     ====================================================== */
+
+/* Large Screens - under 1400px */
+@media (max-width: 1400px) {
   .space-container {
     width: 100%;
+  }
+
+  .course-container {
+    max-width: 95%;
+  }
+
+  .dish-image-left img {
+    max-width: 100%;
   }
 }
 
-@media (max-width: 1024px) {
-  .course-container,
-  .space-container {
-    flex-direction: column;
+/* Medium Large Screens - under 1200px */
+@media (max-width: 1200px) {
+  .course-container {
+    grid-template-columns: 1fr;
+    height: auto;
+    background-size: contain;
   }
 
   .dish-image-left,
-  .dish-content-right,
-  .course-menu-content,
-  .space-images {
-    width: 100%;
-    margin: 20px 0;
+  .dish-content-right {
+    max-width: 800px;
+    margin: 0 auto 20px;
   }
 
-  .vertical-text-menu,
-  .vertical-text-space {
-    position: static;
+  .menu-text-container {
+    max-width: 800px;
+    margin: 0 auto;
+    padding-left: 0;
+  }
+
+  .vertical-text-menu {
     writing-mode: horizontal-tb;
     text-orientation: mixed;
     height: auto;
     text-align: center;
     padding: 20px 0;
+    margin-right: 0;
+    right: 0;
   }
 
   .vertical-text-menu h2,
-  .vertical-text-menu p,
-  .vertical-text-space h2,
-  .vertical-text-space p {
+  .vertical-text-menu p {
     margin-left: 0;
     margin-bottom: 10px;
   }
 
+  .course-menu-content {
+    border-left: none;
+    border-top: 1px solid #eee;
+    padding-left: 0;
+    padding-top: 20px;
+    height: auto;
+    margin-top: 20px;
+  }
+
   .space-section {
     width: 100%;
+    padding: 50px 20px;
   }
 
-  .space-image-2,
-  .space-image-3,
-  .space-image-4-space {
-    position: static;
-    width: 100%;
-    margin: 20px 0;
-  }
-
-  .space-image-1-texts {
-    position: static;
-    height: auto;
-    flex-direction: column;
-    writing-mode: horizontal-tb;
-    text-align: center;
-  }
-
-  .space-image-1-texts p {
-    writing-mode: horizontal-tb;
-    margin: 10px 0;
-    background: none;
-  }
-
-  .space-image-1-texts p:nth-child(4) {
-    position: static;
-    font-size: 18px !important;
+  .space-container {
+    height: 800px; /* Fixed height for layout stability */
   }
 
   .menu-item-content {
-    width: 90%;
+    width: 100%;
+    flex-direction: column;
+    padding: 30px 20px;
+  }
+
+  .menu-item-content-image,
+  .menu-item-content-text {
+    width: 100%;
+    max-width: 600px;
+    margin: 0 auto;
+  }
+
+  .menu-item-content-image {
+    margin-bottom: 20px;
   }
 }
 
-@media (max-width: 768px) {
-  .site-header {
+/* Medium Screens - under 1024px */
+@media (max-width: 1024px) {
+  .storefront-section {
     flex-direction: column;
-    padding: 15px;
-    background-position: top center;
+    padding: 30px 20px;
+    margin-left: 0;
   }
 
-  .main-nav ul {
-    margin-top: 15px;
+  .storefront-image {
+    width: 100%;
+    height: auto;
+    max-width: 800px;
+    margin: 0 auto 30px;
   }
 
-  .main-nav li {
-    margin: 0 10px;
-  }
-
-  .hero-image {
-    height: 60vh;
+  .vertical-image {
+    display: none;
   }
 
   .vertical-text {
@@ -926,33 +1062,151 @@ h3 {
     writing-mode: horizontal-tb;
     text-orientation: mixed;
     height: auto;
-    margin-top: 20px;
-    padding: 15px;
     width: 100%;
+    margin: 30px auto 0;
+    padding: 0;
     text-align: center;
   }
 
-  .vertical-text h2,
+  .vertical-text h2 {
+    margin-bottom: 15px;
+  }
+
   .vertical-text p {
     margin-left: 0;
     margin-bottom: 10px;
+    display: block;
   }
 
-  .storefront-image {
-    width: 90%;
-    margin: 0 auto;
-  }
-
-  .menu-item-content {
-    flex-direction: column;
+  .space-container {
     height: auto;
-    padding: 20px 0;
+    min-height: 600px;
+    margin-top: 0;
   }
 
-  .menu-item-content-image,
-  .menu-item-content-text {
+  .space-images {
     width: 100%;
+    margin: 0;
+  }
+
+  .space-image-2,
+  .space-image-3,
+  .space-image-4-space {
+    position: static;
+    width: 80%;
+    margin: 20px auto;
+    height: 200px;
+  }
+
+  .space-image-1 {
+    display: none;
+  }
+
+  .space-image-4-space {
+    height: 300px;
+    position: relative;
+  }
+
+  .space-image-1-texts {
+    position: static;
+    height: auto;
+    writing-mode: horizontal-tb;
+    display: block;
+    margin: 30px auto;
+    text-align: center;
+    max-width: 600px;
+  }
+
+  .space-image-1-texts p {
+    writing-mode: horizontal-tb;
+    background: none;
+    margin: 0 0 15px 0;
+    font-size: 14px;
+    display: block;
+  }
+
+  .space-image-1-texts p:nth-child(4) {
+    position: static;
+    font-size: 18px !important;
+    font-weight: bold;
+    margin-top: 20px;
+  }
+
+  .google-map {
+    height: 400px;
+  }
+}
+
+/* Tablet Screens - under 768px */
+@media (max-width: 768px) {
+  /* Header becomes mobile friendly */
+  .site-header {
+    padding: 10px 20px;
+  }
+
+  .mobile-menu-toggle {
+    display: block;
+  }
+
+  .main-nav {
+    position: absolute;
+    top: 100%;
+    left: 0;
+    right: 0;
+    background-color: rgba(255, 255, 255, 0.95);
     padding: 20px;
+    box-shadow: 0 5px 10px rgba(0, 0, 0, 0.1);
+    transform: translateY(-100%);
+    opacity: 0;
+    visibility: hidden;
+    transition: all 0.3s ease;
+    z-index: 900;
+  }
+
+  .main-nav.active {
+    transform: translateY(0);
+    opacity: 1;
+    visibility: visible;
+  }
+
+  .main-nav ul {
+    flex-direction: column;
+    align-items: center;
+  }
+
+  .main-nav li {
+    margin: 10px 0;
+  }
+
+  .hero-image {
+    height: 60vh;
+  }
+
+  .news-container {
+    padding: 15px;
+  }
+
+  .news-date {
+    margin-bottom: 5px;
+  }
+
+  .news-item {
+    flex-direction: column; /* Stack date and content vertically on mobile */
+    margin-left: 0; /* Remove margin on mobile */
+  }
+
+  .news-content p {
+    margin: 5px 0;
+  }
+
+  .news-section h2::before {
+    /* Smaller background image on mobile */
+    width: 80px;
+    height: 80px;
+  }
+
+  .news-container {
+    padding: 15px 10px; /* Smaller padding on mobile */
   }
 
   .info-details {
@@ -960,55 +1214,103 @@ h3 {
   }
 
   .info-item {
-    padding: 10px 0;
-  }
-
-  .google-map {
-    height: 400px;
-  }
-
-  .gallery-container {
-    flex-wrap: wrap;
-  }
-
-  .gallery-image {
-    flex: 1 0 50%;
-  }
-}
-
-@media (max-width: 480px) {
-  .hero-image {
-    height: 40vh;
-  }
-
-  .dish-content-right {
-    height: auto;
-  }
-
-  .dish-content-right img {
-    height: 200px;
-  }
-
-  .dish-image-left {
-    height: 300px;
+    margin-bottom: 20px;
   }
 
   .tel {
     font-size: 20px;
   }
+  .space-section {
+    padding: 30px 20px;
+  }
 
-  .instagram-btn,
-  .map-label {
-    padding: 8px 30px;
-    font-size: 14px;
+  .space-container {
+    width: 100%;
+    margin-left: 0;
+    min-height: 1200px; /* Taller container for stacked content */
+  }
+
+  /* Create a stacked visual arrangement while keeping absolute positioning */
+  .space-image-2 {
+    width: 75%;
+    top: 100px;
+    left: 5%;
+  }
+
+  .space-image-3 {
+    width: 75%;
+    top: 380px; /* Positioned below the previous image */
+    left: 20%;
+  }
+
+  .space-image-4-space {
+    width: 75%;
+    top: 660px; /* Positioned below the previous image */
+    left: 10%;
+    bottom: auto;
+  }
+
+  .space-image-4-space-item-1 {
+    width: 85%;
+    height: 85%;
+  }
+
+  .space-image-1-texts {
+    top: 990px; /* Positioned below all images */
+    left: 0;
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    min-height: 200px;
+  }
+}
+
+/* Phone Screens - under 480px */
+@media (max-width: 480px) {
+  .logo-text-img {
+    height: 18px;
+  }
+
+  .logo-name-img {
+    height: 28px;
+  }
+
+  .hero-image {
+    height: 40vh;
+  }
+
+  .gallery-image {
+    flex: 0 0 250px;
+    height: 200px;
+  }
+
+  .gallery-arrow {
+    width: 35px;
+    height: 35px;
+    font-size: 16px;
+  }
+
+  .gallery-arrow-left {
+    left: 10px;
+  }
+
+  .gallery-arrow-right {
+    right: 10px;
+  }
+
+  .menu-btn {
+    width: 100%;
   }
 
   .google-map {
     height: 300px;
   }
 
-  .gallery-image {
-    flex: 1 0 100%;
-    margin-bottom: 10px;
+  .course-title {
+    text-align: center;
+  }
+
+  .course-list {
+    padding: 0 10px;
   }
 }

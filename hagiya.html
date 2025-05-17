@@ -5,7 +5,6 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>旬彩料理 萩や | 水戸の日本料理店</title>
     <link rel="stylesheet" href="assets/css/hagiya.css" />
-    <link rel="stylesheet" href="assets/css/info-footer.css" />
     <link
       href="https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@400;500;700&family=Noto+Serif+JP:wght@400;500;700&display=swap"
       rel="stylesheet"
@@ -29,6 +28,11 @@
           />
         </a>
       </div>
+      <button class="mobile-menu-toggle" aria-label="メニュー">
+        <span></span>
+        <span></span>
+        <span></span>
+      </button>
       <nav class="main-nav">
         <ul>
           <li><a href="#about">ご紹介</a></li>
@@ -68,59 +72,76 @@
     <!-- News Section -->
     <section class="news-section">
       <div class="news-container">
-        <h2>お知らせ</h2>
+        <h2 class="">お知らせ</h2>
         <div class="news-item">
           <div class="news-date">2024.09.10</div>
           <div class="news-content">
-            ○○○○○○○○○○○○○○○○○○○○○○○○○○○○○○○○○○○○○○○○○○○○○
+           <p>○○○○○○○○○○○○○○○○○○○○○○○○○</p> 
+            <p>○○○○○○○○○○○○○○○○○○○○○○○○○</p>
+             <p>○○○○○○○○○○○○○○○○○○○○○○○○○</p>
           </div>
         </div>
         <div class="news-item">
           <div class="news-date">2024.09.10</div>
           <div class="news-content">
-            ○○○○○○○○○○○○○○○○○○○○○○○○○○○○○○○○○○○○○○○○○○○○○
+             <p>○○○○○○○○○○○○○○○○○○○○○○○○○</p> 
+            <p>○○○○○○○○○○○○○○○○○○○○○○○○○</p>
+             <p>○○○○○○○○○○○○○○○○○○○○○○○○○</p>
           </div>
         </div>
         <div class="news-item">
           <div class="news-date">2024.09.10</div>
           <div class="news-content">
-            ○○○○○○○○○○○○○○○○○○○○○○○○○○○○○○○○○○○○○○○○○○○○○
+             <p>○○○○○○○○○○○○○○○○○○○○○○○○○</p> 
+            <p>○○○○○○○○○○○○○○○○○○○○○○○○○</p>
+             <p>○○○○○○○○○○○○○○○○○○○○○○○○○</p>
           </div>
         </div>
       </div>
     </section>
 
-    <!-- Course Menu Section -->
-    <section id="menu" class="course-section">
-      <div class="course-container">
-        <div class="dish-image-left">
-          <img src="assets/images/hagiya-top.jpeg" alt="萩やの料理" />
-        </div>
-        <div class="dish-content-right">
-          <img src="assets/images/hagiya-top.jpeg" alt="萩やの料理" />
-          <img src="assets/images/hagiya-top.jpeg" alt="萩やの料理" />
-        </div>
-        <div class="menu-text-container">
-          <div class="vertical-text-menu">
-            <h2>茨城の豊かな自然に育まれた旬の食材</h2>
-            <p>新鮮な魚介や地元の野菜を使った一皿一皿が、五感を満たします。</p>
-          </div>
-          <div class="course-menu-content">
-            <h3 class="course-title">コース内容</h3>
-            <ul class="course-list">
-              <li>先出</li>
-              <li>お造り</li>
-              <li>蒸し物</li>
-              <li>揚げ物</li>
-              <li>焼き物</li>
-              <li>お食事</li>
-              <li>デザート <span class="price">5,500円(全7品)</span></li>
-              <li>※メニューは日によって変わります。</li>
-            </ul>
-          </div>
-        </div>
+ <!-- Course Menu Section -->
+<section id="menu" class="course-section">
+  <div class="course-container">
+    <!-- Large food image on the left -->
+    <div class="left-column">
+      <img src="assets/images/hagiya-top.jpeg" alt="萩やの料理" class="large-image" />
+    </div>
+    
+    <!-- Two smaller images stacked vertically -->
+    <div class="center-column">
+      <div class="small-images">
+        <img src="assets/images/hagiya-top.jpeg" alt="萩やの料理" class="small-image-top" />
+        <img src="assets/images/hagiya-top.jpeg" alt="萩やの料理" class="small-image-bottom" />
       </div>
-    </section>
+      
+      <!-- Vertical text -->
+      <div class="vertical-text-menu">
+        <h2>茨城の豊かな自然に育まれた旬の食材</h2>
+        <p>新鮮な魚介や地元の野菜を使った一皿一皿が、五感を満たします。</p>
+      </div>
+    </div>
+    
+    <!-- White card with menu content -->
+    <div class="right-column">
+      <div class="menu-content-card">
+        <h3 class="course-title">コース内容</h3>
+        <ul class="course-list">
+          <li>先出</li>
+          <li>お造り</li>
+          <li>蒸し物</li>
+          <li>揚げ物</li>
+          <li>焼き物</li>
+          <li>お食事</li>
+          <li>デザート</li>
+        </ul>
+        <p class="price-info">5,500円(全7品)</p>
+        <p class="menu-note">※メニューは日によって変わります。</p>
+        <div class="wave-decoration"></div>
+      </div>
+    </div>
+  </div>
+</section>
 
     <!-- Space Section -->
     <section class="space-section">
@@ -200,9 +221,8 @@
 
     <!-- Instagram Section -->
     <section class="instagram-section">
-      <div class="instagram-container">
         <a href="#" class="instagram-btn">Instagram</a>
-      </div>
+      
     </section>
 
     <!-- Gallery Section with Auto-Scroll -->
@@ -269,18 +289,13 @@
 
         <div class="info-details">
           <div class="info-item">
-            <h3>営業時間</h3>
-            <p>17:00～23:00(L.O.22:30)</p>
-          </div>
+          <h3 class="info-nbr">営業時間</h3>
+<p>17:00～23:00(L.O.22:30)</p>
+<h3 class="info-nbr">定休日</h3>
+<p>日曜</p>
+<h3 class="info-nbr">住所</h3>
+<p>水戸市大工町1-4-12 大工ビル 1F</p>
 
-          <div class="info-item">
-            <h3>定休日</h3>
-            <p>日曜</p>
-          </div>
-
-          <div class="info-item">
-            <h3>住所</h3>
-            <p>水戸市大工町1-4-12 大工ビル 1F</p>
           </div>
         </div>
       </div>
@@ -295,14 +310,8 @@
         loading="lazy"
         referrerpolicy="no-referrer-when-downgrade"
         class="google-map"
+        title="萩やの地図"
       ></iframe>
-      <div class="map-label">
-        <a
-          href="https://maps.app.goo.gl/4n2y2McBF4PisHJZ9"
-          target="_blank"
-          rel="noopener noreferrer"
-          >Google MAPで見る</a
-        >
       </div>
     </div>
 
@@ -310,10 +319,10 @@
     <footer class="site-footer">
       <div class="footer-content">
         <p>&copy; 2024 旬彩料理 萩や All Rights Reserved.</p>
-        <a href="/index.html" class="joy-link">Joy Food Service</a>
+        <a href="index.html" class="joy-link">Joy Food Service</a>
       </div>
     </footer>
 
-    <script src="/js/hagiya.js"></script>
+    <script src="assets/js/hagiya.js"></script>
   </body>
 </html>

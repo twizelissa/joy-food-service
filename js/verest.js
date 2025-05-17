@@ -1,19 +1,17 @@
 /**
  * VEREST Website JavaScript
  * Handles gallery slideshow with multiple images per slide, navigation and other interactive elements
+ * With automatic sliding and no visible navigation arrows per request
  */
 document.addEventListener("DOMContentLoaded", function () {
-  // Multi-image Gallery Slideshow
+  // Multi-image Gallery Slideshow - FULL WIDTH WITH AUTOMATIC SLIDING
   function initGallerySlideshow() {
     const galleryContainer = document.querySelector(".gallery-container");
     if (!galleryContainer) return;
 
     const wrapper = galleryContainer.querySelector(".gallery-wrapper");
     const slides = galleryContainer.querySelectorAll(".gallery-slide");
-    const controlsContainer =
-      galleryContainer.querySelector(".gallery-controls");
-    const prevButton = galleryContainer.querySelector(".gallery-prev");
-    const nextButton = galleryContainer.querySelector(".gallery-next");
+    const controlsContainer = galleryContainer.querySelector(".gallery-controls");
 
     if (slides.length === 0) return;
 
@@ -37,24 +35,9 @@ document.addEventListener("DOMContentLoaded", function () {
       });
     }
 
-    // Add event listeners to navigation buttons
-    if (prevButton) {
-      prevButton.addEventListener("click", () => {
-        goToSlide(currentSlide - 1 < 0 ? slides.length - 1 : currentSlide - 1);
-        resetTimer();
-      });
-    }
-
-    if (nextButton) {
-      nextButton.addEventListener("click", () => {
-        goToSlide((currentSlide + 1) % slides.length);
-        resetTimer();
-      });
-    }
-
     // Function to go to a specific slide
     function goToSlide(index) {
-      if (index < 0 || index >= slides.length || index === currentSlide) return;
+      if (index < 0 || index >= slides.length) return;
 
       // Update dots
       if (controlsContainer) {
@@ -81,15 +64,6 @@ document.addEventListener("DOMContentLoaded", function () {
 
     // Start the slideshow
     resetTimer();
-
-    // Pause slideshow when user hovers over it
-    galleryContainer.addEventListener("mouseenter", () => {
-      clearInterval(slideTimer);
-    });
-
-    galleryContainer.addEventListener("mouseleave", () => {
-      resetTimer();
-    });
 
     // Add touch support for mobile
     let touchStartX = 0;
@@ -165,7 +139,7 @@ document.addEventListener("DOMContentLoaded", function () {
     });
   }
 
-  // Table hover effect
+  // Table hover effect for better responsiveness in system and recruit
   function initTableHoverEffect() {
     const tableRows = document.querySelectorAll(".system-table tr");
     tableRows.forEach((row) => {
@@ -218,6 +192,84 @@ document.addEventListener("DOMContentLoaded", function () {
     highlightNav();
   }
 
+  // Initialize responsive tables for system and recruit
+  function initResponsiveTables() {
+    const tables = document.querySelectorAll(".system-table");
+    
+    tables.forEach(table => {
+      const tableWidth = table.scrollWidth;
+      const containerWidth = table.parentElement.clientWidth;
+      
+      if (tableWidth > containerWidth) {
+        // Add a visual hint for scrollable tables on mobile
+        table.parentElement.classList.add("scrollable-table");
+      }
+    });
+  }
+
+  // Add animation effects to aquarium elements
+  function initAquariumEffects() {
+    const aquariumElements = document.querySelectorAll('.gallery-item:nth-child(2)');
+    aquariumElements.forEach(element => {
+      element.classList.add('aquarium-effect');
+    });
+  }
+
+  // Optimize images on smaller devices
+  function optimizeImagesForMobile() {
+    if (window.innerWidth <= 767) {
+      const galleryItems = document.querySelectorAll('.gallery-item img');
+      galleryItems.forEach(img => {
+        // Lower quality version for mobile to improve performance
+        const src = img.getAttribute('src');
+        if (src && !src.includes('-mobile') && src.includes('.jpg')) {
+          const mobileSrc = src.replace('.jpg', '-mobile.jpg');
+          img.setAttribute('data-src', mobileSrc);
+          // Only replace if mobile version exists (fallback to original)
+          const tempImg = new Image();
+          tempImg.onload = () => {
+            img.src = mobileSrc;
+          };
+          tempImg.src = mobileSrc;
+        }
+      });
+    }
+  }
+
+  // Function to make tables more responsive
+  function enhanceTableResponsiveness() {
+    const tables = document.querySelectorAll('.system-table');
+    
+    tables.forEach(table => {
+      const headers = table.querySelectorAll('th');
+      const rows = table.querySelectorAll('tr');
+      
+      // Add data attributes to cells for mobile view
+      rows.forEach((row, rowIndex) => {
+        if (rowIndex === 0) return; // Skip header row
+        
+        const cells = row.querySelectorAll('td');
+        cells.forEach((cell, cellIndex) => {
+          if (headers[cellIndex]) {
+            const headerText = headers[cellIndex].textContent.trim();
+            cell.setAttribute('data-label', headerText);
+          }
+        });
+      });
+    });
+  }
+
+  // Handle viewport changes
+  function handleResize() {
+    initResponsiveTables();
+    optimizeImagesForMobile();
+    
+    // Handle table display on narrow screens
+    if (window.innerWidth <= 767) {
+      enhanceTableResponsiveness();
+    }
+  }
+
   // Initialize all functions
   initGallerySlideshow();
   initMobileMenu();
@@ -225,4 +277,11 @@ document.addEventListener("DOMContentLoaded", function () {
   initTableHoverEffect();
   initParallaxEffect();
   initActiveNavHighlight();
+  initResponsiveTables();
+  initAquariumEffects();
+  optimizeImagesForMobile();
+  enhanceTableResponsiveness();
+  
+  // Add resize listener
+  window.addEventListener('resize', handleResize);
 });
