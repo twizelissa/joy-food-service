@@ -4,8 +4,8 @@
 JOY FOOD SERVICE is a food delivery and catering company dedicated to providing fresh, high-quality meals with reliable service. This website serves as a platform to showcase our services, contact details, and company information.  
 
 ## Technologies Used  
-- HTML5  
-- CSS3  
+- HTML 
+- CSS 
 
 ## Features  
 - Homepage 
