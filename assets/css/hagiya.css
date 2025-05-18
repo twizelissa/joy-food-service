@@ -9,7 +9,7 @@ html {
 }
 
 body {
-  font-family: "Noto Sans JP", sans-serif;
+  font-family: "Noto Serif JP", sans-serif;
   color: #333;
   line-height: 1.6;
   overflow-x: hidden;
@@ -633,7 +633,7 @@ h3 {
 }
 
 .menu-item-content h3 {
-  color: #91654d;
+  color: black;
   margin-bottom: 15px;
   font-size: 18px;
   text-align: center;
@@ -648,7 +648,7 @@ h3 {
   transform: translateX(-50%);
   width: 40px;
   height: 2px;
-  background-color: #91654d;
+  /* background-color: #91654d; */
 }
 
 .menu-item-content p {
@@ -660,7 +660,7 @@ h3 {
 }
 
 .menu-btn {
-  color: #91654d;
+  color: black;
   padding: 8px 15px;
   border-radius: 3px;
   font-size: 14px;
@@ -859,7 +859,6 @@ h3 {
   line-height: 1.2;
   text-align: center;
   font-weight: 500;
-  
   min-width: 120px;
 }
 
@@ -990,10 +989,8 @@ h3 {
   }
 
   .vertical-text-menu {
-    writing-mode: horizontal-tb;
-    text-orientation: mixed;
-    height: auto;
-    text-align: center;
+    writing-mode: vertical-rl;
+    text-orientation: sideways;
     padding: 20px 0;
     margin-right: 0;
     right: 0;
