@@ -651,10 +651,19 @@
     height: 3px;
     background-color: #f04e5c;
   }
-
+  .slogan {
+    position: absolute;
+    width: 250px;
+    height: 120px;
+    top: 60%;
+    transform: translateY(-50%) rotate(-10deg);
+    left: 30px;
+    z-index: 10;
+  }
   .white-card p {
     font-size: 16px;
     line-height: 1.8;
+    margin-left: 15%;
     margin-bottom: 15px;
   }
 
@@ -1145,7 +1154,7 @@
   .swiper-pagination {
     position: relative;
     bottom: 0;
-    margin-top: 40px;
+    margin-top: 20px;
   }
 
   .swiper-pagination-bullet {
@@ -1167,7 +1176,7 @@
   }
 
   .apply-btn {
-    margin-bottom: 40px;
+    margin-bottom: 10px;
     background-color: #f04e5c;
     color: white;
     border: none;
