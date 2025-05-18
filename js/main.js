@@ -395,14 +395,14 @@ function initializeRecruitSwiper() {
         autoHeight: true, // Adjust height to content
 
         // Disable autoplay
-        autoplay: false,
+        autoplay: true,
 
         // Use slide effect for visible movement
         effect: "slide",
 
         // Slide visibility settings
         centeredSlides: false, // Don't center slides (keeps exactly one visible)
-        loop: false, // No looping
+        loop: true, // No looping
 
         // Enable touch but with reduced sensitivity to prevent accidental slides
         allowTouchMove: true,
