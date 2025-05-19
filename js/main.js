@@ -1,114 +1,18 @@
-/**
- * Joy Food Service - Main JavaScript
- *
- * Handles all interactive elements and animations for the website
- * - Mobile menu functionality
- * - Smooth scrolling
- * - News section expansion
- * - Hero image carousel
- * - Recruit section Swiper initialization
- *
- * Version: 1.0.0
- * Last updated: May 16, 2025
- * Author: Joy Food Service Web Team
- */
-
-// ================ Document Ready Function ================
-/**
- * Wait for DOM to be fully loaded before initializing scripts
- */
 document.addEventListener("DOMContentLoaded", function () {
   // Initialize all main functions
   setupSmoothScrolling();
   setupMobileMenu();
   setupNewsReadMore();
-  initializeHeroCarousel();
+  initializeHeroSlider();
   initializeRecruitSwiper();
-  addSwiperStyles();
   setupScrollSpy();
 });
 
-// ================ Smooth Scrolling ================
-/**
- * Setup smooth scrolling for all anchor links
- * Offsets scrolling to account for fixed header
- */
-
-// page scrolling
-
-document.addEventListener("DOMContentLoaded", function () {
-  // Get the scroll indicator element
-  const scrollIndicator = document.getElementById("scrollIndicator");
-
-  // Add click event listener
-  if (scrollIndicator) {
-    scrollIndicator.addEventListener("click", function () {
-      // Get the mission section (or whatever section comes after hero)
-      const missionSection = document.querySelector(".mission-section");
-
-      // If mission section exists, scroll to it
-      if (missionSection) {
-        // Calculate position with offset for fixed header
-        const headerHeight = document.querySelector("header").offsetHeight;
-        const missionSectionTop =
-          missionSection.getBoundingClientRect().top +
-          window.pageYOffset -
-          headerHeight;
-
-        // Smooth scroll to the mission section
-        window.scrollTo({
-          top: missionSectionTop,
-          behavior: "smooth",
-        });
-      }
-    });
-  }
-
-  // Optional: Hide scroll indicator when user scrolls down
-  window.addEventListener("scroll", function () {
-    if (scrollIndicator && window.scrollY > 100) {
-      scrollIndicator.style.opacity = "0";
-    } else if (scrollIndicator) {
-      scrollIndicator.style.opacity = "1";
-    }
-  });
-
-  // Fix for restaurant cards to ensure equal size
-  const restaurantCards = document.querySelectorAll(".restaurant-card");
-  const cardHeight = 350; // Fixed height for all cards
-
-  restaurantCards.forEach((card) => {
-    card.style.height = cardHeight + "px";
-
-    // Ensure all large images and small images have correct height
-    const largeImage = card.querySelector(".large-image");
-    const smallImages = card.querySelector(".small-images");
-
-    if (largeImage) {
-      largeImage.style.height = "100%";
-    }
-
-    if (smallImages) {
-      smallImages.style.height = "100%";
-
-      // Ensure all small images inside have correct size
-      const smallImagesCollection = smallImages.querySelectorAll(
-        "img.restaurant-img-small"
-      );
-      smallImagesCollection.forEach((img) => {
-        img.style.objectFit = "cover";
-        img.style.width = "100%";
-        img.style.height = "100%";
-      });
-    }
-  });
-});
-
+// Smooth scrolling for anchor links
 function setupSmoothScrolling() {
   document.querySelectorAll('a[href^="#"]').forEach((anchor) => {
     anchor.addEventListener("click", function (e) {
       e.preventDefault();
-
       const targetId = this.getAttribute("href");
       const targetElement = document.querySelector(targetId);
 
@@ -120,13 +24,38 @@ function setupSmoothScrolling() {
       }
     });
   });
+
+  // Scroll indicator functionality
+  const scrollIndicator = document.getElementById("scrollIndicator");
+  if (scrollIndicator) {
+    scrollIndicator.addEventListener("click", function () {
+      const missionSection = document.querySelector(".mission-section");
+      if (missionSection) {
+        const headerHeight = document.querySelector("header").offsetHeight;
+        const missionSectionTop =
+          missionSection.getBoundingClientRect().top +
+          window.pageYOffset -
+          headerHeight;
+
+        window.scrollTo({
+          top: missionSectionTop,
+          behavior: "smooth",
+        });
+      }
+    });
+
+    // Hide scroll indicator when scrolling down
+    window.addEventListener("scroll", function () {
+      if (window.scrollY > 100) {
+        scrollIndicator.style.opacity = "0";
+      } else {
+        scrollIndicator.style.opacity = "1";
+      }
+    });
+  }
 }
 
-// ================ Mobile Menu Function ================
-/**
- * Setup mobile menu toggle functionality
- * Handles opening/closing the mobile navigation
- */
+// Mobile menu toggle functionality
 function setupMobileMenu() {
   const mobileMenuBtn = document.querySelector(".mobile-menu-btn");
   const mobileNav = document.querySelector(".mobile-nav");
@@ -134,13 +63,9 @@ function setupMobileMenu() {
   if (mobileMenuBtn && mobileNav) {
     // Toggle mobile menu when button is clicked
     mobileMenuBtn.addEventListener("click", function (e) {
-      e.stopPropagation(); // Prevent event from bubbling up
-
-      // Toggle active classes
+      e.stopPropagation();
       this.classList.toggle("active");
       mobileNav.classList.toggle("active");
-
-      console.log("Mobile menu toggled"); // Debug log
     });
 
     // Close mobile menu when clicking on a link
@@ -153,29 +78,20 @@ function setupMobileMenu() {
 
     // Close menu when clicking outside
     document.addEventListener("click", function (event) {
-      // Only process if menu is open
       if (mobileNav.classList.contains("active")) {
-        // Check if click was inside menu or button
         const isClickInside =
           mobileMenuBtn.contains(event.target) ||
           mobileNav.contains(event.target);
-
         if (!isClickInside) {
           mobileMenuBtn.classList.remove("active");
           mobileNav.classList.remove("active");
         }
       }
     });
-  } else {
-    console.error("Mobile menu elements not found");
   }
 }
 
-// ================ News Section - Read More Function ================
-/**
- * Setup the news section "Read more" functionality
- * Shows/hides additional news items
- */
+// News section read more functionality
 function setupNewsReadMore() {
   const expandBtn = document.getElementById("expandNewsBtn");
 
@@ -243,137 +159,52 @@ function setupNewsReadMore() {
   }
 }
 
-// ================ Hero Image Carousel ================
-/**
- * Initialize hero image carousel/slider
- * Creates a fade-transition between multiple images
- */
-function initializeHeroCarousel() {
-  // Configuration
-  const carouselConfig = {
-    interval: 5000, // Time between slides (ms)
-    transitionDuration: 500, // Transition duration (ms)
-  };
+// Hero Slider initialization - FIXED
+function initializeHeroSlider() {
+  const carouselTrack = document.querySelector(".carousel-track");
+  if (!carouselTrack) return;
 
-  const heroSection = document.querySelector(".hero-section");
-  if (!heroSection) return;
+  const slides = document.querySelectorAll(".carousel-slide");
+  if (slides.length <= 1) return;
 
-  const heroImageContainer = heroSection.querySelector(".hero-image-container");
-  if (!heroImageContainer) return;
-
-  const heroImage = heroImageContainer.querySelector(".hero-image");
-  if (!heroImage) return;
-
-  // Store the original image URL
-  const originalImageUrl = heroImage.src;
-
-  // Define image URLs for carousel
-  // Make sure these images exist in assets/images/
-  const heroImageUrls = [
-    originalImageUrl,
-    "assets/images/verest-bg.jpg",
-    "assets/images/hagiya-top.jpeg",
-  ];
-
-  // Create carousel container
-  const carouselContainer = document.createElement("div");
-  carouselContainer.className = "image-carousel hero-carousel";
-
-  // Create carousel track
-  const carouselTrack = document.createElement("div");
-  carouselTrack.className = "carousel-track";
-
-  // Create slides
-  heroImageUrls.forEach((url) => {
-    const slide = document.createElement("div");
-    slide.className = "carousel-slide";
-    slide.style.backgroundImage = `url(${url})`;
-    carouselTrack.appendChild(slide);
-  });
-
-  // Add carousel to DOM (replace original image but keep overlay)
-  const heroOverlay = heroImageContainer.querySelector(".hero-overlay");
-  if (heroImage && heroOverlay) {
-    heroImage.remove(); // Remove the original image
-    carouselContainer.appendChild(carouselTrack);
-    heroImageContainer.insertBefore(carouselContainer, heroOverlay);
-  }
-
-  // Initialize carousel state
   let currentSlide = 0;
-  const totalSlides = heroImageUrls.length;
+  const slideCount = slides.length;
+  const slideInterval = 5000; // Time between slides (ms)
 
-  // Function to move to next slide
-  function nextSlide() {
-    currentSlide = (currentSlide + 1) % totalSlides;
-    updateCarousel();
-  }
-
-  // Update carousel position
-  function updateCarousel() {
-    const offset = -currentSlide * 100;
-    carouselTrack.style.transition = `transform ${carouselConfig.transitionDuration}ms ease`;
+  // Function to move to a specific slide
+  function goToSlide(slideIndex) {
+    currentSlide = slideIndex;
+    const offset = -currentSlide * (100 / slideCount);
     carouselTrack.style.transform = `translateX(${offset}%)`;
   }
 
-  // Start auto-scrolling
-  const intervalId = setInterval(nextSlide, carouselConfig.interval);
+  // Function to advance to next slide
+  function nextSlide() {
+    currentSlide = (currentSlide + 1) % slideCount;
+    goToSlide(currentSlide);
+  }
 
-  // Pause on hover
-  carouselContainer.addEventListener("mouseenter", () => {
-    clearInterval(intervalId);
-  });
+  // Start auto-rotation
+  const sliderInterval = setInterval(nextSlide, slideInterval);
 
-  carouselContainer.addEventListener("mouseleave", () => {
-    clearInterval(intervalId);
-    setInterval(nextSlide, carouselConfig.interval);
-  });
+  // Optional: Pause on hover
+  const heroCarousel = document.querySelector(".hero-carousel");
+  if (heroCarousel) {
+    heroCarousel.addEventListener("mouseenter", () => {
+      clearInterval(sliderInterval);
+    });
 
-  // Add carousel styles
-  addHeroCarouselStyles();
+    heroCarousel.addEventListener("mouseleave", () => {
+      clearInterval(sliderInterval);
+      setInterval(nextSlide, slideInterval);
+    });
+  }
 
   // Initialize first slide
-  updateCarousel();
+  goToSlide(0);
 }
 
-// ================ Add Hero Carousel Styles ================
-/**
- * Add required CSS for the hero carousel
- */
-function addHeroCarouselStyles() {
-  const style = document.createElement("style");
-  style.textContent = `
-    .hero-carousel {
-      width: 100%;
-      height: 100%;
-      overflow: hidden;
-      position: relative;
-    }
-    
-    .carousel-track {
-      display: flex;
-      width: 300%; /* For 3 slides */
-      height: 100%;
-      transition: transform 0.5s ease;
-    }
-    
-    .carousel-slide {
-      width: 33.333%; /* 100% / 3 slides */
-      height: 100%;
-      background-size: cover;
-      background-position: center;
-    }
-  `;
-  document.head.appendChild(style);
-}
-
-// ================ Initialize Swiper for Recruit Section ================
-/**
- * Initialize Swiper JS for the recruitment section
- * - Shows exactly one slide at a time with no partial views
- * - Visible slide transitions with no preview of next/previous slides
- * - Manual navigation only - no auto-advancement
- */
+// Initialize Swiper for Recruit Section
 function initializeRecruitSwiper() {
   // Check if Swiper is available
   if (typeof Swiper === "undefined") {
@@ -390,11 +221,11 @@ function initializeRecruitSwiper() {
         // Core settings
         slidesPerView: 1, // Show exactly one slide at a time
         spaceBetween: 0, // No space between slides to prevent partial views
-        speed: 800, // Transition speed
+        speed: 3000, // Transition speed
         grabCursor: true,
         autoHeight: true, // Adjust height to content
 
-        // Disable autoplay
+        // Autoplay
         autoplay: true,
 
         // Use slide effect for visible movement
@@ -402,7 +233,7 @@ function initializeRecruitSwiper() {
 
         // Slide visibility settings
         centeredSlides: false, // Don't center slides (keeps exactly one visible)
-        loop: true, // No looping
+        loop: true, // Loop enabled
 
         // Enable touch but with reduced sensitivity to prevent accidental slides
         allowTouchMove: true,
@@ -433,7 +264,7 @@ function initializeRecruitSwiper() {
 
             // Make all slides fully visible but positioned off-screen
             document.querySelectorAll(".swiper-slide").forEach((slide) => {
-              slide.style.opacity = "1";
+              // slide.style.opacity = "1";
               slide.style.visibility = "visible";
             });
           },
@@ -442,8 +273,6 @@ function initializeRecruitSwiper() {
           },
         },
       });
-
-      console.log("Swiper initialized successfully - One slide at a time");
 
       // Function to update navigation button visibility
       function updateNavigationVisibility(swiper) {
@@ -470,74 +299,7 @@ function initializeRecruitSwiper() {
   }
 }
 
-// ================ Add Custom Swiper Styles ================
-/**
- * Add custom CSS for the Swiper to ensure only one slide is visible at a time
- */
-function addSwiperStyles() {
-  const style = document.createElement("style");
-  style.textContent = `
-    /* Container styles to hide overflow */
-    .recruit-swiper {
-      overflow: hidden !important;
-      position: relative;
-    }
-    
-    /* Make slides fully opaque */
-    .swiper-slide {
-      opacity: 1 !important;
-      transition: transform 0.8s ease !important;
-      visibility: visible !important;
-    }
-    
-    /* Enhanced active slide appearance */
-    .swiper-slide-active {
-      opacity: 1 !important;
-      visibility: visible !important;
-    }
-    
-    /* Hide non-active slides */
-    .swiper-slide-prev,
-    .swiper-slide-next {
-      visibility: hidden !important;
-      opacity: 0 !important;
-      transition: visibility 0s 0.8s, opacity 0.8s ease !important;
-    }
-    
-    /* Improve pagination visibility */
-    .swiper-pagination {
-      margin-top: 20px !important;
-    }
-    
-    .swiper-pagination-bullet {
-      width: 12px !important;
-      height: 12px !important;
-      margin: 0 5px !important;
-    }
-    
-    .swiper-pagination-bullet-active {
-      background-color: #f04e5c !important;
-      transform: scale(1.3) !important;
-    }
-    
-    /* Enhance navigation buttons */
-    .recruit-nav-button {
-      transform: scale(1.1) !important;
-      transition: all 0.3s ease !important;
-    }
-    
-    .recruit-nav-button:hover {
-      transform: scale(1.2) !important;
-    }
-  `;
-  document.head.appendChild(style);
-}
-
-// ================ Helper: Load Swiper Library if needed ================
-/**
- * Load Swiper JS library dynamically if not already loaded
- * @returns {Promise} - Resolves when library is loaded
- */
+// Helper: Load Swiper Library if needed
 function loadSwiperLibrary() {
   return new Promise((resolve, reject) => {
     // Check if already loaded
@@ -570,10 +332,7 @@ function loadSwiperLibrary() {
   });
 }
 
-// ================ Active Navigation Highlighting ================
-/**
- * Highlight active section in navigation when scrolling
- */
+// Active Navigation Highlighting
 function setupScrollSpy() {
   const sections = document.querySelectorAll("section[id]");
   const navLinks = document.querySelectorAll(".side-nav a, .mobile-nav a");
