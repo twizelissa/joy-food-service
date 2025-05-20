@@ -99,59 +99,45 @@
     </section>
 
     <!-- Course Menu Section -->
-    <section id="menu" class="course-section">
-      <div class="course-container">
-        <!-- Large food image on the left -->
-        <div class="left-column">
-          <img
-            src="assets/images/hagiya-top.jpeg"
-            alt="萩やの料理"
-            class="large-image"
-          />
+    <div class="menu-layout">
+      <!-- White card with menu inside -->
+      <div class="menu-card">
+        <!-- Menu content positioned INSIDE white card -->
+        <div class="menu-content">
+          <h3 class="course-title">コース内容</h3>
+          <ul class="course-items">
+            <li>先付</li>
+            <li>お造り</li>
+            <li>蒸し物</li>
+            <li>煮付物</li>
+            <li>焼き物</li>
+            <li>お食事</li>
+            <li>デザート</li>
+          </ul>
+          <p class="course-price">5,500円(全7品)</p>
+          <p class="course-note">※メニューは日によって変わります。</p>
         </div>
-
-        <!-- Two smaller images stacked vertically -->
-        <div class="center-column">
-          <div class="small-images">
-            <img
-              src="assets/images/hagiya-top.jpeg"
-              alt="萩やの料理"
-              class="small-image-top"
-            />
-            <img
-              src="assets/images/hagiya-top.jpeg"
-              alt="萩やの料理"
-              class="small-image-bottom"
-            />
-          </div>
-
-          <!-- Vertical text -->
-          <div class="vertical-text-menu">
-            <h2>茨城の豊かな自然に育まれた旬の食材</h2>
-            <p>新鮮な魚介や地元の野菜を使った一皿一皿が、五感を満たします。</p>
-          </div>
-        </div>
-
-        <!-- White card with menu content -->
-        <div class="right-column">
-          <div class="menu-content-card">
-            <h3 class="course-title">コース内容</h3>
-            <ul class="course-list">
-              <li>先出</li>
-              <li>お造り</li>
-              <li>蒸し物</li>
-              <li>揚げ物</li>
-              <li>焼き物</li>
-              <li>お食事</li>
-              <li>デザート</li>
-            </ul>
-            <p class="price-info">5,500円(全7品)</p>
-            <p class="menu-note">※メニューは日によって変わります。</p>
-            <div class="wave-decoration"></div>
-          </div>
+        <div class="vertical-text-container">
+          <p class="vertical-text">茨城の豊かな自然に育まれた旬の食材</p>
+          <p class="vertical-text">
+            新鮮な魚介や地元の野菜を使った一皿一皿が、五感を満たします。
+          </p>
         </div>
       </div>
-    </section>
+
+      <!-- Main large image -->
+      <div class="main-image">
+        <img src="assets/images/hagiya-top.jpeg" alt="季節の料理" />
+      </div>
+
+      <!-- Two thumbnail images in vertical stack -->
+      <div class="thumbnail-container">
+        <img src="assets/images/hagiya-top.jpeg" alt="料理サムネイル1" />
+        <img src="assets/images/hagiya-top.jpeg" alt="料理サムネイル2" />
+      </div>
+
+      <!-- Vertical text that overhangs at top - EXACTLY TWO LINES -->
+    </div>
 
     <!-- Space Section -->
     <section class="space-section">
@@ -203,7 +189,7 @@
               <img src="assets/images/hagiya-top.jpeg" alt="料理メニュー" />
             </div>
             <div class="menu-item-content-text">
-              <h3>料理メニュー</h3>
+              <h3 class="food-menu-logo">料理メニュー</h3>
               <p>
                 概要が入ります。概要が入ります。概要が入ります。概要が入ります。概要が入ります。概要が入ります。概要が入ります。概要が入ります。概要が入ります。概要が入ります。概要が入ります。概要が入ります。概要が入ります。概要が入ります。
               </p>
@@ -215,7 +201,7 @@
         <div class="menu-item-2">
           <div class="menu-item-content">
             <div class="menu-item-content-text">
-              <h3>ドリンクメニュー</h3>
+              <h3 class="food-menu-logo">ドリンクメニュー</h3>
               <p>
                 概要が入ります。概要が入ります。概要が入ります。概要が入ります。概要が入ります。概要が入ります。概要が入ります。概要が入ります。概要が入ります。概要が入ります。概要が入ります。概要が入ります。概要が入ります。概要が入ります。
               </p>
@@ -338,6 +324,6 @@
       </div>
     </footer>
 
-    <script src="assets/js/hagiya.js"></script>
+    <script src="js/hagiya.js"></script>
   </body>
 </html>

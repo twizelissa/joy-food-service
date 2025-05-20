@@ -398,7 +398,7 @@ section {
 .highlight-divider {
   border: none;
   height: 1px;
-  background-color: #c99393;
+  background-color: #996464;
   margin: 20px;
   width: 90%;
   max-width: 200px; /* Adding a max-width as well */
@@ -437,12 +437,12 @@ section {
 }
 
 .highlight-th {
-  color: #c99393;
+  color: #7c6c60;
   padding: 5px 8px;
   display: inline-block;
   line-height: 1.6;
   font-size: 16px;
-  font-weight: bold;
+  font-weight: lighter;
 }
 
 .highlight-td {
@@ -517,13 +517,13 @@ section {
 }
 
 .access-title {
-  font-size: 28px;
+  font-size: 18px;
   margin-bottom: 30px;
   font-family: "Noto Serif JP", serif;
   display: inline-block;
-  border: 1px solid #ee8835;
+  border: 1px solid #8f6446;
   padding: 10px 50px;
-  color: #ee8835;
+  color: #8f6446;
 }
 
 .access-content {
@@ -828,7 +828,7 @@ section {
   }
 }
 -th {
-  color: #ff9999;
+  color: #8f6446;
   padding: 5px 8px;
   display: inline-block;
   line-height: 1.6;
@@ -893,16 +893,6 @@ section {
   max-width: 800px;
   margin: 0 auto;
   padding: 0 20px;
-}
-
-.access-title {
-  font-size: 28px;
-  margin-bottom: 30px;
-  font-family: "Noto Serif JP", serif;
-  display: inline-block;
-  border: 1px solid #c0b8aa;
-  padding: 10px 50px;
-  color: #666;
 }
 
 .access-content {

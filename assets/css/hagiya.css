@@ -174,13 +174,15 @@ h3 {
   position: relative;
   background-image: url("../images/hagiya-images/second-background.jpeg");
   background-size: cover;
-  /* background-position: center; */
+  min-height: 600px;
 }
 
 .storefront-image {
   margin-left: 5%;
-  width: 1136px;
-  height: 596px;
+  width: 60%;
+  max-width: 1136px;
+  height: auto;
+  aspect-ratio: 1136/596; /* Maintain aspect ratio */
   box-shadow: 0 0 15px rgba(0, 0, 0, 0.1);
   overflow: hidden;
 }
@@ -192,9 +194,9 @@ h3 {
 }
 
 .vertical-image {
-  margin-top: 7%;
   position: absolute;
   right: 8%;
+  top: 25%;
   writing-mode: vertical-rl;
   text-orientation: upright;
   font-family: "Noto Serif JP", serif;
@@ -204,28 +206,27 @@ h3 {
   background-repeat: no-repeat;
   color: black;
   padding: 20px 10px;
-  height: 400px;
-  width: 385px;
+  height: 420px;
+  width: 35%;
+  max-width: 22%;
   line-height: 2;
 }
 
 .vertical-text {
-  margin-top: 5%;
   position: absolute;
   right: 12%;
-  top: 10px;
   writing-mode: vertical-rl;
   text-orientation: upright;
   font-family: "Noto Serif JP", serif;
   color: black;
   padding: 20px 10px;
   height: 400px;
-  width: 433px;
+  width: 15%;
+  max-width: 433px;
   line-height: 2;
 }
 
 .vertical-text h2 {
-  margin-top: -3%;
   font-size: 20px;
   font-weight: bold;
 }
@@ -234,6 +235,145 @@ h3 {
   font-size: 14px;
   margin-left: 15px;
   font-weight: lighter;
+}
+
+/* Large screens */
+@media (min-width: 1600px) {
+  .storefront-image {
+    width: 65%;
+  }
+  .vertical-image {
+    right: 10%;
+  }
+  .vertical-text {
+    right: 15%;
+  }
+}
+
+/* Medium-large screens */
+@media (max-width: 1440px) {
+  .storefront-image {
+    width: 55%;
+  }
+  .vertical-image {
+    right: 5%;
+    width: 25%;
+  }
+  .vertical-text {
+    right: 10%;
+    width: 18%;
+  }
+}
+
+/* Medium screens - the problematic range */
+@media (max-width: 1280px) {
+  .storefront-section {
+    padding: 30px 3%;
+  }
+  .storefront-image {
+    width: 50%;
+    margin-left: 2%;
+  }
+  .vertical-image {
+    right: 2%;
+    width: 28%;
+  }
+  .vertical-text {
+    right: 7%;
+    width: 20%;
+  }
+}
+
+/* Smaller medium screens */
+@media (max-width: 1100px) {
+  .storefront-section {
+    flex-direction: column;
+    align-items: center;
+    padding: 30px 20px;
+  }
+
+  .storefront-image {
+    width: 90%;
+    margin: 0 auto 30px;
+  }
+
+  .vertical-image {
+    position: static;
+    width: 80%;
+    max-width: 385px;
+    margin: 20px auto;
+    height: 200px;
+    writing-mode: horizontal-tb;
+  }
+
+  .vertical-text {
+    position: static;
+    width: 90%;
+    margin: 20px auto;
+    writing-mode: horizontal-tb;
+    text-orientation: mixed;
+    height: auto;
+    text-align: center;
+  }
+
+  .vertical-text h2 {
+    margin-bottom: 15px;
+  }
+
+  .vertical-text p {
+    margin-left: 0;
+    margin-bottom: 10px;
+  }
+}
+
+/* Original breakpoint */
+@media (max-width: 1024px) {
+  .storefront-section {
+    flex-direction: column;
+    padding: 30px 20px;
+  }
+
+  .storefront-image {
+    width: 100%;
+    height: auto;
+    max-width: 800px;
+    margin: 0 auto 30px;
+  }
+
+  .vertical-image {
+    display: none;
+  }
+
+  .vertical-text {
+    position: static;
+    writing-mode: horizontal-tb;
+    text-orientation: mixed;
+    height: auto;
+    width: 100%;
+    margin: 30px auto 0;
+    padding: 0;
+    text-align: center;
+  }
+
+  .vertical-text h2 {
+    margin-bottom: 15px;
+  }
+
+  .vertical-text p {
+    margin-left: 0;
+    margin-bottom: 10px;
+    display: block;
+  }
+}
+
+/* Mobile screens */
+@media (max-width: 768px) {
+  .storefront-section {
+    padding: 20px 10px;
+  }
+  .storefront-image {
+    width: 100%;
+  }
 }
 
 /* ======================================================
@@ -304,165 +444,211 @@ h3 {
   font-size: 14px;
   overflow-wrap: break-word;
 }
-/* Reset any conflicting styles for this section */
-.course-section {
-  padding: 60px 0;
-  background-color: #f8f3e9;
+/* course menu part */
+
+/* Food Menu Section - White card with fixed measurements */
+
+.menu-layout {
+  max-width: 100%;
+  margin: 0 auto;
+  padding: 30px;
   position: relative;
-  overflow: visible !important;
+  background-image: url("../images/course-bg.svg");
+  background-repeat: no-repeat;
+  background-size: cover;
+  border-radius: 12px;
+  box-shadow: 0 3px 22px rgba(0, 0, 0, 0.1);
+  height: 750px; /* 1.5x the original 500px */
 }
 
-.course-container {
-  display: flex !important;
-  flex-direction: row !important;
-  grid-template-columns: none !important; /* Override any grid settings */
-  width: 80% !important;
-  max-width: 1200px !important;
-  margin: 0 auto !important;
-  position: relative !important;
-  height: auto !important;
-  background-image: none !important;
+/* Food Menu Section - White card with fixed measurements - scaled up by 1.5x */
+.menu-card {
+  background-image: url("../images/course-backward-bg.svg");
+  background-repeat: no-repeat;
+  background-size: cover;
+  position: absolute;
+  width: 65%; /* 1.5x the original 600px */
+  height: 390px; /* 1.5x the original 260px */
+  left: 20%; /* 1.5x the original 150px */
+  top: 240px; /* 1.5x the original 160px */
+  z-index: 1;
+  overflow: visible; /* Critical: prevents content from overflowing */
 }
 
-/* Left column with large image */
-.left-column {
-  width: 33% !important;
-  position: relative !important;
-  z-index: 2 !important;
-  margin-right: 0 !important;
+/* Main large image - scaled up by 1.5x */
+.main-image {
+  position: absolute;
+  width: 450px; /* 1.5x the original 300px */
+  height: 382px; /* 1.5x the original 255px */
+  left: 10%; /* 1.5x the original 80px */
+  top: 210px; /* 1.5x the original 140px */
+  z-index: 3;
 }
 
-.large-image {
-  width: 100% !important;
-  height: 400px !important;
-  object-fit: cover !important;
-  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1) !important;
-  transform: translateX(-50px) !important; /* Move it left to overlap */
+.main-image img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  /* border-radius: 6px; */
+  /* box-shadow: 0 3px 9px rgba(0, 0, 0, 0.1); */
 }
 
-/* Center column with two smaller images */
-.center-column {
-  width: 25% !important;
-  position: relative !important;
-  z-index: 1 !important;
+/* Thumbnails positioned with adequate spacing from menu - scaled up by 1.5x */
+.thumbnail-container {
+  position: absolute;
+  left: 36%; /* 1.5x the original 390px */
+  top: 200px; /* 1.5x the original 140px */
+  display: flex;
+  flex-direction: column;
+  gap: 15px; /* 1.5x the original 10px */
+  z-index: 3;
+  height: 450px; /* 1.5x the original 300px */
 }
 
-.small-images {
-  display: flex !important;
-  flex-direction: column !important;
-  gap: 10px !important;
+.thumbnail-container img {
+  width: 240px; /* 1.5x the original 160px */
+  height: 217px; /* 1.5x the original 145px */
+  object-fit: cover;
 }
 
-.small-image-top,
-.small-image-bottom {
-  width: 100% !important;
-  height: 195px !important;
-  object-fit: cover !important;
-  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1) !important;
+/* Menu content positioned RELATIVE to white card - scaled up by 1.5x */
+.menu-content {
+  position: absolute;
+  top: 22px; /* 1.5x the original 15px */
+  right: 35%; /* 1.5x the original 40px */
+  width: 225px; /* 1.5x the original 150px */
+  height: 345px; /* 1.5x the original 230px */
+  display: flex;
+  flex-direction: column;
 }
 
-/* Vertical text - positioned independently */
-.vertical-text-menu {
-  writing-mode: vertical-rl !important;
-  text-orientation: mixed !important;
-  position: absolute !important;
-  right: 42% !important;
-  top: 30px !important;
-  height: 430px !important;
-  color: #91654d !important;
-  font-family: "Noto Serif JP", serif !important;
-  z-index: 3 !important;
-  margin: 0 !important;
-  padding: 0 !important;
-  transform: none !important;
-  width: auto !important;
-}
-
-.vertical-text-menu h2 {
-  font-size: 18px !important;
-  margin-left: 10px !important;
-  padding-bottom: 15px !important;
-  letter-spacing: 0.1em !important;
-  margin-top: 0 !important;
-  font-weight: normal !important;
-  text-align: left !important;
-}
-
-.vertical-text-menu p {
-  font-size: 12px !important;
-  letter-spacing: 0.05em !important;
-  line-height: 1.8 !important;
-  margin-left: 15px !important;
-  font-weight: normal !important;
-  text-align: left !important;
-}
-
-/* Right column with menu card */
-.right-column {
-  width: 42% !important;
-  position: relative !important;
-  z-index: 0 !important;
-  margin-left: -30px !important; /* Pull it left to overlap with vertical text */
-}
-
-.menu-content-card {
-  background-color: white !important;
-  padding: 30px 30px 30px 70px !important; /* Extra padding on left for vertical text */
-  box-shadow: 0 0 15px rgba(0, 0, 0, 0.05) !important;
-  height: 400px !important;
-  position: relative !important;
-}
-
+/* Course menu styling - scaled up by 1.5x */
 .course-title {
-  color: #91654d !important;
-  font-size: 16px !important;
-  margin-bottom: 15px !important;
-  padding-bottom: 5px !important;
-  border-bottom: 1px solid #eee !important;
-  text-align: left !important;
+  font-size: 21px; /* 1.5x the original 14px */
+  font-weight: 500;
+  margin-bottom: 12px; /* 1.5x the original 8px */
+  text-align: center;
+  position: relative;
 }
 
-.course-list {
-  list-style: none !important;
-  margin: 0 0 25px 0 !important;
-  padding: 0 !important;
-  text-align: left !important;
+.course-title::after {
+  content: "";
+  position: absolute;
+  bottom: -6px; /* 1.5x the original -4px */
+  left: 50%;
+  transform: translateX(-50%);
+  width: 45px; /* 1.5x the original 30px */
+  height: 1px;
+  background-color: #333;
 }
 
-.course-list li {
-  padding: 7px 0 !important;
-  color: #91654d !important;
-  font-size: 14px !important;
-  text-align: left !important;
+.course-items {
+  list-style: none;
+  margin-bottom: 7px; /* 1.5x the original 5px */
+  flex-shrink: 0;
 }
 
-.price-info {
-  color: #91654d !important;
-  font-size: 14px !important;
-  margin: 15px 0 5px 0 !important;
-  text-align: left !important;
+.course-items li {
+  padding: 4px 0; /* ~1.5x the original 3px */
+  font-size: 18px; /* 1.5x the original 12px */
+  line-height: 1.3;
 }
 
-.menu-note {
-  color: #91654d !important;
-  font-size: 12px !important;
-  margin: 5px 0 0 0 !important;
-  text-align: left !important;
+.course-price {
+  font-size: 18px; /* 1.5x the original 12px */
+  text-align: right;
+  margin-top: 4px; /* ~1.5x the original 3px */
+  margin-bottom: 4px; /* ~1.5x the original 3px */
 }
 
-/* Wave decoration */
-.wave-decoration {
-  position: absolute !important;
-  bottom: 20px !important;
-  right: 20px !important;
-  width: 100px !important;
-  height: 30px !important;
-  background-image: url("../images/hagiya-images/wave-decoration.svg") !important;
-  background-size: contain !important;
-  background-repeat: no-repeat !important;
-  opacity: 0.7 !important;
+.course-note {
+  font-size: 15px; /* 1.5x the original 10px */
+  color: #666;
+  margin-bottom: 0;
 }
 
+/* Vertical text that overhangs at top - scaled up by 1.5x */
+.vertical-text-container {
+  position: absolute;
+  top: -150px; /* Overhang 20px above the white card */
+  right: 60px; /* Move it to the left of the card */
+  height: 420px;
+  display: flex;
+  flex-direction: column;
+  z-index: 2;
+}
+
+.vertical-text {
+  writing-mode: vertical-rl;
+  text-orientation: mixed;
+  font-size: 18px;
+  letter-spacing: 0.05em;
+  line-height: 1.8;
+  margin-bottom: 20px;
+  font-weight: lighter;
+}
+
+/* Responsive styles - also scaled */
+@media (max-width: 768px) {
+  .menu-layout {
+    height: auto;
+    padding-bottom: 750px; /* 1.5x the original 500px */
+  }
+
+  .menu-card {
+    width: 85%;
+    left: 7.5%;
+    top: auto;
+    bottom: 30px; /* 1.5x the original 20px */
+    height: auto;
+    min-height: 480px; /* 1.5x the original 320px */
+  }
+
+  .menu-content {
+    position: static;
+    width: 100%;
+    margin: 0 auto;
+    padding: 30px; /* 1.5x the original 20px */
+    height: auto;
+  }
+
+  .main-image {
+    width: 85%;
+    height: 375px; /* 1.5x the original 250px */
+    left: 7.5%;
+    top: 30px; /* 1.5x the original 20px */
+  }
+
+  .thumbnail-container {
+    flex-direction: row;
+    width: 85%;
+    left: 7.5%;
+    top: 435px; /* 1.5x the original 290px */
+    height: auto;
+    gap: 5%;
+  }
+
+  .thumbnail-container img {
+    width: 47.5%;
+    height: 180px; /* 1.5x the original 120px */
+  }
+
+  .vertical-text-container {
+    position: relative;
+    top: auto;
+    right: auto;
+    width: 85%;
+    height: auto;
+    margin: 30px auto; /* 1.5x the original 20px */
+  }
+
+  .vertical-text {
+    writing-mode: horizontal-tb;
+    text-orientation: mixed;
+    margin-left: 0;
+    margin-bottom: 15px; /* 1.5x the original 10px */
+  }
+}
 /* ======================================================
      9. Space Section
      ====================================================== */
@@ -586,7 +772,7 @@ h3 {
 }
 
 .menu-item {
-  background-image: url("../images/food-menu-bg-1.svg");
+  background-image: url("../images/higayi-bg.svg");
   background-repeat: no-repeat;
   background-size: cover;
   border-radius: 5px;
@@ -594,7 +780,7 @@ h3 {
 }
 
 .menu-item-2 {
-  background-image: url("../images/food-menu-bg-2.svg");
+  background-image: url("../images/higayi-bg.svg");
   background-repeat: no-repeat;
   background-size: cover;
   border-radius: 5px;
@@ -632,6 +818,35 @@ h3 {
   padding: 0 50px;
 }
 
+.food-menu-logo {
+  position: relative;
+  text-align: center;
+  color: black;
+  margin-bottom: 15px;
+  font-size: 18px;
+  background-image: url("../images/hagiya-images/vertical-inside-logo.png");
+  background-repeat: no-repeat;
+  background-position: center;
+  background-size: contain;
+
+  /* Add padding for better spacing */
+  padding: 15px 0;
+
+  /* Ensure text is visible */
+  position: relative;
+  z-index: 1;
+}
+
+.food-menu-logo::after {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background-color: rgba(255, 255, 255, 0.5); /* Adjust opacity as needed */
+  z-index: -1;
+}
 .menu-item-content h3 {
   color: black;
   margin-bottom: 15px;
@@ -851,7 +1066,8 @@ h3 {
 
 .info-nbr {
   display: inline-block;
-  border: 1px solid #91654d;
+  border-top: 2px solid rgba(145, 101, 77, 0.1);
+  border-bottom: 2px solid rgba(145, 101, 77, 0.1);
   padding: 6px 20px;
   margin: 15px 0 8px;
   font-size: 16px;
@@ -1040,44 +1256,6 @@ h3 {
 
 /* Medium Screens - under 1024px */
 @media (max-width: 1024px) {
-  .storefront-section {
-    flex-direction: column;
-    padding: 30px 20px;
-    margin-left: 0;
-  }
-
-  .storefront-image {
-    width: 100%;
-    height: auto;
-    max-width: 800px;
-    margin: 0 auto 30px;
-  }
-
-  .vertical-image {
-    display: none;
-  }
-
-  .vertical-text {
-    position: static;
-    writing-mode: horizontal-tb;
-    text-orientation: mixed;
-    height: auto;
-    width: 100%;
-    margin: 30px auto 0;
-    padding: 0;
-    text-align: center;
-  }
-
-  .vertical-text h2 {
-    margin-bottom: 15px;
-  }
-
-  .vertical-text p {
-    margin-left: 0;
-    margin-bottom: 10px;
-    display: block;
-  }
-
   .space-container {
     height: auto;
     min-height: 600px;
