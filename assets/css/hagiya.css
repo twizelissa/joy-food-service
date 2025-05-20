@@ -1,3 +1,6 @@
+/* ======================================================
+     1. Reset & Base Styles
+     ====================================================== */
 * {
   margin: 0;
   padding: 0;
@@ -179,8 +182,7 @@ h3 {
 
 .storefront-image {
   margin-left: 5%;
-  width: 60%;
-  max-width: 1136px;
+  width: 65%;
   height: auto;
   aspect-ratio: 1136/596; /* Maintain aspect ratio */
   box-shadow: 0 0 15px rgba(0, 0, 0, 0.1);
@@ -193,9 +195,9 @@ h3 {
   object-fit: cover;
 }
 
-.vertical-image {
+.storefront-vertical-image {
   position: absolute;
-  right: 8%;
+  right: 10%;
   top: 25%;
   writing-mode: vertical-rl;
   text-orientation: upright;
@@ -206,174 +208,34 @@ h3 {
   background-repeat: no-repeat;
   color: black;
   padding: 20px 10px;
-  height: 420px;
+  height: 60%;
   width: 35%;
   max-width: 22%;
   line-height: 2;
 }
 
-.vertical-text {
+.storefront-vertical-text {
   position: absolute;
-  right: 12%;
+  right: 14%;
   writing-mode: vertical-rl;
   text-orientation: upright;
   font-family: "Noto Serif JP", serif;
   color: black;
   padding: 20px 10px;
-  height: 400px;
+  height: 80%;
   width: 15%;
-  max-width: 433px;
   line-height: 2;
 }
 
-.vertical-text h2 {
+.storefront-vertical-text h2 {
   font-size: 20px;
   font-weight: bold;
 }
 
-.vertical-text p {
+.storefront-vertical-text p {
   font-size: 14px;
   margin-left: 15px;
   font-weight: lighter;
-}
-
-/* Large screens */
-@media (min-width: 1600px) {
-  .storefront-image {
-    width: 65%;
-  }
-  .vertical-image {
-    right: 10%;
-  }
-  .vertical-text {
-    right: 15%;
-  }
-}
-
-/* Medium-large screens */
-@media (max-width: 1440px) {
-  .storefront-image {
-    width: 55%;
-  }
-  .vertical-image {
-    right: 5%;
-    width: 25%;
-  }
-  .vertical-text {
-    right: 10%;
-    width: 18%;
-  }
-}
-
-/* Medium screens - the problematic range */
-@media (max-width: 1280px) {
-  .storefront-section {
-    padding: 30px 3%;
-  }
-  .storefront-image {
-    width: 50%;
-    margin-left: 2%;
-  }
-  .vertical-image {
-    right: 2%;
-    width: 28%;
-  }
-  .vertical-text {
-    right: 7%;
-    width: 20%;
-  }
-}
-
-/* Smaller medium screens */
-@media (max-width: 1100px) {
-  .storefront-section {
-    flex-direction: column;
-    align-items: center;
-    padding: 30px 20px;
-  }
-
-  .storefront-image {
-    width: 90%;
-    margin: 0 auto 30px;
-  }
-
-  .vertical-image {
-    position: static;
-    width: 80%;
-    max-width: 385px;
-    margin: 20px auto;
-    height: 200px;
-    writing-mode: horizontal-tb;
-  }
-
-  .vertical-text {
-    position: static;
-    width: 90%;
-    margin: 20px auto;
-    writing-mode: horizontal-tb;
-    text-orientation: mixed;
-    height: auto;
-    text-align: center;
-  }
-
-  .vertical-text h2 {
-    margin-bottom: 15px;
-  }
-
-  .vertical-text p {
-    margin-left: 0;
-    margin-bottom: 10px;
-  }
-}
-
-/* Original breakpoint */
-@media (max-width: 1024px) {
-  .storefront-section {
-    flex-direction: column;
-    padding: 30px 20px;
-  }
-
-  .storefront-image {
-    width: 100%;
-    height: auto;
-    max-width: 800px;
-    margin: 0 auto 30px;
-  }
-
-  .vertical-image {
-    display: none;
-  }
-
-  .vertical-text {
-    position: static;
-    writing-mode: horizontal-tb;
-    text-orientation: mixed;
-    height: auto;
-    width: 100%;
-    margin: 30px auto 0;
-    padding: 0;
-    text-align: center;
-  }
-
-  .vertical-text h2 {
-    margin-bottom: 15px;
-  }
-
-  .vertical-text p {
-    margin-left: 0;
-    margin-bottom: 10px;
-    display: block;
-  }
-}
-
-/* Mobile screens */
-@media (max-width: 768px) {
-  .storefront-section {
-    padding: 20px 10px;
-  }
-  .storefront-image {
-    width: 100%;
-  }
 }
 
 /* ======================================================
@@ -390,26 +252,25 @@ h3 {
   text-align: center;
   color: black;
   margin-bottom: 10px;
-  position: relative; /* Add this */
-  padding: 20px 0; /* Add padding to create space for the background image */
-  z-index: 1; /* Ensure text is above the background */
+  position: relative;
+  padding: 20px 0;
+  z-index: 1;
 }
 
-/* Add this new rule */
 .news-section h2::before {
   content: "";
   background-image: url("../images/hagiya-images/vertical-inside-logo.png");
-  background-size: contain; /* or cover, depending on your preference */
+  background-size: contain;
   background-position: center;
   background-repeat: no-repeat;
   position: absolute;
-  width: 100px; /* Set your desired width */
-  height: 100px; /* Set your desired height */
-  top: 50%; /* Center vertically */
-  left: 50%; /* Center horizontally */
-  transform: translate(-50%, -50%); /* Perfect centering */
-  z-index: -1; /* Place behind the text */
-  opacity: 0.8; /* Optional: adjust if you want the image more transparent */
+  width: 100px;
+  height: 100px;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  z-index: -1;
+  opacity: 0.8;
 }
 
 .news-container {
@@ -444,10 +305,9 @@ h3 {
   font-size: 14px;
   overflow-wrap: break-word;
 }
-/* course menu part */
-
-/* Food Menu Section - White card with fixed measurements */
-
+/* ======================================================
+     8. Course Menu Section
+     ====================================================== */
 .menu-layout {
   max-width: 100%;
   margin: 0 auto;
@@ -458,30 +318,28 @@ h3 {
   background-size: cover;
   border-radius: 12px;
   box-shadow: 0 3px 22px rgba(0, 0, 0, 0.1);
-  height: 750px; /* 1.5x the original 500px */
+  height: 750px;
 }
 
-/* Food Menu Section - White card with fixed measurements - scaled up by 1.5x */
 .menu-card {
   background-image: url("../images/course-backward-bg.svg");
   background-repeat: no-repeat;
   background-size: cover;
   position: absolute;
-  width: 65%; /* 1.5x the original 600px */
-  height: 390px; /* 1.5x the original 260px */
-  left: 20%; /* 1.5x the original 150px */
-  top: 240px; /* 1.5x the original 160px */
+  width: 65%;
+  height: 390px;
+  left: 20%;
+  top: 240px;
   z-index: 1;
-  overflow: visible; /* Critical: prevents content from overflowing */
+  overflow: visible;
 }
 
-/* Main large image - scaled up by 1.5x */
 .main-image {
   position: absolute;
-  width: 450px; /* 1.5x the original 300px */
-  height: 382px; /* 1.5x the original 255px */
-  left: 10%; /* 1.5x the original 80px */
-  top: 210px; /* 1.5x the original 140px */
+  width: 450px;
+  height: 382px;
+  left: 10%;
+  top: 210px;
   z-index: 3;
 }
 
@@ -489,44 +347,39 @@ h3 {
   width: 100%;
   height: 100%;
   object-fit: cover;
-  /* border-radius: 6px; */
-  /* box-shadow: 0 3px 9px rgba(0, 0, 0, 0.1); */
 }
 
-/* Thumbnails positioned with adequate spacing from menu - scaled up by 1.5x */
 .thumbnail-container {
   position: absolute;
-  left: 36%; /* 1.5x the original 390px */
-  top: 200px; /* 1.5x the original 140px */
+  left: 36%;
+  top: 200px;
   display: flex;
   flex-direction: column;
-  gap: 15px; /* 1.5x the original 10px */
+  gap: 15px;
   z-index: 3;
-  height: 450px; /* 1.5x the original 300px */
+  height: 450px;
 }
 
 .thumbnail-container img {
-  width: 240px; /* 1.5x the original 160px */
-  height: 217px; /* 1.5x the original 145px */
+  width: 240px;
+  height: 217px;
   object-fit: cover;
 }
 
-/* Menu content positioned RELATIVE to white card - scaled up by 1.5x */
 .menu-content {
   position: absolute;
-  top: 22px; /* 1.5x the original 15px */
-  right: 35%; /* 1.5x the original 40px */
-  width: 225px; /* 1.5x the original 150px */
-  height: 345px; /* 1.5x the original 230px */
+  top: 22px;
+  right: 35%;
+  width: 225px;
+  height: 345px;
   display: flex;
   flex-direction: column;
 }
 
-/* Course menu styling - scaled up by 1.5x */
 .course-title {
-  font-size: 21px; /* 1.5x the original 14px */
+  font-size: 21px;
   font-weight: 500;
-  margin-bottom: 12px; /* 1.5x the original 8px */
+  margin-bottom: 12px;
   text-align: center;
   position: relative;
 }
@@ -534,51 +387,50 @@ h3 {
 .course-title::after {
   content: "";
   position: absolute;
-  bottom: -6px; /* 1.5x the original -4px */
+  bottom: -6px;
   left: 50%;
   transform: translateX(-50%);
-  width: 45px; /* 1.5x the original 30px */
+  width: 45px;
   height: 1px;
   background-color: #333;
 }
 
 .course-items {
   list-style: none;
-  margin-bottom: 7px; /* 1.5x the original 5px */
+  margin-bottom: 7px;
   flex-shrink: 0;
 }
 
 .course-items li {
-  padding: 4px 0; /* ~1.5x the original 3px */
-  font-size: 18px; /* 1.5x the original 12px */
+  padding: 4px 0;
+  font-size: 18px;
   line-height: 1.3;
 }
 
 .course-price {
-  font-size: 18px; /* 1.5x the original 12px */
+  font-size: 18px;
   text-align: right;
-  margin-top: 4px; /* ~1.5x the original 3px */
-  margin-bottom: 4px; /* ~1.5x the original 3px */
+  margin-top: 4px;
+  margin-bottom: 4px;
 }
 
 .course-note {
-  font-size: 15px; /* 1.5x the original 10px */
+  font-size: 15px;
   color: #666;
   margin-bottom: 0;
 }
 
-/* Vertical text that overhangs at top - scaled up by 1.5x */
 .vertical-text-container {
   position: absolute;
-  top: -150px; /* Overhang 20px above the white card */
-  right: 60px; /* Move it to the left of the card */
+  top: -150px;
+  right: 60px;
   height: 420px;
   display: flex;
   flex-direction: column;
   z-index: 2;
 }
 
-.vertical-text {
+.course-vertical-text {
   writing-mode: vertical-rl;
   text-orientation: mixed;
   font-size: 18px;
@@ -588,67 +440,6 @@ h3 {
   font-weight: lighter;
 }
 
-/* Responsive styles - also scaled */
-@media (max-width: 768px) {
-  .menu-layout {
-    height: auto;
-    padding-bottom: 750px; /* 1.5x the original 500px */
-  }
-
-  .menu-card {
-    width: 85%;
-    left: 7.5%;
-    top: auto;
-    bottom: 30px; /* 1.5x the original 20px */
-    height: auto;
-    min-height: 480px; /* 1.5x the original 320px */
-  }
-
-  .menu-content {
-    position: static;
-    width: 100%;
-    margin: 0 auto;
-    padding: 30px; /* 1.5x the original 20px */
-    height: auto;
-  }
-
-  .main-image {
-    width: 85%;
-    height: 375px; /* 1.5x the original 250px */
-    left: 7.5%;
-    top: 30px; /* 1.5x the original 20px */
-  }
-
-  .thumbnail-container {
-    flex-direction: row;
-    width: 85%;
-    left: 7.5%;
-    top: 435px; /* 1.5x the original 290px */
-    height: auto;
-    gap: 5%;
-  }
-
-  .thumbnail-container img {
-    width: 47.5%;
-    height: 180px; /* 1.5x the original 120px */
-  }
-
-  .vertical-text-container {
-    position: relative;
-    top: auto;
-    right: auto;
-    width: 85%;
-    height: auto;
-    margin: 30px auto; /* 1.5x the original 20px */
-  }
-
-  .vertical-text {
-    writing-mode: horizontal-tb;
-    text-orientation: mixed;
-    margin-left: 0;
-    margin-bottom: 15px; /* 1.5x the original 10px */
-  }
-}
 /* ======================================================
      9. Space Section
      ====================================================== */
@@ -755,7 +546,6 @@ h3 {
   width: 100%;
   height: 100%;
 }
-
 /* ======================================================
      10. Food Menu Section
      ====================================================== */
@@ -800,6 +590,7 @@ h3 {
   gap: 20px;
   padding: 40px 20px;
 }
+
 .menu-item-content-image {
   padding-top: 40px;
   width: 30%;
@@ -828,11 +619,7 @@ h3 {
   background-repeat: no-repeat;
   background-position: center;
   background-size: contain;
-
-  /* Add padding for better spacing */
   padding: 15px 0;
-
-  /* Ensure text is visible */
   position: relative;
   z-index: 1;
 }
@@ -844,9 +631,10 @@ h3 {
   left: 0;
   right: 0;
   bottom: 0;
-  background-color: rgba(255, 255, 255, 0.5); /* Adjust opacity as needed */
+  background-color: rgba(255, 255, 255, 0.5);
   z-index: -1;
 }
+
 .menu-item-content h3 {
   color: black;
   margin-bottom: 15px;
@@ -863,7 +651,6 @@ h3 {
   transform: translateX(-50%);
   width: 40px;
   height: 2px;
-  /* background-color: #91654d; */
 }
 
 .menu-item-content p {
@@ -921,13 +708,13 @@ h3 {
 .instagram-btn:hover {
   background-color: #7a5441;
 }
+
 /* ======================================================
      12. Gallery Section with Auto-Scroll
      ====================================================== */
 .gallery-section {
   width: 100%;
   padding: 30px 0;
-  /* background-color: #f7f5f0; */
   overflow: hidden;
   position: relative;
 }
@@ -938,19 +725,18 @@ h3 {
   flex-wrap: nowrap;
   overflow-x: auto;
   scroll-snap-type: x mandatory;
-  -webkit-overflow-scrolling: touch; /* For smoother scrolling on iOS */
-  scrollbar-width: none; /* Hide scrollbar in Firefox */
-  -ms-overflow-style: none; /* Hide scrollbar in IE/Edge */
+  -webkit-overflow-scrolling: touch;
+  scrollbar-width: none;
+  -ms-overflow-style: none;
   padding: 0 20px;
 }
 
-/* Hide scrollbar in Chrome/Safari */
 .gallery-container::-webkit-scrollbar {
   display: none;
 }
 
 .gallery-image {
-  flex: 0 0 300px; /* Fixed width for each image */
+  flex: 0 0 300px;
   height: 250px;
   scroll-snap-align: start;
   margin-right: 15px;
@@ -1026,7 +812,7 @@ h3 {
 }
 
 .info-section h2 {
-  color: #3a2f2f; /* darker for better visibility */
+  color: #3a2f2f;
   margin-bottom: 10px;
   padding-top: 20px;
   font-size: 24px;
@@ -1077,7 +863,6 @@ h3 {
   font-weight: 500;
   min-width: 120px;
 }
-
 /* ======================================================
      14. Map Section
      ====================================================== */
@@ -1166,15 +951,40 @@ h3 {
 }
 
 /* ======================================================
-     18. Media Queries - Responsive Design
+     18. Media Queries - CONSOLIDATED
      ====================================================== */
 
-/* Large Screens - under 1400px */
-@media (max-width: 1400px) {
+/* Custom category for both laptops (1500px-1900px) */
+@media screen and (min-width: 1500px) and (max-width: 1900px) {
+  /* Storefront Section */
+}
+
+/* Large Screens (max-width: 1600px) */
+@media (max-width: 1600px) {
+  .storefront-image {
+    margin-left: 5%;
+    width: 65%;
+  }
+  .storefront-vertical-image {
+    right: 10%;
+    top: 25%;
+    height: 60%;
+    width: 35%;
+  }
+
+  .storefront-vertical-text {
+    right: 14%;
+    width: 15%;
+    padding: 20px 10px;
+    height: 80%;
+  }
+
+  /* Space Section */
   .space-container {
     width: 100%;
   }
 
+  /* Menu Section */
   .course-container {
     max-width: 95%;
   }
@@ -1184,8 +994,91 @@ h3 {
   }
 }
 
-/* Medium Large Screens - under 1200px */
+/* Large Screens (max-width: 1400px) */
+@media (max-width: 1400px) {
+  /* Space Section */
+  .storefront-image {
+    margin-left: 5%;
+    width: 65%;
+  }
+  .storefront-vertical-image {
+    right: 10%;
+    top: 25%;
+    height: 60%;
+    width: 35%;
+  }
+
+  .storefront-vertical-text {
+    right: 14%;
+    width: 15%;
+    padding: 20px 10px;
+    height: 80%;
+  }
+}
+
+/* Medium-Large Screens (max-width: 1440px) */
+@media (max-width: 1440px) {
+  .storefront-image {
+    margin-left: 5%;
+    width: 65%;
+  }
+  .storefront-vertical-image {
+    right: 10%;
+    top: 25%;
+    height: 60%;
+    width: 35%;
+  }
+
+  .storefront-vertical-text {
+    right: 14%;
+    width: 15%;
+    height: 60%;
+  }
+}
+
+/* Medium-Large Screens (max-width: 1280px) */
+@media (max-width: 1280px) {
+  .storefront-image {
+    margin-left: 5%;
+    width: 65%;
+  }
+  .storefront-vertical-image {
+    right: 10%;
+    top: 25%;
+    height: 60%;
+    width: 35%;
+  }
+
+  .storefront-vertical-text {
+    right: 14%;
+    width: 15%;
+    padding: 20px 10px;
+    height: 80%;
+  }
+}
+
+/* Medium-Large Screens (max-width: 1200px) */
 @media (max-width: 1200px) {
+  /* Storefront Section */
+ .storefront-image {
+    margin-left: 5%;
+    width: 65%;
+  }
+  .storefront-vertical-image {
+    right: 10%;
+    top: 25%;
+    height: 60%;
+    width: 35%;
+  }
+
+  .storefront-vertical-text {
+    right: 14%;
+    width: 15%;
+    padding: 20px 10px;
+    height: 80%;
+  }
+
+  /* Course Section */
   .course-container {
     grid-template-columns: 1fr;
     height: auto;
@@ -1233,9 +1126,10 @@ h3 {
   }
 
   .space-container {
-    height: 800px; /* Fixed height for layout stability */
+    height: 800px;
   }
 
+  /* Food Menu Section */
   .menu-item-content {
     width: 100%;
     flex-direction: column;
@@ -1254,8 +1148,68 @@ h3 {
   }
 }
 
-/* Medium Screens - under 1024px */
+/* Medium Screens (max-width: 1100px) */
+@media (max-width: 1100px) {
+  .storefront-image {
+    margin-left: 5%;
+    width: 65%;
+  }
+  .storefront-vertical-image {
+    right: 10%;
+    top: 25%;
+    height: 60%;
+    width: 35%;
+  }
+
+  .storefront-vertical-text {
+    right: 14%;
+    width: 15%;
+    padding: 20px 10px;
+    height: 80%;
+  }
+}
+
+/* Medium Screens (max-width: 1024px) */
 @media (max-width: 1024px) {
+  /* Storefront Section */
+  .storefront-section {
+    flex-direction: column;
+    padding: 30px 20px;
+  }
+
+  .storefront-image {
+    width: 100%;
+    height: auto;
+    max-width: 800px;
+    margin: 0 auto 30px;
+  }
+
+  .storefront-vertical-image {
+    display: none;
+  }
+
+  .storefront-vertical-text {
+    position: static;
+    writing-mode: horizontal-tb;
+    text-orientation: mixed;
+    height: auto;
+    width: 100%;
+    margin: 30px auto 0;
+    padding: 0;
+    text-align: center;
+  }
+
+  .storefront-vertical-text h2 {
+    margin-bottom: 15px;
+  }
+
+  .storefront-vertical-text p {
+    margin-left: 0;
+    margin-bottom: 10px;
+    display: block;
+  }
+
+  /* Space Section */
   .space-container {
     height: auto;
     min-height: 600px;
@@ -1310,14 +1264,75 @@ h3 {
     margin-top: 20px;
   }
 
+  /* Course Menu Section */
+  .menu-layout {
+    height: auto;
+    padding-bottom: 750px;
+  }
+
+  .menu-card {
+    width: 85%;
+    left: 7.5%;
+    top: auto;
+    bottom: 30px;
+    height: auto;
+    min-height: 480px;
+  }
+
+  .menu-content {
+    position: static;
+    width: 100%;
+    margin: 0 auto;
+    padding: 30px;
+    height: auto;
+  }
+
+  .main-image {
+    width: 85%;
+    height: 375px;
+    left: 7.5%;
+    top: 30px;
+  }
+
+  .thumbnail-container {
+    flex-direction: row;
+    width: 85%;
+    left: 7.5%;
+    top: 435px;
+    height: auto;
+    gap: 5%;
+  }
+
+  .thumbnail-container img {
+    width: 47.5%;
+    height: 180px;
+  }
+
+  .vertical-text-container {
+    position: relative;
+    top: auto;
+    right: auto;
+    width: 85%;
+    height: auto;
+    margin: 30px auto;
+  }
+
+  .course-vertical-text {
+    writing-mode: horizontal-tb;
+    text-orientation: mixed;
+    margin-left: 0;
+    margin-bottom: 15px;
+  }
+
+  /* Map Section */
   .google-map {
     height: 400px;
   }
 }
 
-/* Tablet Screens - under 768px */
+/* Tablet Screens (max-width: 768px) */
 @media (max-width: 768px) {
-  /* Header becomes mobile friendly */
+  /* Header Mobile Friendly */
   .site-header {
     padding: 10px 20px;
   }
@@ -1356,10 +1371,21 @@ h3 {
     margin: 10px 0;
   }
 
+  /* Hero Section */
   .hero-image {
     height: 60vh;
   }
 
+  /* Storefront Section */
+  .storefront-section {
+    padding: 20px 10px;
+  }
+
+  .storefront-image {
+    width: 100%;
+  }
+
+  /* News Section */
   .news-container {
     padding: 15px;
   }
@@ -1369,8 +1395,8 @@ h3 {
   }
 
   .news-item {
-    flex-direction: column; /* Stack date and content vertically on mobile */
-    margin-left: 0; /* Remove margin on mobile */
+    flex-direction: column;
+    margin-left: 0;
   }
 
   .news-content p {
@@ -1378,26 +1404,15 @@ h3 {
   }
 
   .news-section h2::before {
-    /* Smaller background image on mobile */
     width: 80px;
     height: 80px;
   }
 
   .news-container {
-    padding: 15px 10px; /* Smaller padding on mobile */
+    padding: 15px 10px;
   }
 
-  .info-details {
-    flex-direction: column;
-  }
-
-  .info-item {
-    margin-bottom: 20px;
-  }
-
-  .tel {
-    font-size: 20px;
-  }
+  /* Space Section */
   .space-section {
     padding: 30px 20px;
   }
@@ -1405,10 +1420,9 @@ h3 {
   .space-container {
     width: 100%;
     margin-left: 0;
-    min-height: 1200px; /* Taller container for stacked content */
+    min-height: 1200px;
   }
 
-  /* Create a stacked visual arrangement while keeping absolute positioning */
   .space-image-2 {
     width: 75%;
     top: 100px;
@@ -1417,13 +1431,13 @@ h3 {
 
   .space-image-3 {
     width: 75%;
-    top: 380px; /* Positioned below the previous image */
+    top: 380px;
     left: 20%;
   }
 
   .space-image-4-space {
     width: 75%;
-    top: 660px; /* Positioned below the previous image */
+    top: 660px;
     left: 10%;
     bottom: auto;
   }
@@ -1434,29 +1448,15 @@ h3 {
   }
 
   .space-image-1-texts {
-    top: 990px; /* Positioned below all images */
+    top: 990px;
     left: 0;
     width: 100%;
     display: flex;
     justify-content: center;
     min-height: 200px;
   }
-}
 
-/* Phone Screens - under 480px */
-@media (max-width: 480px) {
-  .logo-text-img {
-    height: 18px;
-  }
-
-  .logo-name-img {
-    height: 28px;
-  }
-
-  .hero-image {
-    height: 40vh;
-  }
-
+  /* Gallery Section */
   .gallery-image {
     flex: 0 0 250px;
     height: 200px;
@@ -1476,14 +1476,107 @@ h3 {
     right: 10px;
   }
 
+  /* Info Section */
+  .info-details {
+    flex-direction: column;
+  }
+
+  .info-item {
+    margin-bottom: 20px;
+  }
+
+  .tel {
+    font-size: 20px;
+  }
+
+  /* Course Menu Section */
+  .menu-layout {
+    height: auto;
+    padding-bottom: 750px;
+  }
+
+  .menu-card {
+    width: 85%;
+    left: 7.5%;
+    top: auto;
+    bottom: 30px;
+    height: auto;
+    min-height: 480px;
+  }
+
+  .menu-content {
+    position: static;
+    width: 100%;
+    margin: 0 auto;
+    padding: 30px;
+    height: auto;
+  }
+
+  .main-image {
+    width: 85%;
+    height: 375px;
+    left: 7.5%;
+    top: 30px;
+  }
+
+  .thumbnail-container {
+    flex-direction: row;
+    width: 85%;
+    left: 7.5%;
+    top: 435px;
+    height: auto;
+    gap: 5%;
+  }
+
+  .thumbnail-container img {
+    width: 47.5%;
+    height: 180px;
+  }
+
+  .vertical-text-container {
+    position: relative;
+    top: auto;
+    right: auto;
+    width: 85%;
+    height: auto;
+    margin: 30px auto;
+  }
+
+  .course-vertical-text {
+    writing-mode: horizontal-tb;
+    text-orientation: mixed;
+    margin-left: 0;
+    margin-bottom: 15px;
+  }
+}
+
+/* Phone Screens (max-width: 480px) */
+@media (max-width: 480px) {
+  /* Header */
+  .logo-text-img {
+    height: 18px;
+  }
+
+  .logo-name-img {
+    height: 28px;
+  }
+
+  /* Hero Section */
+  .hero-image {
+    height: 40vh;
+  }
+
+  /* Menu Buttons */
   .menu-btn {
     width: 100%;
   }
 
+  /* Map Section */
   .google-map {
     height: 300px;
   }
 
+  /* Course Section */
   .course-title {
     text-align: center;
   }
