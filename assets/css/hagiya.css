@@ -1532,7 +1532,7 @@ h3 {
   .main-image {
     position: absolute;
     width: 22%;
-    height: auto;
+    height: 50%;
     left: 10%;
     top: 28%;
     z-index: 3;
@@ -1555,15 +1555,7 @@ h3 {
     height: 50%;
     object-fit: cover;
   }
-  .menu-content {
-    position: absolute;
-    top: 5%;
-    right: 35%;
-    width: 20%;
-    height: 345px;
-    display: flex;
-    flex-direction: column;
-  }
+
   .main-image img {
     width: 100%;
     height: 100%;
@@ -1589,7 +1581,7 @@ h3 {
   .menu-content {
     position: absolute;
     top: 3%;
-    right: 35%;
+    right: 27%;
     width: 20%;
     height: 30%;
     display: flex;
@@ -2273,5 +2265,58 @@ h3 {
 
   .course-list {
     padding: 0 10px;
+  }
+
+  .space-section {
+    padding: 25px 15px;
+  }
+
+  .space-container {
+    margin-top: 20px;
+    min-height: 600px;
+  }
+
+  .space-images {
+    min-height: 450px;
+  }
+
+  .space-image {
+    height: 180px;
+  }
+
+  .space-image-2,
+  .space-image-3 {
+    height: 170px;
+  }
+
+  .space-image-2 {
+    top: 0;
+    left: 0;
+    width: 48%;
+  }
+
+  .space-image-3 {
+    top: 0;
+    left: 52%;
+    width: 48%;
+  }
+
+  .space-image-4-space {
+    display: none; /* Hide the third image on mobile as requested */
+  }
+
+  .space-image-1-texts {
+    top: 190px; /* Position text right below the two images */
+    padding: 20px 10px;
+  }
+
+  .space-image-1-texts p {
+    font-size: 12px;
+    margin-bottom: 8px;
+  }
+
+  .space-image-1-texts p:nth-child(4) {
+    font-size: 16px !important;
+    margin-top: 10px;
   }
 }
