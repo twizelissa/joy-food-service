@@ -477,30 +477,34 @@ section {
 }
 
 /* Instagram Section */
+/* ======================================================
+     11. Instagram Section
+     ====================================================== */
 .instagram-section {
-  padding: 60px 0;
+  padding: 40px 0;
   text-align: center;
 }
 
 .instagram-container {
-  max-width: 1200px;
+  max-width: 1000px;
   margin: 0 auto;
-  padding: 0 20px;
 }
 
 .instagram-btn {
-  display: inline-block;
-  padding: 12px 30px;
-  background-color: #e1306c;
-  color: white !important;
-  border-radius: 5px;
-  font-weight: bold;
+  color: #91654d;
+  padding: 8px 15px;
+  border-radius: 3px;
+  font-size: 14px;
   transition: background-color 0.3s;
-  font-size: 18px;
+  display: flex;
+  justify-content: center;
+  width: fit-content;
+  margin: 0 auto;
+  border: 1px solid #91654d;
 }
 
 .instagram-btn:hover {
-  background-color: #c13584;
+  background-color: #7a5441;
 }
 
 /* NEW: Access Section Styling */
@@ -734,54 +738,78 @@ section {
 }
 
 @media (max-width: 767px) {
-  section {
-    padding: 60px 15px;
+  .hero {
+    height: 40vh; /* Reduced from 90vh */
+    min-height: 400px;
   }
 
   .overlay h1 {
-    font-size: 32px;
+    font-size: 36px;
+    margin-bottom: 15px;
   }
 
   .overlay p {
-    font-size: 16px;
+    font-size: 18px;
   }
 
-  .gallery-slide {
+  /* Fix about section spacing */
+  .about {
+    padding: 40px 20px; /* Reduced padding */
+  }
+
+  .about-content {
     flex-direction: column;
-    align-items: center;
-    gap: 15px;
-    padding: 0 20px;
+    gap: 20px; /* Reduced gap */
   }
 
-  .gallery-item {
-    width: 90%;
-    max-width: 450px;
+  .about-image img {
+    height: 300px; /* Fixed height instead of 500px */
   }
 
-  .gallery-item img {
-    height: 100%;
+  /* Fix gallery section spacing */
+  .gallery {
+    padding: 40px 0; /* Reduced padding */
   }
 
-  .system-in-between-gallery-container-grid {
-    grid-template-columns: repeat(2, 1fr);
+  .gallery-after-text {
+    margin-top: 40px; /* Reduced from 100px */
   }
 
-  .system-in-between-gallery-item:nth-child(5) {
-    grid-column: span 2;
-    grid-row: span 1;
+  .instagram-section {
+    padding: 40px 20px !important;
+    width: 100% !important;
+    text-align: center !important;
   }
 
-  .highlight-text span {
-    font-size: 16px;
+  .instagram-btn {
+    display: inline-block !important;
+    width: 80% !important;
+    max-width: 300px !important;
+    margin: 0 auto !important;
+    padding: 15px 20px !important;
+    font-size: 16px !important;
+    text-align: center !important;
+    box-sizing: border-box !important;
+  }
+
+  /* Fix system sections spacing */
+  .system {
+    padding: 40px 20px; /* Reduced padding */
+    width: 100%;
+  }
+
+  /* Fix full-width image section */
+  .full-width-image-section {
+    margin: 40px 0; /* Reduced from 80px */
   }
 
   .full-width-image-container {
-    height: 350px;
+    height: 300px; /* Reduced height */
   }
 
-  .highlight-th,
-  .highlight-td {
-    font-size: 14px;
+  /* Fix spacing between sections */
+  section {
+    padding: 40px 15px; /* Reduced from 60px */
   }
 }
 
@@ -859,6 +887,7 @@ section {
 .instagram-section {
   padding: 60px 0;
   text-align: center;
+  width: 90%;
 }
 
 .instagram-container {
