@@ -893,80 +893,6 @@ header {
   box-shadow: 0 5px 10px rgba(0, 0, 0, 0.15);
 }
 
-/* ===== RESPONSIVE STYLES - FOCUSED ON 767px ===== */
-@media (max-width: 767px) {
-  /* Restaurant section responsive styles */
-  .restaurant-card {
-    flex-direction: column;
-    height: auto;
-  }
-
-  .restaurant-info {
-    width: 100%;
-    padding: 30px;
-  }
-
-  .restaurant-images {
-    width: 100%;
-    height: 350px; /* Fixed height for image section */
-  }
-
-  .large-image,
-  .small-images {
-    height: 100%;
-  }
-
-  .view-more {
-    margin-top: 20px; /* Reset margin for stacked layout */
-  }
-
-  /* Recruit section responsive styles */
-  .recruit-section {
-    padding: 60px 0;
-  }
-
-  .recruit-header h2 {
-    font-size: 24px;
-  }
-
-  .recruit-swiper {
-    padding: 0 30px;
-  }
-
-  .recruit-nav-button {
-    width: 35px !important;
-    height: 35px !important;
-  }
-
-  .recruit-item {
-    flex-direction: column;
-  }
-
-  .recruit-label,
-  .recruit-value {
-    width: 100%;
-    padding: 15px;
-    text-align: left;
-  }
-
-  .recruit-label {
-    border-right: none;
-    border-bottom: 1px solid #eee;
-    justify-content: flex-start;
-    font-weight: bold;
-  }
-
-  .apply-btn {
-    width: 100%;
-    max-width: 300px;
-    padding: 12px 20px;
-  }
-
-  .recruit-buttons {
-    display: flex;
-    justify-content: center;
-  }
-}
 /* Footer */
 footer {
   background-color: #f04e5c;
@@ -1119,45 +1045,54 @@ footer:before {
     box-shadow: 0 5px 10px rgba(0, 0, 0, 0.1);
   }
 
-  .mission-section {
-    padding: 50px 0;
-  }
+  /* 
+  Mission section responsive
+  */
 
   .mission-container {
-    min-height: auto;
-    padding-bottom: 40px;
-    padding-top: 40px;
+    min-height: 500px;
+    padding: 40px 15px;
   }
 
   .mission-box {
-    position: relative;
     width: 90%;
     height: 100%;
+    left: 0;
+    right: 0;
     margin: 0 auto;
-    left: auto;
-    top: auto;
   }
 
   .white-card {
-    position: relative;
-    width: 90%;
-    margin: 20px auto;
-    top: auto;
-    left: auto;
-    padding: 30px 25px;
+    width: 85%;
+    padding: 120px 20px 30px;
+    left: 0;
+    right: 0;
+    margin: 0 auto;
+    text-align: center;
+  }
+
+  .slogan {
+    width: 180px;
+    height: auto;
+    top: 30px;
+    left: 50%;
+    transform: translateX(-50%);
+  }
+
+  .white-card p {
+    margin-left: 0;
     text-align: center;
   }
 
   .white-card h2 {
     font-size: 20px;
     text-align: center;
-    margin: 0 auto 30px;
+    width: 100%;
   }
 
-  .white-card h2:after {
-    left: 50%;
-    transform: translateX(-50%);
-  }
+  /* 
+  News section responsive
+  */
 
   .news-item-link {
     flex-direction: column !important;
@@ -1179,19 +1114,31 @@ footer:before {
     width: 100% !important;
   }
 
-  .recruit-label,
-  .recruit-value {
+  /* this is it  */
+
+  /* Restaurant section responsive styles */
+  .restaurant-card {
+    flex-direction: column;
+    height: auto;
+  }
+
+  .restaurant-info {
     width: 100%;
-    border-right: none;
+    padding: 30px;
   }
 
-  .recruit-label {
-    border-bottom: 1px solid #eee;
-    padding-bottom: 10px;
+  .restaurant-images {
+    width: 100%;
+    height: 350px; /* Fixed height for image section */
   }
 
-  .recruit-swiper {
-    padding: 0 30px;
+  .large-image,
+  .small-images {
+    height: 100%;
+  }
+
+  .view-more {
+    margin-top: 20px; /* Reset margin for stacked layout */
   }
 
   /* Restaurant section responsive */
@@ -1219,13 +1166,30 @@ footer:before {
     margin-top: 20px;
   }
 
-  /* Recruit section responsive */
+  /* 4.5 Recruit Section
+   ========================================================================== */
+
+  .recruit-label,
+  .recruit-value {
+    width: 100%;
+    border-right: none;
+  }
+
+  .recruit-label {
+    border-bottom: 1px solid #eee;
+    padding-bottom: 10px;
+  }
+
   .recruit-section {
     padding: 60px 0;
   }
 
   .recruit-header h2 {
     font-size: 24px;
+  }
+
+  .recruit-swiper {
+    padding: 0 30px;
   }
 
   .recruit-nav-button {
