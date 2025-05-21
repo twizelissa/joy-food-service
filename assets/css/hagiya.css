@@ -457,11 +457,12 @@ h3 {
   width: 1300px;
   margin: 0 auto;
   margin-top: 50px;
+  margin-left: 25%;
   position: relative;
 }
 
 .space-images {
-  width: 35%;
+  width: 38%;
   display: flex;
   flex-direction: column;
   gap: 20px;
@@ -470,7 +471,7 @@ h3 {
 
 .space-image {
   width: 100%;
-  height: 260px;
+  height: 300px;
   overflow: hidden;
   position: relative;
 }
@@ -2229,89 +2230,193 @@ h3 {
     margin-left: 0;
     margin-bottom: 10%;
   }
-  /* space slection */
+  /* ======================================================
+     9. Space Section
+     ====================================================== */
 
   .space-section {
-    width: 100%;
-    height: 900px;
+    width: 100% !important;
+    padding: 0 !important;
+    margin: 0 !important;
+    position: relative !important;
   }
+
   .space-container {
-    width: 100%;
-    margin-left: 0;
-    min-height: 1200px;
+    width: 100% !important;
+    max-width: 100% !important;
+    margin: 0 auto !important;
+    padding: 0 !important;
+    display: block !important;
+    position: static !important;
   }
-  .space-images {
-    width: 90%;
-    width: 300px;
-  }
-  .space-image {
-    width: 100%;
-    height: 600px;
-  }
-  .space-image img {
-    width: 100%;
-    height: 100%;
-  }
+
+  /* Text part - this is already working well */
   .space-image-1-texts {
-    position: absolute;
-    left: 10%;
-    /* z-index: 10; */
-    display: flex;
-    /* flex-direction: row; */
-    justify-content: flex-start;
-    align-items: flex-start;
-    height: 1000px;
+    display: flex !important;
+    flex-direction: row !important;
+    justify-content: center !important;
+    align-items: center !important;
+    /* background-color: #f9f5e8 !important; */
+    background-image: url("../images/hagiya-space-img-2.svg") !important;
+    background-size: cover !important;
+    background-position: center !important;
+    padding: 30px 15px !important;
+    margin-bottom: 15px !important;
+    position: static !important;
+    left: auto !important;
+    height: auto !important;
+    width: 100% !important;
   }
 
   .space-image-1-texts p {
-    color: black;
-    writing-mode: vertical-rl;
-    text-orientation: mixed;
-    margin-left: 10px;
-    font-size: 13px;
+    writing-mode: vertical-rl !important;
+    text-orientation: mixed !important;
+    margin: 0 8px !important;
+    padding: 0 !important;
+    display: inline-block !important;
+    font-size: 14px !important;
+    height: auto !important;
+    position: static !important;
   }
 
   .space-image-1-texts p:nth-child(4) {
-    position: absolute;
-    font-size: 22px !important;
-    left: 100%;
-    top: -40px;
+    position: static !important;
+    font-size: 18px !important;
+    margin-left: 15px !important;
+    left: auto !important;
+    top: auto !important;
   }
-  .space-image-2 {
-    position: absolute;
-    top: 80px;
-    left: 10%;
-    width: 35%;
+
+  .space-images {
+    width: 100% !important;
+    display: block !important;
+    margin: 0 !important;
+    position: static !important;
   }
-  .space-image-3 {
-    position: absolute;
-    top: -10px;
-    left: 30%;
-    width: 35%;
+
+  .space-image-1,
+  .space-image-2,
+  .space-image-4-space-item-2 {
+    display: none !important;
   }
+
+  /* Fix the dining room image (first image) */
   .space-image-4-space {
-    position: absolute;
-    bottom: 10px;
-    left: 25%;
-    width: 30%;
+    position: static !important;
+    display: block !important;
+    width: 100% !important;
+    height: auto !important;
+    margin: 0 0 15px 0 !important;
+    padding: 0 !important;
+    left: auto !important;
+    bottom: auto !important;
   }
 
   .space-image-4-space-item-1 {
-    position: absolute;
-    z-index: 1;
-    top: 0;
-    left: 0px;
-    width: 80%;
-    height: 80%;
+    position: static !important;
+    display: block !important;
+    width: 100% !important;
+    height: 250px !important;
+    margin: 0 0 15px 0 !important;
+    padding: 0 !important;
+    left: auto !important;
+    top: auto !important;
+    z-index: 1 !important;
   }
 
-  .space-image-4-space-item-2 {
-    position: absolute;
-    z-index: 0;
-    bottom: -60px;
-    left: 25px;
+  .space-image-4-space-item-1 img {
+    display: block !important;
+    width: 100% !important;
+    height: 100% !important;
+    object-fit: cover !important;
+  }
+
+  /* Fix the wooden counter image (second image) */
+  .space-image-3 {
+    position: static !important;
+    display: block !important;
+    width: 100% !important;
+    height: 250px !important;
+    margin: 0 0 15px 0 !important;
+    padding: 0 !important;
+    left: auto !important;
+    top: auto !important;
+    overflow: hidden !important;
+  }
+
+  .space-image-3 img {
+    display: block !important;
+    width: 100% !important;
+    height: 100% !important;
+    object-fit: cover !important;
+  }
+
+  /* Extra forceful fix for elements that might be hidden by other CSS */
+  body .space-image-4-space-item-1,
+  body .space-image-3 {
+    display: block !important;
+    visibility: visible !important;
+    opacity: 1 !important;
+  }
+  /* ======================================================
+     10. Food Menu Section
+     ====================================================== */
+
+  .food-menu-container {
+    max-width: 100%;
+  }
+
+  .menu-item-content {
+    flex-direction: column;
+    padding: 30px 15px;
+    min-height: auto;
+    gap: 15px;
+  }
+
+  .menu-item-2 .menu-item-content {
+    flex-direction: column;
+  }
+
+  .menu-item-content-image,
+  .menu-item-content-text {
     width: 100%;
-    height: 100%;
+    padding: 0 15px;
+  }
+
+  .menu-item-content-text {
+    display: flex;
+    flex-direction: column;
+  }
+
+  .menu-item-content-image {
+    height: auto;
+    padding-top: 0;
+    margin-bottom: 20px;
+  }
+
+  .menu-item-content-image img {
+    max-width: 100%;
+    height: auto;
+  }
+
+  /* Move the button to the bottom */
+  .menu-btn {
+    padding: 10px 20px;
+    width: 80%;
+    max-width: 280px;
+    margin: 0 auto;
+    white-space: nowrap;
+    order: 2; /* This moves the button after other content */
+  }
+
+  /* Pull the button out of the menu-item-content-text */
+  .menu-item-content-text {
+    order: 1;
+  }
+
+  .menu-item-content-text .menu-btn {
+    order: 3;
+    margin-top: 15px;
   }
 }
 
@@ -2401,5 +2506,49 @@ h3 {
   .space-image-1-texts p:nth-child(4) {
     font-size: 16px !important;
     margin-top: 10px;
+  }
+
+  /* food menu */
+  .food-menu-section {
+    padding: 30px 3%;
+  }
+
+  .menu-item,
+  .menu-item-2 {
+    margin-bottom: 25px;
+  }
+
+  .menu-item-2 {
+    margin-top: 25px;
+  }
+
+  .menu-item-content {
+    padding: 20px 10px;
+    gap: 10px;
+  }
+
+  .menu-item-content-image {
+    width: 100%;
+    height: auto;
+    padding: 15px 0;
+  }
+
+  .food-menu-logo {
+    font-size: 16px;
+    padding: 12px 0;
+  }
+
+  .menu-item-content p {
+    font-size: 13px;
+    line-height: 1.6;
+    margin-bottom: 15px;
+  }
+
+  .menu-btn {
+    font-size: 13px;
+    padding: 8px 15px;
+    width: 100%;
+    white-space: nowrap; /* Prevent button text from wrapping */
+    display: block;
   }
 }
