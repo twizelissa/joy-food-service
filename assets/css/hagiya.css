@@ -2070,6 +2070,7 @@ h3 {
   /* News Section */
   .news-container {
     padding: 15px;
+    margin-right: 2%;
   }
 
   .news-date {
@@ -2173,30 +2174,28 @@ h3 {
 
   /* Course Menu Section */
   .menu-layout {
-    height: auto;
-    padding-bottom: 750px;
+    height: 1200px;
+    /* padding-bottom: 750px; */
   }
 
   .menu-card {
     width: 85%;
     left: 7.5%;
-    top: auto;
+    top: 15%;
     bottom: 30px;
-    height: auto;
-    min-height: 480px;
+    height: 1000px;
   }
 
   .menu-content {
-    position: static;
     width: 100%;
-    margin: 0 auto;
+    margin-top: 100%;
     padding: 30px;
-    height: auto;
+    height: 600px;
   }
 
   .main-image {
     width: 85%;
-    height: 375px;
+    height: 25%;
     left: 7.5%;
     top: 30px;
   }
@@ -2205,8 +2204,7 @@ h3 {
     flex-direction: row;
     width: 85%;
     left: 7.5%;
-    top: 435px;
-    height: auto;
+    top: 29%;
     gap: 5%;
   }
 
@@ -2216,19 +2214,20 @@ h3 {
   }
 
   .vertical-text-container {
-    position: relative;
-    top: auto;
+    writing-mode: horizontal-tb;
+    top: -20%;
     right: auto;
     width: 85%;
-    height: auto;
-    margin: 30px auto;
+    margin-bottom: 10%;
+    /* height: auto;
+    margin: 30px auto; */
   }
 
   .course-vertical-text {
     writing-mode: horizontal-tb;
     text-orientation: mixed;
     margin-left: 0;
-    margin-bottom: 15px;
+    margin-bottom: 10%;
   }
 }
 
