@@ -370,7 +370,7 @@ h3 {
   position: absolute;
   top: 5%;
   right: 34%;
-  width: 20%;
+  width: 21%;
   height: 30%;
   display: flex;
   flex-direction: column;
@@ -415,31 +415,44 @@ h3 {
 }
 
 .course-note {
-  font-size: 15px;
+  width: 100%;
+  font-size: 13px;
   color: #666;
   margin-bottom: 0;
+  white-space: nowrap; /* Prevent wrapping to keep on one line */
+  /* overflow: hidden; Hide overflow if text is too long */
+  /* text-overflow: ellipsis; Add ... if text is cut off */
 }
-
 .vertical-text-container {
   position: absolute;
-  top: -20%;
-  right: 60px;
-  height: 100%;
+  top: -30%;
+  right: 20px;
+  height: 130%;
+  width: 120px;
   display: flex;
-  /* flex-direction: column; */
-  z-index: 2;
+  flex-direction: row !important; /* Force row direction */
+  gap: 25px;
+  z-index: 4;
+  align-items: flex-start;
+  justify-content: flex-start;
+  overflow: hidden;
 }
 
 .course-vertical-text {
-  writing-mode: vertical-rl;
+  writing-mode: vertical-rl !important; /* Force vertical writing */
   text-orientation: mixed;
-  font-size: 18px;
+  font-size: 16px;
   letter-spacing: 0.05em;
-  line-height: 1.8;
-  margin-bottom: 20px;
+  line-height: 1.6;
   font-weight: lighter;
+  margin: 0 !important; /* Force no margin */
+  padding: 0 !important; /* Force no padding */
+  flex-shrink: 0;
+  width: auto;
+  height: auto;
+  max-height: 100%;
+  white-space: nowrap;
 }
-
 /* ======================================================
      9. Space Section
      ====================================================== */
