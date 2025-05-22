@@ -1146,6 +1146,20 @@ h3 {
     height: 80%;
   }
   /* for course menu */
+  .menu-card {
+    background-image: url("../images/course-backward-bg.svg");
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-size: contain; /* Ensure full image is visible */
+    background-position: center;
+    position: absolute;
+    width: 65%;
+    height: 50%;
+    left: 20%;
+    top: 30%;
+    z-index: 1;
+    overflow: visible;
+  }
   .menu-layout {
     max-width: 100%;
     margin: 0 auto;
@@ -1159,7 +1173,7 @@ h3 {
   /* Card section behind content */
   .menu-card {
     position: absolute;
-    width: 65%;
+    width: 68%;
     height: 50%;
     left: 20%;
     top: 30%;
@@ -1334,6 +1348,20 @@ h3 {
 
   /* course menu */
 
+  .menu-card {
+    background-image: url("../images/course-backward-bg.svg");
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-size: contain; /* Ensure full image is visible */
+    background-position: center;
+    position: absolute;
+    width: 65%;
+    height: 50%;
+    left: 20%;
+    top: 30%;
+    z-index: 1;
+    overflow: visible;
+  }
   .menu-layout {
     max-width: 100%;
     margin: 0 auto;
@@ -1483,6 +1511,20 @@ h3 {
 
 /* Medium-Large Screens (max-width: 1440px) */
 @media (max-width: 1440px) {
+  .menu-card {
+    background-image: url("../images/course-backward-bg.svg");
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-size: contain; /* Ensure full image is visible */
+    background-position: center;
+    position: absolute;
+    width: 65%;
+    height: 50%;
+    left: 20%;
+    top: 30%;
+    z-index: 1;
+    overflow: visible;
+  }
   .storefront-image {
     margin-left: 5%;
     width: 65%;
