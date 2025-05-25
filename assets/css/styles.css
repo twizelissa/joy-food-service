@@ -329,7 +329,7 @@ header {
 
 .mission-container {
   max-width: 1200px;
-  margin-left: 20%;
+  margin-left: 18%;
   padding: 0 20px;
   position: relative;
   min-height: 500px;
@@ -407,7 +407,7 @@ header {
 
 .news-container {
   max-width: 1000px;
-  margin-left: 25%;
+  margin-left: 17%;
   padding: 0 20px;
 }
 
@@ -591,15 +591,19 @@ header {
 .hidden-news {
   display: none;
 }
-
-/* Restaurant Section */
+/* Restaurant Section - Match Target Design Layout */
 .restaurant-section {
   padding: 20px 0;
+  margin-bottom: 0;
+}
+.restaurant-section:last-of-type {
+  margin-bottom: 300px; /* Large space only after the last restaurant section */
 }
 
 .restaurant-container {
-  max-width: 1200px;
-  margin: 0 auto;
+  max-width: 1400px;
+  /* margin: 0 auto; */
+  margin-left: 15%;
   padding: 0 20px;
 }
 
@@ -610,7 +614,8 @@ header {
   overflow: hidden;
   box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
   transition: transform 0.3s ease, box-shadow 0.3s ease;
-  height: 380px;
+  height: 400px;
+  margin-left: 0;
 }
 
 .restaurant-card:hover {
@@ -619,11 +624,11 @@ header {
 }
 
 .restaurant-info {
-  width: 35%;
-  padding: 40px;
+  width: 40%;
+  padding: 40px 30px 30px 30px; /* More natural padding instead of complex positioning */
   display: flex;
   flex-direction: column;
-  justify-content: center;
+  justify-content: center; /* Center the content vertically */
   align-items: center;
   text-align: center;
 }
@@ -632,18 +637,32 @@ header {
   display: flex;
   justify-content: center;
   align-items: center;
-  margin-bottom: 10px;
-  height: 60px;
+  margin-bottom: 20px; /* Reduced from 25px for tighter spacing */
+  height: auto;
 }
 
 .restaurant-logo-img {
-  max-width: 90px;
-  max-height: 50px;
+  max-width: 120px; /* Slightly larger than current for better balance */
+  max-height: 70px;
+  width: auto;
+  height: auto;
   transition: transform 0.3s ease;
 }
 
 .restaurant-card:hover .restaurant-logo-img {
   transform: scale(1.05);
+}
+
+.restaurant-description {
+  color: white;
+  font-size: 13px; /* Slightly smaller for cleaner look */
+  line-height: 1.5; /* Tighter line height */
+  margin-bottom: 25px; /* Reduced margin for closer spacing */
+  text-shadow: 0 1px 2px rgba(0, 0, 0, 0.3);
+  max-width: 220px; /* Reduced max width */
+  letter-spacing: 0.3px; /* Reduced letter spacing */
+  text-align: center;
+  margin-right: 100px;
 }
 
 .restaurant-name {
@@ -654,36 +673,36 @@ header {
 }
 
 .restaurant-divider {
-  width: 120px;
-  height: 1px;
-  background-color: rgba(255, 255, 255, 0.3);
-  margin: 10px 0 20px;
+  display: none;
 }
 
 .view-more {
-  margin-top: auto;
   background-color: #fff;
   color: #333;
   border: none;
-  padding: 8px 15px;
-  border-radius: 4px;
-  font-size: 14px;
+  padding: 10px 20px; /* Slightly smaller padding to match target */
+  border-radius: 3px; /* Smaller border radius */
+  font-size: 13px; /* Smaller font size */
+  font-weight: 500;
   cursor: pointer;
   display: inline-block;
   text-decoration: none;
   text-align: center;
-  width: 120px;
+  min-width: 120px; /* Smaller min width */
   transition: all 0.3s ease;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+  text-transform: uppercase; /* Make text uppercase if needed */
+  letter-spacing: 0.5px;
 }
 
 .view-more:hover {
   background-color: #f8f8f8;
   transform: translateY(-2px);
-  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
 }
 
 .restaurant-images {
-  width: 65%;
+  width: 60%;
   display: flex;
   height: 100%;
 }
@@ -737,12 +756,15 @@ header {
 .verest {
   background-color: #9bc966;
 }
-
-/* 4.5 Recruit Section
-   ========================================================================== */
+#verest {
+  margin-bottom: 300px; /* Large space after VEREST section only */
+}
+/* 4.5 Recruit Section - White Background Override */
 .recruit-section {
   padding: 80px 0;
   position: relative;
+  background-color: #ffffff; /* White background override */
+  background-image: none; /* Remove any inherited background image */
 }
 
 .recruit-container {
@@ -836,8 +858,14 @@ header {
 }
 
 .recruit-nav-button.swiper-button-disabled {
-  opacity: 0.5 !important;
-  cursor: not-allowed !important;
+  opacity: 1 !important; /* Always visible for infinite scroll */
+  cursor: pointer !important;
+  background-color: #f04e5c !important;
+}
+
+.recruit-nav-button.swiper-button-disabled:hover {
+  background-color: #e03c4a !important;
+  transform: scale(1.1) !important;
 }
 
 /* Recruit item styles */
@@ -848,6 +876,12 @@ header {
   box-shadow: 0 2px 10px rgba(0, 0, 0, 0.05);
   border-radius: 8px;
   overflow: hidden;
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.recruit-list:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
 }
 
 .recruit-item {
@@ -891,7 +925,7 @@ header {
 
 /* Swiper pagination */
 .swiper-pagination {
-  text-align: relative;
+  text-align: center;
   margin-top: 10px; /* space above pagination */
   margin-bottom: 0;
 }

@@ -11,7 +11,8 @@ document.addEventListener("DOMContentLoaded", function () {
 
     const wrapper = galleryContainer.querySelector(".gallery-wrapper");
     const slides = galleryContainer.querySelectorAll(".gallery-slide");
-    const controlsContainer = galleryContainer.querySelector(".gallery-controls");
+    const controlsContainer =
+      galleryContainer.querySelector(".gallery-controls");
 
     if (slides.length === 0) return;
 
@@ -99,6 +100,145 @@ document.addEventListener("DOMContentLoaded", function () {
         resetTimer();
       }
     }
+  }
+
+  // RECRUIT SLIDER FUNCTIONALITY - ADDED
+  function initRecruitSlider() {
+    const sliderWrapper = document.querySelector(".recruit-slider-wrapper");
+    const slides = document.querySelectorAll(".recruit-slide");
+    const dots = document.querySelectorAll(".recruit-dot");
+    const prevBtn = document.querySelector(".recruit-nav.prev");
+    const nextBtn = document.querySelector(".recruit-nav.next");
+    const container = document.querySelector("#recruit .system-content");
+
+    // Check if recruit slider elements exist
+    if (!sliderWrapper || slides.length === 0) return;
+
+    let currentSlide = 0;
+    const totalSlides = slides.length;
+    const slideInterval = 5000; // 5 seconds between slides
+    let slideTimer;
+
+    // Function to go to a specific slide
+    function goToSlide(index) {
+      if (index < 0) index = totalSlides - 1;
+      if (index >= totalSlides) index = 0;
+
+      currentSlide = index;
+      updateSlider();
+      resetTimer();
+    }
+
+    // Update slider position and dots
+    function updateSlider() {
+      // Move slider - right to left movement
+      const translateX = -currentSlide * 33.333; // Each slide is 33.333% width (100% / 3 slides)
+      sliderWrapper.style.transform = `translateX(${translateX}%)`;
+
+      // Update dots
+      if (dots.length > 0) {
+        dots.forEach((dot, index) => {
+          dot.classList.toggle("active", index === currentSlide);
+        });
+      }
+    }
+
+    // Function for next slide (automatic right to left)
+    function nextSlide() {
+      goToSlide(currentSlide + 1);
+    }
+
+    // Reset the timer
+    function resetTimer() {
+      clearInterval(slideTimer);
+      slideTimer = setInterval(nextSlide, slideInterval);
+    }
+
+    // Start the slideshow
+    resetTimer();
+
+    // Event listeners for navigation
+    if (nextBtn) {
+      nextBtn.addEventListener("click", () => {
+        goToSlide(currentSlide + 1);
+      });
+    }
+
+    if (prevBtn) {
+      prevBtn.addEventListener("click", () => {
+        goToSlide(currentSlide - 1);
+      });
+    }
+
+    // Dot navigation
+    dots.forEach((dot, index) => {
+      dot.addEventListener("click", () => {
+        goToSlide(index);
+      });
+    });
+
+    // Pause on hover
+    if (container) {
+      container.addEventListener("mouseenter", () => {
+        clearInterval(slideTimer);
+      });
+
+      container.addEventListener("mouseleave", () => {
+        resetTimer();
+      });
+    }
+
+    // Touch support for mobile
+    let touchStartX = 0;
+    let touchEndX = 0;
+
+    if (container) {
+      container.addEventListener(
+        "touchstart",
+        (e) => {
+          touchStartX = e.changedTouches[0].screenX;
+        },
+        { passive: true }
+      );
+
+      container.addEventListener(
+        "touchend",
+        (e) => {
+          touchEndX = e.changedTouches[0].screenX;
+          handleRecruitSwipe();
+        },
+        { passive: true }
+      );
+    }
+
+    function handleRecruitSwipe() {
+      const swipeThreshold = 50;
+      if (touchStartX - touchEndX > swipeThreshold) {
+        // Swipe left - next slide (right to left)
+        goToSlide(currentSlide + 1);
+      } else if (touchEndX - touchStartX > swipeThreshold) {
+        // Swipe right - previous slide
+        goToSlide(currentSlide - 1);
+      }
+    }
+
+    // Keyboard navigation
+    document.addEventListener("keydown", (e) => {
+      // Only handle keyboard navigation if recruit section is visible
+      const recruitSection = document.querySelector("#recruit");
+      if (!recruitSection) return;
+
+      const rect = recruitSection.getBoundingClientRect();
+      const isVisible = rect.top < window.innerHeight && rect.bottom > 0;
+
+      if (isVisible) {
+        if (e.key === "ArrowLeft") {
+          goToSlide(currentSlide - 1);
+        } else if (e.key === "ArrowRight") {
+          goToSlide(currentSlide + 1);
+        }
+      }
+    });
   }
 
   // Mobile Menu functionality
@@ -195,11 +335,11 @@ document.addEventListener("DOMContentLoaded", function () {
   // Initialize responsive tables for system and recruit
   function initResponsiveTables() {
     const tables = document.querySelectorAll(".system-table");
-    
-    tables.forEach(table => {
+
+    tables.forEach((table) => {
       const tableWidth = table.scrollWidth;
       const containerWidth = table.parentElement.clientWidth;
-      
+
       if (tableWidth > containerWidth) {
         // Add a visual hint for scrollable tables on mobile
         table.parentElement.classList.add("scrollable-table");
@@ -209,22 +349,24 @@ document.addEventListener("DOMContentLoaded", function () {
 
   // Add animation effects to aquarium elements
   function initAquariumEffects() {
-    const aquariumElements = document.querySelectorAll('.gallery-item:nth-child(2)');
-    aquariumElements.forEach(element => {
-      element.classList.add('aquarium-effect');
+    const aquariumElements = document.querySelectorAll(
+      ".gallery-item:nth-child(2)"
+    );
+    aquariumElements.forEach((element) => {
+      element.classList.add("aquarium-effect");
     });
   }
 
   // Optimize images on smaller devices
   function optimizeImagesForMobile() {
     if (window.innerWidth <= 767) {
-      const galleryItems = document.querySelectorAll('.gallery-item img');
-      galleryItems.forEach(img => {
+      const galleryItems = document.querySelectorAll(".gallery-item img");
+      galleryItems.forEach((img) => {
         // Lower quality version for mobile to improve performance
-        const src = img.getAttribute('src');
-        if (src && !src.includes('-mobile') && src.includes('.jpg')) {
-          const mobileSrc = src.replace('.jpg', '-mobile.jpg');
-          img.setAttribute('data-src', mobileSrc);
+        const src = img.getAttribute("src");
+        if (src && !src.includes("-mobile") && src.includes(".jpg")) {
+          const mobileSrc = src.replace(".jpg", "-mobile.jpg");
+          img.setAttribute("data-src", mobileSrc);
           // Only replace if mobile version exists (fallback to original)
           const tempImg = new Image();
           tempImg.onload = () => {
@@ -238,21 +380,21 @@ document.addEventListener("DOMContentLoaded", function () {
 
   // Function to make tables more responsive
   function enhanceTableResponsiveness() {
-    const tables = document.querySelectorAll('.system-table');
-    
-    tables.forEach(table => {
-      const headers = table.querySelectorAll('th');
-      const rows = table.querySelectorAll('tr');
-      
+    const tables = document.querySelectorAll(".system-table");
+
+    tables.forEach((table) => {
+      const headers = table.querySelectorAll("th");
+      const rows = table.querySelectorAll("tr");
+
       // Add data attributes to cells for mobile view
       rows.forEach((row, rowIndex) => {
         if (rowIndex === 0) return; // Skip header row
-        
-        const cells = row.querySelectorAll('td');
+
+        const cells = row.querySelectorAll("td");
         cells.forEach((cell, cellIndex) => {
           if (headers[cellIndex]) {
             const headerText = headers[cellIndex].textContent.trim();
-            cell.setAttribute('data-label', headerText);
+            cell.setAttribute("data-label", headerText);
           }
         });
       });
@@ -263,7 +405,7 @@ document.addEventListener("DOMContentLoaded", function () {
   function handleResize() {
     initResponsiveTables();
     optimizeImagesForMobile();
-    
+
     // Handle table display on narrow screens
     if (window.innerWidth <= 767) {
       enhanceTableResponsiveness();
@@ -272,6 +414,7 @@ document.addEventListener("DOMContentLoaded", function () {
 
   // Initialize all functions
   initGallerySlideshow();
+  initRecruitSlider(); // ADDED - Initialize recruit slider
   initMobileMenu();
   initSmoothScroll();
   initTableHoverEffect();
@@ -281,7 +424,7 @@ document.addEventListener("DOMContentLoaded", function () {
   initAquariumEffects();
   optimizeImagesForMobile();
   enhanceTableResponsiveness();
-  
+
   // Add resize listener
-  window.addEventListener('resize', handleResize);
+  window.addEventListener("resize", handleResize);
 });
