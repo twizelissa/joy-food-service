@@ -1,13 +1,13 @@
 /**
  * Hagiya Restaurant - Main JavaScript File
- * Version: 1.0
+ * Version: 2.0 - Updated with Infinite Gallery Scroll
  *
  * Table of Contents:
  * 1. DOM Content Loaded Event
  * 2. Mobile Menu Toggle
  * 3. Fade In Elements on Scroll
  * 4. Smooth Scrolling for Navigation
- * 5. Gallery Auto-Scroll Functionality
+ * 5. Gallery Infinite Auto-Scroll Functionality (UPDATED)
  * 6. Resize Handlers for Responsive Layout
  * 7. News Section Enhancement
  * 8. Map Responsive Handling
@@ -18,7 +18,7 @@ document.addEventListener("DOMContentLoaded", function () {
   initMobileMenu();
   initFadeInElements();
   initSmoothScrolling();
-  initGalleryAutoScroll();
+  initGalleryInfiniteScroll(); // UPDATED function name
   handleResponsiveLayout();
   enhanceNewsSection();
   makeMapResponsive();
@@ -30,7 +30,7 @@ document.addEventListener("DOMContentLoaded", function () {
   });
 
   // Other initialization if needed
-  console.log("Hagiya website initialized");
+  console.log("Hagiya website initialized with infinite scroll");
 });
 
 /**
@@ -180,54 +180,110 @@ function initSmoothScrolling() {
 }
 
 /**
- * 5. Gallery Auto-Scroll Functionality
+ * 5. Gallery Infinite Auto-Scroll Functionality - PIXEL-BASED LIKE VEREST
  * ----------------------------
- * Implements automatic horizontal scrolling for the gallery section
+ * Shows exactly 5 images at a time with slow infinite scrolling
  */
-function initGalleryAutoScroll() {
+function initGalleryInfiniteScroll() {
   const galleryContainer = document.querySelector(".gallery-container");
   if (!galleryContainer) return;
 
-  let scrollInterval;
-  let isPaused = false;
-  const scrollSpeed = 2; // Pixels per interval
-  const scrollInterval_ms = 30;
+  const originalImages = galleryContainer.querySelectorAll(".gallery-image");
+  if (originalImages.length === 0) return;
 
-  function startAutoScroll() {
-    if (scrollInterval) clearInterval(scrollInterval);
+  // Store original images
+  const imageElements = Array.from(originalImages);
 
-    scrollInterval = setInterval(() => {
-      if (!isPaused) {
-        if (
-          galleryContainer.scrollLeft >=
-          galleryContainer.scrollWidth - galleryContainer.clientWidth - 10
-        ) {
-          galleryContainer.style.scrollBehavior = "auto";
-          galleryContainer.scrollLeft = 0;
-          setTimeout(() => {
-            galleryContainer.style.scrollBehavior = "smooth";
-          }, 50);
-        } else {
-          galleryContainer.scrollLeft += scrollSpeed;
-        }
-      }
-    }, scrollInterval_ms);
+  // Clear container and create wrapper
+  galleryContainer.innerHTML = "";
+  const wrapper = document.createElement("div");
+  wrapper.className = "gallery-wrapper";
+  galleryContainer.appendChild(wrapper);
+
+  // Create slides with 5 images each - make many copies for infinite effect
+  const imagesPerView = 5;
+  const totalCopies = 50; // Create 50 copies total for truly infinite scroll
+
+  let imageIndex = 0;
+  for (let i = 0; i < totalCopies; i++) {
+    const slide = document.createElement("div");
+    slide.className = "gallery-slide";
+
+    // Add 5 images to each slide
+    for (let j = 0; j < imagesPerView; j++) {
+      const originalImage = imageElements[imageIndex % imageElements.length];
+      const clonedImage = originalImage.cloneNode(true);
+      slide.appendChild(clonedImage);
+      imageIndex++;
+    }
+
+    wrapper.appendChild(slide);
   }
 
-  // Pause when user hovers
-  galleryContainer.addEventListener("mouseenter", () => {
-    isPaused = true;
+  // Get the actual width of one slide
+  const slideWidth = window.innerWidth; // Each slide is full viewport width
+  const originalSetWidth =
+    Math.ceil(imageElements.length / imagesPerView) * slideWidth;
+
+  // VERY slow animation - 120 seconds to go through original set once
+  const animationDuration = 120;
+
+  // Apply continuous animation using pixel values
+  wrapper.style.animation = `infiniteGallerySlide ${animationDuration}s linear infinite`;
+
+  // Create CSS keyframes dynamically using pixel-based movement
+  const styleSheet = document.createElement("style");
+  styleSheet.textContent = `
+    @keyframes infiniteGallerySlide {
+      0% {
+        transform: translateX(0px);
+      }
+      100% {
+        transform: translateX(-${originalSetWidth}px);
+      }
+    }
+    
+    .gallery-wrapper {
+      display: flex;
+      width: fit-content;
+    }
+    
+    .gallery-slide {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      gap: 15px;
+      min-width: 100vw;
+      padding: 0 20px;
+      flex-shrink: 0;
+      box-sizing: border-box;
+    }
+  `;
+  document.head.appendChild(styleSheet);
+
+  // Pause animation on hover
+  wrapper.addEventListener("mouseenter", () => {
+    wrapper.style.animationPlayState = "paused";
   });
 
-  // Resume when user stops hovering
-  galleryContainer.addEventListener("mouseleave", () => {
-    isPaused = false;
+  wrapper.addEventListener("mouseleave", () => {
+    wrapper.style.animationPlayState = "running";
   });
 
-  // Start scrolling on load
-  startAutoScroll();
+  // Handle window resize to recalculate animation
+  let resizeTimeout;
+  window.addEventListener("resize", () => {
+    clearTimeout(resizeTimeout);
+    resizeTimeout = setTimeout(() => {
+      // Restart the gallery with new dimensions
+      initGalleryInfiniteScroll();
+    }, 250);
+  });
+
+  // Remove existing arrows
+  const existingArrows = document.querySelectorAll(".gallery-arrow");
+  existingArrows.forEach((arrow) => arrow.remove());
 }
-
 /**
  * 6. Resize Handlers for Responsive Layout
  * ----------------------------
@@ -259,51 +315,8 @@ function handleResponsiveLayout() {
     }
   }
 
-  // Readjust gallery arrows position
-  const gallerySection = document.querySelector(".gallery-section");
-  if (gallerySection) {
-    // Remove and re-add arrows to ensure proper positioning
-    const existingArrows = document.querySelectorAll(".gallery-arrow");
-    if (existingArrows.length > 0) {
-      existingArrows.forEach((arrow) => arrow.remove());
-
-      // Add navigation arrows back
-      const galleryContainer = document.querySelector(".gallery-container");
-      if (galleryContainer) {
-        // Create arrow elements
-        const leftArrow = document.createElement("button");
-        leftArrow.className = "gallery-arrow gallery-arrow-left";
-        leftArrow.innerHTML = "&larr;";
-        leftArrow.setAttribute("aria-label", "Scroll left");
-
-        const rightArrow = document.createElement("button");
-        rightArrow.className = "gallery-arrow gallery-arrow-right";
-        rightArrow.innerHTML = "&rarr;";
-        rightArrow.setAttribute("aria-label", "Scroll right");
-
-        // Add click event listeners
-        leftArrow.addEventListener("click", () => {
-          const galleryContainer = document.querySelector(".gallery-container");
-          galleryContainer.scrollBy({
-            left: -300,
-            behavior: "smooth",
-          });
-        });
-
-        rightArrow.addEventListener("click", () => {
-          const galleryContainer = document.querySelector(".gallery-container");
-          galleryContainer.scrollBy({
-            left: 300,
-            behavior: "smooth",
-          });
-        });
-
-        // Add arrows to gallery section
-        gallerySection.appendChild(leftArrow);
-        gallerySection.appendChild(rightArrow);
-      }
-    }
-  }
+  // Note: Gallery arrows are no longer needed for infinite scroll
+  // Removed arrow repositioning code since we're using infinite scroll
 }
 
 /**
@@ -363,7 +376,9 @@ function enhanceNewsSection() {
   if (window.innerWidth <= 768) {
     newsItems.forEach((item) => {
       const content = item.querySelector(".news-content");
-      content.style.maxHeight = null;
+      if (content) {
+        content.style.maxHeight = null;
+      }
     });
   }
 
@@ -382,4 +397,46 @@ function enhanceNewsSection() {
       }, index * 150);
     });
   }, 500);
+}
+
+/**
+ * 8. Map Responsive Handling
+ * ----------------------------
+ * Make embedded maps responsive
+ */
+function makeMapResponsive() {
+  const mapContainers = document.querySelectorAll(".map-container, .map-embed");
+
+  mapContainers.forEach((container) => {
+    const iframe = container.querySelector("iframe");
+    if (iframe) {
+      // Ensure iframe fills container properly
+      iframe.style.width = "100%";
+      iframe.style.height = "100%";
+      iframe.style.border = "0";
+    }
+  });
+
+  // Handle any Google Maps or other embedded maps
+  const embeddedMaps = document.querySelectorAll('iframe[src*="maps"]');
+  embeddedMaps.forEach((map) => {
+    // Wrap in responsive container if not already wrapped
+    if (!map.parentElement.classList.contains("map-responsive")) {
+      const wrapper = document.createElement("div");
+      wrapper.className = "map-responsive";
+      wrapper.style.position = "relative";
+      wrapper.style.paddingBottom = "56.25%"; // 16:9 aspect ratio
+      wrapper.style.height = "0";
+      wrapper.style.overflow = "hidden";
+
+      map.parentNode.insertBefore(wrapper, map);
+      wrapper.appendChild(map);
+
+      map.style.position = "absolute";
+      map.style.top = "0";
+      map.style.left = "0";
+      map.style.width = "100%";
+      map.style.height = "100%";
+    }
+  });
 }

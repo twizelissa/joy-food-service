@@ -329,7 +329,7 @@ header {
 
 .mission-container {
   max-width: 1200px;
-  margin-left: 18%;
+  margin-left: 15%;
   padding: 0 20px;
   position: relative;
   min-height: 500px;
@@ -342,7 +342,7 @@ header {
   background-color: #f04e5c;
   position: absolute;
   border-radius: 10px;
-  width: 80.4%;
+  width: 75%;
   height: 90%;
   /* max-width: 900px; */
   top: 0;
@@ -359,7 +359,7 @@ header {
   text-align: left;
   box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
   position: absolute;
-  width: 80.4%;
+  width: 75%;
   height: 86.7%;
   top: 30px;
   left: 8%;
@@ -395,7 +395,7 @@ header {
 .white-card p {
   font-size: 16px;
   line-height: 1.8;
-  margin-left: 30%;
+  margin-left: 28%;
   margin-bottom: 15px;
 }
 
@@ -759,42 +759,33 @@ header {
 #verest {
   margin-bottom: 300px; /* Large space after VEREST section only */
 }
-/* 4.5 Recruit Section - White Background Override */
+/* 4.5 Recruit Section - Clean Minimalist Design */
 .recruit-section {
   padding: 80px 0;
   position: relative;
-  background-color: #ffffff; /* White background override */
-  background-image: none; /* Remove any inherited background image */
+  /* background-color: #ffffff; */
+  overflow: visible; /* Allow arrows to show outside */
 }
 
 .recruit-container {
-  max-width: 1000px;
+  max-width: 700px; /* Smaller max-width to allow arrow space */
   margin: 0 auto;
-  padding: 0 20px;
+  padding: 0 80px; /* Add padding back for arrow space */
   position: relative;
 }
 
 .recruit-header {
   text-align: center;
-  margin-bottom: 40px;
+  margin-bottom: 60px;
 }
 
 .recruit-header h2 {
   font-size: 28px;
-  color: #f04e5c;
-  font-weight: bold;
+  color: #f04e5c; /* Red color */
+  font-weight: 600;
   position: relative;
   display: inline-block;
-}
-
-.recruit-header h2:after {
-  content: "";
-  position: absolute;
-  left: 0;
-  bottom: -10px;
-  width: 100%;
-  height: 3px;
-  background-color: #f04e5c;
+  letter-spacing: 2px;
 }
 
 /* Swiper container styles */
@@ -802,93 +793,140 @@ header {
   width: 100%;
   position: relative;
   overflow: hidden;
-  margin-bottom: 30px;
-  padding: 0 50px; /* Space for navigation buttons */
-  height: auto; /* Adjust to content height */
+  margin-bottom: 40px;
+  padding: 0;
+  height: auto;
 }
 
 .swiper-wrapper {
-  height: auto; /* Ensure wrapper height adjusts to content */
+  height: auto;
+  width: 100%;
+  display: flex;
+  align-items: stretch;
 }
 
 .swiper-slide {
-  height: auto; /* Let slides adjust to content height */
+  height: auto;
   opacity: 0;
-  transition: opacity 0.3s ease;
+  transition: opacity 0.4s ease;
+  width: 100%;
+  flex-shrink: 0;
+  display: flex;
+  flex-direction: column; /* Stack form and button vertically */
+  justify-content: center;
+  align-items: center;
 }
 
 .swiper-slide-active {
   opacity: 1;
 }
 
-/* Navigation buttons */
+/* Navigation buttons - Simple red arrows positioned outside form */
 .recruit-nav-button {
-  width: 40px !important;
-  height: 40px !important;
-  background-color: #f04e5c !important;
-  color: white !important;
-  border-radius: 50% !important;
+  width: auto !important;
+  height: auto !important;
+  background-color: transparent !important;
+  color: #f04e5c !important;
+  border-radius: 0 !important;
   display: flex !important;
   align-items: center !important;
   justify-content: center !important;
-  box-shadow: 0 3px 8px rgba(0, 0, 0, 0.2) !important;
+  box-shadow: none !important;
   opacity: 1 !important;
   transition: all 0.3s ease !important;
+  top: 50% !important;
+  transform: translateY(-50%) !important;
+  z-index: 10 !important;
+  position: absolute !important;
+  font-size: 24px !important;
+  padding: 10px !important;
 }
 
 .recruit-nav-button:after {
-  content: none !important; /* Remove default arrow */
+  content: none !important;
 }
 
 .recruit-nav-button i {
-  font-size: 16px !important;
+  font-size: 14px !important;
+  color: white !important;
 }
 
+/* Position arrows within the padding area */
 .swiper-button-prev.recruit-nav-button {
-  left: 0 !important;
+  left: 10px !important;
 }
 
 .swiper-button-next.recruit-nav-button {
-  right: 0 !important;
+  right: 10px !important;
 }
 
 .recruit-nav-button:hover {
   background-color: #e03c4a !important;
-  transform: scale(1.1) !important;
+  color: white !important;
+  transform: translateY(-50%) scale(1.1) !important;
+  box-shadow: 0 4px 12px rgba(240, 78, 92, 0.4) !important;
+}
+
+.recruit-nav-button:hover i {
+  color: white !important;
 }
 
 .recruit-nav-button.swiper-button-disabled {
-  opacity: 1 !important; /* Always visible for infinite scroll */
+  opacity: 1 !important;
   cursor: pointer !important;
   background-color: #f04e5c !important;
+  color: white !important;
 }
 
 .recruit-nav-button.swiper-button-disabled:hover {
   background-color: #e03c4a !important;
-  transform: scale(1.1) !important;
+  color: white !important;
+  transform: translateY(-50%) scale(1.1) !important;
 }
 
-/* Recruit item styles */
+.recruit-nav-button.swiper-button-disabled i {
+  color: white !important;
+}
+
+.recruit-nav-button.swiper-button-disabled:hover i {
+  color: white !important;
+}
+
+/* Form styles - Mobile responsive */
 .recruit-list {
   display: flex;
   flex-direction: column;
   width: 100%;
-  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.05);
-  border-radius: 8px;
+  max-width: 600px;
+  margin: 0 auto;
+  background-color: #ffffff;
+  border-top: 1px solid #e0e0e0;
+  border-bottom: 1px solid #e0e0e0;
+  border-left: none;
+  border-right: none;
+  border-radius: 0;
   overflow: hidden;
-  transition: transform 0.3s ease, box-shadow 0.3s ease;
+  box-shadow: none;
+  transition: none;
 }
 
 .recruit-list:hover {
-  transform: translateY(-2px);
-  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+  transform: none;
+  box-shadow: none;
 }
 
 .recruit-item {
   display: flex;
   align-items: stretch;
+  width: 100%;
+  border-bottom: 1px solid #e0e0e0;
 }
 
+.recruit-item:last-child {
+  border-bottom: none;
+}
+
+/* Alternating backgrounds */
 .recruit-item:nth-child(odd) {
   background-color: #f8f8f8;
 }
@@ -899,43 +937,76 @@ header {
 
 .recruit-label,
 .recruit-value {
-  padding: 20px;
+  padding: 18px 20px;
+  min-height: 55px;
 }
 
 .recruit-label {
-  width: 40%;
+  width: 35%;
   color: #333;
-  font-size: 15px;
+  font-size: 14px;
   font-weight: 500;
   text-align: center;
-  border-right: 1px solid #eee;
+  border-right: none; /* Remove separator line */
   display: flex;
   align-items: center;
   justify-content: center;
-  background-color: rgba(240, 78, 92, 0.05);
+  background-color: transparent;
 }
 
 .recruit-value {
-  width: 60%;
-  font-size: 15px;
-  color: #555;
+  width: 65%;
+  font-size: 14px;
+  color: #666;
   display: flex;
   align-items: center;
+  padding-left: 25px;
+  background-color: transparent;
+}
+
+/* Apply button - Now part of each slide */
+.recruit-buttons {
+  text-align: center;
+  margin: 30px 0 0 0; /* Top margin only since it's inside slide */
+  width: 100%;
+}
+
+.apply-btn {
+  background-color: #f04e5c;
+  color: white;
+  border: none;
+  padding: 15px 40px;
+  border-radius: 0;
+  font-size: 15px;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  box-shadow: none;
+  font-weight: 500;
+  letter-spacing: 1px;
+}
+
+.apply-btn:hover {
+  background-color: #e03c4a;
+  transform: none;
+  box-shadow: 0 3px 10px rgba(240, 78, 92, 0.3);
 }
 
 /* Swiper pagination */
 .swiper-pagination {
   text-align: center;
-  margin-top: 10px; /* space above pagination */
+  margin-top: 25px;
   margin-bottom: 0;
+  position: relative !important;
+  bottom: auto !important;
 }
 
 .swiper-pagination-bullet {
-  width: 10px;
-  height: 10px;
+  width: 8px;
+  height: 8px;
   background: #ccc;
   opacity: 1;
   transition: all 0.3s ease;
+  margin: 0 4px;
 }
 
 .swiper-pagination-bullet-active {
@@ -943,29 +1014,146 @@ header {
   transform: scale(1.2);
 }
 
-/* Apply button */
-.recruit-buttons {
-  text-align: center;
-  margin-bottom: 20px;
+/* Responsive adjustments */
+@media (max-width: 1024px) {
+  .recruit-container {
+    max-width: 100%;
+    padding: 0 70px;
+  }
+
+  .recruit-list {
+    max-width: 500px;
+  }
+
+  .recruit-nav-button {
+    width: 35px !important;
+    height: 35px !important;
+  }
+
+  .recruit-nav-button i {
+    font-size: 12px !important;
+  }
 }
 
-.apply-btn {
-  margin-bottom: 40px;
-  background-color: #f04e5c;
-  color: white;
-  border: none;
-  padding: 12px 40px;
-  border-radius: 4px;
-  font-size: 16px;
-  cursor: pointer;
-  transition: all 0.3s ease;
-  box-shadow: 0 3px 5px rgba(0, 0, 0, 0.1);
+@media (max-width: 768px) {
+  .recruit-container {
+    max-width: 100%;
+    padding: 0 60px;
+  }
+
+  .recruit-nav-button {
+    width: 32px !important;
+    height: 32px !important;
+  }
+
+  .recruit-nav-button i {
+    font-size: 11px !important;
+  }
+
+  .recruit-list {
+    max-width: 100%;
+  }
+
+  .recruit-label,
+  .recruit-value {
+    padding: 14px 16px;
+    font-size: 13px;
+    min-height: 45px;
+  }
+
+  .recruit-label {
+    width: 35%;
+  }
+
+  .recruit-value {
+    width: 65%;
+    padding-left: 18px;
+  }
+
+  .recruit-header h2 {
+    font-size: 22px;
+  }
 }
 
-.apply-btn:hover {
-  background-color: #d83a48;
-  transform: translateY(-2px);
-  box-shadow: 0 5px 10px rgba(0, 0, 0, 0.15);
+@media (max-width: 600px) {
+  .recruit-container {
+    padding: 0 50px;
+  }
+
+  .recruit-nav-button {
+    width: 28px !important;
+    height: 28px !important;
+  }
+
+  .recruit-nav-button i {
+    font-size: 10px !important;
+  }
+
+  .recruit-label,
+  .recruit-value {
+    padding: 12px 14px;
+    font-size: 12px;
+    min-height: 42px;
+  }
+
+  .recruit-label {
+    width: 38%;
+  }
+
+  .recruit-value {
+    width: 62%;
+    padding-left: 16px;
+  }
+
+  .apply-btn {
+    padding: 12px 30px;
+    font-size: 13px;
+  }
+
+  .recruit-header h2 {
+    font-size: 20px;
+  }
+}
+
+@media (max-width: 480px) {
+  .recruit-container {
+    padding: 0 45px;
+  }
+
+  .recruit-nav-button {
+    width: 26px !important;
+    height: 26px !important;
+  }
+
+  .recruit-nav-button i {
+    font-size: 9px !important;
+  }
+
+  .recruit-label,
+  .recruit-value {
+    padding: 10px 12px;
+    font-size: 11px;
+    min-height: 40px;
+  }
+
+  .recruit-label {
+    width: 40%;
+  }
+
+  .recruit-value {
+    width: 60%;
+    padding-left: 14px;
+  }
+
+  .apply-btn {
+    padding: 10px 25px;
+    font-size: 12px;
+  }
+
+  .recruit-header h2 {
+    font-size: 18px;
+    letter-spacing: 1px;
+  }
 }
 
 /* Footer */

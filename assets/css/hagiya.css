@@ -699,6 +699,11 @@ h3 {
 .instagram-section {
   padding: 40px 0;
   text-align: center;
+  background-image: url("../images/higayi-bg.svg");
+  background-repeat: no-repeat;
+  background-size: cover;
+  display: flex;
+  justify-content: center;
 }
 
 .instagram-container {
@@ -722,90 +727,70 @@ h3 {
 .instagram-btn:hover {
   background-color: #7a5441;
 }
-
 /* ======================================================
-     12. Gallery Section with Auto-Scroll
+     12. Gallery Section - 5 Images Per View with Infinite Scroll (VEREST STYLE)
      ====================================================== */
 .gallery-section {
   width: 100%;
   padding: 30px 0;
   overflow: hidden;
+  background-image: url("../images/higayi-bg.svg");
+  background-repeat: no-repeat;
+  background-size: cover;
+  display: flex;
   position: relative;
 }
 
 .gallery-container {
   width: 100%;
-  display: flex;
-  flex-wrap: nowrap;
-  overflow-x: auto;
-  scroll-snap-type: x mandatory;
-  -webkit-overflow-scrolling: touch;
-  scrollbar-width: none;
-  -ms-overflow-style: none;
-  padding: 0 20px;
+  overflow: hidden;
 }
 
-.gallery-container::-webkit-scrollbar {
-  display: none;
+.gallery-wrapper {
+  display: flex;
+  width: fit-content;
+  /* Animation will be applied via JavaScript */
+}
+
+.gallery-slide {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 15px;
+  min-width: 100vw; /* Full viewport width */
+  padding: 0 20px;
+  flex-shrink: 0; /* Prevent slides from shrinking */
 }
 
 .gallery-image {
-  flex: 0 0 300px;
+  width: calc(20% - 12px); /* 5 items per slide: 20% each minus gap */
   height: 250px;
-  scroll-snap-align: start;
-  margin-right: 15px;
-  overflow: hidden;
-  border-radius: 5px;
   box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+  border-radius: 5px;
+  overflow: hidden;
+  transition: transform 0.3s ease;
+  flex-shrink: 0; /* Prevent items from shrinking */
 }
 
-.gallery-image:last-child {
-  margin-right: 0;
+.gallery-image:hover {
+  transform: scale(1.05);
 }
 
 .gallery-image img {
   width: 100%;
   height: 100%;
   object-fit: cover;
-  transition: transform 0.3s ease;
 }
 
-.gallery-image img:hover {
-  transform: scale(1.05);
-}
-
+/* Remove gallery arrows since we have infinite scroll */
 .gallery-arrow {
-  position: absolute;
-  top: 50%;
-  transform: translateY(-50%);
-  width: 40px;
-  height: 40px;
-  background-color: rgba(145, 101, 77, 0.8);
-  color: white;
-  border: none;
-  border-radius: 50%;
-  font-size: 20px;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  cursor: pointer;
-  z-index: 10;
-  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
-  transition: background-color 0.3s ease;
+  display: none !important;
 }
 
-.gallery-arrow:hover {
-  background-color: rgba(145, 101, 77, 1);
-}
-
-.gallery-arrow-left {
-  left: 20px;
-}
-
+.gallery-arrow-left,
 .gallery-arrow-right {
-  right: 20px;
+  display: none !important;
 }
-
 /* ======================================================
      13. Information Section
      ====================================================== */

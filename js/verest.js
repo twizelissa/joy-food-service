@@ -1,108 +1,57 @@
 /**
  * VEREST Website JavaScript
- * Handles gallery slideshow with multiple images per slide, navigation and other interactive elements
- * With automatic sliding and no visible navigation arrows per request
+ * Handles gallery slideshow with infinite scrolling animation
  */
 document.addEventListener("DOMContentLoaded", function () {
-  // Multi-image Gallery Slideshow - FULL WIDTH WITH AUTOMATIC SLIDING
+  // Infinite Scrolling Gallery - UPDATED
   function initGallerySlideshow() {
     const galleryContainer = document.querySelector(".gallery-container");
     if (!galleryContainer) return;
 
     const wrapper = galleryContainer.querySelector(".gallery-wrapper");
-    const slides = galleryContainer.querySelectorAll(".gallery-slide");
-    const controlsContainer =
-      galleryContainer.querySelector(".gallery-controls");
+    const originalSlides = galleryContainer.querySelectorAll(".gallery-slide");
+    
+    if (originalSlides.length === 0) return;
 
-    if (slides.length === 0) return;
+    // Clone slides for infinite effect
+    originalSlides.forEach(slide => {
+      const clone = slide.cloneNode(true);
+      wrapper.appendChild(clone);
+    });
 
-    let currentSlide = 0;
-    const slideInterval = 5000; // 5 seconds between slides
-    let slideTimer;
-
-    // Create navigation dots
-    if (controlsContainer) {
-      slides.forEach((_, index) => {
-        const dot = document.createElement("div");
-        dot.classList.add("gallery-dot");
-        if (index === 0) dot.classList.add("active");
-
-        dot.addEventListener("click", () => {
-          goToSlide(index);
-          resetTimer();
-        });
-
-        controlsContainer.appendChild(dot);
-      });
-    }
-
-    // Function to go to a specific slide
-    function goToSlide(index) {
-      if (index < 0 || index >= slides.length) return;
-
-      // Update dots
-      if (controlsContainer) {
-        const dots = controlsContainer.querySelectorAll(".gallery-dot");
-        dots.forEach((dot) => dot.classList.remove("active"));
-        dots[index].classList.add("active");
+    // Set up infinite animation
+    const totalSlides = originalSlides.length;
+    const slideWidth = 100; // Each slide is 100% width
+    const animationDuration = 20; // 20 seconds per full cycle
+    
+    // Apply continuous animation
+    wrapper.style.animation = `infiniteSlide ${animationDuration}s linear infinite`;
+    
+    // Create CSS keyframes dynamically
+    const styleSheet = document.createElement('style');
+    styleSheet.textContent = `
+      @keyframes infiniteSlide {
+        0% {
+          transform: translateX(0%);
+        }
+        100% {
+          transform: translateX(-${totalSlides * slideWidth}%);
+        }
       }
+    `;
+    document.head.appendChild(styleSheet);
 
-      // Move to the new slide with a smooth transition
-      wrapper.style.transform = `translateX(-${index * 100}%)`;
-      currentSlide = index;
-    }
+    // Pause animation on hover
+    wrapper.addEventListener('mouseenter', () => {
+      wrapper.style.animationPlayState = 'paused';
+    });
 
-    // Function for next slide
-    function nextSlide() {
-      goToSlide((currentSlide + 1) % slides.length);
-    }
-
-    // Reset the timer
-    function resetTimer() {
-      clearInterval(slideTimer);
-      slideTimer = setInterval(nextSlide, slideInterval);
-    }
-
-    // Start the slideshow
-    resetTimer();
-
-    // Add touch support for mobile
-    let touchStartX = 0;
-    let touchEndX = 0;
-
-    galleryContainer.addEventListener(
-      "touchstart",
-      (e) => {
-        touchStartX = e.changedTouches[0].screenX;
-      },
-      { passive: true }
-    );
-
-    galleryContainer.addEventListener(
-      "touchend",
-      (e) => {
-        touchEndX = e.changedTouches[0].screenX;
-        handleSwipe();
-      },
-      { passive: true }
-    );
-
-    function handleSwipe() {
-      const swipeThreshold = 50; // Minimum distance to register as a swipe
-
-      if (touchStartX - touchEndX > swipeThreshold) {
-        // Swipe left - go to next slide
-        goToSlide((currentSlide + 1) % slides.length);
-        resetTimer();
-      } else if (touchEndX - touchStartX > swipeThreshold) {
-        // Swipe right - go to previous slide
-        goToSlide(currentSlide - 1 < 0 ? slides.length - 1 : currentSlide - 1);
-        resetTimer();
-      }
-    }
+    wrapper.addEventListener('mouseleave', () => {
+      wrapper.style.animationPlayState = 'running';
+    });
   }
 
-  // RECRUIT SLIDER FUNCTIONALITY - ADDED
+  // RECRUIT SLIDER FUNCTIONALITY - UNCHANGED
   function initRecruitSlider() {
     const sliderWrapper = document.querySelector(".recruit-slider-wrapper");
     const slides = document.querySelectorAll(".recruit-slide");
@@ -111,15 +60,13 @@ document.addEventListener("DOMContentLoaded", function () {
     const nextBtn = document.querySelector(".recruit-nav.next");
     const container = document.querySelector("#recruit .system-content");
 
-    // Check if recruit slider elements exist
     if (!sliderWrapper || slides.length === 0) return;
 
     let currentSlide = 0;
     const totalSlides = slides.length;
-    const slideInterval = 5000; // 5 seconds between slides
+    const slideInterval = 5000;
     let slideTimer;
 
-    // Function to go to a specific slide
     function goToSlide(index) {
       if (index < 0) index = totalSlides - 1;
       if (index >= totalSlides) index = 0;
@@ -129,13 +76,10 @@ document.addEventListener("DOMContentLoaded", function () {
       resetTimer();
     }
 
-    // Update slider position and dots
     function updateSlider() {
-      // Move slider - right to left movement
-      const translateX = -currentSlide * 33.333; // Each slide is 33.333% width (100% / 3 slides)
+      const translateX = -currentSlide * 33.333;
       sliderWrapper.style.transform = `translateX(${translateX}%)`;
 
-      // Update dots
       if (dots.length > 0) {
         dots.forEach((dot, index) => {
           dot.classList.toggle("active", index === currentSlide);
@@ -143,21 +87,17 @@ document.addEventListener("DOMContentLoaded", function () {
       }
     }
 
-    // Function for next slide (automatic right to left)
     function nextSlide() {
       goToSlide(currentSlide + 1);
     }
 
-    // Reset the timer
     function resetTimer() {
       clearInterval(slideTimer);
       slideTimer = setInterval(nextSlide, slideInterval);
     }
 
-    // Start the slideshow
     resetTimer();
 
-    // Event listeners for navigation
     if (nextBtn) {
       nextBtn.addEventListener("click", () => {
         goToSlide(currentSlide + 1);
@@ -170,14 +110,12 @@ document.addEventListener("DOMContentLoaded", function () {
       });
     }
 
-    // Dot navigation
     dots.forEach((dot, index) => {
       dot.addEventListener("click", () => {
         goToSlide(index);
       });
     });
 
-    // Pause on hover
     if (container) {
       container.addEventListener("mouseenter", () => {
         clearInterval(slideTimer);
@@ -188,7 +126,6 @@ document.addEventListener("DOMContentLoaded", function () {
       });
     }
 
-    // Touch support for mobile
     let touchStartX = 0;
     let touchEndX = 0;
 
@@ -214,17 +151,13 @@ document.addEventListener("DOMContentLoaded", function () {
     function handleRecruitSwipe() {
       const swipeThreshold = 50;
       if (touchStartX - touchEndX > swipeThreshold) {
-        // Swipe left - next slide (right to left)
         goToSlide(currentSlide + 1);
       } else if (touchEndX - touchStartX > swipeThreshold) {
-        // Swipe right - previous slide
         goToSlide(currentSlide - 1);
       }
     }
 
-    // Keyboard navigation
     document.addEventListener("keydown", (e) => {
-      // Only handle keyboard navigation if recruit section is visible
       const recruitSection = document.querySelector("#recruit");
       if (!recruitSection) return;
 
@@ -279,7 +212,7 @@ document.addEventListener("DOMContentLoaded", function () {
     });
   }
 
-  // Table hover effect for better responsiveness in system and recruit
+  // Table hover effect
   function initTableHoverEffect() {
     const tableRows = document.querySelectorAll(".system-table tr");
     tableRows.forEach((row) => {
@@ -292,7 +225,7 @@ document.addEventListener("DOMContentLoaded", function () {
     });
   }
 
-  // Parallax Effect for hero image
+  // Parallax Effect
   function initParallaxEffect() {
     const heroImage = document.querySelector(".hero-image img");
     if (heroImage) {
@@ -332,7 +265,7 @@ document.addEventListener("DOMContentLoaded", function () {
     highlightNav();
   }
 
-  // Initialize responsive tables for system and recruit
+  // Initialize responsive tables
   function initResponsiveTables() {
     const tables = document.querySelectorAll(".system-table");
 
@@ -341,7 +274,6 @@ document.addEventListener("DOMContentLoaded", function () {
       const containerWidth = table.parentElement.clientWidth;
 
       if (tableWidth > containerWidth) {
-        // Add a visual hint for scrollable tables on mobile
         table.parentElement.classList.add("scrollable-table");
       }
     });
@@ -357,17 +289,15 @@ document.addEventListener("DOMContentLoaded", function () {
     });
   }
 
-  // Optimize images on smaller devices
+  // Optimize images for mobile
   function optimizeImagesForMobile() {
     if (window.innerWidth <= 767) {
       const galleryItems = document.querySelectorAll(".gallery-item img");
       galleryItems.forEach((img) => {
-        // Lower quality version for mobile to improve performance
         const src = img.getAttribute("src");
         if (src && !src.includes("-mobile") && src.includes(".jpg")) {
           const mobileSrc = src.replace(".jpg", "-mobile.jpg");
           img.setAttribute("data-src", mobileSrc);
-          // Only replace if mobile version exists (fallback to original)
           const tempImg = new Image();
           tempImg.onload = () => {
             img.src = mobileSrc;
@@ -378,7 +308,7 @@ document.addEventListener("DOMContentLoaded", function () {
     }
   }
 
-  // Function to make tables more responsive
+  // Enhance table responsiveness
   function enhanceTableResponsiveness() {
     const tables = document.querySelectorAll(".system-table");
 
@@ -386,9 +316,8 @@ document.addEventListener("DOMContentLoaded", function () {
       const headers = table.querySelectorAll("th");
       const rows = table.querySelectorAll("tr");
 
-      // Add data attributes to cells for mobile view
       rows.forEach((row, rowIndex) => {
-        if (rowIndex === 0) return; // Skip header row
+        if (rowIndex === 0) return;
 
         const cells = row.querySelectorAll("td");
         cells.forEach((cell, cellIndex) => {
@@ -406,7 +335,6 @@ document.addEventListener("DOMContentLoaded", function () {
     initResponsiveTables();
     optimizeImagesForMobile();
 
-    // Handle table display on narrow screens
     if (window.innerWidth <= 767) {
       enhanceTableResponsiveness();
     }
@@ -414,7 +342,7 @@ document.addEventListener("DOMContentLoaded", function () {
 
   // Initialize all functions
   initGallerySlideshow();
-  initRecruitSlider(); // ADDED - Initialize recruit slider
+  initRecruitSlider();
   initMobileMenu();
   initSmoothScroll();
   initTableHoverEffect();
