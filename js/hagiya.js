@@ -418,25 +418,4 @@ function makeMapResponsive() {
   });
 
   // Handle any Google Maps or other embedded maps
-  const embeddedMaps = document.querySelectorAll('iframe[src*="maps"]');
-  embeddedMaps.forEach((map) => {
-    // Wrap in responsive container if not already wrapped
-    if (!map.parentElement.classList.contains("map-responsive")) {
-      const wrapper = document.createElement("div");
-      wrapper.className = "map-responsive";
-      wrapper.style.position = "relative";
-      wrapper.style.paddingBottom = "56.25%"; // 16:9 aspect ratio
-      wrapper.style.height = "0";
-      wrapper.style.overflow = "hidden";
-
-      map.parentNode.insertBefore(wrapper, map);
-      wrapper.appendChild(map);
-
-      map.style.position = "absolute";
-      map.style.top = "0";
-      map.style.left = "0";
-      map.style.width = "100%";
-      map.style.height = "100%";
-    }
-  });
 }
