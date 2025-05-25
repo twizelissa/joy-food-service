@@ -159,52 +159,75 @@ function setupNewsReadMore() {
   }
 }
 
-// Hero Slider initialization - FIXED
+// Hero Slider initialization - UNSTOPPABLE VERSION
 function initializeHeroSlider() {
   const carouselTrack = document.querySelector(".carousel-track");
   if (!carouselTrack) return;
 
-  const slides = document.querySelectorAll(".carousel-slide");
-  if (slides.length <= 1) return;
+  const originalSlides = document.querySelectorAll(".carousel-slide");
+  if (originalSlides.length <= 1) return;
+
+  // Clone all slides to create seamless infinite loop
+  const slideArray = Array.from(originalSlides);
+  slideArray.forEach((slide) => {
+    const clone = slide.cloneNode(true);
+    carouselTrack.appendChild(clone);
+  });
+
+  // Now we have 6 slides total (3 original + 3 clones)
+  const allSlides = document.querySelectorAll(".carousel-slide");
+  const totalSlides = allSlides.length; // 6
+
+  // Update track width and slide widths
+  carouselTrack.style.width = `${totalSlides * 100}%`; // 600%
+  allSlides.forEach((slide) => {
+    slide.style.width = `${100 / totalSlides}%`; // 16.666% each
+  });
 
   let currentSlide = 0;
-  const slideCount = slides.length;
-  const slideInterval = 5000; // Time between slides (ms)
+  const originalSlideCount = originalSlides.length; // 3
+  const slideInterval = 4000;
 
   // Function to move to a specific slide
-  function goToSlide(slideIndex) {
-    currentSlide = slideIndex;
-    const offset = -currentSlide * (100 / slideCount);
-    carouselTrack.style.transform = `translateX(${offset}%)`;
+  function goToSlide(slideIndex, immediate = false) {
+    const translateValue = -(slideIndex * (100 / totalSlides));
+
+    if (immediate) {
+      carouselTrack.style.transition = "none";
+      carouselTrack.style.transform = `translateX(${translateValue}%)`;
+      // Force reflow
+      carouselTrack.offsetHeight;
+      carouselTrack.style.transition =
+        "transform 1.2s cubic-bezier(0.4, 0, 0.2, 1)";
+    } else {
+      carouselTrack.style.transform = `translateX(${translateValue}%)`;
+    }
   }
 
   // Function to advance to next slide
   function nextSlide() {
-    currentSlide = (currentSlide + 1) % slideCount;
-    goToSlide(currentSlide);
+    currentSlide++;
+
+    if (currentSlide >= originalSlideCount) {
+      goToSlide(currentSlide);
+      setTimeout(() => {
+        currentSlide = 0;
+        goToSlide(currentSlide, true);
+      }, 1200);
+    } else {
+      goToSlide(currentSlide);
+    }
   }
 
-  // Start auto-rotation
-  const sliderInterval = setInterval(nextSlide, slideInterval);
-
-  // Optional: Pause on hover
-  const heroCarousel = document.querySelector(".hero-carousel");
-  if (heroCarousel) {
-    heroCarousel.addEventListener("mouseenter", () => {
-      clearInterval(sliderInterval);
-    });
-
-    heroCarousel.addEventListener("mouseleave", () => {
-      clearInterval(sliderInterval);
-      setInterval(nextSlide, slideInterval);
-    });
-  }
-
-  // Initialize first slide
+  // Initialize and start - NO STOPPING, NO CONDITIONS
   goToSlide(0);
-}
 
-// Initialize Swiper for Recruit Section
+  // Start the slider and NEVER stop it
+  setInterval(nextSlide, slideInterval);
+
+  console.log("Hero slider started - will never stop");
+}
+// Initialize Swiper for Recruit Section - INFINITE SMOOTH SLIDER
 function initializeRecruitSwiper() {
   // Check if Swiper is available
   if (typeof Swiper === "undefined") {
@@ -218,33 +241,40 @@ function initializeRecruitSwiper() {
   function initSwiper() {
     try {
       const recruitSwiper = new Swiper(".recruit-swiper", {
-        // Core settings
+        // Core settings for infinite smooth sliding
         slidesPerView: 1, // Show exactly one slide at a time
-        spaceBetween: 0, // No space between slides to prevent partial views
-        speed: 3000, // Transition speed
+        spaceBetween: 0, // No space between slides
+        speed: 800, // Smooth transition speed (reduced for smoother feel)
         grabCursor: true,
         autoHeight: true, // Adjust height to content
 
-        // Autoplay
-        autoplay: true,
+        // Infinite loop settings
+        loop: true, // Enable infinite loop
+        loopAdditionalSlides: 1, // Add extra slides for smoother loop
 
-        // Use slide effect for visible movement
+        // Autoplay settings
+        autoplay: {
+          delay: 4000, // Time between slides
+          disableOnInteraction: false, // Continue autoplay after user interaction
+          pauseOnMouseEnter: true, // Pause on hover
+        },
+
+        // Smooth slide effect
         effect: "slide",
 
-        // Slide visibility settings
-        centeredSlides: false, // Don't center slides (keeps exactly one visible)
-        loop: true, // Loop enabled
-
-        // Enable touch but with reduced sensitivity to prevent accidental slides
+        // Touch settings for smooth interaction
         allowTouchMove: true,
         simulateTouch: true,
-        touchRatio: 0.7, // Reduced touch sensitivity
-        threshold: 10, // Higher threshold for touch action
+        touchRatio: 1, // Full touch sensitivity
+        threshold: 5, // Lower threshold for easier swiping
+        longSwipesRatio: 0.3, // Easier long swipes
 
-        // Improve transitions
-        watchSlidesProgress: true, // Track slide visibility
+        // Slide visibility and transition settings
+        centeredSlides: false,
+        watchSlidesProgress: true,
+        watchSlidesVisibility: true,
 
-        // Navigation arrows
+        // Navigation arrows (always enabled for infinite scroll)
         navigation: {
           nextEl: ".swiper-button-next",
           prevEl: ".swiper-button-prev",
@@ -255,46 +285,69 @@ function initializeRecruitSwiper() {
           el: ".swiper-pagination",
           clickable: true,
           dynamicBullets: true,
+          dynamicMainBullets: 3, // Show 3 main bullets
         },
 
         // Events
         on: {
           init: function () {
-            updateNavigationVisibility(this);
-
-            // Make all slides fully visible but positioned off-screen
+            // Ensure all slides are visible and properly initialized
             document.querySelectorAll(".swiper-slide").forEach((slide) => {
-              // slide.style.opacity = "1";
               slide.style.visibility = "visible";
+              slide.style.opacity = "1";
             });
+
+            // Remove any disabled states from navigation buttons
+            const prevBtn = document.querySelector(
+              ".swiper-button-prev.recruit-nav-button"
+            );
+            const nextBtn = document.querySelector(
+              ".swiper-button-next.recruit-nav-button"
+            );
+
+            if (prevBtn) prevBtn.classList.remove("swiper-button-disabled");
+            if (nextBtn) nextBtn.classList.remove("swiper-button-disabled");
+
+            console.log("Recruit Swiper initialized with infinite loop");
           },
+
           slideChange: function () {
-            updateNavigationVisibility(this);
+            // Ensure navigation buttons never get disabled (infinite scroll)
+            const prevBtn = document.querySelector(
+              ".swiper-button-prev.recruit-nav-button"
+            );
+            const nextBtn = document.querySelector(
+              ".swiper-button-next.recruit-nav-button"
+            );
+
+            if (prevBtn) prevBtn.classList.remove("swiper-button-disabled");
+            if (nextBtn) nextBtn.classList.remove("swiper-button-disabled");
+          },
+
+          // Smooth transition events
+          slideChangeTransitionStart: function () {
+            // Add any custom transition start effects here if needed
+          },
+
+          slideChangeTransitionEnd: function () {
+            // Ensure smooth transition completion
+            const prevBtn = document.querySelector(
+              ".swiper-button-prev.recruit-nav-button"
+            );
+            const nextBtn = document.querySelector(
+              ".swiper-button-next.recruit-nav-button"
+            );
+
+            if (prevBtn) prevBtn.classList.remove("swiper-button-disabled");
+            if (nextBtn) nextBtn.classList.remove("swiper-button-disabled");
           },
         },
       });
 
-      // Function to update navigation button visibility
-      function updateNavigationVisibility(swiper) {
-        const prevBtn = document.querySelector(".swiper-button-prev");
-        const nextBtn = document.querySelector(".swiper-button-next");
-
-        if (prevBtn && nextBtn) {
-          if (swiper.isBeginning) {
-            prevBtn.classList.add("swiper-button-disabled");
-          } else {
-            prevBtn.classList.remove("swiper-button-disabled");
-          }
-
-          if (swiper.isEnd) {
-            nextBtn.classList.add("swiper-button-disabled");
-          } else {
-            nextBtn.classList.remove("swiper-button-disabled");
-          }
-        }
-      }
+      // Store swiper instance for external access if needed
+      window.recruitSwiperInstance = recruitSwiper;
     } catch (error) {
-      console.error("Error initializing Swiper:", error);
+      console.error("Error initializing Recruit Swiper:", error);
     }
   }
 }
