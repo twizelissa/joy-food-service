@@ -2126,33 +2126,182 @@ h3 {
   }
 
   /* News Section */
-  .news-container {
-    padding: 15px;
-    margin-right: 2%;
+  /* ======================================================
+     7. News Section - Desktop & Mobile Responsive
+     ====================================================== */
+  .news-section {
+    padding: 30px 5%;
+    background-color: #fff;
+    background-image: url("../images/hagiya-images/second-background.jpeg");
+    background-size: cover;
   }
 
-  .news-date {
-    margin-bottom: 5px;
-  }
-
-  .news-item {
-    flex-direction: column;
-    margin-left: 0;
-  }
-
-  .news-content p {
-    margin: 5px 0;
+  .news-section h2 {
+    text-align: center;
+    color: black;
+    margin-bottom: 10px;
+    font-weight: lighter;
+    position: relative;
+    padding: 20px 0;
+    z-index: 1;
   }
 
   .news-section h2::before {
-    width: 80px;
-    height: 80px;
+    content: "";
+    background-image: url("../images/hagiya-images/vertical-inside-logo.png");
+    background-size: contain;
+    background-position: center;
+    background-repeat: no-repeat;
+    position: absolute;
+    width: 120px;
+    height: 100px;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    z-index: -1;
+    opacity: 0.8;
   }
 
   .news-container {
-    padding: 15px 10px;
+    max-width: 60%;
+    background-color: white;
+    margin: 0 auto;
+    border-radius: 5px;
+    padding: 20px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.05);
   }
 
+  .news-item {
+    display: flex;
+    padding: 10px 0;
+    margin-left: 20%;
+    cursor: pointer;
+    transition: background-color 0.2s ease;
+    flex-wrap: wrap;
+    position: relative;
+  }
+
+  .news-item:hover {
+    background-color: #f9f9f9;
+  }
+
+  .news-item:not(:last-child)::after {
+    content: "";
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    right: 25%;
+    height: 1px;
+    background-color: rgba(0, 0, 0, 0.1);
+    margin-bottom: -1px;
+  }
+
+  .news-date {
+    align-items: center;
+    min-width: 100px;
+    color: black;
+    font-size: 14px;
+    display: flex;
+    align-items: flex-start;
+    padding-top: 2px;
+  }
+
+  .news-content {
+    flex: 1;
+    font-size: 14px;
+    overflow-wrap: break-word;
+    line-height: 1.6;
+  }
+
+  .news-content p {
+    margin-bottom: 8px;
+  }
+
+  .news-content p:last-child {
+    margin-bottom: 0;
+  }
+
+  /* ======================================================
+     TABLET RESPONSIVE (max-width: 991px)
+     ====================================================== */
+  @media (max-width: 991px) {
+    .news-section {
+      padding: 25px 3%;
+    }
+
+    .news-container {
+      max-width: 75%;
+      padding: 18px;
+    }
+
+    .news-item {
+      margin-left: 15%;
+    }
+
+    .news-section h2::before {
+      width: 100px;
+      height: 80px;
+    }
+  }
+
+  /* ======================================================
+     MOBILE RESPONSIVE (max-width: 767px)
+     ====================================================== */
+  @media (max-width: 767px) {
+    .news-section {
+      padding: 20px 15px;
+      background-position: center;
+    }
+
+    .news-section h2 {
+      font-size: 20px;
+      margin-bottom: 15px;
+      padding: 15px 0;
+    }
+
+    .news-section h2::before {
+      width: 80px;
+      height: 60px;
+    }
+
+    .news-container {
+      max-width: 100%;
+      padding: 15px;
+      margin: 0 10px;
+    }
+
+    .news-item {
+      flex-direction: column;
+      margin-left: 0;
+      padding: 15px 0;
+      border-bottom: 1px solid rgba(0, 0, 0, 0.1);
+    }
+
+    .news-item:last-child {
+      border-bottom: none;
+    }
+
+    .news-item:not(:last-child)::after {
+      display: none;
+    }
+
+    .news-date {
+      min-width: auto;
+      font-size: 12px;
+      color: #666;
+      margin-bottom: 8px;
+      font-weight: 600;
+    }
+
+    .news-content {
+      font-size: 13px;
+      line-height: 1.5;
+    }
+
+    .news-content p {
+      margin-bottom: 6px;
+    }
+  }
   /* Space Section */
   .space-section {
     padding: 30px 20px;
@@ -2241,7 +2390,7 @@ h3 {
     left: 7.5%;
     top: 15%;
     bottom: 30px;
-    height: 1000px;
+    height: 100vh;
   }
 
   .menu-content {
