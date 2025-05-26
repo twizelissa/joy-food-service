@@ -796,12 +796,12 @@ section {
 }
 
 .joy-link {
-  color: white;
+  color: rgb(20, 20, 20);
   text-decoration: underline;
 }
 
 .joy-link:hover {
-  color: #0099ff;
+  color: #3d3e3f;
 }
 
 /* ADDITIONAL DUPLICATE STYLES FROM YOUR ORIGINAL FILE */
@@ -1004,8 +1004,8 @@ section {
 
 /* Site Footer - Second Definition */
 .site-footer {
-  background-color: #f0e8e8;
-  color: white;
+    background-color: #f6f3ed;
+ color: #333;
   text-align: center;
   padding: 40px 20px;
 }
@@ -1020,179 +1020,831 @@ section {
 }
 
 .joy-link {
-  color: white;
+  color: rgb(129, 125, 125);
   text-decoration: underline;
 }
 
 .joy-link:hover {
-  color: #0099ff;
+  color: #415563;
 }
 
-/* Media Queries */
-@media (max-width: 991px) {
+/* ============================================
+   VEREST COMPLETE MOBILE RESPONSIVE CSS
+   ============================================ */
+
+/* ============================================
+   BASE RESPONSIVE IMPROVEMENTS
+   ============================================ */
+
+/* Better viewport handling */
+html {
+  -webkit-text-size-adjust: 100%;
+  text-size-adjust: 100%;
+}
+
+body {
+  overflow-x: hidden;
+  width: 100%;
+}
+
+/* Ensure all images are responsive */
+img {
+  max-width: 100%;
+  height: auto;
+  display: block;
+}
+
+/* ============================================
+   MOBILE FIRST - ALL MOBILE STYLES (max-width: 767px)
+   ============================================ */
+@media (max-width: 767px) {
+  /* ===================
+     GLOBAL MOBILE SETTINGS
+     =================== */
+  * {
+    word-break: keep-all;
+    overflow-wrap: break-word;
+  }
+
+  body {
+    font-size: 14px;
+    line-height: 1.5;
+  }
+
+  section {
+    padding: 30px 15px;
+    max-width: 100%;
+    margin: 0 auto;
+  }
+
+  /* ===================
+     MOBILE MENU
+     =================== */
+  .mobile-menu-btn {
+    display: block;
+    position: fixed;
+    right: 15px;
+    top: 15px;
+    z-index: 1001;
+    background: rgba(255, 255, 255, 0.9);
+    padding: 8px;
+    border-radius: 4px;
+  }
+
+  .mobile-menu-btn span {
+    width: 22px;
+    height: 2px;
+    margin: 4px 0;
+  }
+
+  .mobile-nav {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100vh;
+    background-color: rgba(255, 255, 255, 0.98);
+    padding: 80px 20px 20px;
+    z-index: 1000;
+    backdrop-filter: blur(10px);
+  }
+
+  .mobile-nav a {
+    font-size: 18px;
+    padding: 15px 0;
+    display: block;
+    text-align: center;
+    border-bottom: 1px solid #eee;
+  }
+
   .side-nav {
     display: none;
   }
 
-  .mobile-menu-btn {
+  /* ===================
+     HERO SECTION - MOBILE OPTIMIZED
+     =================== */
+  .hero {
+    height: 60vh;
+    min-height: 400px;
+    padding: 0;
+    margin: 0;
+  }
+
+  .hero-image {
+    height: 100%;
+    width: 100%;
+  }
+
+  .hero-image img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+  }
+
+  .overlay {
+    background-color: rgba(0, 0, 0, 0.6);
+    padding: 20px;
+  }
+
+  .overlay h1 {
+    font-size: 32px;
+    margin-bottom: 15px;
+    letter-spacing: 3px;
+    text-align: center;
+  }
+
+  .overlay p {
+    font-size: 16px;
+    letter-spacing: 1px;
+    text-align: center;
+    line-height: 1.4;
+  }
+
+  /* ===================
+     ABOUT SECTION - MOBILE STACKED
+     =================== */
+  .about {
+    padding: 40px 15px;
+  }
+
+  .about-content {
+    flex-direction: column;
+    gap: 25px;
+    align-items: stretch;
+  }
+
+  .about-image {
+    width: 100%;
+    order: 1;
+  }
+
+  .about-image img {
+    width: 100%;
+    height: 250px;
+    object-fit: cover;
+    border-radius: 8px;
+  }
+
+  .about-text {
+    width: 100%;
+    height: auto;
+    order: 2;
+    padding: 0;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+  }
+
+  .about-text .highlight-text {
+    margin-bottom: 12px;
+    text-align: center;
+  }
+
+  .about-text .highlight-text span {
+    font-size: 15px;
+    line-height: 1.6;
+    color: #585656;
     display: block;
   }
 
-  .main-content {
-    margin-left: 0;
+  .about-text .highlight-divider {
+    width: 60%;
+    max-width: 150px;
+    margin: 20px auto;
   }
 
-  .overlay h1 {
-    font-size: 40px;
-  }
-
-  .overlay p {
-    font-size: 18px;
-  }
-
-  .about-content {
-    flex-direction: column;
-  }
-
-  .about-image,
-  .about-text {
-    width: 100%;
-  }
-
-  .about-image img {
-    height: auto;
-    max-height: 400px;
-  }
-
-  .system {
-    width: 100%;
-  }
-}
-
-@media (max-width: 767px) {
-  .hero {
-    height: 40vh; /* Reduced from 90vh */
-    min-height: 400px;
-  }
-
-  .overlay h1 {
-    font-size: 36px;
-    margin-bottom: 15px;
-  }
-
-  .overlay p {
-    font-size: 18px;
-  }
-
-  /* Fix about section spacing */
-  .about {
-    padding: 40px 20px; /* Reduced padding */
-  }
-
-  .about-content {
-    flex-direction: column;
-    gap: 20px; /* Reduced gap */
-  }
-
-  .about-image img {
-    height: 300px; /* Fixed height instead of 500px */
-  }
-
-  /* Fix gallery section spacing */
+  /* ===================
+     GALLERY SECTION - ONE IMAGE AT A TIME
+     =================== */
   .gallery {
-    padding: 40px 0; /* Reduced padding */
+    padding: 40px 0;
   }
 
-  .gallery-after-text {
-    margin-top: 40px; /* Reduced from 100px */
+  .gallery-container {
+    position: relative;
+    width: 100%;
+    overflow: hidden;
+    background-color: rgba(0, 0, 0, 0.03);
+    padding: 20px 0;
   }
 
-  .instagram-section {
-    padding: 40px 20px !important;
-    width: 100% !important;
-    text-align: center !important;
-  }
-
-  .instagram-btn {
-    display: inline-block !important;
-    width: 80% !important;
-    max-width: 300px !important;
-    margin: 0 auto !important;
-    padding: 15px 20px !important;
-    font-size: 16px !important;
-    text-align: center !important;
-    box-sizing: border-box !important;
-  }
-
-  /* Fix system sections spacing */
-  .system {
-    padding: 40px 20px; /* Reduced padding */
+  .gallery-wrapper {
+    display: flex;
+    transition: transform 0.5s ease-in-out;
     width: 100%;
   }
 
-  /* Fix full-width image section */
+  /* MOBILE: Show ONE image at a time */
+  .gallery-slide {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-width: 100%;
+    padding: 0 15px;
+    flex-shrink: 0;
+  }
+
+  .gallery-item {
+    width: 90%; /* Single image takes most of screen width */
+    height: 220px;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+    border-radius: 8px;
+    overflow: hidden;
+    margin: 0 auto;
+  }
+
+  /* Hide other gallery items on mobile - show only first image */
+  .gallery-item:not(:first-child) {
+    display: none;
+  }
+
+  .gallery-item img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+  }
+
+  /* Gallery navigation dots */
+  .gallery-controls {
+    margin-top: 25px;
+    justify-content: center;
+  }
+
+  .gallery-dot {
+    width: 10px;
+    height: 10px;
+    margin: 0 6px;
+  }
+
+  /* Gallery after text */
+  .gallery-after-text {
+    margin-top: 40px;
+    padding: 0 20px;
+    text-align: center;
+  }
+
+  .gallery-after-text .highlight-text {
+    margin-bottom: 12px;
+  }
+
+  .gallery-after-text .highlight-text span {
+    font-size: 15px;
+    line-height: 1.6;
+    display: block;
+  }
+
+  /* ===================
+     FULL WIDTH IMAGE SECTION
+     =================== */
   .full-width-image-section {
-    margin: 40px 0; /* Reduced from 80px */
+    margin: 30px 0;
+    padding: 0;
   }
 
   .full-width-image-container {
-    height: 300px; /* Reduced height */
+    height: 200px;
+    width: 100%;
   }
 
-  /* Fix spacing between sections */
-  section {
-    padding: 40px 15px; /* Reduced from 60px */
+  .full-width-image {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
   }
 
-  /* Recruit slider mobile adjustments */
+  /* ===================
+     SYSTEM SECTION - MOBILE TABLES
+     =================== */
+  .system {
+    width: 100%;
+    padding: 30px 10px;
+  }
+
+  .center-highlight {
+    margin-bottom: 25px;
+  }
+
+  .recruit-button {
+    width: 90%;
+    max-width: 280px;
+    padding: 12px 15px;
+    font-size: 13px;
+    text-align: center;
+    display: block;
+    margin: 0 auto;
+  }
+
+  /* Mobile table styling */
+  .system-table {
+    width: 100%;
+    font-size: 12px;
+    border-radius: 8px;
+    overflow: hidden;
+  }
+
+  .system-table th {
+    width: 35%;
+    padding: 12px 8px;
+    font-size: 12px;
+    text-align: center;
+  }
+
+  .system-table td {
+    width: 65%;
+    padding: 12px 8px;
+    font-size: 12px;
+    line-height: 1.4;
+  }
+
+  .highlight-th {
+    font-size: 12px;
+    padding: 4px 6px;
+  }
+
+  .highlight-td {
+    font-size: 12px;
+    padding: 4px 6px;
+    line-height: 1.4;
+  }
+
+  /* ===================
+     SYSTEM IN-BETWEEN GALLERY - MOBILE GRID
+     =================== */
+  .system-in-between-gallery {
+    padding: 30px 0;
+  }
+
+  .system-in-between-gallery-container {
+    padding: 0 15px;
+  }
+
+  .system-in-between-gallery-container-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    grid-gap: 8px;
+  }
+
+  .system-in-between-gallery-item {
+    padding-bottom: 75%;
+    border-radius: 6px;
+    overflow: hidden;
+  }
+
+  .system-in-between-gallery-item.featured {
+    grid-column: span 2;
+    grid-row: span 1;
+  }
+
+  .system-in-between-gallery-item:nth-child(5) {
+    grid-column: span 2;
+    grid-row: span 1;
+  }
+
+  /* ===================
+     RECRUIT SECTION - MOBILE SLIDER
+     =================== */
+  .recruit-slider-wrapper {
+    width: 300%;
+    transition: transform 0.6s ease-in-out;
+  }
+
+  .recruit-slide {
+    min-width: 33.333%;
+  }
+
+  /* Mobile recruit navigation */
+  .recruit-nav {
+    width: 35px;
+    height: 35px;
+    font-size: 12px;
+    border-radius: 6px;
+  }
+
   .recruit-nav.prev {
-    left: -35px;
+    left: -20px;
   }
 
   .recruit-nav.next {
-    right: -35px;
+    right: -20px;
+  }
+
+  .recruit-dots {
+    margin-top: 20px;
+    gap: 8px;
+  }
+
+  .recruit-dot {
+    width: 10px;
+    height: 10px;
+  }
+
+  /* ===================
+     INSTAGRAM SECTION
+     =================== */
+  .instagram-section {
+    padding: 30px 15px;
+    text-align: center;
+  }
+
+  .instagram-btn {
+    width: 80%;
+    max-width: 250px;
+    padding: 15px 20px;
+    font-size: 16px;
+    margin: 0 auto;
+    display: block;
+    text-align: center;
+    border-radius: 6px;
+  }
+
+  /* ===================
+     ACCESS SECTION
+     =================== */
+  .access-section {
+    padding: 40px 15px;
+  }
+
+  .access-container {
+    padding: 0 10px;
+  }
+
+  .access-title {
+    font-size: 16px;
+    padding: 8px 30px;
+    margin-bottom: 25px;
+  }
+
+  .access-content p {
+    font-size: 14px;
+    margin-bottom: 12px;
+    line-height: 1.6;
+  }
+
+  /* ===================
+     MAP SECTION
+     =================== */
+  .full-width-map {
+    height: 300px;
+  }
+
+  .map-label {
+    bottom: 15px;
+    right: 15px;
+    padding: 6px 12px;
+    border-radius: 15px;
+  }
+
+  .map-label a {
+    font-size: 12px;
+  }
+
+  /* ===================
+     FOOTER
+     =================== */
+  .site-footer {
+    padding: 30px 15px;
+  }
+
+  .footer-content p {
+    font-size: 13px;
+    margin-bottom: 8px;
+  }
+
+  .joy-link {
+    font-size: 13px;
   }
 }
 
+/* ============================================
+   SMALL MOBILE (max-width: 480px)
+   ============================================ */
 @media (max-width: 480px) {
-  h2 {
-    font-size: 24px;
+  body {
+    font-size: 13px;
+  }
+
+  section {
+    padding: 25px 12px;
+  }
+
+  /* Hero adjustments */
+  .hero {
+    height: 50vh;
+    min-height: 350px;
   }
 
   .overlay h1 {
     font-size: 28px;
+    letter-spacing: 2px;
   }
 
   .overlay p {
     font-size: 14px;
   }
 
-  .system-in-between-gallery-container-grid {
-    grid-template-columns: 1fr;
+  /* About section */
+  .about-image img {
+    height: 200px;
   }
 
-  .system-in-between-gallery-item,
-  .system-in-between-gallery-item:nth-child(5) {
-    grid-column: span 1;
-    grid-row: span 1;
-  }
-
-  .highlight-text span {
+  .about-text .highlight-text span {
     font-size: 14px;
   }
 
-  .full-width-image-container {
-    height: 250px;
+  /* Gallery */
+  .gallery-item {
+    height: 180px;
+    width: 95%;
+  }
+
+  /* System tables */
+  .system-table {
+    font-size: 11px;
+  }
+
+  .system-table th,
+  .system-table td {
+    padding: 10px 6px;
   }
 
   .highlight-th,
   .highlight-td {
-    font-size: 12px;
-    padding: 3px 5px;
+    font-size: 11px;
+    padding: 3px 4px;
   }
 
-  .system-table th {
-    width: 40%;
-    min-width: 100px;
+  /* System gallery grid */
+  .system-in-between-gallery-container-grid {
+    grid-gap: 6px;
+  }
+
+  /* Recruit button */
+  .recruit-button {
+    width: 95%;
+    padding: 10px 12px;
+    font-size: 12px;
+  }
+
+  /* Instagram button */
+  .instagram-btn {
+    width: 90%;
+    padding: 12px 15px;
+    font-size: 14px;
+  }
+
+  /* Access section */
+  .access-title {
+    font-size: 14px;
+    padding: 6px 25px;
+  }
+
+  .access-content p {
+    font-size: 13px;
+  }
+
+  /* Map */
+  .full-width-map {
+    height: 250px;
+  }
+}
+
+/* ============================================
+   EXTRA SMALL SCREENS (max-width: 320px)
+   ============================================ */
+@media (max-width: 320px) {
+  section {
+    padding: 20px 10px;
+  }
+
+  .overlay h1 {
+    font-size: 24px;
+  }
+
+  .overlay p {
+    font-size: 13px;
+  }
+
+  .about-image img {
+    height: 180px;
+  }
+
+  .gallery-item {
+    height: 160px;
+  }
+
+  .system-table th,
+  .system-table td {
+    padding: 8px 5px;
+    font-size: 10px;
+  }
+
+  .recruit-button {
+    font-size: 11px;
+    padding: 8px 10px;
+  }
+
+  .instagram-btn {
+    font-size: 13px;
+    padding: 10px 12px;
+  }
+}
+
+/* ============================================
+   TABLET (768px - 1023px)
+   ============================================ */
+@media (min-width: 768px) and (max-width: 1023px) {
+  .mobile-menu-btn {
+    display: block;
+  }
+
+  .side-nav {
+    display: none;
+  }
+
+  /* Hero section */
+  .hero {
+    height: 70vh;
+    min-height: 500px;
+  }
+
+  .overlay h1 {
+    font-size: 45px;
+  }
+
+  .overlay p {
+    font-size: 20px;
+  }
+
+  /* About section */
+  .about-content {
+    gap: 30px;
+  }
+
+  .about-image img {
+    height: 350px;
+  }
+
+  /* Gallery - show 2 images per slide on tablet */
+  .gallery-slide {
+    justify-content: center;
+    gap: 20px;
+  }
+
+  .gallery-item {
+    width: calc(45% - 10px);
+    height: 220px;
+  }
+
+  .gallery-item:nth-child(3),
+  .gallery-item:nth-child(4),
+  .gallery-item:nth-child(5) {
+    display: none;
+  }
+
+  /* System sections */
+  .system {
+    width: 95%;
+    padding: 50px 20px;
+  }
+
+  .system-table th,
+  .system-table td {
+    padding: 14px 10px;
+    font-size: 14px;
+  }
+
+  /* System gallery - 3 columns */
+  .system-in-between-gallery-container-grid {
+    grid-template-columns: repeat(3, 1fr);
+    grid-gap: 10px;
+  }
+
+  .system-in-between-gallery-item.featured {
+    grid-column: span 1;
+    grid-row: span 1;
+  }
+
+  .system-in-between-gallery-item:nth-child(5) {
+    grid-column: span 1;
+    grid-row: span 1;
+  }
+}
+
+/* ============================================
+   DESKTOP (1024px+)
+   ============================================ */
+@media (min-width: 1024px) {
+  .mobile-menu-btn {
+    display: none;
+  }
+
+  .side-nav {
+    display: flex;
+  }
+
+  /* Gallery - show 3 images per slide on desktop */
+  .gallery-slide {
+    justify-content: center;
+    gap: 15px;
+  }
+
+  .gallery-item {
+    width: calc(33.333% - 10px);
+    height: 250px;
+  }
+
+  .gallery-item:nth-child(4),
+  .gallery-item:nth-child(5) {
+    display: none;
+  }
+
+  /* System gallery - back to 4 columns */
+  .system-in-between-gallery-container-grid {
+    grid-template-columns: repeat(4, 1fr);
+  }
+
+  .system-in-between-gallery-item.featured {
+    grid-column: span 1;
+    grid-row: span 2;
+  }
+
+  .system-in-between-gallery-item:nth-child(5) {
+    grid-column: 3 / span 2;
+    grid-row: 1 / span 2;
+  }
+}
+
+/* ============================================
+   TOUCH DEVICE OPTIMIZATIONS
+   ============================================ */
+@media (hover: none) and (pointer: coarse) {
+  /* Larger touch targets */
+  .mobile-nav a,
+  .instagram-btn,
+  .recruit-button,
+  .recruit-nav,
+  .recruit-dot,
+  .gallery-dot {
+    min-height: 44px;
+    min-width: 44px;
+    touch-action: manipulation;
+  }
+
+  /* Remove hover effects */
+  .gallery-item:hover {
+    transform: none;
+  }
+
+  .system-in-between-gallery-item:hover img {
+    transform: none;
+  }
+
+  /* Better spacing for touch */
+  .recruit-dots {
+    gap: 12px;
+  }
+
+  .gallery-controls {
+    gap: 15px;
+  }
+}
+
+/* ============================================
+   PERFORMANCE OPTIMIZATIONS
+   ============================================ */
+
+/* GPU acceleration for animations */
+.gallery-wrapper,
+.recruit-slider-wrapper {
+  will-change: transform;
+  backface-visibility: hidden;
+  transform: translateZ(0);
+}
+
+.gallery-item,
+.system-in-between-gallery-item img {
+  backface-visibility: hidden;
+  transform: translateZ(0);
+}
+
+/* Reduced motion support */
+@media (prefers-reduced-motion: reduce) {
+  * {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+  }
+
+  .gallery-wrapper {
+    animation: none !important;
+  }
+}
+
+/* High DPI displays */
+@media (-webkit-min-device-pixel-ratio: 2), (min-resolution: 192dpi) {
+  body {
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
   }
 }
