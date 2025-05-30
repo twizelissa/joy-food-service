@@ -228,129 +228,103 @@ function initializeHeroSlider() {
   console.log("Hero slider started - will never stop");
 }
 // Initialize Swiper for Recruit Section - INFINITE SMOOTH SLIDER
-function initializeRecruitSwiper() {
-  // Check if Swiper is available
-  if (typeof Swiper === "undefined") {
-    loadSwiperLibrary().then(() => {
-      initSwiper();
-    });
-  } else {
-    initSwiper();
-  }
+ function initializeRecruitSwiper() {
+            try {
+                const recruitSwiper = new Swiper(".recruit-swiper", {
+                    // Core settings - ONLY ONE CARD VISIBLE
+                    slidesPerView: 1, // Exactly one slide
+                    spaceBetween: 0, // No space between slides
+                    speed: 600,
+                    grabCursor: true,
+                    autoHeight: false,
+                    centeredSlides: true, // Center the active slide
+                    watchOverflow: true,
 
-  function initSwiper() {
-    try {
-      const recruitSwiper = new Swiper(".recruit-swiper", {
-        // Core settings for infinite smooth sliding
-        slidesPerView: 1, // Show exactly one slide at a time
-        spaceBetween: 0, // No space between slides
-        speed: 800, // Smooth transition speed (reduced for smoother feel)
-        grabCursor: true,
-        autoHeight: true, // Adjust height to content
+                    // Use slide effect for clean single card display
+                    effect: "slide",
+                    slideToClickedSlide: false, // Prevent accidental multi-slide jumps
 
-        // Infinite loop settings
-        loop: true, // Enable infinite loop
-        loopAdditionalSlides: 1, // Add extra slides for smoother loop
+                    // Infinite loop settings
+                    loop: true,
+                    loopAdditionalSlides: 1,
 
-        // Autoplay settings
-        autoplay: {
-          delay: 4000, // Time between slides
-          disableOnInteraction: false, // Continue autoplay after user interaction
-          pauseOnMouseEnter: true, // Pause on hover
-        },
+                    // Autoplay settings
+                    autoplay: {
+                        delay: 4000,
+                        disableOnInteraction: false,
+                        pauseOnMouseEnter: true,
+                    },
 
-        // Smooth slide effect
-        effect: "slide",
+                    // Navigation arrows - ENABLED
+                    navigation: {
+                        nextEl: ".swiper-button-next.recruit-nav-button",
+                        prevEl: ".swiper-button-prev.recruit-nav-button",
+                    },
 
-        // Touch settings for smooth interaction
-        allowTouchMove: true,
-        simulateTouch: true,
-        touchRatio: 1, // Full touch sensitivity
-        threshold: 5, // Lower threshold for easier swiping
-        longSwipesRatio: 0.3, // Easier long swipes
+                    // Pagination dots
+                    pagination: {
+                        el: ".swiper-pagination",
+                        clickable: true,
+                        dynamicBullets: true,
+                        dynamicMainBullets: 3,
+                    },
 
-        // Slide visibility and transition settings
-        centeredSlides: false,
-        watchSlidesProgress: true,
-        watchSlidesVisibility: true,
+                    // Touch settings for single card navigation
+                    allowTouchMove: true,
+                    simulateTouch: true,
+                    touchRatio: 1,
+                    threshold: 10,
+                    followFinger: true,
 
-        // Navigation arrows (always enabled for infinite scroll)
-        navigation: {
-          nextEl: ".swiper-button-next",
-          prevEl: ".swiper-button-prev",
-        },
+                    // Ensure single card visibility
+                    slidesOffsetBefore: 0,
+                    slidesOffsetAfter: 0,
+                    normalizeSlideIndex: true,
+                    preventClicks: false,
+                    preventClicksPropagation: false,
 
-        // Pagination dots
-        pagination: {
-          el: ".swiper-pagination",
-          clickable: true,
-          dynamicBullets: true,
-          dynamicMainBullets: 3, // Show 3 main bullets
-        },
+                    // Events
+                    on: {
+                        init: function () {
+                            console.log("Recruit Swiper initialized - single card mode");
+                            
+                            // Ensure navigation buttons are visible
+                            const prevBtn = document.querySelector(".swiper-button-prev.recruit-nav-button");
+                            const nextBtn = document.querySelector(".swiper-button-next.recruit-nav-button");
+                            
+                            if (prevBtn) {
+                                prevBtn.style.visibility = 'visible';
+                                prevBtn.style.opacity = '1';
+                            }
+                            if (nextBtn) {
+                                nextBtn.style.visibility = 'visible';
+                                nextBtn.style.opacity = '1';
+                            }
+                        },
 
-        // Events
-        on: {
-          init: function () {
-            // Ensure all slides are visible and properly initialized
-            document.querySelectorAll(".swiper-slide").forEach((slide) => {
-              slide.style.visibility = "visible";
-              slide.style.opacity = "1";
-            });
+                        slideChange: function () {
+                            // Keep navigation buttons always enabled for infinite scroll
+                            const prevBtn = document.querySelector(".swiper-button-prev.recruit-nav-button");
+                            const nextBtn = document.querySelector(".swiper-button-next.recruit-nav-button");
 
-            // Remove any disabled states from navigation buttons
-            const prevBtn = document.querySelector(
-              ".swiper-button-prev.recruit-nav-button"
-            );
-            const nextBtn = document.querySelector(
-              ".swiper-button-next.recruit-nav-button"
-            );
+                            if (prevBtn) prevBtn.classList.remove("swiper-button-disabled");
+                            if (nextBtn) nextBtn.classList.remove("swiper-button-disabled");
+                        }
+                    }
+                });
 
-            if (prevBtn) prevBtn.classList.remove("swiper-button-disabled");
-            if (nextBtn) nextBtn.classList.remove("swiper-button-disabled");
+                // Store swiper instance
+                window.recruitSwiperInstance = recruitSwiper;
 
-            console.log("Recruit Swiper initialized with infinite loop");
-          },
+            } catch (error) {
+                console.error("Error initializing Recruit Swiper:", error);
+            }
+        }
 
-          slideChange: function () {
-            // Ensure navigation buttons never get disabled (infinite scroll)
-            const prevBtn = document.querySelector(
-              ".swiper-button-prev.recruit-nav-button"
-            );
-            const nextBtn = document.querySelector(
-              ".swiper-button-next.recruit-nav-button"
-            );
-
-            if (prevBtn) prevBtn.classList.remove("swiper-button-disabled");
-            if (nextBtn) nextBtn.classList.remove("swiper-button-disabled");
-          },
-
-          // Smooth transition events
-          slideChangeTransitionStart: function () {
-            // Add any custom transition start effects here if needed
-          },
-
-          slideChangeTransitionEnd: function () {
-            // Ensure smooth transition completion
-            const prevBtn = document.querySelector(
-              ".swiper-button-prev.recruit-nav-button"
-            );
-            const nextBtn = document.querySelector(
-              ".swiper-button-next.recruit-nav-button"
-            );
-
-            if (prevBtn) prevBtn.classList.remove("swiper-button-disabled");
-            if (nextBtn) nextBtn.classList.remove("swiper-button-disabled");
-          },
-        },
-      });
-
-      // Store swiper instance for external access if needed
-      window.recruitSwiperInstance = recruitSwiper;
-    } catch (error) {
-      console.error("Error initializing Recruit Swiper:", error);
-    }
-  }
-}
+        // Initialize when DOM is ready
+        document.addEventListener('DOMContentLoaded', function() {
+            initializeRecruitSwiper();
+        });
 
 // Helper: Load Swiper Library if needed
 function loadSwiperLibrary() {

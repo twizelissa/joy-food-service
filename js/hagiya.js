@@ -233,14 +233,11 @@ function initGalleryInfiniteScroll() {
 
   // Create CSS keyframes dynamically using pixel-based movement
   const styleSheet = document.createElement("style");
+  styleSheet.id = 'gallery-animation-styles';
   styleSheet.textContent = `
     @keyframes infiniteGallerySlide {
-      0% {
-        transform: translateX(0px);
-      }
-      100% {
-        transform: translateX(-${originalSetWidth}px);
-      }
+      0% { transform: translateX(0px); }
+      100% { transform: translateX(-${originalSetWidth}px); }
     }
     
     .gallery-wrapper {
@@ -250,13 +247,33 @@ function initGalleryInfiniteScroll() {
     
     .gallery-slide {
       display: flex;
-      justify-content: space-between;
+      justify-content: flex-start;
       align-items: center;
-      gap: 15px;
+      gap: 12px;
       min-width: 100vw;
-      padding: 0 20px;
+      padding: 0 15px;
       flex-shrink: 0;
       box-sizing: border-box;
+    }
+    
+    .gallery-image {
+      width: calc((100vw - 30px - 48px) / 5) !important;
+      height: 250px !important;
+      box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1) !important;
+      border-radius: 5px !important;
+      overflow: hidden !important;
+      transition: transform 0.3s ease !important;
+      flex-shrink: 0 !important;
+    }
+    
+    .gallery-image:hover {
+      transform: scale(1.05) !important;
+    }
+    
+    .gallery-image img {
+      width: 100% !important;
+      height: 100% !important;
+      object-fit: cover !important;
     }
   `;
   document.head.appendChild(styleSheet);

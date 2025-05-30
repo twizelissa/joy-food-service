@@ -777,7 +777,7 @@ h3 {
 }
 
 .gallery-image {
-  width: calc(20% - 12px); /* 5 items per slide: 20% each minus gap */
+  width: calc(20% - 12px) !important; /* 5 items per slide: 20% each minus gap */
   height: 250px;
   box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
   border-radius: 5px;
@@ -2380,62 +2380,62 @@ h3 {
   }
 
   /* Course Menu Section */
-  .menu-layout {
-    height: 1200px;
-    /* padding-bottom: 750px; */
-  }
-
-  .menu-card {
-    width: 85%;
-    left: 7.5%;
-    top: 15%;
-    bottom: 30px;
-    height: 100vh;
-  }
-
-  .menu-content {
-    width: 100%;
-    margin-top: 100%;
-    padding: 30px;
-    height: 600px;
-  }
-
-  .main-image {
-    width: 85%;
-    height: 25%;
-    left: 7.5%;
-    top: 30px;
-  }
-
-  .thumbnail-container {
-    flex-direction: row;
-    width: 85%;
-    left: 7.5%;
-    top: 29%;
-    gap: 5%;
-  }
-
-  .thumbnail-container img {
-    width: 47.5%;
-    height: 180px;
-  }
-
-  .vertical-text-container {
-    writing-mode: horizontal-tb;
-    top: -20%;
-    right: auto;
-    width: 85%;
-    margin-bottom: 10%;
-    /* height: auto;
-    margin: 30px auto; */
-  }
-
-  .course-vertical-text {
-    writing-mode: horizontal-tb;
-    text-orientation: mixed;
-    margin-left: 0;
-    margin-bottom: 10%;
-  }
+  .menu-layout{
+        height: auto;
+        padding-bottom: 40px;
+        margin-bottom: 64px;
+    }
+    .main-image{
+        position: static;
+        width: 100%;
+        margin-bottom: 40px;
+    }
+    .thumbnail-container{
+        position: static;
+        display: block;
+        width: 100%;
+    }
+    .thumbnail-container img{
+        width: 100%;
+        margin-bottom: 40px;
+    }
+    .menu-card{
+        position: static;
+        height: auto;
+        min-height: auto;
+        width: 100%;
+        background-size: cover;
+        padding-bottom: 30px;
+        margin-bottom: 40px;
+    }
+    .menu-content{
+        height: auto;
+        margin-top: 0;
+        padding: 30px 20px 0;
+    }
+    .vertical-text-container{
+        position: static;
+        display: block;
+        margin: 30px auto 0;
+        width: 90%;
+    }
+    .course-vertical-text{
+        writing-mode: horizontal-tb !important;
+        white-space: initial;
+    }
+    .course-items{
+        text-align: center;
+    }
+    .course-title{
+        margin-bottom: 32px;
+    }
+    .course-price{
+        text-align: center;
+        margin-bottom: 16px;
+    }
+    .course-note{
+        text-align: center;
+    }
   /* ======================================================
      9. Space Section
      ====================================================== */

@@ -8,9 +8,11 @@
 
 body {
   background-color: #f2f2f2;
-  background-image: url("../images/body-background.svg");
+  background-image: url("../images/body-background1.svg");
   background-repeat: no-repeat;
   background-size: cover;
+  /* background-position: center; */
+  background-size: contain; 
   width: 100%;
   height: 100%;
   line-height: 1.6;
@@ -322,13 +324,13 @@ header {
 /* Mission Section */
 .mission-section {
   padding: 80px 0;
-  top: 100px;
+  top: 30px;
   position: relative;
   overflow: hidden;
 }
 
 .mission-container {
-  max-width: 1200px;
+  max-width: 1000px;
   margin-left: 20%;
   padding: 0 20px;
   position: relative;
@@ -376,7 +378,7 @@ header {
   text-align: left;
   font-size: 24px;
   letter-spacing: 4px;
-  margin-left: 15%;
+  margin-left: 10%;
   margin-bottom: 30px;
   position: relative;
   display: inline-block;
@@ -403,11 +405,12 @@ header {
 .news-section {
   padding: 40px 0;
   position: relative;
+  margin-top: -5%;
 }
 
 .news-container {
-  max-width: 1000px;
-  margin-left: 25%;
+  max-width: 800px;
+  margin-left: 23%;
   padding: 0 20px;
 }
 
@@ -592,14 +595,21 @@ header {
   display: none;
 }
 
-/* Restaurant Section */
+/* Restaurant Section - Match Target Design Layout */
 .restaurant-section {
   padding: 20px 0;
+  margin-left: 2%;
+  margin-right: 13%;
+  margin-bottom: 0;
+}
+.restaurant-section:last-of-type {
+  margin-bottom: 300px; /* Large space only after the last restaurant section */
 }
 
 .restaurant-container {
-  max-width: 1200px;
-  margin: 0 auto;
+  max-width: 1400px;
+  /* margin: 0 auto; */
+  margin-left: 15%;
   padding: 0 20px;
 }
 
@@ -610,7 +620,8 @@ header {
   overflow: hidden;
   box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
   transition: transform 0.3s ease, box-shadow 0.3s ease;
-  height: 380px;
+  height: 320px;
+  margin-left: 0;
 }
 
 .restaurant-card:hover {
@@ -619,11 +630,11 @@ header {
 }
 
 .restaurant-info {
-  width: 35%;
-  padding: 40px;
+  width: 40%;
+  padding: 40px 30px 30px 30px; /* More natural padding instead of complex positioning */
   display: flex;
   flex-direction: column;
-  justify-content: center;
+  justify-content: center; /* Center the content vertically */
   align-items: center;
   text-align: center;
 }
@@ -632,18 +643,32 @@ header {
   display: flex;
   justify-content: center;
   align-items: center;
-  margin-bottom: 10px;
-  height: 60px;
+  margin-bottom: 20px; /* Reduced from 25px for tighter spacing */
+  height: auto;
 }
 
 .restaurant-logo-img {
-  max-width: 90px;
-  max-height: 50px;
+  max-width: 120px; /* Slightly larger than current for better balance */
+  max-height: 70px;
+  width: auto;
+  height: auto;
   transition: transform 0.3s ease;
 }
 
 .restaurant-card:hover .restaurant-logo-img {
   transform: scale(1.05);
+}
+
+.restaurant-description {
+  color: white;
+  font-size: 13px; /* Slightly smaller for cleaner look */
+  line-height: 1.5; /* Tighter line height */
+  margin-bottom: 25px; /* Reduced margin for closer spacing */
+  text-shadow: 0 1px 2px rgba(0, 0, 0, 0.3);
+  max-width: 220px; /* Reduced max width */
+  letter-spacing: 0.3px; /* Reduced letter spacing */
+  text-align: center;
+  margin-right: 100px;
 }
 
 .restaurant-name {
@@ -654,36 +679,36 @@ header {
 }
 
 .restaurant-divider {
-  width: 120px;
-  height: 1px;
-  background-color: rgba(255, 255, 255, 0.3);
-  margin: 10px 0 20px;
+  display: none;
 }
 
 .view-more {
-  margin-top: auto;
   background-color: #fff;
   color: #333;
   border: none;
-  padding: 8px 15px;
-  border-radius: 4px;
-  font-size: 14px;
+  padding: 10px 20px; /* Slightly smaller padding to match target */
+  border-radius: 3px; /* Smaller border radius */
+  font-size: 13px; /* Smaller font size */
+  font-weight: 500;
   cursor: pointer;
   display: inline-block;
   text-decoration: none;
   text-align: center;
-  width: 120px;
+  min-width: 120px; /* Smaller min width */
   transition: all 0.3s ease;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+  text-transform: uppercase; /* Make text uppercase if needed */
+  letter-spacing: 0.5px;
 }
 
 .view-more:hover {
   background-color: #f8f8f8;
   transform: translateY(-2px);
-  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
 }
 
 .restaurant-images {
-  width: 65%;
+  width: 60%;
   display: flex;
   height: 100%;
 }
@@ -737,203 +762,265 @@ header {
 .verest {
   background-color: #9bc966;
 }
-
+#verest {
+  margin-bottom: 20%; /* Large space after VEREST section only */
+}
 /* 4.5 Recruit Section
    ========================================================================== */
-.recruit-section {
-  padding: 80px 0;
-  position: relative;
-}
+ .recruit-section {
+            background: linear-gradient(135deg, #f5f5f5 0%, #e8e8e8 100%);
+            padding: 60px 0;
+            height: 100vh; /* Use viewport height instead of min-height */
+            display: flex;
+            align-items: center;
+            overflow: hidden; /* Prevent any overflow causing scroll */
+        }
 
-.recruit-container {
-  max-width: 1000px;
-  margin: 0 auto;
-  padding: 0 20px;
-  position: relative;
-}
+        .recruit-container {
+            max-width: 600px;
+            margin: 0 auto;
+            padding: 0 120px; /* Increase padding to make room for arrows */
+            position: relative;
+            width: 100%;
+        }
 
-.recruit-header {
-  text-align: center;
-  margin-bottom: 40px;
-}
+        .recruit-header {
+            text-align: center;
+            margin-bottom: 40px;
+        }
 
-.recruit-header h2 {
-  font-size: 28px;
-  color: #f04e5c;
-  font-weight: bold;
-  position: relative;
-  display: inline-block;
-}
+        .recruit-header h2 {
+            font-size: 28px;
+            color: #f04e5c;
+            font-weight: bold;
+            position: relative;
+            display: inline-block;
+        }
 
-.recruit-header h2:after {
-  content: "";
-  position: absolute;
-  left: 0;
-  bottom: -10px;
-  width: 100%;
-  height: 3px;
-  background-color: #f04e5c;
-}
+        /* Swiper container styles - FIX HEIGHT */
+        .recruit-swiper {
+            width: 100%;
+            position: relative;
+            overflow: visible;
+            margin-bottom: 0;
+            padding: 0;
+            height: auto; /* Auto height instead of fixed 500px */
+            max-height: 70vh; /* Limit maximum height */
+        }
 
-/* Swiper container styles */
-.recruit-swiper {
-  width: 100%;
-  position: relative;
-  overflow: hidden;
-  margin-bottom: 30px;
-  padding: 0 50px; /* Space for navigation buttons */
-  height: auto; /* Adjust to content height */
-}
+        /* Container for actual content - single card */
+        .swiper-wrapper {
+            width: 100%;
+            height: 100%;
+            transition-timing-function: ease-out;
+        }
 
-.swiper-wrapper {
-  height: auto; /* Ensure wrapper height adjusts to content */
-}
+        /* Ensure only one slide is visible */
+        .swiper-slide {
+            width: 100% !important;
+            height: 100% !important;
+            display: flex !important;
+            flex-direction: column !important;
+            justify-content: center !important;
+            align-items: center !important;
+            flex-shrink: 0 !important;
+            opacity: 0 !important; /* Hide by default */
+            transition: opacity 0.3s ease !important;
+        }
 
-.swiper-slide {
-  height: auto; /* Let slides adjust to content height */
-  opacity: 0;
-  transition: opacity 0.3s ease;
-}
+        /* Show only the active slide */
+        .swiper-slide-active {
+            opacity: 1 !important;
+        }
 
-.swiper-slide-active {
-  opacity: 1;
-}
+        /* Complete form card */
+        .recruit-list {
+            width: 100%;
+            max-width: 500px;
+            margin: 0 auto;
+        }
 
-/* Navigation buttons */
-.recruit-nav-button {
-  width: 40px !important;
-  height: 40px !important;
-  background-color: #f04e5c !important;
-  color: white !important;
-  border-radius: 50% !important;
-  display: flex !important;
-  align-items: center !important;
-  justify-content: center !important;
-  box-shadow: 0 3px 8px rgba(0, 0, 0, 0.2) !important;
-  opacity: 1 !important;
-  transition: all 0.3s ease !important;
-}
+        .swiper-slide {
+            height: auto;
+            opacity: 1;
+            transition: opacity 0.3s ease;
+        }
 
-.recruit-nav-button:after {
-  content: none !important; /* Remove default arrow */
-}
+        /* Navigation buttons - RESTORED */
+        .recruit-nav-button {
+            width: 40px !important;
+            height: 40px !important;
+            background-color: #f04e5c !important;
+            color: white !important;
+            border-radius: 50% !important;
+            display: flex !important;
+            align-items: center !important;
+            justify-content: center !important;
+            box-shadow: 0 3px 8px rgba(0, 0, 0, 0.2) !important;
+            opacity: 1 !important;
+            visibility: visible !important;
+            transition: all 0.3s ease !important;
+            top: 50% !important;
+            transform: translateY(-50%) !important;
+            z-index: 10 !important;
+            position: absolute !important;
+        }
 
-.recruit-nav-button i {
-  font-size: 16px !important;
-}
+        .recruit-nav-button:after {
+            content: none !important;
+        }
 
-.swiper-button-prev.recruit-nav-button {
-  left: 0 !important;
-}
+        .recruit-nav-button i {
+            font-size: 16px !important;
+        }
 
-.swiper-button-next.recruit-nav-button {
-  right: 0 !important;
-}
+        .swiper-button-prev.recruit-nav-button {
+            left: -60px !important; /* Closer to the container */
+        }
 
-.recruit-nav-button:hover {
-  background-color: #e03c4a !important;
-  transform: scale(1.1) !important;
-}
+        .swiper-button-next.recruit-nav-button {
+            right: -60px !important; /* Closer to the container */
+        }
 
-.recruit-nav-button.swiper-button-disabled {
-  opacity: 0.5 !important;
-  cursor: not-allowed !important;
-}
+        .recruit-nav-button:hover {
+            background-color: #e03c4a !important;
+            transform: translateY(-50%) scale(1.1) !important;
+        }
 
-/* Recruit item styles */
-.recruit-list {
-  display: flex;
-  flex-direction: column;
-  width: 100%;
-  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.05);
-  border-radius: 8px;
-  overflow: hidden;
-}
+        /* Recruit item styles - DIRECT FORM WITHOUT CARD */
+        .recruit-list {
+            display: flex;
+            flex-direction: column;
+            width: 100%;
+            /* Removed all card styling - no shadow, border, or background */
+            overflow: visible; /* Allow arrows to show */
+        }
 
-.recruit-item {
-  display: flex;
-  align-items: stretch;
-}
+        .recruit-item {
+            display: flex;
+            align-items: center;
+            min-height: 50px;
+            border-bottom: 1px solid #e0e0e0;
+        }
 
-.recruit-item:nth-child(odd) {
-  background-color: #f8f8f8;
-}
+        .recruit-item:last-child {
+            border-bottom: none;
+        }
 
-.recruit-item:nth-child(even) {
-  background-color: #ffffff;
-}
+        /* SIMPLIFIED COLOR SCHEME - Only white and gray */
+        .recruit-item:nth-child(odd) {
+            background-color: #f5f5f5; /* Light gray */
+        }
 
-.recruit-label,
-.recruit-value {
-  padding: 20px;
-}
+        .recruit-item:nth-child(even) {
+            background-color: #ffffff; /* White */
+        }
 
-.recruit-label {
-  width: 40%;
-  color: #333;
-  font-size: 15px;
-  font-weight: 500;
-  text-align: center;
-  border-right: 1px solid #eee;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  background-color: rgba(240, 78, 92, 0.05);
-}
+        .recruit-label,
+        .recruit-value {
+            padding: 12px 20px;
+        }
 
-.recruit-value {
-  width: 60%;
-  font-size: 15px;
-  color: #555;
-  display: flex;
-  align-items: center;
-}
+        .recruit-label {
+            width: 35%;
+            color: #666;
+            font-size: 14px;
+            font-weight: 500;
+            text-align: center;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
 
-/* Swiper pagination */
-.swiper-pagination {
-  text-align: relative;
-  margin-top: 10px; /* space above pagination */
-  margin-bottom: 0;
-}
+        .recruit-value {
+            width: 65%;
+            font-size: 14px;
+            color: #333;
+            display: flex;
+            align-items: center;
+            padding-left: 25px;
+        }
 
-.swiper-pagination-bullet {
-  width: 10px;
-  height: 10px;
-  background: #ccc;
-  opacity: 1;
-  transition: all 0.3s ease;
-}
+        /* Swiper pagination */
+        .swiper-pagination {
+            text-align: center;
+            margin-top: -10%;
+            position: relative;
+        }
 
-.swiper-pagination-bullet-active {
-  background-color: #f04e5c !important;
-  transform: scale(1.2);
-}
+        .swiper-pagination-bullet {
+            width: 8px;
+            height: 8px;
+            background: #ccc;
+            opacity: 1;
+            transition: all 0.3s ease;
+            margin: 0 3px;
+        }
 
-/* Apply button */
-.recruit-buttons {
-  text-align: center;
-  margin-bottom: 20px;
-}
+        .swiper-pagination-bullet-active {
+            background-color: #f04e5c !important;
+            transform: scale(1.2);
+        }
 
-.apply-btn {
-  margin-bottom: 40px;
-  background-color: #f04e5c;
-  color: white;
-  border: none;
-  padding: 12px 40px;
-  border-radius: 4px;
-  font-size: 16px;
-  cursor: pointer;
-  transition: all 0.3s ease;
-  box-shadow: 0 3px 5px rgba(0, 0, 0, 0.1);
-}
+        /* Apply button */
+        .recruit-buttons {
+            text-align: center;
+            margin-top: 25px;
+            margin-bottom: 60px;
+        }
 
-.apply-btn:hover {
-  background-color: #d83a48;
-  transform: translateY(-2px);
-  box-shadow: 0 5px 10px rgba(0, 0, 0, 0.15);
-}
+        .apply-btn {
+            background-color: #f04e5c;
+            color: white;
+            border: none;
+            padding: 12px 35px;
+            border-radius: 4px;
+            font-size: 14px;
+            font-weight: 500;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            box-shadow: 0 2px 8px rgba(240, 78, 92, 0.3);
+        }
 
+        .apply-btn:hover {
+            background-color: #d83a48;
+            transform: translateY(-2px);
+            box-shadow: 0 6px 20px rgba(240, 78, 92, 0.4);
+        }
+
+        /* Responsive design - FIX OVERLAPPING ON BIG SCREENS */
+        @media (max-width: 768px) {
+            .recruit-container {
+                padding: 0 15px;
+            }
+            
+            .recruit-swiper {
+                padding: 0 50px;
+            }
+            
+            .recruit-label,
+            .recruit-value {
+                padding: 15px;
+                font-size: 14px;
+            }
+        }
+
+        @media (min-width: 1200px) {
+            .recruit-container {
+                max-width: 800px; /* Larger container on big screens */
+                padding: 0 150px; /* More padding for arrows */
+            }
+            
+            .swiper-button-prev.recruit-nav-button {
+                left: -80px !important; /* Move arrows further on big screens */
+            }
+
+            .swiper-button-next.recruit-nav-button {
+                right: -80px !important;
+            }
+            
+           
+        }
 /* Footer */
 footer {
   background-color: #f04e5c;
@@ -1007,69 +1094,53 @@ footer:before {
   }
 }
 
-/* Media Queries */
-@media (max-width: 1024px) {
-  .mission-box {
-    max-width: 800px;
-    padding: 40px 30px;
-  }
-
-  .white-card {
-    padding: 30px;
-  }
-}
-
-@media (max-width: 991px) {
-  .mobile-menu-btn {
-    display: block;
-  }
-
-  .side-nav {
-    display: none;
-  }
-
-  .mission-box {
-    padding: 30px;
-  }
-
-  .white-card {
-    padding-left: 30px;
-    top: -20px;
-    right: -20px;
-  }
-
-  .restaurant-card {
-    flex-direction: column;
-  }
-
-  .restaurant-info,
-  .restaurant-images {
-    width: 100%;
-  }
-
-  .restaurant-images {
-    flex-direction: column;
-  }
-
-  .large-image,
-  .small-images {
-    width: 100%;
-  }
-
-  .large-image {
-    height: 250px;
-  }
-
-  .recruit-swiper {
-    padding: 0 40px;
-  }
-}
 
 @media (max-width: 767px) {
-  .hero-image-container {
-    width: 90%;
-    border-left: 5px solid #fff;
-    border-right: 5px solid #fff;
+  /* ===================
+     HEADER - FIX OVERLAPPING MENU TOGGLE
+     =================== */
+  header {
+    padding: 8px 15px;
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 60px; /* Fixed height */
+    z-index: 1000;
+    background-color: rgba(255, 255, 255, 0.95);
+    backdrop-filter: blur(10px);
+  }
+
+  .logo {
+    font-size: 16px;
+    position: absolute;
+    left: 50%;
+    top: 50%;
+    transform: translate(-50%, -50%);
+    white-space: nowrap;
+  }
+
+  .mobile-menu-btn {
+    display: block;
+    position: absolute;
+    right: 15px;
+    top: 50%;
+    transform: translateY(-50%);
+    width: 30px;
+    height: 25px;
+    z-index: 1001;
+    background: none;
+    border: none;
+    cursor: pointer;
+  }
+
+  .mobile-menu-btn span {
+    display: block;
+    width: 22px;
+    height: 2px;
+    background-color: #333;
+    margin: 4px 0;
+    transition: all 0.3s ease;
   }
 
   .mobile-nav {
@@ -1077,256 +1148,616 @@ footer:before {
     top: 60px;
     left: 0;
     width: 100%;
-    padding: 15px;
-    display: none;
-    flex-direction: column;
-    z-index: 999;
-    text-align: center;
     background-color: white;
-    box-shadow: 0 5px 10px rgba(0, 0, 0, 0.1);
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+    z-index: 999;
+    transform: translateY(-100%);
+    opacity: 0;
+    visibility: hidden;
+    transition: all 0.3s ease;
   }
 
-  /* 
-  Mission section responsive
-  */
+  .mobile-nav.active {
+    transform: translateY(0);
+    opacity: 1;
+    visibility: visible;
+  }
+
+  .mobile-nav a {
+    display: block;
+    padding: 15px 20px;
+    border-bottom: 1px solid #eee;
+    text-align: center;
+    font-size: 14px;
+    color: #f04e5c;
+    font-weight: 500;
+  }
+
+  /* ===================
+     MOBILE NAVIGATION 
+     =================== */
+  .main-content {
+    padding-top: 60px;
+    min-height: 700px; /* Account for fixed header */
+  }
+
+  /* ===================
+     HERO SECTION - PROPER SPACING
+     =================== */
+  .hero-section {
+    height: 100vh;
+    min-height: 100px;
+    margin-bottom: 10px;
+  }
+
+  .image-overlay {
+    display: none !important;
+    visibility: hidden !important;
+    opacity: 0 !important;
+  }
+  /* ===================
+     MISSION SECTION - RED BOX VISIBLE BEHIND WHITE CARD
+     =================== */
+  .mission-section {
+    padding: 20px 0;
+    height: 700px;
+    margin-top: 100px !important;
+    margin-bottom: 20px;
+  }
 
   .mission-container {
-    min-height: 500px;
-    padding: 40px 15px;
+    margin: 0 auto;
+    padding: 0 10px;
+    min-height: 100vh;
+    max-width: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    position: relative;
   }
 
+  /* RED MISSION BOX - BACKGROUND */
   .mission-box {
-    width: 90%;
-    height: 100%;
-    left: 0;
-    right: 0;
-    margin: 0 auto;
+    width: 95%;
+    height: 700px !important;
+    position: absolute;
+    left: 40%;
+    top: 50%;
+    transform: translate(-50%, -50%);
+    border-radius: 10px;
+    z-index: 1;
+    background-color: #f04e5c; /* Ensure red background */
+    box-shadow: 0 15px 35px rgba(240, 78, 92, 0.3);
   }
 
+  /* WHITE CARD - SMALLER TO SHOW RED BORDER */
   .white-card {
-    width: 85%;
-    padding: 120px 20px 30px;
-    left: 0;
-    right: 0;
-    margin: 0 auto;
+    width: 85%; /* Smaller than red box (85% vs 95%) */
+    height: 600px !important; /* Smaller than red box (750px vs 800px) */
+    position: absolute;
+    left: 50%;
+    top: 50%;
+    transform: translate(-50%, -50%);
+    padding: 60px 30px 40px;
     text-align: center;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    border-radius: 10px;
+    z-index: 2;
+    background-color: #fff; /* Ensure white background */
+    box-sizing: border-box;
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
   }
 
+  /* Hide unwanted elements */
   .slogan {
-    width: 180px;
-    height: auto;
-    top: 30px;
-    left: 50%;
-    transform: translateX(-50%);
+    display: none !important;
+    visibility: hidden !important;
+    opacity: 0 !important;
+  }
+
+  .scroll-indicator-container,
+  .scroll-indicator-section,
+  #scrollIndicator {
+    display: none !important;
+    visibility: hidden !important;
+    opacity: 0 !important;
+  }
+
+  .image-overlay {
+    display: none !important;
+    visibility: hidden !important;
+    opacity: 0 !important;
+  }
+
+  /* Content styling */
+  .white-card h2 {
+    font-size: 18px;
+    margin-bottom: 25px;
+    font-weight: 600;
+    line-height: 1.4;
+    color: #f04e5c;
   }
 
   .white-card p {
-    margin-left: 0;
-    text-align: center;
+    font-size: 15px;
+    line-height: 1.6;
+    margin-bottom: 15px;
+    color: #f04e5c;
   }
 
-  .white-card h2 {
-    font-size: 20px;
-    text-align: center;
+  /* ===================
+     NEWS SECTION - BETTER FIT & INFORMATION
+     =================== */
+  .news-section {
+    margin-top: 20% !important;
+    padding: 20px 0;
+    position: relative;
+    height: 400px !important;
+    margin-bottom: 20px;
+  }
+
+  .news-container {
+    padding: 0 12px;
+    display: flex;
+    justify-content: center;
+    margin: 0 auto;
+    max-width: 100%;
+  }
+
+  .news-card {
     width: 100%;
+    max-width: 360px; /* Better fit */
+    min-height: 250px; /* Reduced height */
+    padding: 18px 15px; /* Better padding */
+    margin: 0 auto;
+    border-radius: 8px;
   }
 
-  /* 
-  News section responsive
-  */
+  .news-header {
+    text-align: center;
+    margin-bottom: 15px;
+  }
+
+  .news-header h2 {
+    font-size: 18px;
+    font-weight: 600;
+    color: #f04e5c;
+  }
+
+  .news-list {
+    gap: 8px;
+    margin-bottom: 15px;
+  }
+
+  .news-item {
+    padding: 8px 0;
+    border-bottom: 1px solid #e0e0e0;
+    margin: 0;
+  }
 
   .news-item-link {
-    flex-direction: column !important;
-    align-items: flex-start !important;
-    padding: 15px 0 !important;
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 4px;
+    padding: 6px 4px;
+    margin: 0;
   }
 
   .news-date {
-    margin-bottom: 5px !important;
-    min-width: auto !important;
+    font-size: 11px;
+    font-weight: 600;
+    color: #666;
+    margin-bottom: 3px;
   }
 
   .news-category {
-    margin: 5px 0 !important;
+    font-size: 8px;
+    padding: 2px 6px;
+    border-radius: 2px;
+    margin-bottom: 3px;
+    align-self: flex-start;
   }
 
   .news-title {
-    margin-top: 10px !important;
-    width: 100% !important;
+    font-size: 12px;
+    line-height: 1.3;
+    color: #333;
+    word-break: keep-all;
+    overflow-wrap: break-word;
   }
 
-  /* restrount responsive part   */
+  .read-more {
+    text-align: center;
+    margin-top: 12px;
+  }
+
+  .read-more-btn {
+    font-size: 11px;
+    padding: 6px 18px;
+    min-width: 90px;
+    min-height: 36px;
+    background-color: #333;
+    color: white;
+    border-radius: 3px;
+    border: none;
+  }
+
+  /* ===================
+     RESTAURANT SECTION - CENTERED TEXT & REDUCED SPACING
+     =================== */
+  .restaurant-section {
+    padding: 15px 0; /* Reduced padding */
+    margin-top: 0;
+    margin-bottom: 15px; /* Reduced bottom margin */
+  }
+
+  .restaurant-section:last-of-type {
+    margin-bottom: 15px; /* Much smaller gap to recruit */
+  }
+
+  #verest {
+    margin-bottom: 15px; /* Much smaller gap to recruit */
+  }
+
+  .restaurant-container {
+    padding: 0 12px;
+    display: flex;
+    justify-content: center;
+    margin: 0 auto;
+  }
+
   .restaurant-card {
     flex-direction: column;
     height: auto;
-    min-height: 800px;
+    min-height: 480px; /* Reduced height */
+    margin-bottom: 15px; /* Reduced margin */
+    width: 100%;
+    max-width: 360px;
+    margin: 0 auto 15px auto;
+    border-radius: 8px;
   }
 
   .restaurant-info {
     width: 100%;
-    padding: 30px;
-    flex-shrink: 0;
+    padding: 20px 15px; /* Reduced padding */
+    min-height: 140px; /* Reduced height */
+    margin-right: 2% !important;
   }
 
+  .restaurant-logo {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-bottom: 12px;
+  }
+
+  .restaurant-logo-img {
+    max-width: 85px;
+    max-height: 50px;
+  }
+
+  /* CENTERED RESTAURANT DESCRIPTION TEXT */
+  .restaurant-description {
+    right: 8%;
+    left: 8%;
+    font-size: 12px;
+    max-width: 250px;
+    text-align: center;
+    line-height: 1.4;
+    word-spacing: 0.1em;
+    padding: 0 8px;
+    display: block;
+    color: white; /* Ensure text is visible */
+    text-shadow: 0 1px 2px rgba(0, 0, 0, 0.3);
+  }
+
+  .view-more {
+    padding: 10px 16px;
+    font-size: 12px;
+    min-width: 100px;
+    min-height: 40px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    margin: 0 auto;
+    white-space: nowrap;
+    border-radius: 3px;
+  }
+
+  /* Restaurant Images - 1 Big + 2 Small */
   .restaurant-images {
     width: 100%;
-    height: 460px; /* Increased height for better spacing */
+    height: 280px; /* Reduced height */
     flex-direction: column;
-    flex-shrink: 0;
+    min-height: 240px;
   }
 
   .large-image {
     width: 100%;
-    height: 55%; /* Reduced to give more space to small images */
-    min-height: 220px;
+    height: 65%;
+    min-height: 160px;
+    margin-bottom: 4px;
   }
 
   .small-images {
     width: 100%;
-    height: 45%; /* Increased height for small images */
-    min-height: 180px; /* Increased minimum height */
+    height: 35%;
+    gap: 2px;
+    min-height: 90px;
     display: grid;
-    grid-template-columns: repeat(2, 1fr);
-    grid-template-rows: repeat(2, 1fr);
-    gap: 3px;
-    overflow: visible; /* Ensure content is not cut off */
+    grid-template-columns: 1fr 1fr;
+    grid-template-rows: 1fr;
   }
 
-  .restaurant-img-large {
-    width: 100%;
-    height: 100% !important;
-    object-fit: cover;
+  /* Hide 3rd and 4th images */
+  .small-images .restaurant-img-small:nth-child(3),
+  .small-images .restaurant-img-small:nth-child(4) {
+    display: none !important;
   }
 
-  .restaurant-img-small {
-    width: 100%;
-    height: 100%;
-    object-fit: cover;
-  }
-
-  .view-more {
-    margin-top: 20px;
-  }
-
-  /* 4.5 Recruit Section
-   ========================================================================== */
-
-  .recruit-label,
-  .recruit-value {
-    width: 100%;
-    border-right: none;
-  }
-
-  .recruit-label {
-    border-bottom: 1px solid #eee;
-    padding-bottom: 10px;
-  }
-
+  /* ===================
+     RECRUIT SECTION - REDUCED SPACING FROM RESTAURANT
+     =================== */
   .recruit-section {
-    padding: 60px 0;
+    padding: 25px 0; /* Reduced from 40px */
+    margin-top: 0; /* Remove any top margin */
+  }
+
+  .recruit-container {
+    padding: 0 15px;
+    max-width: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin: 0 auto;
+  }
+
+  .recruit-header {
+    margin-bottom: 20px; /* Reduced margin */
+    text-align: center;
+    width: 100%;
   }
 
   .recruit-header h2 {
-    font-size: 24px;
+    font-size: 20px;
+    letter-spacing: 2px;
+    text-align: center;
+    color: #f04e5c;
   }
 
   .recruit-swiper {
-    padding: 0 30px;
+    width: 100%;
+    max-width: 360px;
+    margin: 0 auto;
+    position: relative;
+    overflow: hidden;
+    padding: 0;
   }
 
-  .recruit-nav-button {
-    width: 35px !important;
-    height: 35px !important;
+  .recruit-list {
+    max-width: 100%;
+    width: 100%;
+    margin: 0 auto;
+    border-radius: 5px;
+    overflow: hidden;
   }
 
   .recruit-item {
     flex-direction: column;
-  }
-
-  .recruit-label,
-  .recruit-value {
     width: 100%;
-    padding: 15px;
-    text-align: left;
+    min-height: 70px; /* Reduced height */
   }
 
   .recruit-label {
+    width: 100%;
+    padding: 10px 15px; /* Reduced padding */
     border-right: none;
-    border-bottom: 1px solid #eee;
-    justify-content: flex-start;
-    font-weight: bold;
+    border-bottom: 1px solid #e0e0e0;
+    justify-content: center;
+    font-weight: 600;
+    background-color: #f8f8f8;
+    font-size: 12px;
+    color: #333;
+    text-align: center;
+    display: flex;
+    align-items: center;
+    min-height: 35px;
+  }
+
+  .recruit-value {
+    width: 100%;
+    padding: 10px 15px;
+    background-color: #fff;
+    font-size: 12px;
+    color: #666;
+    line-height: 1.4;
+    text-align: center;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    min-height: 35px;
+  }
+
+  /* Hide navigation buttons */
+  .recruit-nav-button,
+  .swiper-button-prev,
+  .swiper-button-next {
+    display: none !important;
+  }
+
+  /* Centered pagination */
+  .swiper-pagination {
+    position: relative !important;
+    bottom: auto !important;
+    margin-right: 50%;
+    /* margin: 15px auto 0 auto !important; */
+    text-align: center !important;
+    display: flex !important;
+    justify-content: center !important;
+  }
+
+  .swiper-pagination-bullet {
+    width: 10px;
+    height: 10px;
+    /* margin: 0 5px !important; */
+    background: #ccc;
+    opacity: 1;
+    border-radius: 50%;
+  }
+
+  .swiper-pagination-bullet-active {
+    background-color: #f04e5c !important;
+    transform: scale(1.2);
   }
 
   .apply-btn {
     width: 100%;
-    max-width: 300px;
-    padding: 12px 20px;
+    max-width: 250px;
+    padding: 10px 18px;
+    font-size: 12px;
+    min-height: 40px;
+    margin: 15px auto 0 auto;
+    display: block;
+    text-align: center;
+    background-color: #f04e5c;
+    color: white;
+    border: none;
+    border-radius: 3px;
   }
 
-  .recruit-buttons {
-    display: flex;
-    justify-content: center;
-  }
-}
-
-@media (max-width: 480px) {
-  .white-card h2 {
-    font-size: 20px;
-  }
-
-  .white-card p {
-    font-size: 14px;
-  }
-
-  .recruit-label {
-    font-size: 13px;
-  }
-
-  .recruit-value {
-    font-size: 14px;
-  }
-
-  .apply-btn {
-    padding: 10px 30px;
-    font-size: 14px;
-  }
-
-  .recruit-nav-button {
-    width: 35px !important;
-    height: 35px !important;
-  }
-
-  .recruit-nav-button i {
-    font-size: 14px !important;
-  }
-
-  .recruit-swiper {
-    padding: 0 25px;
-  }
-
-  .news-header h2,
-  .recruit-header h2 {
-    font-size: 24px;
+  /* ===================
+     FOOTER - PROPER SPACING
+     =================== */
+  footer {
+    padding: 25px 0 15px;
+    text-align: center;
+    margin-top: 10px; /* Reduced from 30px */
   }
 
   .footer-title {
     font-size: 20px;
+    margin-bottom: 12px;
   }
 
   .footer-info {
+    padding: 0 20px;
+    max-width: 360px;
+    margin: 0 auto;
+  }
+
+  .footer-info p {
     font-size: 12px;
+    line-height: 1.4;
+    margin-bottom: 5px;
   }
 
-  .restaurant-info {
-    padding: 25px 15px;
+  /* ============================================
+   SMALL MOBILE (max-width: 479px)
+   ============================================ */
+  @media (max-width: 479px) {
+    .logo {
+      font-size: 15px;
+    }
+
+    .mission-container {
+      min-height: 350px;
+    }
+
+    .mission-box {
+      height: 320px;
+    }
+
+    .white-card {
+      height: 290px;
+      padding: 70px 15px 20px;
+    }
+
+    .white-card h2 {
+      font-size: 14px;
+    }
+
+    .white-card p {
+      font-size: 12px;
+    }
+
+    .slogan {
+      width: 120px;
+      height: 60px;
+      top: 10px;
+    }
+
+    .news-card {
+      max-width: 100%;
+      padding: 15px 12px;
+    }
+
+    .restaurant-card {
+      max-width: 100%;
+      min-height: 450px;
+    }
+
+    .restaurant-images {
+      height: 260px;
+    }
+
+    .recruit-swiper {
+      max-width: 100%;
+    }
   }
 
-  .restaurant-name {
-    font-size: 20px;
-  }
+  /* ============================================
+   EXTRA SMALL SCREENS (max-width: 320px)
+   ============================================ */
+  @media (max-width: 320px) {
+    .logo {
+      font-size: 14px;
+    }
 
-  .view-more {
-    width: 100px;
-    font-size: 12px;
+    .mission-container {
+      min-height: 320px;
+      padding: 0 8px;
+    }
+
+    .mission-box {
+      height: 290px;
+    }
+
+    .white-card {
+      height: 260px;
+      padding: 60px 12px 18px;
+    }
+
+    .white-card h2 {
+      font-size: 13px;
+    }
+
+    .white-card p {
+      font-size: 11px;
+    }
+
+    .slogan {
+      width: 100px;
+      height: 50px;
+    }
+
+    .news-card {
+      padding: 12px 10px;
+    }
+
+    .restaurant-info {
+      padding: 15px 10px;
+    }
+
+    .restaurant-images {
+      height: 240px;
+    }
+
+    .recruit-container {
+      padding: 0 12px;
+    }
   }
 }
