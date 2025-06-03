@@ -6,11 +6,12 @@ JOY FOOD SERVICE is a food delivery and catering company dedicated to providing 
 ## Technologies Used  
 - HTML 
 - CSS 
-
+- JS
+-libaries
 ## Features  
 - Homepage 
 -Hagiya page
-- 
+- verest
 
 ## How to Run the Project  
 1. Download or clone this repository.  

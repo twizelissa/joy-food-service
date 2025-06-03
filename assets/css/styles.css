@@ -1098,11 +1098,17 @@ footer:before {
      ====================================================== */
 
 /* Extra Large Desktop Screens (1600px-1820px) */
-@media screen and (min-width: 1600px) and (max-width: 1820px) {
+@media screen and (min-width: 1600px) {
   /* Mission Section */
   .mission-container {
-    margin-left: 18%;
-    max-width: 1100px;
+    max-width: 1300px;
+    margin-left: 20%;
+    padding: 0 20px;
+    position: relative;
+    min-height: 600px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
   }
 
   .mission-box {
@@ -1128,8 +1134,9 @@ footer:before {
 
   /* News Section */
   .news-container {
-    margin-left: 21%;
-    max-width: 850px;
+    max-width: 1100px;
+    margin-left: 23%;
+    padding: 0 20px;
   }
 
   .news-card {
