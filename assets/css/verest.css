@@ -324,7 +324,7 @@ section {
 .gallery-after-text div {
   margin-bottom: 15px;
   line-height: 1.6;
-} 
+}
 
 /* System Section - RESPONSIVE */
 .system {
@@ -1004,8 +1004,8 @@ section {
 
 /* Site Footer - Second Definition */
 .site-footer {
-    background-color: #f6f3ed;
- color: #333;
+  background-color: #f6f3ed;
+  color: #333;
   text-align: center;
   padding: 40px 20px;
 }
@@ -1337,21 +1337,21 @@ img {
 
   /* Mobile table styling */
   .system-table {
-    width: 100%;
+    width: 80%;
     font-size: 12px;
     border-radius: 8px;
     overflow: hidden;
   }
 
   .system-table th {
-    width: 35%;
+    width: 100% !important;
     padding: 12px 8px;
     font-size: 12px;
     text-align: center;
   }
 
   .system-table td {
-    width: 65%;
+    width: 60%;
     padding: 12px 8px;
     font-size: 12px;
     line-height: 1.4;
@@ -1360,12 +1360,16 @@ img {
   .highlight-th {
     font-size: 12px;
     padding: 4px 6px;
+
+    width: 80%;
   }
 
   .highlight-td {
-    font-size: 12px;
+    font-size: 10px;
     padding: 4px 6px;
     line-height: 1.4;
+    width: 90%;
+    margin-right: 10%;
   }
 
   /* ===================
@@ -1415,8 +1419,8 @@ img {
 
   /* Mobile recruit navigation */
   .recruit-nav {
-    width: 35px;
-    height: 35px;
+    width: 15px;
+    height: 15px;
     font-size: 12px;
     border-radius: 6px;
   }
@@ -1754,7 +1758,6 @@ img {
     height: 250px;
   }
 
-
   /* System gallery - back to 4 columns */
   .system-in-between-gallery-container-grid {
     grid-template-columns: repeat(4, 1fr);
@@ -1782,8 +1785,8 @@ img {
   .recruit-nav,
   .recruit-dot,
   .gallery-dot {
-    min-height: 44px;
-    min-width: 44px;
+    min-height: 15px;
+    min-width: 15px;
     touch-action: manipulation;
   }
 

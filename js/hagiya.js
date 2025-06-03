@@ -188,92 +188,41 @@ function initGalleryInfiniteScroll() {
   const galleryContainer = document.querySelector(".gallery-container");
   if (!galleryContainer) return;
 
-  const originalImages = galleryContainer.querySelectorAll(".gallery-image");
-  if (originalImages.length === 0) return;
+  const wrapper = galleryContainer.querySelector(".gallery-wrapper");
+  const originalSlides = galleryContainer.querySelectorAll(".gallery-slide");
 
-  // Store original images
-  const imageElements = Array.from(originalImages);
+  if (originalSlides.length === 0) return;
 
-  // Clear container and create wrapper
-  galleryContainer.innerHTML = "";
-  const wrapper = document.createElement("div");
-  wrapper.className = "gallery-wrapper";
-  galleryContainer.appendChild(wrapper);
+  // Clone slides for infinite effect
+  originalSlides.forEach((slide) => {
+    const clone = slide.cloneNode(true);
+    wrapper.appendChild(clone);
+  });
 
-  // Create slides with 5 images each - make many copies for infinite effect
-  const imagesPerView = 5;
-  const totalCopies = 50; // Create 50 copies total for truly infinite scroll
+  // Set up infinite animation
+  const totalSlides = originalSlides.length;
+  const slideWidth = 100; // Each slide is 100% width
+  const animationDuration = 20; // 20 seconds per full cycle
 
-  let imageIndex = 0;
-  for (let i = 0; i < totalCopies; i++) {
-    const slide = document.createElement("div");
-    slide.className = "gallery-slide";
+  // Apply continuous animation
+  wrapper.style.animation = `infiniteSlide ${animationDuration}s linear infinite`;
 
-    // Add 5 images to each slide
-    for (let j = 0; j < imagesPerView; j++) {
-      const originalImage = imageElements[imageIndex % imageElements.length];
-      const clonedImage = originalImage.cloneNode(true);
-      slide.appendChild(clonedImage);
-      imageIndex++;
-    }
-
-    wrapper.appendChild(slide);
+  // Create CSS keyframes dynamically
+  const existingStyle = document.getElementById("gallery-animation-styles");
+  if (existingStyle) {
+    existingStyle.remove();
   }
 
-  // Get the actual width of one slide
-  const slideWidth = window.innerWidth; // Each slide is full viewport width
-  const originalSetWidth =
-    Math.ceil(imageElements.length / imagesPerView) * slideWidth;
-
-  // VERY slow animation - 120 seconds to go through original set once
-  const animationDuration = 120;
-
-  // Apply continuous animation using pixel values
-  wrapper.style.animation = `infiniteGallerySlide ${animationDuration}s linear infinite`;
-
-  // Create CSS keyframes dynamically using pixel-based movement
   const styleSheet = document.createElement("style");
-  styleSheet.id = 'gallery-animation-styles';
+  styleSheet.id = "gallery-animation-styles";
   styleSheet.textContent = `
-    @keyframes infiniteGallerySlide {
-      0% { transform: translateX(0px); }
-      100% { transform: translateX(-${originalSetWidth}px); }
-    }
-    
-    .gallery-wrapper {
-      display: flex;
-      width: fit-content;
-    }
-    
-    .gallery-slide {
-      display: flex;
-      justify-content: flex-start;
-      align-items: center;
-      gap: 12px;
-      min-width: 100vw;
-      padding: 0 15px;
-      flex-shrink: 0;
-      box-sizing: border-box;
-    }
-    
-    .gallery-image {
-      width: calc((100vw - 30px - 48px) / 5) !important;
-      height: 250px !important;
-      box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1) !important;
-      border-radius: 5px !important;
-      overflow: hidden !important;
-      transition: transform 0.3s ease !important;
-      flex-shrink: 0 !important;
-    }
-    
-    .gallery-image:hover {
-      transform: scale(1.05) !important;
-    }
-    
-    .gallery-image img {
-      width: 100% !important;
-      height: 100% !important;
-      object-fit: cover !important;
+    @keyframes infiniteSlide {
+      0% {
+        transform: translateX(0%);
+      }
+      100% {
+        transform: translateX(-${totalSlides * slideWidth}%);
+      }
     }
   `;
   document.head.appendChild(styleSheet);
@@ -286,20 +235,6 @@ function initGalleryInfiniteScroll() {
   wrapper.addEventListener("mouseleave", () => {
     wrapper.style.animationPlayState = "running";
   });
-
-  // Handle window resize to recalculate animation
-  let resizeTimeout;
-  window.addEventListener("resize", () => {
-    clearTimeout(resizeTimeout);
-    resizeTimeout = setTimeout(() => {
-      // Restart the gallery with new dimensions
-      initGalleryInfiniteScroll();
-    }, 250);
-  });
-
-  // Remove existing arrows
-  const existingArrows = document.querySelectorAll(".gallery-arrow");
-  existingArrows.forEach((arrow) => arrow.remove());
 }
 /**
  * 6. Resize Handlers for Responsive Layout

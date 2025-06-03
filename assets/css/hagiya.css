@@ -742,68 +742,82 @@ h3 {
   background-color: #7a5441;
 }
 /* ======================================================
-     12. Gallery Section - 5 Images Per View with Infinite Scroll (VEREST STYLE)
+     12. Gallery Section - VEREST STYLE
+ /* ======================================================
+     12. Gallery Section - VEREST STYLE
      ====================================================== */
-.gallery-section {
-  width: 100%;
-  padding: 30px 0;
-  overflow: hidden;
-  background-image: url("../images/higayi-bg.svg");
-  background-repeat: no-repeat;
-  background-size: cover;
-  display: flex;
-  position: relative;
+.gallery {
+  padding: 80px 0;
+  max-width: 100%;
 }
 
 .gallery-container {
+  position: relative;
   width: 100%;
   overflow: hidden;
+  padding: 0;
+  background-color: rgba(0, 0, 0, 0.03);
 }
 
 .gallery-wrapper {
   display: flex;
-  width: fit-content;
-  /* Animation will be applied via JavaScript */
+  transition: transform 0.5s ease-in-out;
+  width: 100%;
 }
 
 .gallery-slide {
   display: flex;
-  justify-content: space-between;
-  align-items: center;
+  justify-content: center;
   gap: 15px;
-  min-width: 100vw; /* Full viewport width */
+  min-width: 100%;
   padding: 0 20px;
-  flex-shrink: 0; /* Prevent slides from shrinking */
 }
 
-.gallery-image {
-  width: calc(20% - 12px) !important; /* 5 items per slide: 20% each minus gap */
+.gallery-item {
+  width: 25%;
   height: 250px;
-  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
-  border-radius: 5px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  border-radius: 4px;
   overflow: hidden;
   transition: transform 0.3s ease;
-  flex-shrink: 0; /* Prevent items from shrinking */
 }
 
-.gallery-image:hover {
-  transform: scale(1.05);
+.gallery-item:hover {
+  transform: scale(1.03);
 }
 
-.gallery-image img {
+.gallery-item img {
   width: 100%;
   height: 100%;
   object-fit: cover;
 }
 
-/* Remove gallery arrows since we have infinite scroll */
-.gallery-arrow {
-  display: none !important;
+/* Navigation Dots */
+.gallery-controls {
+  position: relative;
+  display: flex;
+  justify-content: center;
+  margin-top: 20px;
+  gap: 10px;
 }
 
-.gallery-arrow-left,
-.gallery-arrow-right {
-  display: none !important;
+.gallery-dot {
+  width: 12px;
+  height: 12px;
+  background-color: rgba(0, 0, 0, 0.2);
+  border-radius: 50%;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+}
+
+.gallery-dot.active {
+  background-color: #f04e5c;
+  transform: scale(1.2);
+}
+
+/* Hide navigation arrows */
+.gallery-nav {
+  display: none;
 }
 /* ======================================================
      13. Information Section
@@ -2125,105 +2139,8 @@ h3 {
     width: 100%;
   }
 
-  /* News Section */
-  /* ======================================================
-     7. News Section - Desktop & Mobile Responsive
-     ====================================================== */
-  .news-section {
-    padding: 30px 5%;
-    background-color: #fff;
-    background-image: url("../images/hagiya-images/second-background.jpeg");
-    background-size: cover;
-  }
+  /* for tablets */
 
-  .news-section h2 {
-    text-align: center;
-    color: black;
-    margin-bottom: 10px;
-    font-weight: lighter;
-    position: relative;
-    padding: 20px 0;
-    z-index: 1;
-  }
-
-  .news-section h2::before {
-    content: "";
-    background-image: url("../images/hagiya-images/vertical-inside-logo.png");
-    background-size: contain;
-    background-position: center;
-    background-repeat: no-repeat;
-    position: absolute;
-    width: 120px;
-    height: 100px;
-    top: 50%;
-    left: 50%;
-    transform: translate(-50%, -50%);
-    z-index: -1;
-    opacity: 0.8;
-  }
-
-  .news-container {
-    max-width: 60%;
-    background-color: white;
-    margin: 0 auto;
-    border-radius: 5px;
-    padding: 20px;
-    box-shadow: 0 0 10px rgba(0, 0, 0, 0.05);
-  }
-
-  .news-item {
-    display: flex;
-    padding: 10px 0;
-    margin-left: 20%;
-    cursor: pointer;
-    transition: background-color 0.2s ease;
-    flex-wrap: wrap;
-    position: relative;
-  }
-
-  .news-item:hover {
-    background-color: #f9f9f9;
-  }
-
-  .news-item:not(:last-child)::after {
-    content: "";
-    position: absolute;
-    bottom: 0;
-    left: 0;
-    right: 25%;
-    height: 1px;
-    background-color: rgba(0, 0, 0, 0.1);
-    margin-bottom: -1px;
-  }
-
-  .news-date {
-    align-items: center;
-    min-width: 100px;
-    color: black;
-    font-size: 14px;
-    display: flex;
-    align-items: flex-start;
-    padding-top: 2px;
-  }
-
-  .news-content {
-    flex: 1;
-    font-size: 14px;
-    overflow-wrap: break-word;
-    line-height: 1.6;
-  }
-
-  .news-content p {
-    margin-bottom: 8px;
-  }
-
-  .news-content p:last-child {
-    margin-bottom: 0;
-  }
-
-  /* ======================================================
-     TABLET RESPONSIVE (max-width: 991px)
-     ====================================================== */
   @media (max-width: 991px) {
     .news-section {
       padding: 25px 3%;
@@ -2249,6 +2166,7 @@ h3 {
      ====================================================== */
   @media (max-width: 767px) {
     .news-section {
+      margin-left: 2%;
       padding: 20px 15px;
       background-position: center;
     }
@@ -2272,7 +2190,9 @@ h3 {
 
     .news-item {
       flex-direction: column;
+
       margin-left: 0;
+      margin-right: 5% !important;
       padding: 15px 0;
       border-bottom: 1px solid rgba(0, 0, 0, 0.1);
     }
@@ -2296,333 +2216,378 @@ h3 {
     .news-content {
       font-size: 13px;
       line-height: 1.5;
+      margin-right: 10% !important;
+      /* background-color: red; */
     }
 
     .news-content p {
       margin-bottom: 6px;
+      margin-right: 20%;
     }
-  }
-  /* Space Section */
-  .space-section {
-    padding: 30px 20px;
-  }
 
-  .space-container {
-    width: 100%;
-    margin-left: 0;
-    min-height: 1200px;
-  }
-
-  .space-image-2 {
-    width: 75%;
-    top: 100px;
-    left: 5%;
-  }
-
-  .space-image-3 {
-    width: 75%;
-    top: 380px;
-    left: 20%;
-  }
-
-  .space-image-4-space {
-    width: 75%;
-    top: 660px;
-    left: 10%;
-    bottom: auto;
-  }
-
-  .space-image-4-space-item-1 {
-    width: 85%;
-    height: 85%;
-  }
-
-  .space-image-1-texts {
-    top: 990px;
-    left: 0;
-    width: 100%;
-    display: flex;
-    justify-content: center;
-    min-height: 200px;
-  }
-
-  /* Gallery Section */
-  .gallery-image {
-    flex: 0 0 250px;
-    height: 200px;
-  }
-
-  .gallery-arrow {
-    width: 35px;
-    height: 35px;
-    font-size: 16px;
-  }
-
-  .gallery-arrow-left {
-    left: 10px;
-  }
-
-  .gallery-arrow-right {
-    right: 10px;
-  }
-
-  /* Info Section */
-  .info-details {
-    flex-direction: column;
-  }
-
-  .info-item {
-    margin-bottom: 20px;
-  }
-
-  .tel {
-    font-size: 20px;
-  }
-
-  /* Course Menu Section */
-  .menu-layout{
-        height: auto;
-        padding-bottom: 40px;
-        margin-bottom: 64px;
+    /* Space Section */
+    .space-section {
+      padding: 30px 20px;
     }
-    .main-image{
-        position: static;
-        width: 100%;
-        margin-bottom: 40px;
+
+    .space-container {
+      width: 100%;
+      margin-left: 0;
+      min-height: 1200px;
     }
-    .thumbnail-container{
-        position: static;
-        display: block;
-        width: 100%;
+
+    .space-image-2 {
+      width: 75%;
+      top: 100px;
+      left: 5%;
     }
-    .thumbnail-container img{
-        width: 100%;
-        margin-bottom: 40px;
+
+    .space-image-3 {
+      width: 75%;
+      top: 380px;
+      left: 20%;
     }
-    .menu-card{
-        position: static;
-        height: auto;
-        min-height: auto;
-        width: 100%;
-        background-size: cover;
-        padding-bottom: 30px;
-        margin-bottom: 40px;
+
+    .space-image-4-space {
+      width: 75%;
+      top: 660px;
+      left: 10%;
+      bottom: auto;
     }
-    .menu-content{
-        height: auto;
-        margin-top: 0;
-        padding: 30px 20px 0;
+
+    .space-image-4-space-item-1 {
+      width: 85%;
+      height: 85%;
     }
-    .vertical-text-container{
-        position: static;
-        display: block;
-        margin: 30px auto 0;
-        width: 90%;
+
+    .space-image-1-texts {
+      top: 990px;
+      left: 0;
+      width: 100%;
+      display: flex;
+      justify-content: center;
+      min-height: 200px;
     }
-    .course-vertical-text{
-        writing-mode: horizontal-tb !important;
-        white-space: initial;
+
+    /* Gallery Section */
+    .gallery {
+      padding: 40px 0;
     }
-    .course-items{
-        text-align: center;
+
+    .gallery-container {
+      position: relative;
+      width: 100%;
+      overflow: hidden;
+      background-color: rgba(0, 0, 0, 0.03);
+      padding: 20px 0;
     }
-    .course-title{
-        margin-bottom: 32px;
+
+    .gallery-wrapper {
+      display: flex;
+      transition: transform 0.5s ease-in-out;
+      width: 100%;
     }
-    .course-price{
-        text-align: center;
-        margin-bottom: 16px;
+
+    /* MOBILE: Show ONE image at a time */
+    .gallery-slide {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      min-width: 100%;
+      padding: 0 15px;
+      flex-shrink: 0;
     }
-    .course-note{
-        text-align: center;
+
+    .gallery-item {
+      width: 90%; /* Single image takes most of screen width */
+      height: 220px;
+      box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+      border-radius: 8px;
+      overflow: hidden;
+      margin: 0 auto;
     }
-  /* ======================================================
+
+    /* Hide other gallery items on mobile - show only first image */
+    .gallery-item:not(:first-child) {
+      display: none;
+    }
+
+    .gallery-item img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+    }
+
+    /* Gallery navigation dots */
+    .gallery-controls {
+      margin-top: 25px;
+      justify-content: center;
+    }
+
+    .gallery-dot {
+      width: 10px;
+      height: 10px;
+      margin: 0 6px;
+    }
+
+    /* Info Section */
+    .info-details {
+      flex-direction: column;
+    }
+
+    .info-item {
+      margin-bottom: 20px;
+    }
+
+    .tel {
+      font-size: 20px;
+    }
+
+    /* Course Menu Section */
+    .menu-layout {
+      height: auto;
+      padding-bottom: 40px;
+      margin-bottom: 64px;
+    }
+    .main-image {
+      position: static;
+      width: 100%;
+      margin-bottom: 40px;
+    }
+    .thumbnail-container {
+      position: static;
+      display: block;
+      width: 100%;
+    }
+    .thumbnail-container img {
+      width: 100%;
+      margin-bottom: 40px;
+    }
+    .menu-card {
+      position: static;
+      height: auto;
+      min-height: auto;
+      width: 100%;
+      background-size: cover;
+      padding-bottom: 30px;
+      margin-bottom: 40px;
+    }
+    .menu-content {
+      height: auto;
+      margin-top: 0;
+      padding: 30px 20px 0;
+    }
+    .vertical-text-container {
+      position: static;
+      display: block;
+      margin: 30px auto 0;
+      width: 90%;
+    }
+    .course-vertical-text {
+      writing-mode: horizontal-tb !important;
+      white-space: initial;
+    }
+    .course-items {
+      text-align: center;
+    }
+    .course-title {
+      margin-bottom: 32px;
+    }
+    .course-price {
+      text-align: center;
+      margin-bottom: 16px;
+    }
+    .course-note {
+      text-align: center;
+    }
+    /* ======================================================
      9. Space Section
      ====================================================== */
 
-  .space-section {
-    width: 100% !important;
-    padding: 0 !important;
-    margin: 0 !important;
-    position: relative !important;
-  }
+    .space-section {
+      width: 100% !important;
+      padding: 0 !important;
+      margin: 0 !important;
+      position: relative !important;
+    }
 
-  .space-container {
-    width: 100% !important;
-    max-width: 100% !important;
-    margin: 0 auto !important;
-    padding: 0 !important;
-    display: block !important;
-    position: static !important;
-  }
+    .space-container {
+      width: 100% !important;
+      max-width: 100% !important;
+      margin: 0 auto !important;
+      padding: 0 !important;
+      display: block !important;
+      position: static !important;
+    }
 
-  /* Text part - this is already working well */
-  .space-image-1-texts {
-    display: flex !important;
-    flex-direction: row !important;
-    justify-content: center !important;
-    align-items: center !important;
-    /* background-color: #f9f5e8 !important; */
-    background-image: url("../images/hagiya-space-img-2.svg") !important;
-    background-size: cover !important;
-    background-position: center !important;
-    padding: 30px 15px !important;
-    margin-bottom: 15px !important;
-    position: static !important;
-    left: auto !important;
-    height: auto !important;
-    width: 100% !important;
-  }
+    /* Text part - this is already working well */
+    .space-image-1-texts {
+      display: flex !important;
+      flex-direction: row !important;
+      justify-content: center !important;
+      align-items: center !important;
+      /* background-color: #f9f5e8 !important; */
+      background-image: url("../images/hagiya-space-img-2.svg") !important;
+      background-size: cover !important;
+      background-position: center !important;
+      padding: 30px 15px !important;
+      margin-bottom: 15px !important;
+      position: static !important;
+      left: auto !important;
+      height: auto !important;
+      width: 100% !important;
+    }
 
-  .space-image-1-texts p {
-    writing-mode: vertical-rl !important;
-    text-orientation: mixed !important;
-    margin: 0 8px !important;
-    padding: 0 !important;
-    display: inline-block !important;
-    font-size: 14px !important;
-    height: auto !important;
-    position: static !important;
-  }
+    .space-image-1-texts p {
+      writing-mode: vertical-rl !important;
+      text-orientation: mixed !important;
+      margin: 0 8px !important;
+      padding: 0 !important;
+      display: inline-block !important;
+      font-size: 14px !important;
+      height: auto !important;
+      position: static !important;
+    }
 
-  .space-image-1-texts p:nth-child(4) {
-    position: static !important;
-    font-size: 18px !important;
-    margin-left: 15px !important;
-    left: auto !important;
-    top: auto !important;
-  }
+    .space-image-1-texts p:nth-child(4) {
+      position: static !important;
+      font-size: 18px !important;
+      margin-left: 15px !important;
+      left: auto !important;
+      top: auto !important;
+    }
 
-  .space-images {
-    width: 100% !important;
-    display: block !important;
-    margin: 0 !important;
-    position: static !important;
-  }
+    .space-images {
+      width: 100% !important;
+      display: block !important;
+      margin: 0 !important;
+      position: static !important;
+    }
 
-  .space-image-1,
-  .space-image-2,
-  .space-image-4-space-item-2 {
-    display: none !important;
-  }
+    .space-image-1,
+    .space-image-2,
+    .space-image-4-space-item-2 {
+      display: none !important;
+    }
 
-  /* Fix the dining room image (first image) */
-  .space-image-4-space {
-    position: static !important;
-    display: block !important;
-    width: 100% !important;
-    height: auto !important;
-    margin: 0 0 15px 0 !important;
-    padding: 0 !important;
-    left: auto !important;
-    bottom: auto !important;
-  }
+    /* Fix the dining room image (first image) */
+    .space-image-4-space {
+      position: static !important;
+      display: block !important;
+      width: 100% !important;
+      height: auto !important;
+      margin: 0 0 15px 0 !important;
+      padding: 0 !important;
+      left: auto !important;
+      bottom: auto !important;
+    }
 
-  .space-image-4-space-item-1 {
-    position: static !important;
-    display: block !important;
-    width: 100% !important;
-    height: 250px !important;
-    margin: 0 0 15px 0 !important;
-    padding: 0 !important;
-    left: auto !important;
-    top: auto !important;
-    z-index: 1 !important;
-  }
+    .space-image-4-space-item-1 {
+      position: static !important;
+      display: block !important;
+      width: 100% !important;
+      height: 250px !important;
+      margin: 0 0 15px 0 !important;
+      padding: 0 !important;
+      left: auto !important;
+      top: auto !important;
+      z-index: 1 !important;
+    }
 
-  .space-image-4-space-item-1 img {
-    display: block !important;
-    width: 100% !important;
-    height: 100% !important;
-    object-fit: cover !important;
-  }
+    .space-image-4-space-item-1 img {
+      display: block !important;
+      width: 100% !important;
+      height: 100% !important;
+      object-fit: cover !important;
+    }
 
-  /* Fix the wooden counter image (second image) */
-  .space-image-3 {
-    position: static !important;
-    display: block !important;
-    width: 100% !important;
-    height: 250px !important;
-    margin: 0 0 15px 0 !important;
-    padding: 0 !important;
-    left: auto !important;
-    top: auto !important;
-    overflow: hidden !important;
-  }
+    /* Fix the wooden counter image (second image) */
+    .space-image-3 {
+      position: static !important;
+      display: block !important;
+      width: 100% !important;
+      height: 250px !important;
+      margin: 0 0 15px 0 !important;
+      padding: 0 !important;
+      left: auto !important;
+      top: auto !important;
+      overflow: hidden !important;
+    }
 
-  .space-image-3 img {
-    display: block !important;
-    width: 100% !important;
-    height: 100% !important;
-    object-fit: cover !important;
-  }
+    .space-image-3 img {
+      display: block !important;
+      width: 100% !important;
+      height: 100% !important;
+      object-fit: cover !important;
+    }
 
-  /* Extra forceful fix for elements that might be hidden by other CSS */
-  body .space-image-4-space-item-1,
-  body .space-image-3 {
-    display: block !important;
-    visibility: visible !important;
-    opacity: 1 !important;
-  }
-  /* ======================================================
+    /* Extra forceful fix for elements that might be hidden by other CSS */
+    body .space-image-4-space-item-1,
+    body .space-image-3 {
+      display: block !important;
+      visibility: visible !important;
+      opacity: 1 !important;
+    }
+    /* ======================================================
      10. Food Menu Section
      ====================================================== */
 
-  .food-menu-container {
-    max-width: 100%;
-  }
+    .food-menu-container {
+      max-width: 100%;
+    }
 
-  .menu-item-content {
-    flex-direction: column;
-    padding: 30px 15px;
-    min-height: auto;
-    gap: 15px;
-  }
+    .menu-item-content {
+      flex-direction: column;
+      padding: 30px 15px;
+      min-height: auto;
+      gap: 15px;
+    }
 
-  .menu-item-2 .menu-item-content {
-    flex-direction: column;
-  }
+    .menu-item-2 .menu-item-content {
+      flex-direction: column;
+    }
 
-  .menu-item-content-image,
-  .menu-item-content-text {
-    width: 100%;
-    padding: 0 15px;
-  }
+    .menu-item-content-image,
+    .menu-item-content-text {
+      width: 100%;
+      padding: 0 15px;
+    }
 
-  .menu-item-content-text {
-    display: flex;
-    flex-direction: column;
-  }
+    .menu-item-content-text {
+      display: flex;
+      flex-direction: column;
+    }
 
-  .menu-item-content-image {
-    height: auto;
-    padding-top: 0;
-    margin-bottom: 20px;
-  }
+    .menu-item-content-image {
+      height: auto;
+      padding-top: 0;
+      margin-bottom: 20px;
+    }
 
-  .menu-item-content-image img {
-    max-width: 100%;
-    height: auto;
-  }
+    .menu-item-content-image img {
+      max-width: 100%;
+      height: auto;
+    }
 
-  /* Move the button to the bottom */
-  .menu-btn {
-    padding: 10px 20px;
-    width: 80%;
-    max-width: 280px;
-    margin: 0 auto;
-    white-space: nowrap;
-    order: 2; /* This moves the button after other content */
-  }
+    /* Move the button to the bottom */
+    .menu-btn {
+      padding: 10px 20px;
+      width: 80%;
+      max-width: 280px;
+      margin: 0 auto;
+      white-space: nowrap;
+      order: 2; /* This moves the button after other content */
+    }
 
-  /* Pull the button out of the menu-item-content-text */
-  .menu-item-content-text {
-    order: 1;
-  }
+    /* Pull the button out of the menu-item-content-text */
+    .menu-item-content-text {
+      order: 1;
+    }
 
-  .menu-item-content-text .menu-btn {
-    order: 3;
-    margin-top: 15px;
+    .menu-item-content-text .menu-btn {
+      order: 3;
+      margin-top: 15px;
+    }
   }
 }
 
