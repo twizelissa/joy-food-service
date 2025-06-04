@@ -1832,11 +1832,12 @@ footer:before {
   .swiper-pagination {
     position: relative !important;
     bottom: auto !important;
-    margin-right: 50%;
+    margin-right: 60%;
     /* margin: 15px auto 0 auto !important; */
     text-align: center !important;
     display: flex !important;
     justify-content: center !important;
+    margin-top: 20%;
   }
 
   .swiper-pagination-bullet {
