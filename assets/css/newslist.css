@@ -1,7 +1,8 @@
 /* News Listing Page Specific Styles */
 .news-listing-page {
   background-color: #f9f9f9;
-  padding-top: 80px; /* Accommodate fixed header */
+  padding-top: 80px; 
+  /* Accommodate fixed header */
 }
 
 .news-header-section {
@@ -156,6 +157,7 @@
 @media (max-width: 768px) {
   .news-listing-container {
     max-width: 100%;
+
   }
 
   .news-list {

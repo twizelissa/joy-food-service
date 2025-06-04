@@ -1141,7 +1141,7 @@ footer:before {
   }
   /* Mission Section */
   .mission-container {
-    max-width: 1200px;
+    max-width: 1300px;
     margin-left: 20%;
     padding: 0 20px;
     position: relative;
@@ -1176,7 +1176,7 @@ footer:before {
 
   /* News Section */
   .news-container {
-    max-width: 1030px;
+    max-width: 1100px;
     margin-left: 23%;
     padding: 0 20px;
   }
