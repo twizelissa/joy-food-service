@@ -1501,17 +1501,11 @@ footer:before {
      HERO SECTION - PROPER SPACING
      =================== */
   .hero-section {
-    height: 100vh;
+    height: 80vh;
     min-height: 100px;
     margin-bottom: 100px !important;
   }
 
-  .image-overlay {
-    display: none !important;
-    visibility: hidden !important;
-    opacity: 0 !important;
-    margin-bottom: 10%;
-  }
   /* ===================
      MISSION SECTION - RED BOX VISIBLE BEHIND WHITE CARD
      =================== */
@@ -1523,21 +1517,21 @@ footer:before {
 
   .mission-container {
     margin: 0 auto;
-    min-height: 600px;
+    min-height: 550px;
     padding: 0 10px;
   }
 
   .mission-box {
     width: 85%;
     left: 7.5%;
-    min-height: 600px;
+    min-height: 550px;
   }
 
   .white-card {
     width: 85%;
     left: 10%;
     padding: 30px 30px 50px 150px;
-    min-height: 600px;
+    min-height: 550px;
     top: 35px;
   }
 
@@ -1560,12 +1554,46 @@ footer:before {
     opacity: 0 !important;
   }
 
-  .scroll-indicator-container,
-  .scroll-indicator-section,
-  #scrollIndicator {
-    display: none !important;
-    visibility: hidden !important;
-    opacity: 0 !important;
+  .scroll-indicator-container {
+    position: absolute;
+    top: 95%; /* Adjust position for mobile */
+    left: 50%;
+    transform: translateX(-50%);
+    text-align: center;
+    z-index: 10;
+    display: flex !important;
+    flex-direction: column;
+    align-items: center;
+    cursor: pointer;
+    animation: fadeIn 1s ease forwards, floatUpDown 2s infinite ease-in-out;
+    visibility: visible !important;
+    opacity: 1 !important;
+  }
+
+  .scroll-text {
+    color: #f04e5c;
+    font-size: 12px; /* Smaller for mobile */
+    letter-spacing: 1px; /* Reduced spacing */
+    text-shadow: 0 2px 4px rgba(0, 0, 0, 0.5);
+    margin-top: 15px; /* Reduced margin */
+    font-weight: 500;
+  }
+
+  .scroll-image-container {
+    width: 40px; /* Smaller for mobile */
+    height: 40px;
+    transition: transform 0.3s ease;
+  }
+
+  .scroll-image-container img {
+    width: 100%;
+    height: 100%;
+    object-fit: contain;
+    filter: drop-shadow(0 2px 4px rgba(0, 0, 0, 0.3));
+  }
+
+  .scroll-indicator-container:hover .scroll-image-container {
+    transform: translateY(-3px); /* Reduced hover effect */
   }
 
   .image-overlay {
