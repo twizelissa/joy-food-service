@@ -10,11 +10,11 @@ document.addEventListener("DOMContentLoaded", function () {
 
     const wrapper = galleryContainer.querySelector(".gallery-wrapper");
     const originalSlides = galleryContainer.querySelectorAll(".gallery-slide");
-    
+
     if (originalSlides.length === 0) return;
 
     // Clone slides for infinite effect
-    originalSlides.forEach(slide => {
+    originalSlides.forEach((slide) => {
       const clone = slide.cloneNode(true);
       wrapper.appendChild(clone);
     });
@@ -23,12 +23,12 @@ document.addEventListener("DOMContentLoaded", function () {
     const totalSlides = originalSlides.length;
     const slideWidth = 100; // Each slide is 100% width
     const animationDuration = 20; // 20 seconds per full cycle
-    
+
     // Apply continuous animation
     wrapper.style.animation = `infiniteSlide ${animationDuration}s linear infinite`;
-    
+
     // Create CSS keyframes dynamically
-    const styleSheet = document.createElement('style');
+    const styleSheet = document.createElement("style");
     styleSheet.textContent = `
       @keyframes infiniteSlide {
         0% {
@@ -42,12 +42,12 @@ document.addEventListener("DOMContentLoaded", function () {
     document.head.appendChild(styleSheet);
 
     // Pause animation on hover
-    wrapper.addEventListener('mouseenter', () => {
-      wrapper.style.animationPlayState = 'paused';
+    wrapper.addEventListener("mouseenter", () => {
+      wrapper.style.animationPlayState = "paused";
     });
 
-    wrapper.addEventListener('mouseleave', () => {
-      wrapper.style.animationPlayState = 'running';
+    wrapper.addEventListener("mouseleave", () => {
+      wrapper.style.animationPlayState = "running";
     });
   }
 
