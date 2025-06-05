@@ -51,44 +51,112 @@ document.addEventListener("DOMContentLoaded", function () {
     });
   }
 
-  // RECRUIT SLIDER FUNCTIONALITY - UNCHANGED
+  // RECRUIT SLIDER FUNCTIONALITY - UPDATED FOR INFINITE SCROLL
   function initRecruitSlider() {
     const sliderWrapper = document.querySelector(".recruit-slider-wrapper");
-    const slides = document.querySelectorAll(".recruit-slide");
+    const originalSlides = document.querySelectorAll(".recruit-slide");
     const dots = document.querySelectorAll(".recruit-dot");
     const prevBtn = document.querySelector(".recruit-nav.prev");
     const nextBtn = document.querySelector(".recruit-nav.next");
     const container = document.querySelector("#recruit .system-content");
 
-    if (!sliderWrapper || slides.length === 0) return;
+    if (!sliderWrapper || originalSlides.length === 0) return;
 
+    // Clone slides for infinite effect
+    originalSlides.forEach((slide) => {
+      const clone = slide.cloneNode(true);
+      sliderWrapper.appendChild(clone);
+    });
+
+    const totalOriginalSlides = originalSlides.length; // 3
+    const totalSlides = totalOriginalSlides * 2; // 6
     let currentSlide = 0;
-    const totalSlides = slides.length;
-    const slideInterval = 5000;
+    let isTransitioning = false;
+
+    const slideInterval = 5000; // 5 seconds per slide
     let slideTimer;
 
-    function goToSlide(index) {
-      if (index < 0) index = totalSlides - 1;
-      if (index >= totalSlides) index = 0;
+    // Update CSS dynamically to handle 6 slides properly
+    sliderWrapper.style.width = "600%"; // 6 slides total
 
+    // Update each slide width
+    const allSlides = document.querySelectorAll(".recruit-slide");
+    allSlides.forEach((slide) => {
+      slide.style.minWidth = "16.666%"; // 100% / 6 slides
+      slide.style.flex = "0 0 16.666%";
+    });
+
+    // Set initial position
+    sliderWrapper.style.transform = `translateX(0%)`;
+
+    function goToSlide(index, instant = false) {
+      if (isTransitioning) return;
+
+      isTransitioning = true;
       currentSlide = index;
-      updateSlider();
+
+      // Each slide is 16.666% of the wrapper (100% / 6 slides)
+      const slideWidth = 16.666;
+      const translateX = -currentSlide * slideWidth;
+
+      if (instant) {
+        sliderWrapper.style.transition = "none";
+        sliderWrapper.style.transform = `translateX(${translateX}%)`;
+        // Force reflow
+        sliderWrapper.offsetHeight;
+        sliderWrapper.style.transition = "transform 0.8s ease-in-out";
+      } else {
+        sliderWrapper.style.transform = `translateX(${translateX}%)`;
+      }
+
+      updateDots();
       resetTimer();
+
+      // Handle infinite loop - when we reach slide 3, jump back to slide 0
+      setTimeout(
+        () => {
+          if (currentSlide >= totalOriginalSlides) {
+            // We've reached the cloned slides, jump back to start
+            currentSlide = 0;
+            goToSlide(0, true);
+          }
+          isTransitioning = false;
+        },
+        instant ? 50 : 800
+      );
     }
 
-    function updateSlider() {
-      const translateX = -currentSlide * 33.333;
-      sliderWrapper.style.transform = `translateX(${translateX}%)`;
-
+    function updateDots() {
       if (dots.length > 0) {
         dots.forEach((dot, index) => {
-          dot.classList.toggle("active", index === currentSlide);
+          const activeIndex =
+            currentSlide >= totalOriginalSlides
+              ? currentSlide - totalOriginalSlides
+              : currentSlide;
+          dot.classList.toggle("active", index === activeIndex);
         });
       }
     }
 
     function nextSlide() {
+      if (isTransitioning) return;
       goToSlide(currentSlide + 1);
+    }
+
+    function prevSlide() {
+      if (isTransitioning) return;
+
+      if (currentSlide === 0) {
+        // Jump to the last cloned slide instantly, then animate to the actual last slide
+        currentSlide = totalOriginalSlides;
+        goToSlide(currentSlide, true);
+        setTimeout(() => {
+          currentSlide = totalOriginalSlides - 1;
+          goToSlide(currentSlide);
+        }, 100);
+      } else {
+        goToSlide(currentSlide - 1);
+      }
     }
 
     function resetTimer() {
@@ -96,22 +164,22 @@ document.addEventListener("DOMContentLoaded", function () {
       slideTimer = setInterval(nextSlide, slideInterval);
     }
 
+    // Initialize
+    updateDots();
     resetTimer();
 
+    // Event listeners
     if (nextBtn) {
-      nextBtn.addEventListener("click", () => {
-        goToSlide(currentSlide + 1);
-      });
+      nextBtn.addEventListener("click", nextSlide);
     }
 
     if (prevBtn) {
-      prevBtn.addEventListener("click", () => {
-        goToSlide(currentSlide - 1);
-      });
+      prevBtn.addEventListener("click", prevSlide);
     }
 
     dots.forEach((dot, index) => {
       dot.addEventListener("click", () => {
+        if (isTransitioning) return;
         goToSlide(index);
       });
     });
@@ -126,6 +194,7 @@ document.addEventListener("DOMContentLoaded", function () {
       });
     }
 
+    // Touch events
     let touchStartX = 0;
     let touchEndX = 0;
 
@@ -151,12 +220,13 @@ document.addEventListener("DOMContentLoaded", function () {
     function handleRecruitSwipe() {
       const swipeThreshold = 50;
       if (touchStartX - touchEndX > swipeThreshold) {
-        goToSlide(currentSlide + 1);
+        nextSlide();
       } else if (touchEndX - touchStartX > swipeThreshold) {
-        goToSlide(currentSlide - 1);
+        prevSlide();
       }
     }
 
+    // Keyboard navigation
     document.addEventListener("keydown", (e) => {
       const recruitSection = document.querySelector("#recruit");
       if (!recruitSection) return;
@@ -166,9 +236,9 @@ document.addEventListener("DOMContentLoaded", function () {
 
       if (isVisible) {
         if (e.key === "ArrowLeft") {
-          goToSlide(currentSlide - 1);
+          prevSlide();
         } else if (e.key === "ArrowRight") {
-          goToSlide(currentSlide + 1);
+          nextSlide();
         }
       }
     });

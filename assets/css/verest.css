@@ -506,15 +506,18 @@ section {
 
 /* RECRUIT SLIDER FUNCTIONALITY - ADDED STYLES */
 /* Slider wrapper */
+/* Add this to your CSS file */
+/* Update this rule in your CSS */
+/* Update your CSS for 9 slides */
+/* Update your recruit slider CSS to match hero carousel */
 .recruit-slider-wrapper {
   display: flex;
-  transition: transform 0.8s ease-in-out;
-  width: 300%;
+  width: 600%; /* Set by JavaScript */
+  transition: transform 1.2s cubic-bezier(0.4, 0, 0.2, 1);
 }
 
-/* Each slide contains a table */
 .recruit-slide {
-  min-width: 33.333%;
+  width: 16.666%; /* Set by JavaScript */
   flex-shrink: 0;
 }
 
@@ -1672,10 +1675,196 @@ img {
   }
 
   /* Recruit button */
-  .recruit-button {
-    width: 95%;
-    padding: 10px 12px;
+  #recruit {
+    padding: 30px 10px;
+    width: 100%;
+    overflow: visible; /* Ensure content is visible */
+  }
+
+  .system-content {
+    width: 100%;
+    overflow: visible; /* Changed from hidden to visible */
+    position: relative;
+    margin: 0;
+    padding: 0;
+  }
+
+  /* RECRUIT SLIDER - ENSURE VISIBILITY */
+  .recruit-slider-wrapper {
+    width: 300%;
+    transition: transform 0.6s ease-in-out;
+    display: flex;
+    height: auto;
+    min-height: 400px; /* Ensure minimum height */
+  }
+
+  .recruit-slide {
+    min-width: 33.333%;
+    flex-shrink: 0;
+    display: flex;
+    justify-content: center;
+    align-items: flex-start;
+    padding: 10px 5px;
+  }
+
+  /* RECRUIT TABLE - FORCE VISIBILITY AND PROPER SIZING */
+  .recruit-slide .system-table {
+    width: 98% !important; /* Force almost full width */
+    max-width: 280px; /* Prevent overflow on very small screens */
+    font-size: 10px !important;
+    border-radius: 6px;
+    overflow: visible !important;
+    border-collapse: separate !important;
+    border-spacing: 0;
+    border: 1px solid #8c6239;
+    margin: 0 auto;
+    table-layout: fixed;
+    display: table !important; /* Force table display */
+    visibility: visible !important; /* Force visibility */
+    opacity: 1 !important; /* Ensure opacity */
+    background-color: white; /* Ensure background */
+  }
+
+  .recruit-slide .system-table th {
+    width: 35% !important; /* Adjust header width */
+    padding: 8px 4px !important;
+    font-size: 9px !important;
+    text-align: center;
+    border-right: 1px solid #8c6239;
+    border-bottom: 1px solid #8c6239;
+    background-color: #f8f4f4 !important;
+    color: #8c6239 !important;
+    word-wrap: break-word;
+    overflow-wrap: break-word;
+    vertical-align: middle;
+    display: table-cell !important; /* Force table-cell display */
+  }
+
+  .recruit-slide .system-table td {
+    width: 65% !important; /* Adjust content width */
+    padding: 8px 4px !important;
+    font-size: 9px !important;
+    line-height: 1.3;
+    border-right: 1px solid #8c6239;
+    border-bottom: 1px solid #8c6239;
+    word-wrap: break-word;
+    overflow-wrap: break-word;
+    vertical-align: middle;
+    display: table-cell !important; /* Force table-cell display */
+    background-color: white;
+  }
+
+  /* Remove borders on last column and row */
+  .recruit-slide .system-table th:last-child,
+  .recruit-slide .system-table td:last-child {
+    border-right: none !important;
+  }
+
+  .recruit-slide .system-table tr:last-child th,
+  .recruit-slide .system-table tr:last-child td {
+    border-bottom: none !important;
+  }
+
+  /* RECRUIT HIGHLIGHT ELEMENTS */
+  .recruit-slide .highlight-th {
+    font-size: 9px !important;
+    padding: 2px 3px !important;
+    width: 100%;
+    display: block;
+    color: #8c6239 !important;
+    line-height: 1.3;
+    font-weight: lighter;
+  }
+
+  .recruit-slide .highlight-td {
+    font-size: 9px !important;
+    padding: 2px 3px !important;
+    line-height: 1.2;
+    width: 100%;
+    display: block;
+    color: inherit;
+  }
+
+  /* RECRUIT NAVIGATION - ADJUST POSITIONING */
+  .recruit-nav {
+    width: 30px !important;
+    height: 30px !important;
     font-size: 12px;
+    border-radius: 6px;
+    display: flex !important;
+    align-items: center;
+    justify-content: center;
+    background: #f8f4f4;
+    border: 1px solid #91654d;
+    color: #8c6239;
+    cursor: pointer;
+    z-index: 999;
+  }
+
+  /* .recruit-nav.prev {
+    left: -35px !important;
+  }
+
+  .recruit-nav.next {
+    right: -35px !important;
+  } */
+
+  /* .recruit-nav::after {
+    content: "";
+    width: 6px;
+    height: 6px;
+    border-top: 2px solid currentColor;
+    border-right: 2px solid currentColor;
+  } */
+
+  /* RECRUIT DOTS */
+  .recruit-dots {
+    margin-top: 20px;
+    gap: 8px;
+    display: flex !important;
+    justify-content: center;
+  }
+
+  .recruit-dot {
+    width: 10px !important;
+    height: 10px !important;
+    background-color: rgba(140, 98, 57, 0.3);
+    border-radius: 50%;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    display: block !important;
+  }
+
+  .recruit-dot.active {
+    background-color: #8c6239;
+    transform: scale(1.2);
+  }
+
+  /* RECRUIT BUTTON */
+  .recruit-button {
+    width: 95% !important;
+    max-width: 250px;
+    padding: 10px 12px !important;
+    font-size: 11px !important;
+    margin: 15px auto 0 auto;
+    display: block !important;
+    text-align: center;
+    background-color: #f8f4f4;
+    color: #8c6239 !important;
+    border: 1px solid #91654d;
+    border-radius: 5px;
+    text-decoration: none;
+  }
+
+  /* ENSURE RECRUIT SECTION IS VISIBLE */
+  #recruit {
+    display: block !important;
+    visibility: visible !important;
+    opacity: 1 !important;
+    position: relative;
+    z-index: 10;
+    background-color: white;
+    min-height: 450px; /* Ensure minimum height */
   }
 
   /* Instagram button */
