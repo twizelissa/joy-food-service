@@ -584,6 +584,8 @@ footer:before {
   /* Page adjustments */
   .news-listing-page {
     padding-top: 60px;
+    margin-left: 20px;
+    margin-right: 20px;
   }
 
   .news-header-section {
@@ -730,6 +732,8 @@ footer:before {
 
   .news-listing-page {
     padding-top: 55px;
+    margin-left: 20px;
+    margin-right: 20px;
   }
 
   .news-header-section {
@@ -751,6 +755,9 @@ footer:before {
 
   .news-list {
     padding: 12px 6px 20px;
+    /* background-color: green; */
+    margin-left: 10px;
+    margin-right: 10px;
   }
 
   .news-item {
