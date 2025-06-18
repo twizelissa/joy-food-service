@@ -481,7 +481,7 @@ section {
 }
 
 .recruit-button {
-  background-color: #f8f4f4;
+  /* background-color: #f8f4f4; */
   color: #8c6239 !important;
   padding: 10px 20px;
   border-radius: 5px;
@@ -814,7 +814,7 @@ section {
   display: inline-block;
   line-height: 1.6;
   font-size: 16px;
-  font-weight: bold;
+  font-weight: lighter;
 }
 
 .highlight-td {
@@ -1849,7 +1849,7 @@ img {
     margin: 15px auto 0 auto;
     display: block !important;
     text-align: center;
-    background-color: #f8f4f4;
+    /* background-color: #f8f4f4; */
     color: #8c6239 !important;
     border: 1px solid #91654d;
     border-radius: 5px;
