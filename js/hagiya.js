@@ -202,7 +202,7 @@ function initGalleryInfiniteScroll() {
   // Set up infinite animation
   const totalSlides = originalSlides.length;
   const slideWidth = 100; // Each slide is 100% width
-  const animationDuration = 20; // 20 seconds per full cycle
+  const animationDuration = 40; // 20 seconds per full cycle
 
   // Apply continuous animation
   wrapper.style.animation = `infiniteSlide ${animationDuration}s linear infinite`;
