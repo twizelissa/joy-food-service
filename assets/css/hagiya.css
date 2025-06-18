@@ -2102,7 +2102,7 @@ h3 {
 /* Tablet Screens (max-width: 768px) */
 @media (max-width: 768px) {
   /* Header Mobile Friendly */
-  /* .site-header {
+  .site-header {
     padding: 10px 20px;
   }
 
@@ -2138,7 +2138,7 @@ h3 {
 
   .main-nav li {
     margin: 10px 0;
-  } */
+  }
 
   /* Hero Section */
   .hero-image {
