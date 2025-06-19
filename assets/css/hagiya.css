@@ -2206,8 +2206,8 @@ h3 {
 
     .news-item {
       flex-direction: column;
+      margin-left: 5%;
 
-      margin-left: 0;
       margin-right: 5% !important;
       padding: 15px 0;
       border-bottom: 1px solid rgba(0, 0, 0, 0.1);
@@ -2227,6 +2227,7 @@ h3 {
       color: #666;
       margin-bottom: 8px;
       font-weight: 600;
+      margin-left: 20%;
     }
 
     .news-content {
@@ -2238,7 +2239,8 @@ h3 {
 
     .news-content p {
       margin-bottom: 6px;
-      margin-right: 20%;
+      margin-right: 5%;
+      padding-left: 50px;
     }
 
     /* Space Section */
