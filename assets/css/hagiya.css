@@ -372,6 +372,7 @@ h3 {
   gap: 15px;
   z-index: 3;
   height: 450px;
+  width: 450px;
 }
 
 .thumbnail-container img {
@@ -2422,11 +2423,9 @@ h3 {
     }
     .course-vertical-text:nth-child(1) {
       margin-bottom: 20px;
-      background-color: green;
     }
     .course-vertical-text:nth-child(2) {
       margin-bottom: 20px;
-      background-color: blue;
     }
     /* ======================================================
      9. Space Section
