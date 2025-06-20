@@ -205,8 +205,8 @@ footer:before {
 .news-listing-container {
   max-width: 800px;
   margin: 0 auto;
-  padding: 0 20px 60px;
-  margin-left: 30%;
+  padding: 0 0px 0px;
+  align-items: center;
   background-color: white;
   box-shadow: 0 0 20px rgba(0, 0, 0, 0.05);
   margin-bottom: 50px;
