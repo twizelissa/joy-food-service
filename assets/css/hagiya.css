@@ -1170,7 +1170,7 @@ h3 {
 
   .course-items {
     list-style: none;
-    margin-bottom: 0.5rem;
+    margin-bottom: -10%;
     flex-shrink: 0;
     padding-left: 0;
   }
