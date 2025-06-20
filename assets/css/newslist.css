@@ -383,7 +383,7 @@ footer:before {
 }
 
 /* Large Desktop (1440px - 1919px) */
-@media (min-width: 1440px) and (max-width: 1919px) {
+@media (min-width: 1440px) and (max-width: 1600px) {
   .news-header-section {
     padding: 70px 0 45px;
   }
@@ -398,7 +398,7 @@ footer:before {
 
   .news-listing-container {
     max-width: 850px;
-    margin-left: 31%;
+    margin-left: 28%;
   }
 
   .news-list {
@@ -409,7 +409,7 @@ footer:before {
 /* Standard Desktop (1200px - 1439px) */
 @media (min-width: 1200px) and (max-width: 1439px) {
   .news-listing-container {
-    margin-left: 25%;
+    margin-left: 20%;
     max-width: 750px;
   }
 }
