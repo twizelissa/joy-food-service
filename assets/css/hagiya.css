@@ -320,7 +320,7 @@ h3 {
   overflow-wrap: break-word;
 }
 /* ======================================================
-     8. Course Menu Section - BASE STYLES
+     8. Course Menu Section
      ====================================================== */
 .menu-layout {
   max-width: 100%;
@@ -383,30 +383,32 @@ h3 {
 
 .menu-content {
   position: absolute;
-  top: 10%;
-  right: 30%;
+  top: 5%;
+  right: 34%;
   width: 21%;
   height: 30%;
   display: flex;
   flex-direction: column;
 }
 
-/* RESPONSIVE: Use relative units for text */
 .course-title {
-  position: relative;
-  font-size: clamp(14px, 1.2vw, 20px); /* Responsive font size */
+  width: auto;
+  top: 5%;
+  font-size: 17px;
   font-weight: 500;
-  margin-bottom: clamp(15px, 2vw, 25px); /* Responsive margin */
-  text-align: left;
-  width: 100%;
+  margin-bottom: 25px;
+  margin-left: -65%;
+  /* text-align: center; */
+  position: relative;
 }
 
 .course-title::after {
   content: "";
   position: absolute;
   bottom: -6px;
-  left: 0;
-  width: clamp(35px, 3vw, 50px); /* Responsive underline width */
+  left: 50%;
+  transform: translateX(-50%);
+  width: 45px;
   height: 1px;
   background-color: #333;
 }
@@ -415,67 +417,71 @@ h3 {
   list-style: none;
   margin-bottom: 7px;
   flex-shrink: 0;
-  margin-left: 0;
-  padding-left: 0;
 }
 
 .course-items li {
   padding: 4px 0;
-  font-size: clamp(14px, 1.1vw, 18px); /* Responsive font size */
+  font-size: 18px;
   line-height: 1.3;
-  text-align: left;
 }
 
 .course-price {
-  font-size: clamp(14px, 1.1vw, 18px); /* Responsive font size */
+  font-size: 18px;
   text-align: right;
-  margin-top: -3%;
+  margin-top: 4px;
+  margin-bottom: 4px;
 }
 
 .course-note {
   width: 100%;
-  font-size: clamp(11px, 0.8vw, 13px); /* Responsive font size */
+  font-size: 13px;
   color: #666;
-  text-align: left;
-  white-space: nowrap;
+  margin-bottom: 0;
+  white-space: nowrap; /* Prevent wrapping to keep on one line */
+  /* overflow: hidden; Hide overflow if text is too long */
+  /* text-overflow: ellipsis; Add ... if text is cut off */
 }
-
 .vertical-text-container {
-  position: absolute;
-  top: -30%;
-  height: clamp(300px, 30vw, 450px); /* Responsive height */
-  width: clamp(80px, 8vw, 120px); /* Responsive width */
+  /* background-color: #0099ff; */
+  top: -50%;
+  right: 20px;
+  height: 400px; /* here even if i apply 100% nothing change or 20% */
+  width: 120px;
   display: flex;
-  flex-direction: row;
-  gap: clamp(15px, 2vw, 25px); /* Responsive gap */
-  margin-left: 85%;
+  flex-direction: row !important; /* Force row direction */
+  gap: 25px;
   z-index: 4;
   align-items: flex-start;
   justify-content: flex-start;
+  /* overflow: hidden; */
 }
 
 .course-vertical-text {
-  writing-mode: vertical-rl;
+  /* background-color: #666; */
+  writing-mode: vertical-rl !important; /* Force vertical writing */
   text-orientation: mixed;
-  font-size: clamp(12px, 1vw, 16px); /* Responsive font size */
+  font-size: 16px;
   letter-spacing: 0.05em;
   line-height: 1.6;
   font-weight: lighter;
+  margin: 0 auto; /* Force no margin */
+  padding: 0 !important; /* Force no padding */
   flex-shrink: 0;
   width: auto;
   height: auto;
   max-height: 100%;
   white-space: nowrap;
 }
-
 .course-vertical-text:nth-child(1) {
+  /* color: red; */
   margin-top: 20%;
-  font-size: clamp(10px, 0.8vw, 12px); /* Smaller responsive font */
+  font-size: 12px;
 }
 
 .course-vertical-text:nth-child(2) {
+  /* color: green; */
   margin-top: -30%;
-  font-size: clamp(16px, 1.4vw, 20px); /* Larger responsive font */
+  font-size: 20px;
 }
 
 /* ======================================================
@@ -991,16 +997,171 @@ h3 {
 /* ======================================================
      18. Media Queries - CONSOLIDATED
      ====================================================== */
-/* Custom category for both laptops (1570px-1800px) */
+
+/* Custom category for both laptops (1500px-1900px) */
+@media screen and (min-width: 1600px) and (max-width: 1800px) {
+  /* Storefront Section */
+} /* for course menu */
+.menu-layout {
+  max-width: 100%;
+  margin: 0 auto;
+  padding: 30px;
+  position: relative;
+  border-radius: 12px;
+  box-shadow: 0 3px 22px rgba(0, 0, 0, 0.1);
+  height: 750px;
+}
+.menu-card {
+  position: absolute;
+  width: 65%;
+  height: 50%;
+  left: 20%;
+  top: 30%;
+  z-index: 1;
+  overflow: visible;
+}
+.main-image {
+  position: absolute;
+  width: 22%;
+  height: 50%;
+  left: 10%;
+  top: 28%;
+  z-index: 3;
+}
+.main-image img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+/* Thumbnail Section */
+.thumbnail-container {
+  position: absolute;
+  left: 37%;
+  top: 25%;
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+  z-index: 3;
+  height: auto;
+}
+
+.thumbnail-container img {
+  width: 60%;
+  height: 50%;
+  object-fit: cover;
+}
+.menu-content {
+  position: absolute;
+  top: 5%;
+  right: 34%;
+  width: 20%;
+  height: 30%;
+  display: flex;
+  flex-direction: column;
+}
+.main-image img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.thumbnail-container {
+  position: absolute;
+  left: 34%;
+  top: 25%;
+  display: flex;
+  flex-direction: column;
+  gap: 15px;
+  z-index: 3;
+  height: 450px;
+}
+.thumbnail-container img {
+  width: 60%;
+  height: 50%;
+  object-fit: cover;
+}
+/* Menu Content (Course Details) */
+.menu-content {
+  position: absolute;
+  top: 3%;
+  right: 30%;
+  width: 20%;
+  height: 30%;
+  display: flex;
+  flex-direction: column;
+}
+
+.course-title {
+  font-size: 1.3rem;
+  font-weight: 500;
+  margin-bottom: 0.75rem;
+  text-align: center;
+  position: relative;
+}
+
+.course-title::after {
+  content: "";
+  position: absolute;
+  bottom: -6px;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 45px;
+  height: 1px;
+  background-color: #333;
+}
+
+.course-items {
+  list-style: none;
+  margin-bottom: 0.5rem;
+  flex-shrink: 0;
+}
+
+.course-items li {
+  padding: 4px 0;
+  font-size: 1.1rem;
+  line-height: 1.3;
+}
+
+.course-price {
+  font-size: 1.1rem;
+  text-align: right;
+  margin-top: 4px;
+  margin-bottom: 4px;
+}
+
+.course-note {
+  font-size: 0.95rem;
+  color: #666;
+  margin-bottom: 0;
+}
+
+/* Vertical Side Text */
+.vertical-text-container {
+  position: absolute;
+  top: -20%;
+  right: 60px;
+  height: 420px;
+  display: flex;
+  flex-direction: column;
+  z-index: 2;
+}
+
+.course-vertical-text {
+  writing-mode: vertical-rl;
+  text-orientation: mixed;
+  font-size: 1rem;
+  letter-spacing: 0.05em;
+  line-height: 1.8;
+  margin-bottom: 20px;
+  font-weight: lighter;
+}
 
 /* Large Screens (max-width: 1600px) */
-@media (min-width: 1440px) and (max-width: 1569px) {
-  /* Storefront adjustments */
+@media (max-width: 1600px) {
   .storefront-image {
     margin-left: 5%;
     width: 65%;
   }
-
   .storefront-vertical-image {
     right: 10%;
     top: 25%;
@@ -1014,93 +1175,12 @@ h3 {
     padding: 20px 10px;
     height: 80%;
   }
-
-  /* Course menu specific adjustments */
-  .menu-layout {
-    height: 900px; /* Taller for this range */
-  }
-
-  .menu-card {
-    background-size: contain;
-    background-position: center;
-    width: 68%;
-    height: 41%;
-    left: 22%; /* Slight adjustment */
-    top: 26%; /* Slight adjustment */
-  }
-
-  .main-image {
-    width: 22%;
-    height: 40%; /* Adjusted height */
-    left: 10%;
-    top: 26%; /* Match card position */
-  }
-
-  .thumbnail-container {
-    left: 34%; /* Keep consistent */
-    top: 25%;
-    height: 450px;
-  }
-
-  .menu-content {
-    right: 29%; /* Adjusted for this screen size */
-    width: 20%; /* Slightly narrower */
-  }
-
-  /* Text scaling for this range */
-  .course-title {
-    font-size: 15px;
-    top: 0;
-    /* Fixed size for this range */
-  }
-
-  .course-items li {
-    font-size: 16px; /* Slightly smaller */
-  }
-
-  .course-price {
-    font-size: 16px;
-  }
-
-  .course-note {
-    font-size: 12px;
-  }
-
-  /* Vertical text adjustments */
-  .vertical-text-container {
-    top: -20%;
-    right: 60px; /* Use fixed positioning from right */
-    margin-left: 0; /* Remove margin-left when using right */
-    height: 420px;
-    flex-direction: row; /* Stack vertically for this range */
-  }
-
-  .course-vertical-text {
-    font-size: 14px;
-    margin-bottom: 20px;
-  }
-
-  .course-vertical-text:nth-child(1) {
-    font-size: 11px;
-  }
-
-  .course-vertical-text:nth-child(2) {
-    font-size: 18px;
-  }
-}
-
-/* Large Desktop (1570px - 1599px) */
-@media (min-width: 1024px) and (max-width: 1439px) {
-  /* Layout adjustments */
-  .menu-layout {
-    height: 750px;
-    padding: 30px;
-  }
-
+  /* for course menu */
   .menu-card {
     background-image: url("../images/course-backward-bg.svg");
     background-repeat: no-repeat;
-    background-size: contain;
+    background-size: cover;
+    background-size: contain; /* Ensure full image is visible */
     background-position: center;
     position: absolute;
     width: 65%;
@@ -1110,7 +1190,28 @@ h3 {
     z-index: 1;
     overflow: visible;
   }
+  .menu-layout {
+    max-width: 100%;
+    margin: 0 auto;
+    padding: 30px;
+    position: relative;
+    border-radius: 12px;
+    box-shadow: 0 3px 22px rgba(0, 0, 0, 0.1);
+    height: 750px;
+  }
 
+  /* Card section behind content */
+  .menu-card {
+    position: absolute;
+    width: 68%;
+    height: 50%;
+    left: 20%;
+    top: 30%;
+    z-index: 1;
+    overflow: visible;
+  }
+
+  /* Main Image Position Placeholder */
   .main-image {
     position: absolute;
     width: 22%;
@@ -1118,6 +1219,28 @@ h3 {
     left: 10%;
     top: 28%;
     z-index: 3;
+  }
+  .main-image img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+  }
+  /* Thumbnail Section */
+  .thumbnail-container {
+    position: absolute;
+    left: 37%;
+    top: 25%;
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+    z-index: 3;
+    height: auto;
+  }
+
+  .thumbnail-container img {
+    width: 60%;
+    height: 50%;
+    object-fit: cover;
   }
 
   .main-image img {
@@ -1136,6 +1259,181 @@ h3 {
     z-index: 3;
     height: 450px;
   }
+  .thumbnail-container img {
+    width: 60%;
+    height: 50%;
+    object-fit: cover;
+  }
+  /* Menu Content (Course Details) */
+  .menu-content {
+    position: absolute;
+    top: 3%;
+    right: 29%;
+    width: 20%;
+    height: 30%;
+    display: flex;
+    flex-direction: column;
+  }
+
+  .course-title {
+    font-size: 1.3rem;
+    font-weight: 500;
+    margin-bottom: 0.75rem;
+    text-align: center;
+    position: relative;
+  }
+
+  .course-title::after {
+    content: "";
+    position: absolute;
+    bottom: -6px;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 45px;
+    height: 1px;
+    background-color: #333;
+  }
+
+  .course-items {
+    list-style: none;
+    margin-bottom: 0.5rem;
+    flex-shrink: 0;
+  }
+
+  .course-items li {
+    padding: 4px 0;
+    font-size: 1.1rem;
+    line-height: 1.3;
+  }
+
+  .course-price {
+    font-size: 1.1rem;
+    text-align: right;
+    margin-top: 4px;
+    margin-bottom: 4px;
+  }
+
+  .course-note {
+    font-size: 0.95rem;
+    color: #666;
+    margin-bottom: 0;
+  }
+
+  /* Vertical Side Text */
+  .vertical-text-container {
+    position: absolute;
+    top: -20%;
+    right: 60px;
+    height: 420px;
+    display: flex;
+    flex-direction: column;
+    z-index: 2;
+  }
+
+  .course-vertical-text {
+    writing-mode: vertical-rl;
+    text-orientation: mixed;
+    font-size: 1rem;
+    letter-spacing: 0.05em;
+    line-height: 1.8;
+    margin-bottom: 20px;
+    font-weight: lighter;
+  }
+
+  /* Space Section */
+  .space-container {
+    width: 100%;
+  }
+
+  /* Menu Section */
+  .course-container {
+    max-width: 95%;
+  }
+
+  .dish-image-left img {
+    max-width: 100%;
+  }
+}
+
+/* Large Screens (max-width: 1400px) */
+@media (max-width: 1400px) {
+  /* Space Section */
+  .storefront-image {
+    margin-left: 5%;
+    width: 65%;
+  }
+  .storefront-vertical-image {
+    right: 10%;
+    top: 25%;
+    height: 60%;
+    width: 35%;
+  }
+
+  .storefront-vertical-text {
+    right: 14%;
+    width: 15%;
+    padding: 20px 10px;
+    height: 80%;
+  }
+
+  /* course menu */
+
+  .menu-card {
+    background-image: url("../images/course-backward-bg.svg");
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-size: contain; /* Ensure full image is visible */
+    background-position: center;
+    position: absolute;
+    width: 65%;
+    height: 50%;
+    left: 20%;
+    top: 30%;
+    z-index: 1;
+    overflow: visible;
+  }
+  .menu-layout {
+    max-width: 100%;
+    margin: 0 auto;
+    padding: 30px;
+    position: relative;
+    border-radius: 12px;
+    box-shadow: 0 3px 22px rgba(0, 0, 0, 0.1);
+    height: 750px;
+  }
+
+  /* Card section behind content */
+  .menu-card {
+    position: absolute;
+    width: 65%;
+    height: 390px;
+    left: 20%;
+    top: 30%;
+    z-index: 1;
+    overflow: visible;
+  }
+
+  /* Main Image Position Placeholder */
+  .main-image {
+    position: absolute;
+    width: 22%;
+    height: 50%;
+    left: 10%;
+    top: 28%;
+    z-index: 3;
+  }
+
+  /* Thumbnail Section */
+  .thumbnail-container {
+    position: absolute;
+    left: 34%;
+    top: 25%;
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+    z-index: 3;
+    height: auto;
+  }
 
   .thumbnail-container img {
     width: 60%;
@@ -1143,98 +1441,504 @@ h3 {
     object-fit: cover;
   }
 
-  /* Menu content positioning */
+  .main-image img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+  }
+
+  .thumbnail-container {
+    position: absolute;
+    left: 34%;
+    top: 25%;
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+    z-index: 3;
+    height: 450px;
+  }
+  .thumbnail-container img {
+    width: 60%;
+    height: 50%;
+    object-fit: cover;
+  }
+  /* Menu Content (Course Details) */
   .menu-content {
     position: absolute;
-    top: 8%; /* Better positioning */
-    right: 22%; /* Adjusted for this screen range */
-    width: 23%; /* Wider to contain text */
-    height: 32%; /* More height */
+    top: 3%;
+    right: 27%;
+    width: 20%;
+    height: 30%;
     display: flex;
     flex-direction: column;
   }
 
-  /* Responsive text sizing for this range */
   .course-title {
-    font-size: clamp(15px, 1.5vw, 18px); /* Responsive sizing */
-    text-align: left;
-    margin-bottom: clamp(15px, 1.8vw, 22px);
+    font-size: 1.3rem;
+    font-weight: 500;
+    margin-bottom: 0.75rem;
+    text-align: center;
     position: relative;
   }
 
   .course-title::after {
-    left: 0;
-    width: clamp(35px, 3.5vw, 45px);
-    transform: none;
+    content: "";
+    position: absolute;
+    bottom: -6px;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 45px;
+    height: 1px;
+    background-color: #333;
   }
 
   .course-items {
     list-style: none;
-    margin-bottom: -10%;
+    margin-bottom: 0.5rem;
     flex-shrink: 0;
-    padding-left: 0;
   }
 
   .course-items li {
     padding: 4px 0;
-    font-size: clamp(14px, 1.3vw, 17px); /* Responsive sizing */
+    font-size: 1.1rem;
     line-height: 1.3;
-    text-align: left;
   }
 
   .course-price {
-    font-size: clamp(14px, 1.3vw, 17px); /* Responsive sizing */
+    font-size: 1.1rem;
     text-align: right;
     margin-top: 4px;
     margin-bottom: 4px;
   }
 
   .course-note {
-    font-size: clamp(11px, 1vw, 14px); /* Responsive sizing */
+    font-size: 0.95rem;
     color: #666;
     margin-bottom: 0;
-    text-align: left;
   }
 
-  /* Vertical text container */
+  /* Vertical Side Text */
   .vertical-text-container {
     position: absolute;
     top: -20%;
-    right: 50px; /* Adjusted for this screen range */
-    height: clamp(350px, 35vw, 420px); /* Responsive height */
-    width: clamp(90px, 9vw, 110px); /* Responsive width */
+    right: 60px;
+    height: 420px;
     display: flex;
-    flex-direction: row;
-    gap: clamp(15px, 2vw, 20px);
+    flex-direction: column;
     z-index: 2;
-    align-items: flex-start;
   }
 
   .course-vertical-text {
     writing-mode: vertical-rl;
     text-orientation: mixed;
-    font-size: clamp(12px, 1.1vw, 15px); /* Responsive sizing */
+    font-size: 1rem;
     letter-spacing: 0.05em;
     line-height: 1.8;
-    margin-bottom: 15px;
+    margin-bottom: 20px;
     font-weight: lighter;
+  }
+}
+
+/* Medium-Large Screens (max-width: 1440px) */
+@media (max-width: 1440px) {
+  .menu-card {
+    background-image: url("../images/course-backward-bg.svg");
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-size: contain; /* Ensure full image is visible */
+    background-position: center;
+    position: absolute;
+    width: 65%;
+    height: 50%;
+    left: 20%;
+    top: 30%;
+    z-index: 1;
+    overflow: visible;
+  }
+  .storefront-image {
+    margin-left: 5%;
+    width: 65%;
+  }
+  .storefront-vertical-image {
+    right: 10%;
+    top: 25%;
+    height: 60%;
+    width: 35%;
+  }
+
+  .storefront-vertical-text {
+    right: 14%;
+    width: 15%;
+    height: 60%;
+  }
+}
+
+/* Medium-Large Screens (max-width: 1280px) */
+@media (max-width: 1280px) {
+  .storefront-image {
+    margin-left: 5%;
+    width: 65%;
+  }
+  .storefront-vertical-image {
+    right: 10%;
+    top: 25%;
+    height: 60%;
+    width: 35%;
+  }
+
+  .storefront-vertical-text {
+    right: 14%;
+    width: 15%;
+    padding: 20px 10px;
+    height: 80%;
+  }
+  /* course menu */
+  .menu-layout {
+    max-width: 100%;
+    margin: 0 auto;
+    padding: 30px;
+    position: relative;
+    border-radius: 12px;
+    box-shadow: 0 3px 22px rgba(0, 0, 0, 0.1);
+    height: 750px;
+  }
+
+  /* Card section behind content */
+  .menu-card {
+    position: absolute;
+    width: 65%;
+    height: 390px;
+    left: 20%;
+    top: 30%;
+    z-index: 1;
+    overflow: visible;
+  }
+
+  /* Main Image Position Placeholder */
+  .main-image {
+    position: absolute;
+    width: 22%;
+    height: 50%;
+    left: 10%;
+    top: 28%;
+    z-index: 3;
+  }
+
+  /* Thumbnail Section */
+  .thumbnail-container {
+    position: absolute;
+    left: 34%;
+    top: 25%;
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+    z-index: 3;
+    height: auto;
+  }
+
+  .thumbnail-container img {
+    width: 60%;
+    height: 50%;
+    object-fit: cover;
+  }
+
+  .main-image img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+  }
+
+  .thumbnail-container {
+    position: absolute;
+    left: 34%;
+    top: 25%;
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+    z-index: 3;
+    height: 450px;
+  }
+  .thumbnail-container img {
+    width: 60%;
+    height: 50%;
+    object-fit: cover;
+  }
+  /* Menu Content (Course Details) */
+  .menu-content {
+    position: absolute;
+    top: 3%;
+    right: 27%;
+    width: 20%;
+    height: 30%;
+    display: flex;
+    flex-direction: column;
+  }
+
+  .course-title {
+    font-size: 1.3rem;
+    font-weight: 500;
+    margin-bottom: 0.75rem;
+    text-align: center;
+    position: relative;
+  }
+
+  .course-title::after {
+    content: "";
+    position: absolute;
+    bottom: -6px;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 45px;
+    height: 1px;
+    background-color: #333;
+  }
+
+  .course-items {
+    list-style: none;
+    margin-bottom: 0.5rem;
     flex-shrink: 0;
   }
 
-  .course-vertical-text:nth-child(1) {
-    margin-top: 20%;
-    font-size: clamp(10px, 0.9vw, 12px);
+  .course-items li {
+    padding: 4px 0;
+    font-size: 1.1rem;
+    line-height: 1.3;
   }
 
-  .course-vertical-text:nth-child(2) {
-    margin-top: -30%;
-    font-size: clamp(15px, 1.4vw, 18px);
+  .course-price {
+    font-size: 1.1rem;
+    text-align: right;
+    margin-top: 4px;
+    margin-bottom: 4px;
+  }
+
+  .course-note {
+    font-size: 0.95rem;
+    color: #666;
+    margin-bottom: 0;
+  }
+
+  /* Vertical Side Text */
+  .vertical-text-container {
+    position: absolute;
+    top: -20%;
+    right: 60px;
+    height: 420px;
+    display: flex;
+    flex-direction: column;
+    z-index: 2;
+  }
+
+  .course-vertical-text {
+    writing-mode: vertical-rl;
+    text-orientation: mixed;
+    font-size: 1rem;
+    letter-spacing: 0.05em;
+    line-height: 1.8;
+    margin-bottom: 20px;
+    font-weight: lighter;
   }
 }
-/* Medium-Large Screens (max-width: 1280px) */
 
-/* Tablets */
-@media (min-width: 768px) and (max-width: 1023px) {
+/* Medium-Large Screens (max-width: 1200px) */
+@media (max-width: 1200px) {
+  /* Storefront Section */
+  .storefront-image {
+    margin-left: 5%;
+    width: 65%;
+  }
+  .storefront-vertical-image {
+    right: 10%;
+    top: 25%;
+    height: 60%;
+    width: 35%;
+  }
+
+  .storefront-vertical-text {
+    right: 14%;
+    width: 15%;
+    padding: 20px 10px;
+    height: 80%;
+  }
+
+  .menu-layout {
+    max-width: 100%;
+    margin: 0 auto;
+    padding: 30px;
+    position: relative;
+    border-radius: 12px;
+    box-shadow: 0 3px 22px rgba(0, 0, 0, 0.1);
+    height: 750px;
+  }
+
+  /* Card section behind content */
+  .menu-card {
+    position: absolute;
+    width: 65%;
+    height: 390px;
+    left: 20%;
+    top: 30%;
+    z-index: 1;
+    overflow: visible;
+  }
+
+  /* Main Image Position Placeholder */
+  .main-image {
+    position: absolute;
+    width: 22%;
+    height: auto;
+    left: 10%;
+    top: 28%;
+    z-index: 3;
+  }
+
+  /* Thumbnail Section */
+  .thumbnail-container {
+    position: absolute;
+    left: 34%;
+    top: 25%;
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+    z-index: 3;
+    height: auto;
+  }
+
+  .thumbnail-container img {
+    width: 60%;
+    height: 50%;
+    object-fit: cover;
+  }
+  .menu-content {
+    position: absolute;
+    top: 5%;
+    right: 35%;
+    width: 20%;
+    height: 345px;
+    display: flex;
+    flex-direction: column;
+  }
+  .main-image img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+  }
+
+  .thumbnail-container {
+    position: absolute;
+    left: 34%;
+    top: 25%;
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+    z-index: 3;
+    height: 450px;
+  }
+  .thumbnail-container img {
+    width: 60%;
+    height: 50%;
+    object-fit: cover;
+  }
+  /* Menu Content (Course Details) */
+  .menu-content {
+    position: absolute;
+    top: 3%;
+    right: 35%;
+    width: 20%;
+    height: 30%;
+    display: flex;
+    flex-direction: column;
+  }
+
+  .course-title {
+    font-size: 1.3rem;
+    font-weight: 500;
+    margin-bottom: 0.75rem;
+    text-align: center;
+    position: relative;
+  }
+
+  .course-title::after {
+    content: "";
+    position: absolute;
+    bottom: -6px;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 45px;
+    height: 1px;
+    background-color: #333;
+  }
+
+  .course-items {
+    list-style: none;
+    margin-bottom: 0.5rem;
+    flex-shrink: 0;
+  }
+
+  .course-items li {
+    padding: 4px 0;
+    font-size: 1.1rem;
+    line-height: 1.3;
+  }
+
+  .course-price {
+    font-size: 1.1rem;
+    text-align: right;
+    margin-top: 4px;
+    margin-bottom: 4px;
+  }
+
+  .course-note {
+    font-size: 0.95rem;
+    color: #666;
+    margin-bottom: 0;
+  }
+
+  /* Vertical Side Text */
+  .vertical-text-container {
+    position: absolute;
+    top: -20%;
+    right: 60px;
+    height: 420px;
+    display: flex;
+    flex-direction: column;
+    z-index: 2;
+  }
+
+  .course-vertical-text {
+    writing-mode: vertical-rl;
+    text-orientation: mixed;
+    font-size: 1rem;
+    letter-spacing: 0.05em;
+    line-height: 1.8;
+    margin-bottom: 20px;
+    font-weight: lighter;
+  }
+}
+
+/* Medium Screens (max-width: 1100px) */
+@media (max-width: 1100px) {
+  .storefront-image {
+    margin-left: 5%;
+    width: 65%;
+  }
+  .storefront-vertical-image {
+    right: 10%;
+    top: 25%;
+    height: 60%;
+    width: 35%;
+  }
+
+  .storefront-vertical-text {
+    right: 14%;
+    width: 15%;
+    padding: 20px 10px;
+    height: 80%;
+  }
+}
+
+/* Medium Screens (max-width: 1024px) */
+@media (max-width: 1024px) {
   /* Storefront Section */
   .storefront-section {
     flex-direction: column;
@@ -1397,9 +2101,7 @@ h3 {
   }
 }
 
-/* ======================================================
-     MOBILE RESPONSIVE (max-width: 768px)
-     ====================================================== */
+/* Tablet Screens (max-width: 768px) */
 @media (max-width: 768px) {
   /* Header Mobile Friendly */
   .site-header {
@@ -1453,442 +2155,469 @@ h3 {
   .storefront-image {
     width: 100%;
   }
-  /* news section */
-  .news-section {
-    margin-left: 2%;
-    padding: 20px 15px;
-    background-position: center;
+
+  /* for tablets */
+
+  @media (max-width: 991px) {
+    .news-section {
+      padding: 25px 3%;
+    }
+
+    .news-container {
+      max-width: 75%;
+      padding: 18px;
+    }
+
+    .news-item {
+      margin-left: 15%;
+    }
+
+    .news-section h2::before {
+      width: 100px;
+      height: 80px;
+    }
   }
 
-  .news-section h2 {
-    font-size: 20px;
-    margin-bottom: 15px;
-    padding: 15px 0;
-  }
-
-  .news-section h2::before {
-    width: 80px;
-    height: 60px;
-  }
-
-  .news-container {
-    max-width: 100%;
-    padding: 15px;
-    margin: 0 10px;
-  }
-
-  .news-item {
-    flex-direction: column;
-    margin-left: 5%;
-
-    margin-right: 5% !important;
-    padding: 15px 0;
-    border-bottom: 1px solid rgba(0, 0, 0, 0.1);
-  }
-
-  .news-item:last-child {
-    border-bottom: none;
-  }
-
-  .news-item:not(:last-child)::after {
-    display: none;
-  }
-
-  .news-date {
-    min-width: auto;
-    font-size: 12px;
-    color: #666;
-    margin-bottom: 8px;
-    font-weight: 600;
-    margin-left: 20%;
-  }
-
-  .news-content {
-    font-size: 13px;
-    line-height: 1.5;
-    margin-right: 10% !important;
-    /* background-color: red; */
-  }
-
-  .news-content p {
-    margin-bottom: 6px;
-    margin-right: 5%;
-    padding-left: 50px;
-  }
-
-  /* Space Section */
-  .space-section {
-    padding: 30px 20px;
-  }
-
-  .space-container {
-    width: 100%;
-    margin-left: 0;
-    min-height: 1200px;
-  }
-
-  .space-image-2 {
-    width: 75%;
-    top: 100px;
-    left: 5%;
-  }
-
-  .space-image-3 {
-    width: 75%;
-    top: 380px;
-    left: 20%;
-  }
-
-  .space-image-4-space {
-    width: 75%;
-    top: 660px;
-    left: 10%;
-    bottom: auto;
-  }
-
-  .space-image-4-space-item-1 {
-    width: 85%;
-    height: 85%;
-  }
-
-  .space-image-1-texts {
-    top: 990px;
-    left: 0;
-    width: 100%;
-    display: flex;
-    justify-content: center;
-    min-height: 200px;
-  }
-
-  /* Gallery Section */
-  .gallery {
-    padding: 40px 0;
-  }
-
-  .gallery-container {
-    position: relative;
-    width: 100%;
-    overflow: hidden;
-    background-color: rgba(0, 0, 0, 0.03);
-    padding: 20px 0;
-  }
-
-  .gallery-wrapper {
-    display: flex;
-    transition: transform 0.5s ease-in-out;
-    width: 100%;
-  }
-
-  /* MOBILE: Show ONE image at a time */
-  .gallery-slide {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    min-width: 100%;
-    padding: 0 15px;
-    flex-shrink: 0;
-  }
-
-  .gallery-item {
-    width: 90%; /* Single image takes most of screen width */
-    height: 220px;
-    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
-    border-radius: 8px;
-    overflow: hidden;
-    margin: 0 auto;
-  }
-
-  /* Hide other gallery items on mobile - show only first image */
-  .gallery-item:not(:first-child) {
-    display: none;
-  }
-
-  .gallery-item img {
-    width: 100%;
-    height: 100%;
-    object-fit: cover;
-  }
-
-  /* Gallery navigation dots */
-  .gallery-controls {
-    margin-top: 25px;
-    justify-content: center;
-  }
-
-  .gallery-dot {
-    width: 10px;
-    height: 10px;
-    margin: 0 6px;
-  }
-
-  /* Info Section */
-  .info-details {
-    flex-direction: column;
-  }
-
-  .info-item {
-    margin-bottom: 20px;
-  }
-
-  .tel {
-    font-size: 20px;
-  }
-
-  /* Course Menu Section */
-  .menu-layout {
-    height: auto;
-    padding-bottom: 40px;
-    margin-bottom: 64px;
-  }
-  .main-image {
-    position: static;
-    width: 100%;
-    margin-bottom: 40px;
-  }
-  .thumbnail-container {
-    position: static;
-    display: block;
-    width: 100%;
-  }
-  .thumbnail-container img {
-    width: 100%;
-    margin-bottom: 40px;
-  }
-  .menu-card {
-    position: static;
-    height: 500px;
-    min-height: auto;
-    width: 100%;
-    background-size: cover;
-    padding-bottom: 30px;
-    margin-bottom: 40px;
-  }
-  .menu-content {
-    height: auto;
-    margin-top: 0;
-    padding: 30px 20px 0;
-  }
-  .vertical-text-container {
-    position: absolute;
-    margin: 30px auto 0;
-    width: 90%;
-    margin-top: 70%;
-    margin-left: 5%;
-    margin-right: 5%;
-    display: none;
-  }
-  .course-vertical-text {
-    writing-mode: horizontal-tb !important;
-  }
-  .course-items {
-    text-align: center;
-  }
-  .course-title {
-    margin-bottom: 32px;
-    text-align: center;
-    margin-left: 5%;
-  }
-
-  .course-price {
-    text-align: center;
-    margin-bottom: 16px;
-  }
-  .course-note {
-    text-align: center;
-  }
-  .course-vertical-text:nth-child(1) {
-    margin-bottom: 20px;
-  }
-  .course-vertical-text:nth-child(2) {
-    margin-bottom: 20px;
-  }
   /* ======================================================
+     MOBILE RESPONSIVE (max-width: 767px)
+     ====================================================== */
+  @media (max-width: 767px) {
+    .news-section {
+      margin-left: 2%;
+      padding: 20px 15px;
+      background-position: center;
+    }
+
+    .news-section h2 {
+      font-size: 20px;
+      margin-bottom: 15px;
+      padding: 15px 0;
+    }
+
+    .news-section h2::before {
+      width: 80px;
+      height: 60px;
+    }
+
+    .news-container {
+      max-width: 100%;
+      padding: 15px;
+      margin: 0 10px;
+    }
+
+    .news-item {
+      flex-direction: column;
+      margin-left: 5%;
+
+      margin-right: 5% !important;
+      padding: 15px 0;
+      border-bottom: 1px solid rgba(0, 0, 0, 0.1);
+    }
+
+    .news-item:last-child {
+      border-bottom: none;
+    }
+
+    .news-item:not(:last-child)::after {
+      display: none;
+    }
+
+    .news-date {
+      min-width: auto;
+      font-size: 12px;
+      color: #666;
+      margin-bottom: 8px;
+      font-weight: 600;
+      margin-left: 20%;
+    }
+
+    .news-content {
+      font-size: 13px;
+      line-height: 1.5;
+      margin-right: 10% !important;
+      /* background-color: red; */
+    }
+
+    .news-content p {
+      margin-bottom: 6px;
+      margin-right: 5%;
+      padding-left: 50px;
+    }
+
+    /* Space Section */
+    .space-section {
+      padding: 30px 20px;
+    }
+
+    .space-container {
+      width: 100%;
+      margin-left: 0;
+      min-height: 1200px;
+    }
+
+    .space-image-2 {
+      width: 75%;
+      top: 100px;
+      left: 5%;
+    }
+
+    .space-image-3 {
+      width: 75%;
+      top: 380px;
+      left: 20%;
+    }
+
+    .space-image-4-space {
+      width: 75%;
+      top: 660px;
+      left: 10%;
+      bottom: auto;
+    }
+
+    .space-image-4-space-item-1 {
+      width: 85%;
+      height: 85%;
+    }
+
+    .space-image-1-texts {
+      top: 990px;
+      left: 0;
+      width: 100%;
+      display: flex;
+      justify-content: center;
+      min-height: 200px;
+    }
+
+    /* Gallery Section */
+    .gallery {
+      padding: 40px 0;
+    }
+
+    .gallery-container {
+      position: relative;
+      width: 100%;
+      overflow: hidden;
+      background-color: rgba(0, 0, 0, 0.03);
+      padding: 20px 0;
+    }
+
+    .gallery-wrapper {
+      display: flex;
+      transition: transform 0.5s ease-in-out;
+      width: 100%;
+    }
+
+    /* MOBILE: Show ONE image at a time */
+    .gallery-slide {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      min-width: 100%;
+      padding: 0 15px;
+      flex-shrink: 0;
+    }
+
+    .gallery-item {
+      width: 90%; /* Single image takes most of screen width */
+      height: 220px;
+      box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+      border-radius: 8px;
+      overflow: hidden;
+      margin: 0 auto;
+    }
+
+    /* Hide other gallery items on mobile - show only first image */
+    .gallery-item:not(:first-child) {
+      display: none;
+    }
+
+    .gallery-item img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+    }
+
+    /* Gallery navigation dots */
+    .gallery-controls {
+      margin-top: 25px;
+      justify-content: center;
+    }
+
+    .gallery-dot {
+      width: 10px;
+      height: 10px;
+      margin: 0 6px;
+    }
+
+    /* Info Section */
+    .info-details {
+      flex-direction: column;
+    }
+
+    .info-item {
+      margin-bottom: 20px;
+    }
+
+    .tel {
+      font-size: 20px;
+    }
+
+    /* Course Menu Section */
+    .menu-layout {
+      height: auto;
+      padding-bottom: 40px;
+      margin-bottom: 64px;
+    }
+    .main-image {
+      position: static;
+      width: 100%;
+      margin-bottom: 40px;
+    }
+    .thumbnail-container {
+      position: static;
+      display: block;
+      width: 100%;
+    }
+    .thumbnail-container img {
+      width: 100%;
+      margin-bottom: 40px;
+    }
+    .menu-card {
+      position: static;
+      height: 500px;
+      min-height: auto;
+      width: 100%;
+      background-size: cover;
+      padding-bottom: 30px;
+      margin-bottom: 40px;
+    }
+    .menu-content {
+      height: auto;
+      margin-top: 0;
+      padding: 30px 20px 0;
+    }
+    .vertical-text-container {
+      position: absolute;
+      margin: 30px auto 0;
+      width: 90%;
+      margin-top: 70%;
+      margin-left: 5%;
+      margin-right: 5%;
+      display: none;
+    }
+    .course-vertical-text {
+      writing-mode: horizontal-tb !important;
+    }
+    .course-items {
+      text-align: center;
+    }
+    .course-title {
+      margin-bottom: 32px;
+      text-align: center;
+      margin-left: 5%;
+    }
+
+    .course-price {
+      text-align: center;
+      margin-bottom: 16px;
+    }
+    .course-note {
+      text-align: center;
+    }
+    .course-vertical-text:nth-child(1) {
+      margin-bottom: 20px;
+    }
+    .course-vertical-text:nth-child(2) {
+      margin-bottom: 20px;
+    }
+    /* ======================================================
      9. Space Section
      ====================================================== */
 
-  .space-section {
-    width: 100% !important;
-    padding: 0 !important;
-    margin: 0 !important;
-    position: relative !important;
-  }
+    .space-section {
+      width: 100% !important;
+      padding: 0 !important;
+      margin: 0 !important;
+      position: relative !important;
+    }
 
-  .space-container {
-    width: 100% !important;
-    max-width: 100% !important;
-    margin: 0 auto !important;
-    padding: 0 !important;
-    display: block !important;
-    position: static !important;
-  }
+    .space-container {
+      width: 100% !important;
+      max-width: 100% !important;
+      margin: 0 auto !important;
+      padding: 0 !important;
+      display: block !important;
+      position: static !important;
+    }
 
-  /* Text part - this is already working well */
-  .space-image-1-texts {
-    display: flex !important;
-    flex-direction: row !important;
-    justify-content: center !important;
-    align-items: center !important;
-    /* background-color: #f9f5e8 !important; */
-    background-image: url("../images/hagiya-space-img-2.svg") !important;
-    background-size: cover !important;
-    background-position: center !important;
-    padding: 30px 15px !important;
-    margin-bottom: 15px !important;
-    position: static !important;
-    left: auto !important;
-    height: auto !important;
-    width: 100% !important;
-  }
+    /* Text part - this is already working well */
+    .space-image-1-texts {
+      display: flex !important;
+      flex-direction: row !important;
+      justify-content: center !important;
+      align-items: center !important;
+      /* background-color: #f9f5e8 !important; */
+      background-image: url("../images/hagiya-space-img-2.svg") !important;
+      background-size: cover !important;
+      background-position: center !important;
+      padding: 30px 15px !important;
+      margin-bottom: 15px !important;
+      position: static !important;
+      left: auto !important;
+      height: auto !important;
+      width: 100% !important;
+    }
 
-  .space-image-1-texts p {
-    writing-mode: vertical-rl !important;
-    text-orientation: mixed !important;
-    margin: 0 8px !important;
-    padding: 0 !important;
-    display: inline-block !important;
-    font-size: 14px !important;
-    height: auto !important;
-    position: static !important;
-  }
+    .space-image-1-texts p {
+      writing-mode: vertical-rl !important;
+      text-orientation: mixed !important;
+      margin: 0 8px !important;
+      padding: 0 !important;
+      display: inline-block !important;
+      font-size: 14px !important;
+      height: auto !important;
+      position: static !important;
+    }
 
-  .space-image-1-texts p:nth-child(4) {
-    position: static !important;
-    font-size: 18px !important;
-    margin-left: 15px !important;
-    left: auto !important;
-    top: auto !important;
-  }
+    .space-image-1-texts p:nth-child(4) {
+      position: static !important;
+      font-size: 18px !important;
+      margin-left: 15px !important;
+      left: auto !important;
+      top: auto !important;
+    }
 
-  .space-images {
-    width: 100% !important;
-    display: block !important;
-    margin: 0 !important;
-    position: static !important;
-  }
+    .space-images {
+      width: 100% !important;
+      display: block !important;
+      margin: 0 !important;
+      position: static !important;
+    }
 
-  .space-image-1,
-  .space-image-2,
-  .space-image-4-space-item-2 {
-    display: none !important;
-  }
+    .space-image-1,
+    .space-image-2,
+    .space-image-4-space-item-2 {
+      display: none !important;
+    }
 
-  /* Fix the dining room image (first image) */
-  .space-image-4-space {
-    position: static !important;
-    display: block !important;
-    width: 100% !important;
-    height: auto !important;
-    margin: 0 0 15px 0 !important;
-    padding: 0 !important;
-    left: auto !important;
-    bottom: auto !important;
-  }
+    /* Fix the dining room image (first image) */
+    .space-image-4-space {
+      position: static !important;
+      display: block !important;
+      width: 100% !important;
+      height: auto !important;
+      margin: 0 0 15px 0 !important;
+      padding: 0 !important;
+      left: auto !important;
+      bottom: auto !important;
+    }
 
-  .space-image-4-space-item-1 {
-    position: static !important;
-    display: block !important;
-    width: 100% !important;
-    height: 250px !important;
-    margin: 0 0 15px 0 !important;
-    padding: 0 !important;
-    left: auto !important;
-    top: auto !important;
-    z-index: 1 !important;
-  }
+    .space-image-4-space-item-1 {
+      position: static !important;
+      display: block !important;
+      width: 100% !important;
+      height: 250px !important;
+      margin: 0 0 15px 0 !important;
+      padding: 0 !important;
+      left: auto !important;
+      top: auto !important;
+      z-index: 1 !important;
+    }
 
-  .space-image-4-space-item-1 img {
-    display: block !important;
-    width: 100% !important;
-    height: 100% !important;
-    object-fit: cover !important;
-  }
+    .space-image-4-space-item-1 img {
+      display: block !important;
+      width: 100% !important;
+      height: 100% !important;
+      object-fit: cover !important;
+    }
 
-  /* Fix the wooden counter image (second image) */
-  .space-image-3 {
-    position: static !important;
-    display: block !important;
-    width: 100% !important;
-    height: 250px !important;
-    margin: 0 0 15px 0 !important;
-    padding: 0 !important;
-    left: auto !important;
-    top: auto !important;
-    overflow: hidden !important;
-  }
+    /* Fix the wooden counter image (second image) */
+    .space-image-3 {
+      position: static !important;
+      display: block !important;
+      width: 100% !important;
+      height: 250px !important;
+      margin: 0 0 15px 0 !important;
+      padding: 0 !important;
+      left: auto !important;
+      top: auto !important;
+      overflow: hidden !important;
+    }
 
-  .space-image-3 img {
-    display: block !important;
-    width: 100% !important;
-    height: 100% !important;
-    object-fit: cover !important;
-  }
+    .space-image-3 img {
+      display: block !important;
+      width: 100% !important;
+      height: 100% !important;
+      object-fit: cover !important;
+    }
 
-  /* Extra forceful fix for elements that might be hidden by other CSS */
-  body .space-image-4-space-item-1,
-  body .space-image-3 {
-    display: block !important;
-    visibility: visible !important;
-    opacity: 1 !important;
-  }
-  /* ======================================================
+    /* Extra forceful fix for elements that might be hidden by other CSS */
+    body .space-image-4-space-item-1,
+    body .space-image-3 {
+      display: block !important;
+      visibility: visible !important;
+      opacity: 1 !important;
+    }
+    /* ======================================================
      10. Food Menu Section
      ====================================================== */
 
-  .food-menu-container {
-    max-width: 100%;
-  }
+    .food-menu-container {
+      max-width: 100%;
+    }
 
-  .menu-item-content {
-    flex-direction: column;
-    padding: 30px 15px;
-    min-height: auto;
-    gap: 15px;
-  }
+    .menu-item-content {
+      flex-direction: column;
+      padding: 30px 15px;
+      min-height: auto;
+      gap: 15px;
+    }
 
-  .menu-item-2 .menu-item-content {
-    flex-direction: column;
-  }
+    .menu-item-2 .menu-item-content {
+      flex-direction: column;
+    }
 
-  .menu-item-content-image,
-  .menu-item-content-text {
-    width: 100%;
-    padding: 0 15px;
-  }
+    .menu-item-content-image,
+    .menu-item-content-text {
+      width: 100%;
+      padding: 0 15px;
+    }
 
-  .menu-item-content-text {
-    display: flex;
-    flex-direction: column;
-  }
+    .menu-item-content-text {
+      display: flex;
+      flex-direction: column;
+    }
 
-  .menu-item-content-image {
-    height: auto;
-    padding-top: 0;
-    margin-bottom: 20px;
-  }
+    .menu-item-content-image {
+      height: auto;
+      padding-top: 0;
+      margin-bottom: 20px;
+    }
 
-  .menu-item-content-image img {
-    max-width: 100%;
-    height: auto;
-  }
+    .menu-item-content-image img {
+      max-width: 100%;
+      height: auto;
+    }
 
-  /* Move the button to the bottom */
-  .menu-btn {
-    padding: 10px 20px;
-    width: 80%;
-    max-width: 280px;
-    margin: 0 auto;
-    white-space: nowrap;
-    order: 2; /* This moves the button after other content */
-  }
+    /* Move the button to the bottom */
+    .menu-btn {
+      padding: 10px 20px;
+      width: 80%;
+      max-width: 280px;
+      margin: 0 auto;
+      white-space: nowrap;
+      order: 2; /* This moves the button after other content */
+    }
 
-  /* Pull the button out of the menu-item-content-text */
-  .menu-item-content-text {
-    order: 1;
-  }
+    /* Pull the button out of the menu-item-content-text */
+    .menu-item-content-text {
+      order: 1;
+    }
 
-  .menu-item-content-text .menu-btn {
-    order: 3;
-    margin-top: 15px;
+    .menu-item-content-text .menu-btn {
+      order: 3;
+      margin-top: 15px;
+    }
   }
 }
 
